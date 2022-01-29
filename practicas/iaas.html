@@ -1,0 +1,673 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>IAAS - PL</title>
+<meta name="description" content="Descripción de la Práctica iaas">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+  <meta property="article:author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="IAAS">
+<meta property="og:url" content="http://0.0.0.0:4000/practicas/iaas">
+
+
+  <meta property="og:description" content="Descripción de la Práctica iaas">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-14T04:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/practicas/iaas">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--practica">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <a href="https://crguezl.github.io" target="_blank">
+          <img src="/assets/images/bio-photo.jpg" alt=" Casiano Rodríguez León" itemprop="image">
+        </a>
+      
+    </div>
+  
+  
+  
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="IAAS">
+    <meta itemprop="description" content="Descripción de la Práctica iaas">
+    <meta itemprop="datePublished" content="2022-02-14T04:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">IAAS
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#descripción-de-la-práctica-iaas">Descripción de la Práctica iaas</a><ul><li><a href="#rubrica">Rúbrica</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="descripción-de-la-práctica-iaas">Descripción de la Práctica iaas</h1>
+
+<ul>
+  <li>Siguiendo las instrucciones en el  <a href="https://github.com/SYTW/iaas-ull-es">repositorio SYTW/iaas-ull-es</a> despliegue un ejemplo como el que aparece en <a href="https://github.com/crguezl/express-start">crguezl/express-start</a> en su máquina virtual del servicio <a href="https://iaas.ull.es">iaas.ull.es</a>.</li>
+  <li>Puede encontrar un vídeo del profesor introduciendo el <a href="https://youtu.be/qKHgbV0lYbA">iaas.ull.es aquí</a>.
+    <ul>
+      <li><a href="https://youtu.be/qKHgbV0lYbA"><img src="http://i3.ytimg.com/vi/qKHgbV0lYbA/hqdefault.jpg" alt="iaas.ull.es" /></a></li>
+      <li>El vídeo es de 2018 y varias de las apps usadas han cambiado de versión pero la esencia de la metodología es la misma</li>
+    </ul>
+  </li>
+  <li>Añada en el <code class="language-plaintext highlighter-rouge">README.md</code> un pequeño tutorial de como usar y desplegar una aplicación web en <a href="https://iaas.ull.es">iaas.ull.es</a>.
+    <ul>
+      <li>Haga capturas de pantalla que muestren que su máquina esta bien configurada y funcionando</li>
+    </ul>
+  </li>
+  <li>La IP dinámica de su máquina virtual no debería cambiar si no la apaga. Publique la URL de despliegue en su máquina</li>
+  <li>Prepare la máquina para poder trabajar:
+    <ul>
+      <li>Instale git si es necesario</li>
+      <li><a href="https://git-scm.com/book/es/v1/Empezando-Configurando-Git-por-primera-vez">Configura git</a></li>
+      <li>Procure que la rama actual aparezca en el prompt de la terminal.
+        <ul>
+          <li>Ejemplo para una bash. Pon en el fichero <code class="language-plaintext highlighter-rouge">~/.bash_profile</code> o <code class="language-plaintext highlighter-rouge">~/.bashrc</code> estas líneas:</li>
+        </ul>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> parse_git_branch() {
+   git branch 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+ }
+ export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+</code></pre></div>        </div>
+
+        <ul>
+          <li>También puede usar <a href="https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh">git prompt</a></li>
+          <li>Puede añadir algo como esto a su PS1: <code class="language-plaintext highlighter-rouge">PS1="\$(git branch 2&gt;/dev/null | sed -n 's/* \(.*\)/\1 /p')$ "</code></li>
+          <li>Recuerde que si su prompt es muy largo siempre puede acortarlo con <code class="language-plaintext highlighter-rouge">PROMPT_DIRTRIM=1</code></li>
+        </ul>
+      </li>
+      <li><a href="https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases">git aliases</a></li>
+      <li><a href="https://github.com/cli/cli">Instale GitHub CLI</a> y aprenda a usarla
+        <ul>
+          <li><a href="https://cli.github.com/manual/">manual</a></li>
+        </ul>
+      </li>
+      <li>Opcionalmente puede instalar <a href="http://linuxbrew.sh/">linuxbrew</a></li>
+      <li>Instale <a href="https://github.com/creationix/nvm">nvm</a></li>
+      <li>Instale nodeJS usando nvm</li>
+      <li><a href="http://jshint.com/install/">jshint</a> y <a href="https://coderwall.com/p/zfhquw/jshint-in-vim">jshint on vim</a> o JSLint o <a href="https://www.slant.co/topics/2411/~best-javascript-linting-tools">equivalente</a>
+        <ul>
+          <li>Instale <a href="https://github.com/scrooloose/nerdtree">NERDTree</a> para vim</li>
+        </ul>
+      </li>
+      <li>Instale Express.js
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs">Express Web Framework (Node.js/JavaScript)</a> (Mozilla)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
+
+ 
+<h2 id="rubrica">Rúbrica</h2>
+
+Incidencias para el Project Board para la práctica <i><p>IAAS</p>
+</i>
+<ul>
+    
+    <li><p><code>SSH</code> configurada para trabajar sin password</p>
+</li> 
+    
+    
+    <li><p><code>git</code> configurado para trabajar con GitHub</p>
+</li> 
+    
+    
+    <li><p>Aplicación Web Desplegada en iaas</p>
+</li> 
+    
+    
+    <li><p>Tutorial README.md bien presentado</p>
+</li> 
+    
+    
+    <li><p>El prompt de la shell muestra la rama actual</p>
+</li> 
+    
+    
+    <li><p>Ha instalado <code>nvm</code></p>
+</li> 
+    
+    
+</ul>
+
+
+
+
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#practicas" class="page__taxonomy-item" rel="tag">practicas</a>
+    
+    </span>
+  </p>
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=IAAS%20http%3A%2F%2F0.0.0.0%3A4000%2Fpracticas%2Fiaas" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=IAAS%20http%3A%2F%2F0.0.0.0%3A4000%2Fpracticas%2Fiaas" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fpracticas%2Fiaas" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fpracticas%2Fiaas" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+  <nav class="pagination">
+    
+      <a href="/practicas/visual-studio-code" class="pagination--pager" title="GitPod and Visual Studio Code
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//practicas/_posts/2022-02-14-iaas.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

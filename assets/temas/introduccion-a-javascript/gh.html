@@ -1,0 +1,923 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitHub Command Line Interface - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="GitHub Command Line Interface">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/gh.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/gh.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitHub Command Line Interface">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">GitHub Command Line Interface
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#introduction">Introduction</a></li><li><a href="#introduction-to-gh-api">Introduction to gh api</a><ul><li><a href="#authentication-token">Authentication Token</a></li><li><a href="#example">Example</a></li><li><a href="#pagination">Pagination</a></li></ul></li><li><a href="#introduction-to-gh-alias">Introduction to gh alias</a><ul><li><a href="#simple-examples">Simple Examples</a></li><li><a href="#example-search-for-repos-inside-an-organization">Example: Search for repos inside an organization</a></li></ul></li><li><a href="#graphql-example">GraphQL Example</a></li><li><a href="#running-manually-github-workflows-with-gh">Running Manually GitHub Workflows with gh</a></li><li><a href="#references">References</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="introduction">Introduction</h2>
+
+<p><a href="https://cli.github.com/manual/">gh</a> pretends to facilitate the access to GitHub from the command line. It brings pull requests, issues, and other GitHub concepts to the terminal next to where you are already working with git and your code.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh help
+Work seamlessly with GitHub from the command line.
+
+USAGE
+  gh &lt;command&gt; &lt;subcommand&gt; [flags]
+
+CORE COMMANDS
+  gist:       Manage gists
+  issue:      Manage issues
+  pr:         Manage pull requests
+  release:    Manage GitHub releases
+  repo:       Create, clone, fork, and view repositories
+
+ACTIONS COMMANDS
+  actions:    Learn about working with GitHub actions
+  run:        View details about workflow runs
+  workflow:   View details about GitHub Actions workflows
+
+ADDITIONAL COMMANDS
+  alias:      Create command shortcuts
+  api:        Make an authenticated GitHub API request
+  auth:       Login, logout, and refresh your authentication
+  completion: Generate shell completion scripts
+  config:     Manage configuration for gh
+  help:       Help about any command
+  secret:     Manage GitHub secrets
+  ssh-key:    Manage SSH keys
+
+FLAGS
+  --help      Show help for command
+  --version   Show gh version
+
+EXAMPLES
+  $ gh issue create
+  $ gh repo clone cli/cli
+  $ gh pr checkout 321
+
+ENVIRONMENT VARIABLES
+  See 'gh help environment' for the list of supported environment variables.
+
+LEARN MORE
+  Use 'gh &lt;command&gt; &lt;subcommand&gt; --help' for more information about a command.
+  Read the manual at https://cli.github.com/manual
+
+FEEDBACK
+  Open an issue using 'gh issue create -R github.com/cli/cli'
+</code></pre></div></div>
+
+<p>To install it, see  the <a href="https://github.com/cli/cli#installation">installation instructions</a>.</p>
+
+<p>Check the <a href="https://cli.github.com/manual/">GitHub CLI Manual</a> for more details.</p>
+
+<p>There are several ways you can extend/customize <code class="language-plaintext highlighter-rouge">gh</code>:</p>
+
+<ul>
+  <li>Create shorthands using <a href="https://cli.github.com//manual/gh_alias_set"><code class="language-plaintext highlighter-rouge">gh alias set</code></a></li>
+  <li>Make custom API queries using <a href="https://cli.github.com//manual/gh_api"><code class="language-plaintext highlighter-rouge">gh api</code></a></li>
+  <li>Use <a href="https://cli.github.com//manual/gh_help_environment">environment variables</a></li>
+</ul>
+
+<h2 id="introduction-to-gh-api">Introduction to <code class="language-plaintext highlighter-rouge">gh api</code></h2>
+
+<h3 id="authentication-token">Authentication Token</h3>
+
+<p>Go to <a href="https://github.com/settings/tokens">github.com/settings/tokens</a>
+to generate a new token for <code class="language-plaintext highlighter-rouge">gh</code> and set then environment variable 
+<code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code> (<code class="language-plaintext highlighter-rouge">export GITHUB_TOKEN= ...</code>)</p>
+
+<h3 id="example">Example</h3>
+
+<p>Placeholder values <code class="language-plaintext highlighter-rouge">:owner</code>, <code class="language-plaintext highlighter-rouge">:repo</code>, and <code class="language-plaintext highlighter-rouge">:branch</code> in the endpoint argument will get replaced with values from the repository of the current directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gh api repos/:owner/:repo/issues
+[
+  {
+    "url": "https://api.github.com/repos/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/issues/5",
+    "repository_url": "https://api.github.com/repos/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io",
+    "labels_url": "https://api.github.com/repos/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/issues/5/labels{/name}",
+    "comments_url": "https://api.github.com/repos/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/issues/5/comments",
+    "events_url": "https://api.github.com/repos/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/issues/5/events",
+    "html_url": "https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/issues/5",
+    "id": 715027457,
+    "node_id": "MDU6SXNzdWU3MTUwMjc0NTc=",
+    "number": 5,
+    "title": "tema0-presentacion/practicas/pb-gh-campus-expert/",
+    "user": {
+      ...
+    }
+    ...
+  }
+]
+</code></pre></div></div>
+
+<p>We can pipe the output to <a href="jq">jq</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  gh api repos/:owner/:repo/issues | jq '.[0] | .title'
+"tema0-presentacion/practicas/pb-gh-campus-expert/"
+</code></pre></div></div>
+
+<p>Of course, we can explicit the repo and owner. For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh api repos/ULL-MII-SYTWS-2021/p01-t1-iaas-alu0101040882/issues | jq '.[0] | .user.login, .body'
+"crguezl"
+"Hola @alu0101040882, \r\n\r\nVeo que alguno ya está trabajando en la práctica de
+</code></pre></div></div>
+
+<p>Let us see an example using the <code class="language-plaintext highlighter-rouge">POST</code> method. We will start from this <code class="language-plaintext highlighter-rouge">curl</code> example 
+in the <a href="https://docs.github.com/en/free-pro-team@latest/rest/guides/getting-started-with-the-rest-api#repositories">GitHub API getting started guide</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -i -H "Authorization: token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4" \
+    -d '{ \
+        "name": "blog", \
+        "auto_init": true, \
+        "private": true, \
+        "gitignore_template": "nanoc" \
+      }' \
+    https://api.github.com/user/repos
+</code></pre></div></div>
+
+<p>and let us adapt to <code class="language-plaintext highlighter-rouge">gh api</code>. We use <code class="language-plaintext highlighter-rouge">-X</code> or <code class="language-plaintext highlighter-rouge">--method string</code>to set the HTTP method for the request (default <code class="language-plaintext highlighter-rouge">GET</code>) and <code class="language-plaintext highlighter-rouge">-f</code>to set the fields:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  /tmp gh api -X POST -f name=repo-prueba-gh-api -f private=true /user/repos
+</code></pre></div></div>
+
+<p>This way we have created a private repo inside the user scope:</p>
+
+<p><img src="/assets/images/gh-api-post-create-repo.png" alt="" /></p>
+
+<h3 id="pagination">Pagination</h3>
+
+<p>The option <code class="language-plaintext highlighter-rouge">--paginate</code>allow us to make additional HTTP requests to fetch 
+all pages of results. Here is an example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  gh alias set get-repos 'api /orgs/$1/repos'
+- Adding alias for get-repos: api /orgs/$1/repos
+✓ Added alias.
+➜  gh alias list
+co:         pr checkout
+get-repos:  api /orgs/$1/repos
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh get-repos ULL-MII-SYTWS-2021
+</code></pre></div></div>
+
+<p><img src="/assets/images/gh-alias-repos.png" alt="" /></p>
+
+<p>Now  we can pipe the output to <a href="jq">jq</a> to get the names of the repos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  gh get-repos ULL-MII-SYTWS-2021 | jq '.[].full_name' -
+"ULL-MII-SYTWS-2021/sytws-2021-meta"
+"ULL-MII-SYTWS-2021/sytws2021-private"
+"ULL-MII-SYTWS-2021/books-shared"
+"ULL-MII-SYTWS-2021/p01-t1-iaas-fcohdezc"
+"ULL-MII-SYTWS-2021/p01-t1-iaas-crguezl"
+"ULL-MII-SYTWS-2021/p01-t1-iaas-alu0100886870"
+...
+</code></pre></div></div>
+
+<p>Let ask for the repos in the PL organization for the course 19/20:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh api /orgs/ULL-ESIT-PL-1920/repos | jq '.[] | .name' | wc
+      30      30    1088
+</code></pre></div></div>
+<p>It gave us 30 repos. There are much more than that in that organization.</p>
+
+<p>If we use <code class="language-plaintext highlighter-rouge">--paginate</code> the request takes a long time and gives us near a thousand repos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh api --paginate /orgs/ULL-ESIT-PL-1920/repos | jq '.[] | .name' | wc
+     990     990   32868
+</code></pre></div></div>
+
+<h2 id="introduction-to-gh-alias">Introduction to <code class="language-plaintext highlighter-rouge">gh alias</code></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh alias set &lt;alias&gt; &lt;expansion&gt; [flags]
+</code></pre></div></div>
+
+<p>Declare a word as a command alias that will expand to the specified command(s).</p>
+
+<p>The expansion may specify additional arguments and flags. If the expansion
+includes positional placeholders such as <code class="language-plaintext highlighter-rouge">$1</code>, <code class="language-plaintext highlighter-rouge">$2</code>, etc., any extra arguments
+that follow the invocation of an alias will be inserted appropriately.</p>
+
+<p>If <code class="language-plaintext highlighter-rouge">--shell</code> is specified, the alias will be run through a shell interpreter (sh). This allows you
+to compose commands with <code class="language-plaintext highlighter-rouge">|</code> or redirect with <code class="language-plaintext highlighter-rouge">&gt;</code>. Note that extra arguments following the alias
+will not be automatically passed to the expanded expression. To have a shell alias receive
+arguments, you must explicitly accept them using <code class="language-plaintext highlighter-rouge">$1</code>, <code class="language-plaintext highlighter-rouge">$2</code>, etc., or <code class="language-plaintext highlighter-rouge">$@</code> to accept all of them.</p>
+
+<p>Platform note: on Windows, shell aliases are executed via <code class="language-plaintext highlighter-rouge">sh</code> as installed by Git For Windows. If
+you have installed git on Windows in some other way, shell aliases may not work for you.</p>
+
+<p>Quotes must always be used when defining a command as in the examples.</p>
+
+<h3 id="simple-examples">Simple Examples</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $ gh alias set pv 'pr view'
+  $ gh pv -w 123
+  #=&gt; gh pr view -w 123
+
+  $ gh alias set bugs 'issue list --label="bugs"'
+
+  $ gh alias set epicsBy 'issue list --author="$1" --label="epic"'
+  $ gh epicsBy vilmibm
+  #=&gt; gh issue list --author="vilmibm" --label="epic"
+
+  $ gh alias set --shell igrep 'gh issue list --label="$1" | grep $2'
+  $ gh igrep epic foo
+  #=&gt; gh issue list --label="epic" | grep "foo"
+</code></pre></div></div>
+
+<h3 id="example-search-for-repos-inside-an-organization">Example: Search for repos inside an organization</h3>
+
+<p>Let us search for repos inside our organization using GitHub API v3:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh api '/search/repositories?q=iaas+org:ULL-MII-SYTWS-2021+in:name'
+</code></pre></div></div>
+
+<p><img src="/assets/images/gh-api-search-for-repos.png" alt="" /></p>
+
+<p>Here is <a href="gh-get-labs-output.json">the JSON with the full output</a>.</p>
+
+<ul>
+  <li>See the <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/search">SEARCH</a>
+section of the REST API GitHub docs to know more about the API.</li>
+  <li>See section <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/search#search-repositories">Search Repositories</a> for more info on how to search for repos</li>
+</ul>
+
+<p>Now we can use <code class="language-plaintext highlighter-rouge">gh alias set</code> to make an alias <code class="language-plaintext highlighter-rouge">get-lab</code> to get the repos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh alias set get-labs 'api /search/repositories?q=$2+org:$1+in:name'
+- Adding alias for get-labs: api /search/repositories?q=$2+org:$1+in:name
+✓ Added alias.
+➜  gh alias list
+co:        pr checkout
+get-labs:  api /search/repositories?q=$2+org:$1+in:name
+</code></pre></div></div>
+
+<p>And now we can use it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh get-labs ULL-MII-SYTWS-2021 iaas
+</code></pre></div></div>
+
+<p>Next  we can pipe the output to <a href="jq">jq</a> to get the names of the repos and the date of the last push:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh get-labs ULL-MII-SYTWS-2021 iaas | jq '.items[] | .name, .pushed_at'
+"p01-t1-iaas-juanchojbarroso"
+"2020-10-21T15:58:32Z"
+"p01-t1-iaas-alu0101040882"
+"2020-10-17T16:53:39Z"
+"p01-t1-iaas-fcohdezc"
+"2020-10-06T17:51:52Z"
+"p01-t1-iaas-crguezl"
+"2020-10-19T13:50:13Z"
+"p01-t1-iaas-alu0100886870"
+"2020-10-21T17:05:08Z"
+"p01-t1-iaas-lardabi"
+"2020-10-06T18:01:16Z"
+</code></pre></div></div>
+<p>We can improve it by writing a script:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  cat ~/bin/repos
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nv">ORG</span><span class="o">=</span>ULL-MII-SYTWS-2021
+<span class="nv">ASSIGNMENT</span><span class="o">=</span>iaas
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$# </span><span class="nt">-gt</span> 0 <span class="o">]]</span> <span class="p">;</span> <span class="k">then
+  </span><span class="nv">ASSIGNMENT</span><span class="o">=</span><span class="nv">$1</span>
+<span class="k">fi
+if</span> <span class="o">[[</span> <span class="nv">$# </span><span class="nt">-gt</span> 1 <span class="o">]]</span> <span class="p">;</span> <span class="k">then
+    </span><span class="nv">ORG</span><span class="o">=</span><span class="nv">$2</span>
+<span class="k">fi</span>
+<span class="c"># echo $ASSIGNMENT $ORG</span>
+gh api <span class="nt">--paginate</span> /search/repositories?q<span class="o">=</span><span class="nv">$ASSIGNMENT</span>+org:<span class="nv">$ORG</span>+in:name |
+                          jq <span class="s1">'.items[] | .name, .pushed_at'</span>           |
+                          <span class="nb">sed</span> <span class="s1">'N;s/\n/ =&gt; /'</span>
+</code></pre></div></div>
+
+<p>Let us make an alias for <code class="language-plaintext highlighter-rouge">gh</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ gh alias set --shell get-repos 'repos $1 $2'
+- Adding alias for get-repos: repos $1 $2
+✓ Changed alias get-repos from !repos to !repos $1 $2
+</code></pre></div></div>
+
+<p>Watch the use of single quotes.</p>
+
+<p>Let us use our new alias:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  apuntes git:(curso2021) gh get-repos TFA ULL-ESIT-PL-1920
+"tfa-module-miguel-tfa" =&gt; "2020-09-04T09:40:57Z"
+"tfa-daniel-tfa" =&gt; "2020-06-02T14:00:30Z"
+"tfa-manuel-jorge-tfa" =&gt; "2020-09-13T21:40:24Z"
+"tfa-basilio-tfa" =&gt; "2020-07-14T06:49:29Z"
+"tfa-alien-tfa" =&gt; "2020-09-05T07:35:52Z"
+"tfa-miguel-angel-tfa" =&gt; "2020-09-15T13:19:47Z"
+"tfa-esther-sergio-tfa" =&gt; "2020-07-10T08:53:04Z"
+...
+</code></pre></div></div>
+
+<h2 id="graphql-example">GraphQL Example</h2>
+
+<p><strong>GraphQL</strong> is a query language for web services APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more.</p>
+
+<p>Follows an example of query using GraphQL.</p>
+
+<p>We can set the GraphQL query in a separated file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  bin git:(master) cat gh-api-example.graphql
+</code></pre></div></div>
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">repository</span><span class="p">(</span><span class="n">owner</span><span class="p">:</span><span class="s2">"ULL-MII-SYTWS-2021"</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="s2">"p01-t1-iaas-alu0101040882"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">issues</span><span class="p">(</span><span class="n">last</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">states</span><span class="p">:</span><span class="n">OPEN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">edges</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">node</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="n">title</span><span class="w">
+          </span><span class="n">url</span><span class="w">
+          </span><span class="n">labels</span><span class="p">(</span><span class="n">first</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">edges</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="n">node</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="n">name</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To learn more, see the tutorial <a href="https://docs.github.com/en/free-pro-team@latest/graphql/guides/forming-calls-with-graphql">Forming calls with GraphQL
+</a>.</p>
+
+<p>Looking at the composition line by line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>query {
+</code></pre></div></div>
+
+<p>Because we want to read data from the server, not modify it, <code class="language-plaintext highlighter-rouge">query</code> is the <strong>root operation</strong>. (If you don’t specify an operation, <code class="language-plaintext highlighter-rouge">query</code> is also the default.)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>repository(owner:"ULL-MII-SYTWS-2021", name:"p01-t1-iaas-alu0101040882") 
+</code></pre></div></div>
+
+<p>To begin the query, we want to find a <a href="https://docs.github.com/en/free-pro-team@latest/v4/object/repository">repository object</a>. The <code class="language-plaintext highlighter-rouge">schema</code> validation indicates this object requires an <code class="language-plaintext highlighter-rouge">owner</code> and a <code class="language-plaintext highlighter-rouge">name</code> argument. A <code class="language-plaintext highlighter-rouge">schema</code> defines a <strong>GraphQL API’s type system</strong>. It describes the complete set of possible data (objects, fields, relationships, everything) that a client can access</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>issues(last:2, states:OPEN) {
+</code></pre></div></div>
+
+<p>A <strong>field</strong> is a unit of data you can retrieve from an object. As the official GraphQL docs say: <em>The GraphQL query language is basically about selecting fields on objects</em>.</p>
+
+<p>To account for all issues in the repository, we call the <code class="language-plaintext highlighter-rouge">issues</code> object.</p>
+
+<p>Some details about the <code class="language-plaintext highlighter-rouge">issues</code> object:</p>
+
+<p>The docs tell us this object has the type <a href="https://docs.github.com/en/free-pro-team@latest/graphql/reference/objects#issueconnection">IssueConnection</a>.</p>
+
+<p>Schema validation indicates this object requires a <code class="language-plaintext highlighter-rouge">last</code> or <code class="language-plaintext highlighter-rouge">first</code> number of results as an argument, so we provide <code class="language-plaintext highlighter-rouge">2</code>.</p>
+
+<p>The docs also tell us this object accepts a <code class="language-plaintext highlighter-rouge">states</code> argument, which is an <code class="language-plaintext highlighter-rouge">IssueState</code> enum that accepts <code class="language-plaintext highlighter-rouge">OPEN</code> or <code class="language-plaintext highlighter-rouge">CLOSED</code> values.</p>
+
+<p>To find only open issues, we give the states key a value of <code class="language-plaintext highlighter-rouge">OPEN</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edges {
+</code></pre></div></div>
+
+<p><strong>Edges</strong> represent connections between nodes. When you query a <strong>connection</strong>, you traverse its edges to get to its nodes.</p>
+
+<p>We know <strong>issues</strong> is a *connection** because the Doc says it has the <code class="language-plaintext highlighter-rouge">IssueConnection</code> type.</p>
+
+<p><strong>Connections</strong> let us query related objects as part of the same call. With connections, we can use a single GraphQL call where we would have to use multiple calls to a REST API.</p>
+
+<p>To retrieve data about individual issues, we have to access the node via edges.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node {
+</code></pre></div></div>
+
+<p>Here we retrieve the node at the end of the edge. 
+The <a href="https://docs.github.com/en/free-pro-team@latest/v4/object/issueconnection">IssueConnection docs</a> indicate the node at the end of the <code class="language-plaintext highlighter-rouge">IssueConnection</code> type is an <code class="language-plaintext highlighter-rouge">Issue</code> object.</p>
+
+<p>Now that we know we’re retrieving an <code class="language-plaintext highlighter-rouge">Issue</code> object, we can look at the <a href="https://docs.github.com/en/free-pro-team@latest/graphql/reference/objects#issue">docs for issue</a>  and specify the fields we want to return:</p>
+
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">title</span><span class="w">
+</span><span class="err">url</span><span class="w">
+</span><span class="err">labels(first:5)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">edges</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">node</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">name</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here we specify the <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">url</code>, and <code class="language-plaintext highlighter-rouge">labels</code> fields of the <code class="language-plaintext highlighter-rouge">Issue</code> object.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">labels</code> field has the type <a href="https://docs.github.com/en/free-pro-team@latest/v4/object/labelconnection">LabelConnection</a>. As with the <code class="language-plaintext highlighter-rouge">issues</code> object, because <code class="language-plaintext highlighter-rouge">labels</code> is a connection, we must travel its <code class="language-plaintext highlighter-rouge">edges</code> to a connected <code class="language-plaintext highlighter-rouge">node</code>: the <code class="language-plaintext highlighter-rouge">label</code> object. At the node, we can specify the <code class="language-plaintext highlighter-rouge">label</code> object fields we want to return, in this case, <code class="language-plaintext highlighter-rouge">name</code>.</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">gh</code>, the <code class="language-plaintext highlighter-rouge">--field</code> flag behaves like <code class="language-plaintext highlighter-rouge">--raw-field</code> with magic type conversion based on the format of the value:</p>
+
+<ul>
+  <li>literal values “true”, “false”, “null”, and integer numbers get converted to appropriate JSON types;</li>
+  <li>placeholder values “:owner”, “:repo”, and “:branch” get populated with values from the repository of the current directory;</li>
+  <li>if the value starts with “@”, the rest of the value is interpreted as a filename to read the value from. Pass “-“ to read from standard input.</li>
+</ul>
+
+<p>For GraphQL requests, all fields other than “query” and “operationName” are interpreted as GraphQL variables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  bin git:(master) gh api graphql --paginate -F query=@gh-api-example.graphql | jq .
+{
+  "data": {
+    "repository": {
+      "issues": {
+        "edges": [
+          {
+            "node": {
+              "title": "Revisión",
+              "url": "https://github.com/ULL-MII-SYTWS-2021/p01-t1-iaas-alu0101040882/issues/2",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "enhancement"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+</code></pre></div></div>
+
+<!--
+## Descripción de la práctica p6-t1-gh-cli
+
+[Descripción de la práctica gh-cli](/practicas/p6-t1-gh-cli)
+-->
+
+<h2 id="running-manually-github-workflows-with-gh">Running Manually GitHub Workflows with gh</h2>
+
+<ul>
+  <li><a href="gh-workflows">Running Manually GitHub Workflows with gh</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://cli.github.com/manual/">gh manual</a></li>
+  <li><a href="https://docs.github.com/en/rest">GitHub REST API</a></li>
+  <li><a href="https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api">Getting started with the REST API</a></li>
+  <li><a href="https://github.blog/2021-03-11-scripting-with-github-cli/">Scripting with GitHub CLI by Mislav Marohnić</a></li>
+  <li>Blog: <a href="https://blog.bitsrc.io/github-cli-is-now-available-heres-why-you-should-be-excited-91d8bdd81a51">GitHub CLI is Now Available: Here’s Why You Should Be Excited by 
+Kasun Rajapakse</a></li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=GitHub+Command+Line+Interface%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=GitHub+Command+Line+Interface%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/gh.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

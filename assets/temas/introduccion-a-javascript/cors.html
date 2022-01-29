@@ -1,0 +1,780 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Cross-Origin Resource Sharing CORS - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Cross-Origin Resource Sharing CORS">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/cors.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/cors.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Cross-Origin Resource Sharing CORS">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Cross-Origin Resource Sharing CORS
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#origin">Origin</a></li><li><a href="#the-reason-for-the-same-origin-policy">The reason for The Same-Origin Policy</a></li><li><a href="#the-reasons-for-cross-origin-resource-sharing">The Reasons for Cross-Origin Resource Sharing</a></li><li><a href="#how-cors-works">How CORS works</a></li><li><a href="#the-cors-npm-module">The CORS npm module</a></li><li><a href="#ejemplo-server-en-ull-mii-sytws-1920food-lookup-demo">Ejemplo: server en ULL-MII-SYTWS-1920/food-lookup-demo</a></li><li><a href="#cómo-hacer-un-ataque-csrf">Cómo hacer un Ataque CSRF</a></li><li><a href="#cors-references">CORS references</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><strong>CORS</strong> is a security mechanism that allows a web page from one domain or <strong>Origin</strong> 
+to access a resource with a different domain (a <em>cross-domain request</em>).</p>
+
+<p>CORS is a relaxation of the <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same-origin policy</a> implemented in modern browsers. Without features like CORS, websites are restricted to accessing resources from the same origin through what is known as same-origin policy.</p>
+
+<h2 id="origin">Origin</h2>
+
+<p><em>Origin</em> includes the combination of <strong>protocol, domain,</strong> and <strong>port.</strong> This means</p>
+
+<ul>
+  <li><em>https://</em><strong><em>api</em></strong><em>.mydomain.com</em> and</li>
+  <li><em>https://mydomain.com</em></li>
+</ul>
+
+<p>are actually different origins and thus impacted by same-origin policy.</p>
+
+<p>In a similar way,</p>
+<ul>
+  <li><em>http://localhost:</em><strong><em>9000</em></strong> and</li>
+  <li><em>http://localhost:</em><strong><em>8080</em></strong></li>
+</ul>
+
+<p>are also different origins. The <strong>path</strong> or <strong>query</strong> parameters  are ignored when considering the origin.</p>
+
+<h2 id="the-reason-for-the-same-origin-policy">The reason for The Same-Origin Policy</h2>
+
+<p>You, like many websites, may use cookies to keep track of authentication or session info. Those cookies are bounded to a certain domain when they are created. On every HTTP call to that domain, <strong>the browser will attach the cookies that were created for that domain</strong>. This is on <em>every</em> HTTP call, which could be for static images, HTML pages, or even AJAX calls.</p>
+
+<p>This means when you log into <em>https://examplebank.com</em>, a cookie is stored for <em>https://examplebank.com</em>. If that bank is a single-page React app, they may have created a REST API at <em>https://examplebank.com/api</em> for the SPA to communicate via AJAX.</p>
+
+<ol>
+  <li>Let’s say you browse to a malicious website  <em>https://evilunicorns.com</em> while logged into <em>https://examplebank.com</em>.</li>
+  <li>Without same-origin policy, that hacker website could make <strong>authenticated</strong> malicious AJAX calls to <em>https://examplebank.com/api</em> to <code>POST /withdraw</code> even though the hacker website doesn’t have direct access to the bank’s cookies.</li>
+</ol>
+
+<p>This is due to the browser behavior of automatically attaching any cookies bounded to <em>https://examplebank.com</em> for any HTTP calls to that domain, including AJAX calls from <em>https://evilunicorns.com</em> to <em>https://examplebank.com</em>.</p>
+
+<p>By restricting HTTP calls to only ones to the same origin (i.e. the browser tab’s domain), same-origin policy closes some hacker backdoors such as around <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank" rel="noopener noreferrer">Cross-Site Request Forgery (CSRF)</a> (Although not all. Mechanisms like CSRF tokens are still necessary).</p>
+
+<h2 id="the-reasons-for-cross-origin-resource-sharing">The Reasons for Cross-Origin Resource Sharing</h2>
+
+<p>There are legitimate reasons for a website to make cross-origin HTTP requests:</p>
+
+<ul>
+  <li>Maybe a single-page app at <em>https://mydomain.com</em> needs to make AJAX calls to <em>https://api.mydomain.com</em>;</li>
+  <li>or maybe <em>https://mydomain.com</em> incorporates some 3rd party fonts or analytics providers like Google Analytics or MixPanel.</li>
+  <li><em>Cross-Origin Resource Sharing</em> (CORS) enables these cross-domain requests.</li>
+</ul>
+
+<h2 id="how-cors-works">How CORS works</h2>
+
+<p>This is how a <strong>simple CORS request</strong> works:</p>
+
+<ol>
+  <li>
+    <p>A browser tab open to <code class="language-plaintext highlighter-rouge">https://www.mydomain.com</code> initiates AJAX request <code class="language-plaintext highlighter-rouge">GET https://api.mydomain.com/widgets</code></p>
+  </li>
+  <li>
+    <p>Along with adding headers like <code class="language-plaintext highlighter-rouge">Host</code>, the browser automatically adds the <code class="language-plaintext highlighter-rouge">Origin</code> Request Header for cross-origin requests:</p>
+  </li>
+</ol>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">  </span><span class="nf">GET</span> <span class="nn">/widgets/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="s">  Host: api.mydomain.com</span>
+<span class="s">  Origin: https://www.mydomain.com</span>
+<span class="s">  [Rest of request...]</span>
+</code></pre></div></div>
+
+<ol>
+  <li>The server checks the <code class="language-plaintext highlighter-rouge">Origin</code> request header. If the Origin value is allowed, it sets the <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code> to the value in the request header <code class="language-plaintext highlighter-rouge">Origin</code>.</li>
+</ol>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">     </span><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK  </span>
+<span class="s">     Access-Control-Allow-Origin: https://www.mydomain.com  </span>
+<span class="s">     Content-Type: application/json</span>
+<span class="s">     [Rest of response...]  </span>
+</code></pre></div></div>
+<ol>
+  <li>When the browser receives the response, the browser checks the <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code> header to see if it matches the origin of the tab. If not, the response is blocked. The check passes such as in this example if either the <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code> matches the single origin exactly or contains the wildcard <strong>*</strong> operator.
+    <ul>
+      <li>A server that responds <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin: *</code> allows all origins <strong>which can be a large security risk</strong>.</li>
+      <li>Only use <strong>*</strong> if your application absolutely requires it such as creating an open/public API.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="the-cors-npm-module">The CORS npm module</h2>
+
+<p>If you want to avoid the blocking, the server that hosts the resource needs to have CORS enabled. 
+What you can do on the client side (and probably what you are thinking of) is set the mode of <code class="language-plaintext highlighter-rouge">fetch</code> to CORS
+(although this is the default setting I believe):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="p">{</span><span class="na">mode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">cors</span><span class="dl">'</span><span class="p">});</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">mode</code> option specifies the mode you want to use for the request, e.g., <code class="language-plaintext highlighter-rouge">cors</code>, <code class="language-plaintext highlighter-rouge">no-cors</code>, or <code class="language-plaintext highlighter-rouge">same-origin</code>.</p>
+<ul>
+  <li>With <code class="language-plaintext highlighter-rouge">same-origin</code> you can perform requests only to your <code class="language-plaintext highlighter-rouge">origin</code>, otherwise the request will result in an error.</li>
+  <li>With <code class="language-plaintext highlighter-rouge">no-cors</code>, you can perform requests to other origins, even if they don’t set the required CORS headers, but you’ll get an <strong>opaque</strong> response. An <strong>opaque</strong> response is for a request made for a resource on a different origin that doesn’t return CORS headers. With an opaque response we won’t be able to read the data returned or view the status of the request, meaning we can’t check if the request was successful or not.</li>
+</ul>
+
+<p>However this still requires the server to enable CORS as well, and allow your domain to request the resource.</p>
+
+<p>In Express we can use the module <a href="https://expressjs.com/en/resources/middleware/cors.html">cors</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install cors
+</code></pre></div></div>
+
+<p>If inside the app we use this middleware:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cors</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">())</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/products/:id</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">This is CORS-enabled for all origins!</span><span class="dl">'</span><span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">CORS-enabled web server listening on port 80</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>To enable CORS for a Single Route we do:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cors</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/products/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">cors</span><span class="p">(),</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">This is CORS-enabled for a Single Route</span><span class="dl">'</span><span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">CORS-enabled web server listening on port 80</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>We can configure CORS:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cors</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="kd">var</span> <span class="nx">corsOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">origin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://example.com</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">optionsSuccessStatus</span><span class="p">:</span> <span class="mi">200</span> <span class="c1">// some legacy browsers (IE11, various SmartTVs) choke on 204</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/products/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">cors</span><span class="p">(</span><span class="nx">corsOptions</span><span class="p">),</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">This is CORS-enabled for only example.com.</span><span class="dl">'</span><span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">CORS-enabled web server listening on port 80</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">origin</code>  option used in this example configures the <strong>Access-Control-Allow-Origin</strong> CORS header. 
+Possible values:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Boolean</code> - set <code class="language-plaintext highlighter-rouge">origin</code> to <code class="language-plaintext highlighter-rouge">true</code> to reflect the <a href="http://tools.ietf.org/html/draft-abarth-origin-09">request origin</a>, as defined by <code class="language-plaintext highlighter-rouge">req.header('Origin')</code>, or set it to <code class="language-plaintext highlighter-rouge">false</code> to disable CORS.</li>
+  <li><code class="language-plaintext highlighter-rouge">String</code> - set <code class="language-plaintext highlighter-rouge">origin</code> to a specific origin. For example if you set it to <code class="language-plaintext highlighter-rouge">"http://example.com"</code> only requests from “http://example.com” will be allowed.</li>
+  <li><code class="language-plaintext highlighter-rouge">RegExp</code> - set <code class="language-plaintext highlighter-rouge">origin</code> to a regular expression pattern which will be used to test the request origin. If it’s a match, the request origin will be reflected. For example the pattern <code class="language-plaintext highlighter-rouge">/example\.com$/</code> will reflect any request that is coming from an origin ending with “example.com”.</li>
+  <li><code class="language-plaintext highlighter-rouge">Array</code> - set <code class="language-plaintext highlighter-rouge">origin</code> to an array of valid origins. Each origin can be a <code class="language-plaintext highlighter-rouge">String</code> or a <code class="language-plaintext highlighter-rouge">RegExp</code>. For example <code class="language-plaintext highlighter-rouge">["http://example1.com", /\.example2\.com$/]</code> will accept any request from “http://example1.com” or from a subdomain of “example2.com”.</li>
+  <li><code class="language-plaintext highlighter-rouge">Function</code> - set <code class="language-plaintext highlighter-rouge">origin</code> to a function implementing some custom logic. The function takes the request origin as the first parameter and a callback (which expects the signature <code class="language-plaintext highlighter-rouge">err [object], allow [bool]</code>) as the second.</li>
+</ul>
+
+<h2 id="ejemplo-server-en-ull-mii-sytws-1920food-lookup-demo">Ejemplo: server en ULL-MII-SYTWS-1920/food-lookup-demo</h2>
+
+<p>Para entender mejor esta sección 
+<strong>Véase la rama/branch: <code class="language-plaintext highlighter-rouge">10-crguezl-master-cors-01</code></strong> del repositorio 
+<a href="https://github.com/ULL-MII-SYTWS-1920/food-lookup-demo/tree/10-crguezl-master-cors-01">ULL-MII-SYTWS-1920/food-lookup-demo</a></p>
+
+<p>Si en <code class="language-plaintext highlighter-rouge">Client-js</code> cambiamos el <code class="language-plaintext highlighter-rouge">fetch</code> para solicitar al server en 3001 que es donde escucha nuestro servidor:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">search</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3001/api/food?q=</span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">accept</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">checkStatus</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">parseJSON</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Obtenemos una respuesta similar a esta:</p>
+
+<blockquote>
+  <p>Access to fetch at <code class="language-plaintext highlighter-rouge">http://localhost:3001/api/food?q=r</code> from origin <code class="language-plaintext highlighter-rouge">http://localhost:3000</code> has been blocked <strong>by CORS policy</strong>:</p>
+</blockquote>
+
+<blockquote>
+  <p>No <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code> header is present on the requested resource.</p>
+</blockquote>
+
+<blockquote>
+  <p>If an <strong>opaque response</strong> serves your needs, set the request’s mode to <code class="language-plaintext highlighter-rouge">no-cors</code> to fetch the resource with CORS disabled.</p>
+</blockquote>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">localhost/:1</code> Uncaught (in promise) TypeError: Failed to fetch</p>
+</blockquote>
+
+<p>Usando el middleware <code class="language-plaintext highlighter-rouge">cors</code>arreglamos el problema:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sqlite</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">sql.js</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">cors</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">filebuffer</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">db/usda-nnd.sqlite3</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sqlite</span><span class="p">.</span><span class="nx">Database</span><span class="p">(</span><span class="nx">filebuffer</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">port</span><span class="dl">"</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3001</span><span class="p">);</span>
+
+<span class="c1">// Express only serves static assets in production</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">production</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">"</span><span class="s2">client/build</span><span class="dl">"</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">COLUMNS</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">"</span><span class="s2">carbohydrate_g</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">protein_g</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">fa_sat_g</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">fa_mono_g</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">fa_poly_g</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">kcal</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span>
+<span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">corsOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">origin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://localhost:3000</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">optionsSuccessStatus</span><span class="p">:</span> <span class="mi">200</span> <span class="c1">// some legacy browsers (IE11, various SmartTVs) choke on 204</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/food</span><span class="dl">"</span><span class="p">,</span> <span class="nx">cors</span><span class="p">(</span><span class="nx">corsOptions</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">param</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">q</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+      <span class="na">error</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Missing required parameter `q`</span><span class="dl">"</span>
+    <span class="p">});</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// WARNING: Not for production use! The following statement</span>
+  <span class="c1">// is not protected against SQL injections.</span>
+  <span class="kd">const</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span>
+    <span class="s2">`
+    select </span><span class="p">${</span><span class="nx">COLUMNS</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">)}</span><span class="s2"> from entries
+    where description like '%</span><span class="p">${</span><span class="nx">param</span><span class="p">}</span><span class="s2">%'
+    limit 100
+  `</span>
+  <span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span>
+      <span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">values</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="nx">COLUMNS</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">c</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="c1">// combine fat columns</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^fa_/</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">fat_g</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">fat_g</span> <span class="o">||</span> <span class="mf">0.0</span><span class="p">;</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">fat_g</span> <span class="o">=</span> <span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">fat_g</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span>
+              <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">entry</span><span class="p">[</span><span class="nx">idx</span><span class="p">],</span> <span class="mi">10</span><span class="p">)).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">entry</span><span class="p">[</span><span class="nx">idx</span><span class="p">];</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+      <span class="p">})</span>
+    <span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">([]);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">port</span><span class="dl">"</span><span class="p">),</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Find the server at: http://localhost:</span><span class="p">${</span><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">port</span><span class="dl">"</span><span class="p">)}</span><span class="s2">/`</span><span class="p">);</span> <span class="c1">// eslint-disable-line no-console</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="cómo-hacer-un-ataque-csrf">Cómo hacer un Ataque CSRF</h2>
+
+<!-- Courtesy of embedresponsively.com //-->
+
+<div class="responsive-video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/CXSE89JGnek" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<h2 id="cors-references">CORS references</h2>
+
+<ul>
+  <li><a href="https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs">Authoritative guide to CORS (Cross-Origin Resource Sharing) for REST APIs</a></li>
+  <li><a href="https://medium.com/@alexishevia/using-cors-in-express-cac7e29b005b">Using CORS in Express</a> by Alexis Hevia
+    <ul>
+      <li><a href="https://github.com/alexishevia/blogExamples/tree/cors">Repo with examples of use</a></li>
+    </ul>
+  </li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch">fetch</a>
+    <ul>
+      <li><a href="https://w3c.github.io/webappsec-referrer-policy/#referrer-policies">Referrer Policies</a></li>
+      <li><a href="https://www.w3.org/TR/referrer-policy/">W3C</a></li>
+    </ul>
+  </li>
+  <li><a href="https://expressjs.com/en/resources/middleware/cors.html">cors is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.</a></li>
+  <li><a href="https://www.raymondcamden.com/2019/07/25/multiple-ways-of-api-integration-in-your-jamstack">Multiple Ways of API Integration in your JAMStack</a>
+    <ul>
+      <li>Associated GitHub repo <a href="https://github.com/cfjedimaster/jamstack_api_approaches">https://github.com/cfjedimaster/jamstack_api_approaches</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Cross-Origin+Resource+Sharing+CORS%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcors.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Cross-Origin+Resource+Sharing+CORS%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcors.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcors.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcors.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/cors.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

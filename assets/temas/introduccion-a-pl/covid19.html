@@ -1,0 +1,569 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Adaptación de Procesadores de Lenguajes a la Docencia y Evaluación No Presencial - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Adaptación de Procesadores de Lenguajes a la Docencia y Evaluación No Presencial">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-pl/covid19.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-pl/covid19.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Adaptación de Procesadores de Lenguajes a la Docencia y Evaluación No Presencial">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Adaptación de Procesadores de Lenguajes a la Docencia y Evaluación No Presencial
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#tutorías-no-presenciales">Tutorías no presenciales</a></li><li><a href="#metodología-no-presencial">Metodología no presencial</a><ul><li><a href="#videos">Videos</a></li><li><a href="#sesiones-virtualesclases">Sesiones virtuales/clases</a></li><li><a href="#inclusión-de-documentación-sobre-cada-tema">Inclusión de documentación sobre cada tema</a></li><li><a href="#realización-de-pruebas-evaluativas-en-línea">Realización de pruebas evaluativas en línea</a></li><li><a href="#tutorías">Tutorías</a></li></ul></li><li><a href="#evaluación-y-calificación">Evaluación y Calificación</a><ul><li><a href="#evaluación-contínua">Evaluación Contínua</a></li><li><a href="#alumnos-que-no-superan-pero-se-acogen-a-evaluación-contínua">Alumnos que no superan pero se acogen a Evaluación Contínua</a></li><li><a href="#exámenes-de-convocatoria">Exámenes de Convocatoria</a></li></ul></li><li><a href="#referencias">Referencias</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="tutorías-no-presenciales">Tutorías no presenciales</h2>
+
+<p>Medios para realizar las tutorías:</p>
+
+<ul>
+  <li>GitHub Issues (Student Project Board)</li>
+  <li>Chat virtual (<a href="https://chat.google.com">chat.google.com</a> aula ULL-ESIT-PL)</li>
+  <li>Videoconferencias (Google Meet).</li>
+  <li>Campus Virtual</li>
+</ul>
+
+<p>En el caso de las tutorías, estamos utilizando las herramientas de chat y meet de Google para dudas y preguntas relacionadas con los contenidos teóricos, la asignatura y las prácticas. También utilizamos los issues de GitHub para resolver cuestiones sobre las prácticas. Bajo demanda se realizan tutorías mediante videoconferencia.</p>
+
+<h2 id="metodología-no-presencial">Metodología no presencial</h2>
+
+<h3 id="videos">Videos</h3>
+
+<p>Compartidos via Google Drive y Youtube.</p>
+
+<h3 id="sesiones-virtualesclases">Sesiones virtuales/clases</h3>
+
+<p>Se respeta el horario de clase y de tutorías anterior a la crisis. Realizamos las clases de teoría mediante videoconferencias (Google Meet). Las de teoría están siendo grabadas y publicadas en el campus virtual.</p>
+
+<h3 id="inclusión-de-documentación-sobre-cada-tema">Inclusión de documentación sobre cada tema</h3>
+
+<p>Tanto en el Campus como en la <a href="https://github.com/ULL-ESIT-PL-2021">organización GitHub ULL-ESIT-PL-2021</a> se puede acceder a la información de la asignatura. Los apuntes se encuentran en <a href="https://ull-esit-gradoii-pl.github.io">https://ull-esit-gradoii-pl.github.io/</a></p>
+
+<h3 id="realización-de-pruebas-evaluativas-en-línea">Realización de pruebas evaluativas en línea</h3>
+
+<p>Semanalmente, se facilita un guión de una práctica semanal, que los alumnos deberán resolver y entregar. Pueden preguntar dudas por todos los canales del Campus, Google o GitHub.</p>
+
+<h3 id="tutorías">Tutorías</h3>
+
+<p>Para las dudas, utilizamos las herramientas del Campus, las de Google y las de GitHub y Google Meet para las tutorías en directo.</p>
+
+<h2 id="evaluación-y-calificación">Evaluación y Calificación</h2>
+
+<h3 id="evaluación-contínua">Evaluación Contínua</h3>
+
+<ul>
+  <li>Entregas de prácticas y retos</li>
+  <li>Tienen siempre mayor valor la realización/defensa de las entregas online que la entrega de los repos</li>
+  <li>La entrega del Trabajo Fin de Asignatura es obligatorio (TFA).
+    <ul>
+      <li>Se deberá hacer una presentación del TFA</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="alumnos-que-no-superan-pero-se-acogen-a-evaluación-contínua">Alumnos que no superan pero se acogen a Evaluación Contínua</h3>
+
+<p>Los alumnos que han asistido a clase, tutorías y han participado en un número suficiente de actividades pero no han superado la asignatura podrán entregar las prácticas con la antelación suficiente antes de cada cierre de actas.</p>
+
+<p>Deberán hacer una defensa de las prácticas presentadas en tiempo acordado con el profesor.
+El profesor les indicará si está aprobado o si debe mejorar  para entregarlas antes de la siguiente convocatoria.</p>
+
+<h3 id="exámenes-de-convocatoria">Exámenes de Convocatoria</h3>
+
+<p>Los alumnos que no puedan (por no haber seguido el curso) o que decidan no acogerse a evaluación contínua deberán presentarse a un examen práctico de evaluación en las 
+<a href="/timetables.html#ex%C3%A1menes-de-convocatoria">convocatorias establecidas por la ULL</a>.</p>
+
+<p>La práctica de evaluación consistirá en la entrega en GitHub Classroom de un ejercicio intensivo que se deben entregar en un tiempo limitado y su posterior  defensa que permitirá
+evaluar los conocimientos del alumno de las competencias de la asignatura.</p>
+
+<!--
+## Calendario Apróximado
+
+### Entregas de Prácticas Junio
+
+* Fecha de cierre de Actas de Junio: 18 de Junio
+* Fecha tentativa de revisión de la evaluación: Miércoles 17 de Junio
+* Fecha tentativa para la Publicación de notas definitivas para Junio: 15 de Junio
+* Fecha última de entrega de Prácticas para Junio: Viernes 5 de Junio
+* Exámenes Viernes 5 y 12 de Junio
+   
+### Entregas de Prácticas en Julio:
+
+* Fecha de cierre de Actas: 15 de Julio
+* Fecha tentativa de revisión de la evaluación: 13 de Julio
+* Fecha tentativa para la Publicación de notas definitivas para Julio: 10 de Julio
+* Fecha última de entrega de Prácticas para Julio: 6 de Julio
+* Fecha de examen: 6 de Julio
+  
+### Entregas de Prácticas en Septiembre:
+
+* Fecha de cierre de Actas: 18 de Septiembre
+* Fecha tentativa de revisión de la evaluación: 15 de Septiembre
+* Fecha tentativa para la Publicación de notas definitivas para Septiembre: 10 de Septiembre
+* Fecha última de entrega de Prácticas para Septiembre: 5 de Septiembre
+* Fecha de examen: 10 de Septiembre
+-->
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li><a href="https://campusvirtual.ull.es/doctoradoyposgrado/course/view.php?id=201913946">RECURSOS DISPONIBLES PARA REALIZAR ACTIVIDAD DOCENTE NO PRESENCIAL</a> (Curso Moodle ULL)
+<!--* [Criterios y Procedimiento de Adaptación Temporal a la Docencia y Evaluación no Presencial](https://campusvirtual.ull.es/1920/mod/resource/view.php?id=246298) --></li>
+  <li><a href="https://www.ull.es/coronavirus/">ULL Corona Virus</a></li>
+  <li><a href="https://docs.google.com/document/u/1/d/e/2PACX-1vRI7bTEi93KsUBrb1S9sRmdMbsR3fL9N0MHz39CbtGtdzK-eoA7U4dIsXDvyuV7eSekyY3uyBa1z8Ix/pub">ELABORACIÓN DE LAS ADENDAS A LAS GUÍAS DOCENTES. PREGUNTAS FRECUENTES </a>
+<!-- * [Fichas de Evaluación Telemática](https://campusvirtual.ull.es/1920/mod/resource/view.php?id=246585)--></li>
+  <li><a href="https://www.youtube.com/watch?v=oGSv58_dbNk&amp;feature=youtu.be">Videotutorial Evaluación ULL</a>
+&lt;!–</li>
+  <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+  <li><a href="" target="_blank">Horarios de Ingeniería Informática para el curso 19/20</a></li>
+  <li><a href="https://www.ull.es/apps/guias/guias/view_guide/24127/" target="_blank">Horarios de tutorías del Departamento de Ingeniería Informática</a>
+–&gt;</li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Adaptaci%C3%B3n+de+Procesadores+de+Lenguajes+a+la+Docencia+y+Evaluaci%C3%B3n+No+Presencial%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fcovid19.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Adaptaci%C3%B3n+de+Procesadores+de+Lenguajes+a+la+Docencia+y+Evaluaci%C3%B3n+No+Presencial%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fcovid19.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fcovid19.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fcovid19.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-pl/covid19.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

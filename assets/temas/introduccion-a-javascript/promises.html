@@ -1,0 +1,575 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="PL">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/promises.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/promises.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#promises">Promises</a><ul><li><a href="#chapter-promises-asyncawait-of-the-book-the-modern-javascript-tutorial">Chapter Promises, async/await of the book The Modern JavaScript Tutorial.</a><ul><li><a href="#callbacks-problems">Callbacks Problems</a></li><li><a href="#promise-chaining">Promise Chaining</a></li><li><a href="#error-handling">Error Handling</a></li><li><a href="#promise-api">Promise API</a></li><li><a href="#promisification">Promisification</a></li><li><a href="#microtasks">Microtasks</a></li><li><a href="#asyncawait">Async/await</a></li></ul></li><li><a href="#ejercicios">Ejercicios</a></li><li><a href="#prácticas">Prácticas</a></li><li><a href="#referencias">Referencias</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="promises">Promises</h1>
+
+<h2 id="chapter-promises-asyncawait-of-the-book-the-modern-javascript-tutorial">Chapter Promises, async/await of the book The Modern JavaScript Tutorial.</h2>
+
+<h3 id="callbacks-problems">Callbacks Problems</h3>
+
+<ul>
+  <li><a href="https://javascript.info/callbacks">javascript.info: Introduction: callbacks</a>
+    <ul>
+      <li><a href="https://javascript.info/callbacks#callback-in-callback">Callback in callback</a></li>
+      <li><a href="https://javascript.info/callbacks#handling-errors">Handling errors</a></li>
+      <li><a href="https://javascript.info/callbacks#pyramid-of-doom">Pyramid of Doom</a></li>
+    </ul>
+  </li>
+  <li><a href="https://javascript.info/promise-basics">Promises: Basics: https://javascript.info/promise-basics</a>
+    <ul>
+      <li><a href="/assets/temas/introduccion-a-javascript/event-loop/exercises/promises/load-script/README.html">load-script con promesas</a></li>
+      <li>Chuck Norris jokes example (UAI 2015):
+        <ul>
+          <li><a href="https://github.com/ULL-MII-SYTWS-1920/promise-example/blob/master/index.html">index.html</a></li>
+          <li><a href="https://github.com/ULL-MII-SYTWS-1920/promise-example/blob/master/script.js">script.js</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="promise-examples">Very Simple Examples of Promises</a> (uai2015)</li>
+</ul>
+
+<h3 id="promise-chaining">Promise Chaining</h3>
+
+<ul>
+  <li><a href="https://javascript.info/promise-chaining">Promise Chaining</a>
+    <ul>
+      <li>A call to <code class="language-plaintext highlighter-rouge">promise.then</code> returns a promise, so that we can call the next <code class="language-plaintext highlighter-rouge">.then</code> on it.</li>
+      <li>A handler, used in <code class="language-plaintext highlighter-rouge">.then(handler)</code> may create and return a promise. In that case further handlers wait until it settles, and then get its result.</li>
+      <li><a href="/assets/temas/introduccion-a-javascript/promises-chaining-fetch-example">Promises Chaining fetch example</a></li>
+      <li>If a <code class="language-plaintext highlighter-rouge">.then</code> (or <code class="language-plaintext highlighter-rouge">catch/finally</code>, doesn’t matter) handler returns a promise, the rest of the chain waits until it settles. When it does, its result (or error) is passed further.</li>
+      <li><a href="https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/tree/master/tema2-async/exercises/promises/promise-chaining">Repo ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io: exercises/promises/promise-chaining</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p><a href="https://javascript.info/promise-error-handling">Error handling with promises</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../exception-inside-promise(master)]$ pwd -P
+/Users/casiano/campus-virtual/1920/pl1920/apuntes/assets/temas/introduccion-a-javascript/event-loop/exercises/promises/exception-inside-promise
+</code></pre></div></div>
+
+<p><a href="https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/tree/master/tema2-async/exercises/promises/exception-inside-promise">Exercises: Exceptions and Promises</a></p>
+
+<h3 id="promise-api"><a href="https://javascript.info/promise-api">Promise API</a></h3>
+
+<!-- RETO
+* [Promise.all exercise](/assets/temas/introduccion-a-javascript/event-loop/exercises/promises/promise-all)
+-->
+
+<h3 id="promisification"><a href="https://javascript.info/promisify">Promisification</a></h3>
+
+<!-- RETO
+  * [Ejercicio](https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/tree/master/tema2-async/exercises/promises/promisify)
+
+[~/.../promises(master)]$ cd promisify/
+[~/.../promisify(master)]$ pwd -P
+/Users/casiano/campus-virtual/1920/pl1920/apuntes/assets/temas/introduccion-a-javascript/event-loop/exercises/promises/promisify
+-->
+
+<h3 id="microtasks"><a href="https://javascript.info/microtask-queue">Microtasks</a></h3>
+
+<h3 id="asyncawait"><a href="https://javascript.info/async-await">Async/await</a></h3>
+
+<ul>
+  <li><a href="https://youtu.be/DwQJ_NPQWWo">Async + Await in JavaScript, talk from Wes Bos</a> Youtube
+    <ul>
+      <li><a href="https://wesbos.github.io/Async-Await-Talk/#1">Slides</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ejercicios">Ejercicios</h2>
+
+<ul>
+  <li><a href="https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/tree/master/tema2-async/exercises/promises">Ejercicios de Promesas</a>
+    <ul>
+      <li><a href="https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/tree/master/tema2-async/exercises/promises/load-script">load-script con promesas</a></li>
+      <li><a href="https://github.com/ULL-MII-SYTWS-1920/ull-mii-sytws-1920.github.io/tree/master/tema2-async/exercises/promises/promise-all">Promise.all</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="prácticas">Prácticas</h2>
+
+<ul>
+  <li><a href="practicas/p7-t2-async-js-edx">Descripción de la práctica Asynchronous Programming with Javascript EdX Course: Modules 1 (Asynchronous Fundamentals) and 2 (Promises) p7-t2-async-js-edx</a></li>
+</ul>
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li><a href="https://leanpub.com/understandinges6/read#leanpub-auto-promises-and-asynchronous-programming">Book Understanding ECMAScript 6: Promises and Asynchronous Programming</a></li>
+  <li><a href="http://exploringjs.com/es6/ch_promises.html">Book Exploring ES6: 25. Promises for asynchronous programming</a></li>
+  <li><a href="https://classroom.udacity.com/courses/ud898">Curso JavaScript Promises en Udacity</a></li>
+  <li><a href="https://javascript.info/async">Book <em>The Modern Javascript Tutorial</em>. Chapter Promises, async/await</a></li>
+  <li><a href="https://github.com/stevekane/promise-it-wont-hurt">Promises Workshop for JavaScript! Learn to wield promises like a master to write clean asynchronous code</a> GitHub Repo. A Workshopper module that teaches you to use promises in javascript</li>
+  <li><a href="http://2ality.com/2017/05/util-promisify.html">Node.js 8: util.promisify()</a> by Dr. Axel Rauschmayer</li>
+  <li><a href="https://www.codementor.io/tiagolopesferreira/asynchronous-iterators-in-javascript-jl1yg8la1">Asynchronous Iterators in JavaScript</a> by Tiago Lopes</li>
+  <li><a href="https://courses.edx.org/courses/course-v1:Microsoft+DEV234x+1T2018a/course/">EdX: Asynchronous Programming with Javascript</a> EdX Course
+    <ul>
+      <li><a href="https://github.com/ULL-MII-CA-1819/async-js">GitHub repoULL-MII-CA-1819/async-js</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpromises.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpromises.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpromises.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpromises.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/promises.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

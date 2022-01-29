@@ -1,0 +1,2219 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Creating and Publishing a Node.js Module in GitHub and NPM Registries - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Creating and Publishing a Node.js Module in GitHub and NPM Registries">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/creating-and-publishing-npm-module.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/creating-and-publishing-npm-module.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Creating and Publishing a Node.js Module in GitHub and NPM Registries">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Creating and Publishing a Node.js Module in GitHub and NPM Registries
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#what-is-npm">What is npm?</a></li><li><a href="#dont-have-nodejs-installed">Don’t have node.js installed?</a></li><li><a href="#configure-npm">Configure npm</a></li><li><a href="#what-are-scopes">What are scopes?</a></li><li><a href="#what-is-github-registry">What is Github Registry?</a><ul><li><a href="#setting-a-token">Setting a Token</a></li></ul></li><li><a href="#create-a-node-module">Create a node module</a><ul><li><a href="#packagejson">package.json</a></li><li><a href="#indexjs-write-the-code">index.js: Write the code</a></li><li><a href="#testing-with-mocha-and-chai">Testing with Mocha and Chai</a></li><li><a href="#gitignore">.gitignore</a></li><li><a href="#writing-the-tests">Writing the tests</a></li><li><a href="#running-the-tests">Running the tests</a></li><li><a href="#github-actions-an-introduction">GitHub Actions: An Introduction</a></li><li><a href="#example-setting-ci-for-our-npm-module">Example: Setting CI for our npm Module</a></li><li><a href="#documentation-and-readmemd">Documentation and README.md</a></li><li><a href="#documenting-the-javascript-sources">Documenting the JavaScript Sources</a><ul><li><a href="#references">References</a></li></ul></li><li><a href="#semantic-versioning">Semantic Versioning</a></li><li><a href="#license">License</a></li></ul></li><li><a href="#publishing">Publishing</a><ul><li><a href="#git-tag">git tag</a></li><li><a href="#github-can-be-used-to-install-npm-packages">GitHub can be used to install npm packages</a></li><li><a href="#test-the-installation-process">Test the Installation Process</a><ul><li><a href="#symlink-your-package-with-npm-link">Symlink Your Package with npm link</a></li></ul></li><li><a href="#publish-it">Publish it!</a></li></ul></li><li><a href="#scopes-and-registries">Scopes and Registries</a><ul><li><a href="#other-ways-to-set-the-scope">Other ways to set the Scope</a></li><li><a href="#find-your-module">Find your Module</a><ul><li><a href="#at-npm">At npm</a></li><li><a href="#at-github">At GitHub</a></li><li><a href="#viewing-an-organizations-packages">Viewing an organization’s packages</a></li><li><a href="#viewing-your-packages">Viewing your packages</a></li></ul></li></ul></li><li><a href="#publishing-again">Publishing Again!</a></li><li><a href="#testing-in-production">Testing in Production</a><ul><li><a href="#set-productiontest-script-on-the-module-folder">Set production:test Script on the Module Folder</a></li><li><a href="#ci-the-production-testing-with-github-actions">CI the Production Testing with GitHub Actions</a><ul><li><a href="#related-references">Related References</a></li></ul></li><li><a href="#making-a-project-with-the-two-repos-git-submodule">Making a Project with the two repos: git submodule</a></li><li><a href="#git-submodule-alternatives">Git Submodule Alternatives</a></li></ul></li><li><a href="#references-1">References</a><ul><li><a href="#npm-packages">npm packages</a></li><li><a href="#github-packages">GitHub packages</a></li><li><a href="#github-actions">GitHub Actions</a></li><li><a href="#scoped-packages">Scoped Packages</a></li><li><a href="#semantic-versioning-and-npm">Semantic versioning and npm</a></li><li><a href="#text-processing">Text Processing</a></li><li><a href="#original-scapegoat">Original Scapegoat</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Creating a node module and publishing it to npm is a fairly
+straightforward process. Haven’t done it yet? Not sure what I’m talking
+about? Here’s a quick tutorial to speed you along.</p>
+
+<h2 id="what-is-npm">What is npm?</h2>
+
+<p>NPM has three components. These components consist of</p>
+
+<ol>
+  <li>the npm website,</li>
+  <li>the Command Line Interface (CLI), and</li>
+  <li>an online database of public and private packages called the <strong>npm registry</strong></li>
+</ol>
+
+<p>npm is an online registry for open-source node.js projects, modules,
+resources, etc. You can find it at <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>.</p>
+
+<p>npm is also the official package manager for node.js, and provides a
+command line interface (CLI) for interacting with the registry. This
+utility comes bundled with node.js and is installed automatically. For
+API documentation, visit <a href="https://docs.npmjs.com/">https://docs.npmjs.com/</a> or just type <code class="language-plaintext highlighter-rouge">npm</code> in
+your terminal.</p>
+
+<p>For you ruby devs, npm is akin to <a href="http://rubygems.org/">rubygems</a>.</p>
+
+<h2 id="dont-have-nodejs-installed">Don’t have node.js installed?</h2>
+
+<p>You’ll of course need to install node.js and npm in order to follow
+along. Try one of the following install options or just read along.</p>
+
+<ul>
+  <li>Homebrew users can simply run <code class="language-plaintext highlighter-rouge">brew install node</code></li>
+  <li>Download a binary from <a href="http://nodejs.org/">http://nodejs.org/</a></li>
+  <li>Use <a href="https://github.com/creationix/nvm">Node Version Manager (NVM)</a>
+– <em>recommended</em></li>
+</ul>
+
+<h2 id="configure-npm">Configure npm</h2>
+
+<p>Let’s get started by configuring npm a little bit. Go ahead and enter
+these commands in a terminal, using your own information. This way, when
+we run some npm commands later, it will already know who we are and will
+be able to autocomplete some information for us.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm set init.author.name "Casiano Rodriguez-Leon"
+npm set init.author.email "whatever@gmail.com"
+npm set init.author.url "https://github.com/crguezl"
+</code></pre></div></div>
+
+<p>This next command will prompt you for an email and password, <strong>create or verify a user in the npm registry</strong>, and save the credentials to the
+<code class="language-plaintext highlighter-rouge">~/.npmrc</code> file.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm adduser
+</code></pre></div></div>
+
+<p>another way to register in npm is <a href="/assets/temas/introduccion-a-javascript/nodejspackages.html#ejercicio-darse-de-alta-en-npm">using the npm web interface</a></p>
+
+<p>Here is an example of <code class="language-plaintext highlighter-rouge">.npmrc</code> file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  create-a-npm-module git:(master) ✗ cat .npmrc-example
+</code></pre></div></div>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//registry.npmjs.org/:</span><span class="py">_authToken</span><span class="p">=</span><span class="s">00000000000</span>
+<span class="py">init.author.name</span><span class="p">=</span><span class="s">Casiano Rodriguez-Leon</span>
+<span class="py">init.author.email</span><span class="p">=</span><span class="s">whatever@gmail.com</span>
+<span class="py">init.author.url</span><span class="p">=</span><span class="s">https://github.com/crguezl</span>
+<span class="py">access</span><span class="p">=</span><span class="s">public</span>
+<span class="err">@ull-esit-dsi-1617:</span><span class="py">registry</span><span class="p">=</span><span class="s">https://registry.npmjs.org/</span>
+<span class="err">//10.6.128.127:8081/:</span><span class="py">_password</span><span class="p">=</span><span class="s">"blahblahencrypted"</span>
+<span class="err">//10.6.128.127:8081/:</span><span class="py">username</span><span class="p">=</span><span class="s">crguezl</span>
+<span class="err">//10.6.128.127:8081/:</span><span class="py">email</span><span class="p">=</span><span class="s">whatever@gmail.com</span>
+<span class="err">//10.6.128.127:8081/:</span><span class="py">always-auth</span><span class="p">=</span><span class="s">false</span>
+<span class="err">@ULL-ESIT-PL-1920:</span><span class="py">registry</span><span class="p">=</span><span class="s">https://npm.pkg.github.com</span>
+<span class="err">@ull-esit-pl-1920:</span><span class="py">registry</span><span class="p">=</span><span class="s">https://npm.pkg.github.com</span>
+<span class="err">//npm.pkg.github.com/:</span><span class="py">_authToken</span><span class="p">=</span><span class="s">0000000111111etc.</span>
+<span class="err">@PAL-ULL:</span><span class="py">registry</span><span class="p">=</span><span class="s">https://npm.pkg.github.com</span>
+<span class="err">@pal-ull:</span><span class="py">registry</span><span class="p">=</span><span class="s">https://npm.pkg.github.com/</span>
+</code></pre></div></div>
+
+<h2 id="what-are-scopes">What are scopes?</h2>
+
+<p>Scopes are like namespaces for npm packages. Each npm user has their own scope.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@username/project-name
+</code></pre></div></div>
+
+<p>This means that you don’t have to worry about someone else taking your package name. Only you can add packages in your scope.</p>
+
+<p>Scoped modules also make it possible to put your private code on npm when you sign up for <a href="https://www.npmjs.com/features">private modules</a>. 
+With private modules, you have control over who can see and collaborate on any of the modules in your scope (but you have to paid for it. Public scoped packages are free).</p>
+
+<p>To create a scoped package, all you need to do is add your scope to the front of the name property in <code class="language-plaintext highlighter-rouge">package.json</code></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@ull-esit-dsi-1617/scapegoat"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.3.11"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>and run <code class="language-plaintext highlighter-rouge">npm</code> with the access option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm publish --access=public
+</code></pre></div></div>
+
+<h2 id="what-is-github-registry">What is Github Registry?</h2>
+
+<p>GitHub Package Registry is a software package hosting service, similar to npmjs.org, rubygems.org, or <a href="https://hub.docker.com/">hub.docker.com</a>, that allows you to host your packages and code in one place. You can host software packages privately or publicly and use them as dependencies in your projects.</p>
+
+<h3 id="setting-a-token">Setting a Token</h3>
+
+<p>You need an access token to publish, install, and delete packages in GitHub Packages. You can use a personal access token to authenticate with your username directly to GitHub Packages or the GitHub API. You can use a <code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code> to authenticate using a GitHub Actions workflow.</p>
+
+<p>When you create a personal access token, you can assign the token different scopes depending on your needs. For more information, see “<a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line">Creating a personal access token for the command line</a>” and “<a href="https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/#available-scopes">Available scopes</a>” in the GitHub Developer documentation.</p>
+
+<p>Go to your GitHub user’s settings, from there navigate to <em>Developer Settings</em>,
+then to <em>Personal access tokens</em></p>
+
+<p><a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></p>
+
+<p>Select <em>Generate new token</em> and give the token the appropriate permits:</p>
+
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+<th>Repository permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>read:packages</code></td>
+<td>Download and install packages from GitHub Packages</td>
+<td>read</td>
+</tr>
+<tr>
+<td><code>write:packages</code></td>
+<td>Upload and publish packages to GitHub Packages</td>
+<td>write</td>
+</tr>
+<tr>
+<td><code>delete:packages</code></td>
+<td>Delete specified versions of private packages from GitHub Packages</td>
+<td>admin</td>
+</tr>
+<tr>
+<td><code>repo</code></td>
+<td>Install, upload, and delete certain packages in private repositories (along with <code>read:packages</code>, <code>write:packages</code>, or <code>delete:packages</code>)</td>
+<td>read, write, or admin</td>
+</tr>
+</tbody>
+</table>
+
+<p>Once you get the token run <code class="language-plaintext highlighter-rouge">npm login</code> against the GitHub Registry:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm login --registry=https://npm.pkg.github.com
+&gt; Username: USERNAME
+&gt; Password: TOKEN
+&gt; Email: PUBLIC-EMAIL-ADDRESS
+</code></pre></div></div>
+
+<p>Write/paste the token in the password field:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm login --registry=https://npm.pkg.github.com
+Username: crguezl
+Password:
+Email: (this IS public) crguezl@ull.edu.es
+Logged in as crguezl on https://npm.pkg.github.com/.
+</code></pre></div></div>
+
+<p>This will append lines like these in your <code class="language-plaintext highlighter-rouge">~/.npmrc</code> configuration file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@ULL-ESIT-PL-1920:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=&lt;your-token&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><a href="github-registry">Veáse la sección <em>GitHub Package Registry</em> de estos apuntes</a></li>
+</ul>
+
+<h2 id="create-a-node-module">Create a node module</h2>
+
+<p>A Node/npm module is just an ordinary JavaScript file with the addition
+that it must follow the 
+<a href="http://www.commonjs.org/specs/modules/1.0/">CommonJS module spec</a>.</p>
+
+<p>Node modules run in their own scope
+so that they do not conflict with other modules.</p>
+
+<p>Node relatedly provides
+access to some <a href="http://nodejs.org/api/globals.html">globals</a> to help
+facilitate module interoperability.</p>
+
+<p>The primary two items that we are
+concerned with here are <code class="language-plaintext highlighter-rouge">require</code> and <code class="language-plaintext highlighter-rouge">exports</code>.</p>
+
+<p>You <code class="language-plaintext highlighter-rouge">require</code> other
+modules that you wish to use in your code and your module <code class="language-plaintext highlighter-rouge">exports</code>
+anything that should be exposed publicly.</p>
+
+<p>For example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">let</span> <span class="nx">other</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">other_module</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">other</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">());</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>For our demo, we’ll create an npm module consisting of a couple utility
+methods for escaping and unescaping HTML entities – commonly needed
+utils to prevent cross site scripting
+(<a href="http://en.wikipedia.org/wiki/Cross-site_scripting">XSS</a>) 
+attacks when
+rendering user generated content.</p>
+
+<p>We’ll call this project, ‘<em>Scapegoat</em>’,
+because a quick search of the
+npm registry reveals that the name has not yet been taken.</p>
+
+<p><em>Note that if
+you are coding along with me, and plan to publish your module to npm,
+without scope, you’ll need to give your module a unique name.</em></p>
+
+<p>To get started, We create a new repository on our Github
+account (or on a organization) and then cloned it
+locally.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:brentertz/scapegoat.git
+cd scapegoat
+</code></pre></div></div>
+
+<h3 id="packagejson">package.json</h3>
+
+<p>Executing the following command will create an unscoped <code class="language-plaintext highlighter-rouge">package.json</code> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init -f
+</code></pre></div></div>
+
+<p>Have a look to see what the file contains; it is pretty human-readable.
+Further details and explanation of the contents of the <code class="language-plaintext highlighter-rouge">package.json</code> file
+can be found at <a href="https://docs.npmjs.com/files/package.json">https://docs.npmjs.com/files/package.json</a>.</p>
+
+<p>Our initial version
+looks like the following, but we’ll be updating this further as we go
+along.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">scapegoat</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.0.0</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A small library providing utility methods to escape and unescape HTML entities</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">echo </span><span class="dl">"</span><span class="nb">Error</span><span class="p">:</span> <span class="nx">no</span> <span class="nx">test</span> <span class="nx">specified</span><span class="dl">"</span><span class="s2"> &amp;&amp; exit 1</span><span class="dl">"</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">repository</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git://github.com/brentertz/scapegoat.git</span><span class="dl">"</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="dl">"</span><span class="s2">escape</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">unescape</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">html</span><span class="dl">"</span>
+      <span class="p">],</span>
+      <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Brent Ertz &lt;brent.ertz@gmail.com&gt; (http://brentertz.com/)</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">license</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BSD-2-Clause</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">bugs</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/brentertz/scapegoat/issues</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>For scoped modules, run <code class="language-plaintext highlighter-rouge">npm init --scope=@scope-name</code>. For example <code class="language-plaintext highlighter-rouge">npm init --scope=@aluXXX</code></p>
+
+<ul>
+  <li>Read the blog <a href="https://elijahmanor.com/blog/npm-init-initializer">Create a project using the <code class="language-plaintext highlighter-rouge">npm init initializer</code> command</a> by Elijah Manor for more information on <code class="language-plaintext highlighter-rouge">npm init</code></li>
+  <li><a href="https://github.com/standard-things/esm">esm</a></li>
+</ul>
+
+<h3 id="indexjs-write-the-code">index.js: Write the code</h3>
+
+<p>Now we can actually get on to the business of writing code. Create an
+<code class="language-plaintext highlighter-rouge">index.js</code> file to hold the primary module code. It’ll look something
+like the following.</p>
+
+<p><em>Note the use of <code class="language-plaintext highlighter-rouge">module.exports</code>, which we
+discussed previously, and is needed to make code available for use by
+other modules. Further, as our module is not reliant on any other
+modules, we did not need to <code class="language-plaintext highlighter-rouge">require</code> anything.</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Escape special characters in the given string of html.
+ *
+ * @param  {String} html
+ * @return {String}
+ */</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">escape</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&amp;amp;</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/"/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&amp;quot;</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/'/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&amp;#39;</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&lt;/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&amp;lt;</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&gt;/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&amp;gt;</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="cm">/**
+   * Unescape special characters in the given string of html.
+   *
+   * @param  {String} html
+   * @return {String}
+   */</span>
+  <span class="na">unescape</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;amp;/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&amp;</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;quot;/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;#39;/g</span><span class="p">,</span> <span class="dl">'''</span><span class="s1">)
+      .replace(/&amp;lt;/g, </span><span class="dl">'</span><span class="o">&lt;</span><span class="dl">'</span><span class="s1">)
+      .replace(/&amp;gt;/g, </span><span class="dl">'</span><span class="o">&gt;</span><span class="dl">'</span><span class="s1">);
+  }
+};
+</span></code></pre></div></div>
+
+<h3 id="testing-with-mocha-and-chai">Testing with Mocha and Chai</h3>
+
+<p>Next, we’ll surely want to write some tests. <em>Perhaps it would have been
+preferable to write them first.</em> Here we are going to use the
+<a href="https://mochajs.org/">Mocha</a> and
+<a href="http://chaijs.com/">Chai</a> frameworks. There are others you can use, like <a href="/assets/temas/introduccion-a-javascript/jest">Jest</a>.
+Mocha and Chai can be installed and persisted to the <code class="language-plaintext highlighter-rouge">package.json</code> file
+with the following commands. <em>Note that they are added to the
+‘devDependencies’ section, as they are only required during development
+and not at runtime.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install mocha --save-dev
+
+npm install chai --save-dev
+</code></pre></div></div>
+
+<h3 id="gitignore">.gitignore</h3>
+
+<p>The above commands will also create a <code class="language-plaintext highlighter-rouge">node_modules</code> folder in your
+project directory containing those dependencies. Following best
+practices, we’ll want to keep the <code class="language-plaintext highlighter-rouge">node_modules</code> folder out of the git
+repository.</p>
+
+<p>We can do that by adding a <code class="language-plaintext highlighter-rouge">.gitignore</code> file to our project
+root, with the following contents:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node_modules
+</code></pre></div></div>
+
+<p>To build a <code class="language-plaintext highlighter-rouge">.gitignore</code> see also <a href="http://gitignore.io/">http://gitignore.io/</a>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">npm install</code> command also created <code class="language-plaintext highlighter-rouge">package-lock.json</code> containing a detailed description of all the dependences. We add this file to the control version:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add package-lock.json
+</code></pre></div></div>
+
+<p><a href="https://docs.npmjs.com/configuring-npm/package-lock-json.html">package-lock.json</a>
+describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.</p>
+
+<h3 id="writing-the-tests">Writing the tests</h3>
+
+<p>Continuing on, let’s create a <code class="language-plaintext highlighter-rouge">test</code> directory to hold our tests.</p>
+
+<p>As our
+primary module file is called <code class="language-plaintext highlighter-rouge">index.js</code>, within the <code class="language-plaintext highlighter-rouge">test</code> directory I
+will create a file by the same name – a simple convention.</p>
+
+<p>Mocha will
+by default run all tests in this directory. Our test should look
+something like the following.</p>
+
+<p><em>Note that I am using the <code class="language-plaintext highlighter-rouge">should</code> syntax
+provided by the Chai framework. Also note the use of <code class="language-plaintext highlighter-rouge">require</code> to pull
+in our module code into the test.</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">var</span> <span class="nx">should</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">chai</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">(),</span>
+        <span class="nx">scapegoat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../index</span><span class="dl">'</span><span class="p">),</span>
+        <span class="nx">escape</span> <span class="o">=</span> <span class="nx">scapegoat</span><span class="p">.</span><span class="nx">escape</span><span class="p">,</span>
+        <span class="nx">unescape</span> <span class="o">=</span> <span class="nx">scapegoat</span><span class="p">.</span><span class="nx">unescape</span><span class="p">;</span>
+
+    <span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">#escape</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &amp; into &amp;amp;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">escape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;amp;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts " into &amp;quot;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">escape</span><span class="p">(</span><span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;quot;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts </span><span class="dl">'</span> <span class="nx">into</span> <span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span><span class="dl">'</span><span class="s1">, function() {
+        escape(</span><span class="dl">'''</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;#39;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &lt; into &amp;lt;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">escape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;lt;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &gt; into &amp;gt;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">escape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&gt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;gt;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">#unescape</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &amp;amp; into &amp;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">unescape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;amp;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &amp;quot; into "</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">unescape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;quot;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &amp;#39; into </span><span class="dl">''</span><span class="s1">, function() {
+        unescape(</span><span class="dl">'</span><span class="o">&amp;</span><span class="err">#</span><span class="mi">39</span><span class="p">;</span><span class="dl">'</span><span class="s1">).should.equal(</span><span class="dl">'''</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &amp;lt; into &lt;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">unescape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;lt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">converts &amp;gt; into &gt;</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">unescape</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;gt;</span><span class="dl">'</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="dl">'</span><span class="s1">&gt;</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="running-the-tests">Running the tests</h3>
+
+<p>But how do we actually run the tests?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat package.json 
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">@ull-esit-dsi-1617/scapegoat</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.2.5</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A small library providing utility methods to escape and unescape HTML entities</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mocha --reporter spec</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">doc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">documentation build index.js -f html -o docs</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">serve-doc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http-server docs/ -o</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">push</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run doc; git add docs; git ci -am no-message; git push</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">repository</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-DSI-1617/scapegoat.git</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">escape</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">unescape</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">html</span><span class="dl">"</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Casiano Rodriguez &lt;casiano.rodriguez.leon@gmail.com&gt;</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">licenses</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MIT</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-DSI-1617/scapegoat/blob/master/LICENSE-MIT</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">bugs</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-DSI-1617/scapegoat/issues</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">devDependencies</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">mocha</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">chai</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">documentation</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">dependencies</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>(NOTE: <code class="language-plaintext highlighter-rouge">git ci</code> is an alias I have of <code class="language-plaintext highlighter-rouge">git commit</code>)</p>
+
+<p>After doing so, we can then execute the tests by entering following
+command.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../create-a-npm-module/scapegoat(master)]$ npm test
+
+&gt; @ull-esit-dsi-1617/scapegoat@1.2.5 test /Users/casiano/local/src/javascript/evalua-module/create-a-npm-module/scapegoat
+&gt; mocha --reporter spec
+
+  #escape
+    ✓ converts &amp; into &amp;amp;
+    ✓ converts " into &amp;quot;
+    ✓ converts ' into &amp;#39;
+    ✓ converts &lt; into &amp;lt;
+    ✓ converts &gt; into &amp;gt;
+    ✓ returns empty string if called with falsey value
+
+  #unescape
+    ✓ converts &amp;amp; into &amp;
+    ✓ converts &amp;quot; into "
+    ✓ converts &amp;#39; into '
+    ✓ converts &amp;lt; into &lt;
+    ✓ converts &amp;gt; into &gt;
+    ✓ does not double unescape values
+    ✓ returns empty string if called with falsey value
+
+
+  13 passing (17ms)
+</code></pre></div></div>
+
+<h3 id="github-actions-an-introduction">GitHub Actions: An Introduction</h3>
+
+<ul>
+  <li><a href="github-actions">GitHub Actions: An Introduction</a></li>
+</ul>
+
+<h3 id="example-setting-ci-for-our-npm-module">Example: Setting CI for our npm Module</h3>
+
+<p>We fill the contents of <code class="language-plaintext highlighter-rouge">nodejs.yml</code> with the description of our workflow:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat .github/workflows/nodejs.yml
+</code></pre></div></div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">[</span><span class="nv">~/.../create-a-npm-module/scapegoat(master)</span><span class="pi">]</span><span class="s">$ cat .github/workflows/nodejs.yml</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">CI for scapegoat module</span>
+
+<span class="na">on</span><span class="pi">:</span> <span class="c1"># when this action should be triggered?</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span> <span class="c1"># jobs are made of steps</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="c1"># Define the OS our workflow should run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="na">strategy</span><span class="pi">:</span>
+      <span class="c1"># To test across multiple language versions</span>
+      <span class="na">matrix</span><span class="pi">:</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">12.x</span><span class="pi">]</span>
+
+    <span class="na">steps</span><span class="pi">:</span> <span class="c1"># Clone the repo. See https://github.com/actions/checkout</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+    <span class="c1"># Example of using an environment variable</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Use Node.js ${{ matrix.node-version }}</span> <span class="c1"># Will be: "Use Node.js 12.x"</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span> <span class="c1"># Install node. See https://github.com/actions/setup-node</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="s">${{ matrix.node-version }}</span>
+    <span class="c1"># Install a project with a clean slate</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm test</span>
+      <span class="c1"># Environment variables</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="na">CI</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>Let us continue adding our action to the control version:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git add .github/workflows/nodejs.yml
+$ git ci -am .github/workflows/nodejs.yml
+</code></pre></div></div>
+
+<p>Now when we do a push:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git push
+</code></pre></div></div>
+
+<p>The action is triggered. Let us go and click on the <strong>actions tab</strong> in our repo:</p>
+
+<p><img src="/assets/images/github-actions-1-click.png" alt="" /></p>
+
+<p><img src="/assets/images/github-actions-2-processing.png" alt="" /></p>
+
+<p><img src="/assets/images/github-actions-3-completed.png" alt="" /></p>
+
+<p><img src="/assets/images/github-actions-4-complete-job.png" alt="" /></p>
+
+<p><img src="/assets/images/github-actions-5-completed.png" alt="" /></p>
+
+<p>Observe that by clicking on the dots on the right side you can view the raw logs</p>
+
+<h3 id="documentation-and-readmemd">Documentation and README.md</h3>
+
+<p>Okay great, our tests are passing and we have CI.</p>
+
+<p>Let’s add a few items that will help
+to round out our project.</p>
+
+<p>It is always a good idea to include some documentation with your
+project, so we’ll add a <code class="language-plaintext highlighter-rouge">README.md</code>, using markdown syntax. Using
+markdown is a good idea because it will be nicely displayed on both
+Github and npm.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Scapegoat
+  =========
+
+  A small library providing utility methods to `escape` and `unescape` HTML entities
+
+  ## Installation
+
+    npm install scapegoat --save
+
+  ## Usage
+
+    var scapegoat = require('scapegoat')
+        escape = scapegoat.escape,
+        unescape = scapegoat.unescape;
+
+    var html = '&lt;h1&gt;Hello World&lt;/h1&gt;',
+        escaped = escape(html),
+        unescaped = unescape(escaped);
+
+    console.log('html', html, 'escaped', escaped, 'unescaped', unescaped);
+
+  ## Tests
+
+    npm test
+
+  ## Contributing
+
+  In lieu of a formal styleguide, take care to maintain the existing coding style.
+  Add unit tests for any new or changed functionality. Lint and test your code.
+
+  ## Release History
+
+  * 0.1.0 Initial release
+</code></pre></div></div>
+
+<h3 id="documenting-the-javascript-sources">Documenting the JavaScript Sources</h3>
+
+<p><a href="https://github.com/documentationjs/documentation/blob/HEAD/docs/GETTING_STARTED.md">documentation</a> is a <strong>documentation generator</strong>. It’s used to generate documentation from comments <em>within your code</em>. <code class="language-plaintext highlighter-rouge">documentation</code> processes JavaScript comments
+in the <a href="https://jsdoc.app/about-getting-started.html">JSDoc format</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  scapegoat git:(master) npx documentation --version
+13.1.1
+</code></pre></div></div>
+
+<p>For the most part, the things you document will be functions or classes
+of JavaScript libraries. Let’s start with a function and how to document
+its essential parts.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cm">/**
+   * Escape special characters in the given string of html
+   * @param {string} input any html
+   * @returns {string} escaped HTML entities
+   */</span>
+  <span class="kd">function</span> <span class="nx">escape</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">html</span><span class="p">)</span> <span class="k">return</span> <span class="dl">''</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">html</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="nx">specialRe</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">reverse</span><span class="p">[</span><span class="nx">match</span><span class="p">]);</span>
+  <span class="p">},</span>
+</code></pre></div></div>
+
+<p>The comment before the <code class="language-plaintext highlighter-rouge">escape</code> function is a JSDoc comment. Note that it
+begins with <code class="language-plaintext highlighter-rouge">/**</code> instead of <code class="language-plaintext highlighter-rouge">/*</code>. JSDoc requires this.</p>
+
+<p>Let’s break down the earlier JSDoc example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Escape special characters in the given string of html
+ * ...
+</span></code></pre></div></div>
+
+<p>The first line of the comment is typically the <em>description</em>. This section
+says <em>what the code is or does</em>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="p">{</span><span class="nx">string</span><span class="p">}</span> <span class="nx">input</span> <span class="nx">any</span> <span class="nx">string</span>
+</code></pre></div></div>
+
+<p>On the second line:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@param</code> is <strong>a tag</strong>: This tag indicates that we’ll be documenting a function’s parameter.</li>
+  <li><code class="language-plaintext highlighter-rouge">{string}</code> is <strong>a type</strong>. It says that the input to this function is
+a JavaScript “string.” It could also say <code class="language-plaintext highlighter-rouge">{number}</code>,
+<code class="language-plaintext highlighter-rouge">{Object}</code>, <code class="language-plaintext highlighter-rouge">{Date}</code>, or any other JavaScript built-in type. And if you
+defined a custom class, like <code class="language-plaintext highlighter-rouge">FooClass</code>, you can use it as a type, too! Just say <code class="language-plaintext highlighter-rouge">{FooClass}</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">input any html</code> is the description of the input.</li>
+</ul>
+
+<p>On the  line <code class="language-plaintext highlighter-rouge">@returns {string}</code> we just have a description of the value <code class="language-plaintext highlighter-rouge">escaped HTML entities</code>.</p>
+
+<p>JSDoc lets you specify  everything about your code:</p>
+<ul>
+  <li>use <code class="language-plaintext highlighter-rouge">@name</code> to say what something is called,</li>
+  <li><code class="language-plaintext highlighter-rouge">@kind</code> for whether it’s a function
+or a class,</li>
+  <li><code class="language-plaintext highlighter-rouge">@param</code> for its parameters</li>
+  <li><code class="language-plaintext highlighter-rouge">documentation</code> automatically populates <code class="language-plaintext highlighter-rouge">@name</code>, <code class="language-plaintext highlighter-rouge">@kind</code>, and <code class="language-plaintext highlighter-rouge">@memberof</code> tags based on its reading of the code</li>
+</ul>
+
+<p>Install the <code class="language-plaintext highlighter-rouge">documentation</code> binary with <a href="https://www.npmjs.com/">npm</a>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> documentation
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">documentation</code> then installs a command called <code class="language-plaintext highlighter-rouge">documentation</code>. Run it with
+<code class="language-plaintext highlighter-rouge">--help</code> or <code class="language-plaintext highlighter-rouge">--help &lt;command&gt;</code> to get help.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  scapegoat git:(master) npx documentation help
+Usage:
+
+  # generate markdown docs for index.js and files it references
+  documentation build index.js -f md
+
+  # generate html docs for all files in src
+  documentation build src/** -f html -o docs
+
+  # document index.js, ignoring any files it requires or imports
+  documentation build index.js -f md --shallow
+
+  # build, serve, and live-update html docs for app.js
+  documentation serve app.js
+
+  # validate JSDoc syntax in util.js
+  documentation lint util.js
+
+  # update the API section of README.md with docs from index.js
+  documentation readme index.js --section=API
+
+  # build docs for all values exported by index.js
+  documentation build --document-exported index.js
+
+
+Comandos:
+  documentation serve [input..]   generate, update, and display HTML
+                                  documentation
+  documentation build [input..]   build documentation
+  documentation lint [input..]    check for common style and uniformity mistakes
+  documentation readme [input..]  inject documentation into your README.md
+
+Opciones:
+  --version  Muestra número de versión                                [booleano]
+  --help     Muestra ayuda                                            [booleano]
+
+Ejemplos:
+  documentation build foo.js -f md &gt; API.md
+  documentation readme index.js -s "API Docs" --github
+</code></pre></div></div>
+
+<p>Here is the help for the <code class="language-plaintext highlighter-rouge">build</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ documentation --help build
+
+Options:
+  --version                  Show version number                       [boolean]
+  --help                     Show help                                 [boolean]
+  --theme, -t                specify a theme: this must be a valid theme module
+  --project-name             project name. by default, inferred from
+                             package.json
+  --project-version          project version. by default, inferred from
+                             package.json
+  --project-description      project description. by default, inferred from
+                             package.json
+  --project-homepage         project homepage. by default, inferred from
+                             package.json
+  --favicon                  favicon used in html
+  --watch, -w                watch input files and rebuild documentation when
+                             they change                               [boolean]
+  --markdown-toc             include a table of contents in markdown output
+                                                       [boolean] [default: true]
+  --markdown-toc-max-depth   specifies the max depth of the table of contents in markdown output
+                                                           [number] [default: 6]
+  --shallow                  shallow mode turns off dependency resolution, only
+                             processing the specified files (or the main script
+                             specified in package.json)
+                                                      [boolean] [default: false]
+  --config, -c               configuration file. an array defining explicit sort
+                             order                                      [string]
+  --no-package, --np         dont find and use package.json for project-
+                             configuration option defaults
+                                                      [boolean] [default: false]
+  --external                 a string / glob match pattern that defines which
+                             external modules will be whitelisted and included
+                             in the generated documentation.     [default: null]
+  --require-extension, --re  additional extensions to include in require() and
+                             import's search algorithm.For instance, adding .es5
+                             would allow require("adder") to find "adder.es5"
+  --parse-extension, --pe    additional extensions to parse as source code.
+  --private, -p              generate documentation tagged as private
+                                                      [boolean] [default: false]
+  --access, -a               Include only comments with a given access level,
+                             out of private, protected, public, undefined. By
+                             default, public, protected, and undefined access
+                             levels are included
+                [array] [choices: "public", "private", "protected", "undefined"]
+  --github, -g               infer links to github in documentation    [boolean]
+  --infer-private            Infer private access based on the name. This is a
+                             regular expression that is used to match the name
+                                                                        [string]
+  --document-exported        Generate documentation for all exported bindings
+                             and members even if there is no JSDoc for them
+                                                      [boolean] [default: false]
+  --sort-order               The order to sort the documentation
+                                [choices: "source", "alpha"] [default: "source"]
+  --output, -o               output location. omit for stdout, otherwise is a
+                             filename for single-file outputs and a directory
+                             name for multi-file outputs like html
+                                                             [default: "stdout"]
+  --format, -f       [choices: "json", "md", "remark", "html"] [default: "json"]
+</code></pre></div></div>
+
+<h4 id="references">References</h4>
+
+<ul>
+  <li><a href="https://gomakethings.com/whats-the-best-way-to-document-javascript/">What’s the best way to document JavaScript?</a></li>
+  <li><a href="https://jsdoc.app/">JsDoc</a></li>
+  <li><a href="https://github.com/documentationjs/documentation/blob/HEAD/docs/GETTING_STARTED.md">Documentation npm package: Getting Started</a></li>
+</ul>
+
+<h3 id="semantic-versioning">Semantic Versioning</h3>
+
+<p>As you may have noticed in the readme above, I referenced the version
+0.1.0 in the release history. We’ll need to update that in our
+<code class="language-plaintext highlighter-rouge">package.json</code>. If you are not familiar with <a href="http://semver.org/">semantic versioning aka
+SemVer</a>, please add it to your reading list.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"version": "0.1.0",
+</code></pre></div></div>
+
+<h3 id="license">License</h3>
+
+<p>Further, it is generally a good idea to specify a license with your
+project. I’ll choose an MIT license, add a LICENSE-MIT file to the
+project root, and update the <code class="language-plaintext highlighter-rouge">package.json</code> respectively. Note that you
+can obtain the actual content for your chosen license type at
+<a href="http://opensource.org/licenses/alphabetical">http://opensource.org/licenses/alphabetical</a>. The updated section of
+the package.json now looks like the following.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"licenses": [
+  {
+    "type": "MIT",
+    "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
+  }
+],
+</code></pre></div></div>
+
+<h2 id="publishing">Publishing</h2>
+
+<h3 id="git-tag">git tag</h3>
+
+<p>Great, the module is complete. Prior to publishing to npm, let’s first
+ensure that any changes have been committed to git and that everything
+has been pushed up to Github. It is also a good idea to <strong>create a version
+tag</strong> as well. Here’s how to do just that.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag 0.1.0
+</code></pre></div></div>
+
+<p>Don’t forget to push your tags:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin master --tags
+</code></pre></div></div>
+
+<p><img src="/assets/images/push-tags.png" alt="" /></p>
+
+<p>Better yet: use <code class="language-plaintext highlighter-rouge">npm version</code>. The syntax is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm version [&lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=&lt;prerelease-id&gt;] | from-git]
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">newversion</code> argument should be</p>
+<ul>
+  <li>a valid <strong>semver string</strong>,</li>
+  <li>a valid second argument to <a href="https://github.com/npm/node-semver#functions">semver.inc</a> (one of <code class="language-plaintext highlighter-rouge">patch</code>, <code class="language-plaintext highlighter-rouge">minor</code>, <code class="language-plaintext highlighter-rouge">major</code>, <code class="language-plaintext highlighter-rouge">prepatch</code>, <code class="language-plaintext highlighter-rouge">preminor</code>, <code class="language-plaintext highlighter-rouge">premajor</code>, <code class="language-plaintext highlighter-rouge">prerelease</code>), or
+    <ul>
+      <li>In  this case,  the existing version will be incremented by 1 in the specified field.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">from-git</code>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">from-git</code> will try to read the latest <code class="language-plaintext highlighter-rouge">git tag</code>, and use that as the new npm version.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm version patch -m "Upgrade to %s for reasons"
+</code></pre></div></div>
+
+<p>If run in a git repo,</p>
+
+<ul>
+  <li>it will  create a version commit and tag</li>
+  <li>If the message config contains <code class="language-plaintext highlighter-rouge">%s</code> then that will be replaced with the resulting version number.</li>
+</ul>
+
+<h3 id="github-can-be-used-to-install-npm-packages">GitHub can be used to install npm packages</h3>
+
+<p>Note that for whatever reason if you decide not to publish your module
+on npm, the npm package format provides value in itself in both
+portability and ease of installation.</p>
+
+<p>You can install packages directly from Github, and even specify</p>
+
+<ol>
+  <li>a tag,</li>
+  <li>a sha, or</li>
+  <li>a branch</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install git://github.com/brentertz/scapegoat.git
+npm install git://github.com/brentertz/scapegoat.git#0.1.0
+</code></pre></div></div>
+
+<h3 id="test-the-installation-process">Test the Installation Process</h3>
+
+<p>Before publishing, be sure to test that your package installs and works
+correctly. This does not mean running the tests as we did above, but
+rather attempting an actual install.</p>
+
+<!--
+#### Test Installation from the Working Directory
+
+-   Verify that the package installs properly. From your package root
+    directory, enter the following to install your package globally.
+
+```
+      npm install . -g
+```
+
+-   Check to see if it exists.
+
+```
+      npm ls -g
+```
+
+
+#### Test Installation from Another Directory
+
+-   To go one step further, switch to another directory, open the
+    node-repl, `require` your module and try it out.
+
+```js
+      node
+      > var escape = require('scapegoat').escape;
+      [Function]
+      > escape('<h1>Hello World!</h1>');
+      '&lt;h1&gt;Hello World!&lt;/h1&gt;'
+      >
+```
+-->
+
+<h4 id="symlink-your-package-with-npm-link">Symlink Your Package with npm link</h4>
+
+<p>This is another way to check your package before publishing it.</p>
+
+<p>Observe that in this sections I am working with a different repo (not the <code class="language-plaintext highlighter-rouge">scapegoat</code>example but a different package <code class="language-plaintext highlighter-rouge">@ULL-ESIT-PL-1920/lexer-generator</code>.
+You can find the example at <a href="https://github.com/ULL-ESIT-PL-1920/lexer-generator">https://github.com/ULL-ESIT-PL-1920/lexer-generator</a>)</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">npm link</code> in the package directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ npm link
+audited 1310372 packages in 8.916s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+/Users/casiano/.nvm/versions/node/v12.10.0/lib/node_modules/@ULL-ESIT-PL-1920/lexer-generator -&gt; /Users/casiano/local/src/github-actions-learning/lexer-generator
+</code></pre></div></div>
+
+<p>This will create a symlink in the global <code class="language-plaintext highlighter-rouge">node_modules</code> folder that links to the folder where the <code class="language-plaintext highlighter-rouge">npm link</code> command was executed:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ npm list -g | head -n 1
+/Users/casiano/.nvm/versions/node/v12.10.0/lib
+[~/.../github-actions-learning/lexer-generator(master)]$ ls -l ~/.nvm/versions/node/v12.10.0/lib/node_modules/\@ULL-ESIT-PL-1920/lexer-generator
+lrwxr-xr-x  1 casiano  staff  64 22 mar 22:21 /Users/casiano/.nvm/versions/node/v12.10.0/lib/node_modules/@ULL-ESIT-PL-1920/lexer-generator -&gt; /Users/casiano/local/src/github-actions-learning/lexer-generator
+</code></pre></div></div>
+
+<p>Next, in the other location where we want to test our package, 
+we run the command</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../test-lexer-generator]$ npm link \@ULL-ESIT-PL-1920/lexer-generator
+/Users/casiano/local/src/github-actions-learning/test-lexer-generator/node_modules/@ULL-ESIT-PL-1920/lexer-generator -&gt; /Users/casiano/.nvm/versions/node/v12.10.0/lib/node_modules/@ULL-ESIT-PL-1920/lexer-generator -&gt; /Users/casiano/local/src/github-actions-learning/lexer-generator 
+[~/.../test-lexer-generator]$ ls -l node_modules/\@ULL-ESIT-PL-1920/lexer-generator
+lrwxr-xr-x  1 casiano  staff  96 22 mar 22:33 node_modules/@ULL-ESIT-PL-1920/lexer-generator -&gt; ../../../../../../.nvm/versions/node/v12.10.0/lib/node_modules/@ULL-ESIT-PL-1920/lexer-generator
+</code></pre></div></div>
+
+<p>and you should be able to import or require the package as if it was an installed dependency.</p>
+
+<p>Note that the name of the package is taken from <code class="language-plaintext highlighter-rouge">package.json</code>, not from the directory name.</p>
+
+<p>Now we have created a <code class="language-plaintext highlighter-rouge">test-lexer-generator</code> directory to test our <code class="language-plaintext highlighter-rouge">test-generator</code>package.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../test-lexer-generator]$ ls -l
+total 16
+drwxr-xr-x  3 casiano  staff   96 22 mar 22:33 node_modules
+-rw-r--r--  1 casiano  staff  320 22 mar 22:32 package.json
+-rw-r--r--  1 casiano  staff  776 22 mar 22:39 sticky.js
+</code></pre></div></div>
+
+<p>It contains a simple program <code class="language-plaintext highlighter-rouge">sticky.js</code> that loads and tests our
+package. Here are the first 5 lines:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../test-lexer-generator]$ head -n 5 sticky.js
+// main
+
+const buildLexer =require('@ULL-ESIT-PL-1920/lexer-generator');
+
+const SPACE = /(?&lt;SPACE&gt;\s+)/;
+</code></pre></div></div>
+
+<p>Observe that no path is specified in the <code class="language-plaintext highlighter-rouge">require</code>. Just like if it were in production mode.</p>
+
+<p>Now we can run the program:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../test-lexer-generator]$ node sticky.js
+const varName = "value"
+[
+  { type: 'RESERVEDWORD', value: 'const' },
+  { type: 'ID', value: 'varName' },
+  { type: 'OP', value: '=' },
+  { type: 'STRING', value: '"value"' }
+]
+...
+</code></pre></div></div>
+
+<p>We can unlink at any time by running the following command in the package directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ npm unlink
+</code></pre></div></div>
+
+<h3 id="publish-it">Publish it!</h3>
+
+<p>Hopefully everything worked as expected and you can now move on to the
+publishing step. All of the meta information is contained in the
+<code class="language-plaintext highlighter-rouge">package.json</code> file. And remember from earlier that we have already
+registered on npm, with the <code class="language-plaintext highlighter-rouge">npm adduser</code> command. With that, the actual
+publishing part is really easy.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm publish
+</code></pre></div></div>
+
+<p>When you publish to npm a public package using a scope, the first time you have to add the option
+<code class="language-plaintext highlighter-rouge">--access public</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[/tmp/scapegoat(master)]$ npm publish --access public
++ @ull-esit-dsi-1617/scapegoat@1.0.2
+</code></pre></div></div>
+
+<p>Afterwards, you’ll be able to install your package directly by name
+rather than having to point at the Github url.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install scapegoat
+</code></pre></div></div>
+
+<h2 id="scopes-and-registries">Scopes and Registries</h2>
+
+<p>The syntax of <code class="language-plaintext highlighter-rouge">npm publish</code> is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> npm publish [&lt;tarball&gt;|&lt;folder&gt;] [--tag &lt;tag&gt;] [--access &lt;public|restricted&gt;] [--otp otpcode]
+ [--dry-run]
+</code></pre></div></div>
+
+<p>Publishes  a  package to the registry so that it can be installed by name.</p>
+
+<p>All files in the package directory are included if no  local  <code class="language-plaintext highlighter-rouge">.gitignore</code>  or  <code class="language-plaintext highlighter-rouge">.npmignore</code>  file exists.</p>
+
+<p>If  both  files  exist  and  a  file  is  ignored  by <code class="language-plaintext highlighter-rouge">.gitignore</code> but not by
+<code class="language-plaintext highlighter-rouge">.npmignore</code> then it will be included.</p>
+
+<p><strong>By default npm will publish to the public registry</strong>.</p>
+
+<p>This can be overridden <strong>by specifying  a  different  default registry</strong>
+or using a <a href="/assets/temas/introduccion-a-javascript/nodejspackages.html#scoped-packages">npm scope in the name</a>.</p>
+
+<p>You can associate a scope with a registry at login, e.g.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  npm login --registry=https://npm.pkg.github.com --scope=@myco
+</code></pre></div></div>
+
+<p>Scopes have a <strong>many-to-one</strong> relationship with registries:</p>
+
+<p><em>One registry can host multiple scopes, but a scope only ever points to one registry</em>.</p>
+
+<p><strong>You can also associate a scope with a registry using npm config</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  npm config set @ULL-ESIT-PL-1920:registry https://npm.pkg.github.com
+</code></pre></div></div>
+
+<p>In this example we associate the scope <code class="language-plaintext highlighter-rouge">@ULL-ESIT-PL-1920</code> with the GitHub registry
+<code class="language-plaintext highlighter-rouge">https://npm.pkg.github.com</code>.</p>
+
+<p>Once a scope is associated with a registry, any <code class="language-plaintext highlighter-rouge">npm install</code> 
+for a package with  that
+scope  will request packages from that registry instead.</p>
+
+<p>Therefore any package with name <code class="language-plaintext highlighter-rouge">@ULL-ESIT-PL-1920/some-name</code> will be 
+published at <code class="language-plaintext highlighter-rouge">https://npm.pkg.github.com</code>.</p>
+
+<p>Let us repeat it: Any <code class="language-plaintext highlighter-rouge">npm publish</code> for a package name that contains the scope 
+will be published to that registry instead.</p>
+
+<p>In the following example, the name of the package is <a href="https://github.com/ULL-ESIT-PL-1920/lexer-generator"><code class="language-plaintext highlighter-rouge">@ULL-ESIT-PL-1920/lexer-generator</code></a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat package.json
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">@ULL-ESIT-PL-1920/lexer-generator</span><span class="dl">"</span><span class="p">,</span>     <span class="err">👈</span>
+  <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">A lab for PL: Building a lexer generator</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">repository</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git+https://github.com/ULL-ESIT-PL-1920/lexer-generator.git</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ULL</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">compilers</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">lexical analysis</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">regexp</span><span class="dl">"</span><span class="p">],</span>
+  <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Casiano Rodriguez-Leon &lt;crguezl@ull.edu.es&gt; (https://github.com/crguezl)</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">license</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ISC</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">bugs</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-PL-1920/lexer-generator/issues</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">homepage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-PL-1920/lexer-generator#readme</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>When  we run <code class="language-plaintext highlighter-rouge">npm publish</code> inside the package folder we get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm publish
+npm notice
+npm notice 📦  @ULL-ESIT-PL-1920/lexer-generator@1.0.0
+npm notice === Tarball Contents ===
+npm notice 1.1kB index.js
+npm notice 760B  sticky.js
+npm notice 687B  package.json
+npm notice === Tarball Details ===
+npm notice name:          @ULL-ESIT-PL-1920/lexer-generator
+npm notice version:       1.0.0
+npm notice package size:  1.3 kB
+npm notice unpacked size: 2.5 kB
+npm notice shasum:        bc57a2710303351aba750589af2409e4f46b0148
+npm notice integrity:     sha512-neejvnZNk7ont[...]NgAI30R9/KmPQ==
+npm notice total files:   3
+npm notice
++ @ULL-ESIT-PL-1920/lexer-generator@1.0.0
+</code></pre></div></div>
+
+<p>And now, since our repo is private, we have got a private module that we
+can install and test assuming we have the permits!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/test-lexer-generator]$ npm i \@ULL-ESIT-PL-1920/lexer-generator   👈 Escape the @ to avoid shell interpretation
+npm WARN test-lexer-generator@1.0.0 No description
+npm WARN test-lexer-generator@1.0.0 No repository field.
+
++ @ULL-ESIT-PL-1920/lexer-generator@1.0.0
+updated 1 package and audited 1 package in 1.683s
+found 0 vulnerabilities
+[~/.../github-actions-learning/test-lexer-generator]$ tree
+.
+├── node_modules
+│   └── @ULL-ESIT-PL-1920
+│       └── lexer-generator
+│           ├── index.js
+│           ├── package.json
+│           └── sticky.js
+├── package-lock.json
+└── package.json
+</code></pre></div></div>
+
+<p>And now we can use the module:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/test-lexer-generator]$ node
+Welcome to Node.js v12.10.0.
+Type ".help" for more information.
+&gt; bL = require('@ULL-ESIT-PL-1920/lexer-generator')
+[Function: buildLexer]
+&gt; const SPACE = /(?&lt;SPACE&gt;\s+)/;
+&gt; const RESERVEDWORD = /(?&lt;RESERVEDWORD&gt;\b(const|let)\b)/;
+&gt; const ID = /(?&lt;ID&gt;\b([a-z_]\w*))\b/;
+&gt; const STRING = /(?&lt;STRING&gt;"([^\\"]|\\.")*")/;
+&gt; const OP = /(?&lt;OP&gt;[+*\/=-])/;
+&gt; const myTokens = [
+...   ['SPACE', SPACE], ['RESERVEDWORD', RESERVEDWORD], ['ID', ID],
+...   ['STRING', STRING], ['OP', OP]
+... ];
+&gt; lexer = bL(myTokens)
+&gt; lexer('let x = a + \nb')
+[
+  { type: 'RESERVEDWORD', value: 'let' },
+  { type: 'ID', value: 'x' },
+  { type: 'OP', value: '=' },
+  { type: 'ID', value: 'a' },
+  { type: 'OP', value: '+' },
+  { type: 'ID', value: 'b' }
+]
+&gt;
+</code></pre></div></div>
+
+<h3 id="other-ways-to-set-the-scope">Other ways to set the Scope</h3>
+
+<p>Alternatively, You can set up the scope
+mapping for your project using</p>
+
+<ol>
+  <li>Either a local <code class="language-plaintext highlighter-rouge">.npmrc</code> file in the project (See <a href="https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#publishing-a-package-using-a-local-npmrc-file">Publishing a package using a local .npmrc file</a>) or</li>
+  <li>Using the <code class="language-plaintext highlighter-rouge">publishConfig</code> option in the <code class="language-plaintext highlighter-rouge">package.json</code> (See <a href="https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#publishing-a-package-using-publishconfig-in-the-packagejson-file">Publishing a package using publishConfig in the package.json file</a>).</li>
+</ol>
+
+<p>Here is a fragment of  a <code class="language-plaintext highlighter-rouge">package.json</code> using <code class="language-plaintext highlighter-rouge">publishConfig</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="dl">"</span><span class="s2">private</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">publishConfig</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">registry</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">http://my-internal-registry.local</span><span class="dl">"</span>
+    <span class="p">}</span> 
+</code></pre></div></div>
+
+<h3 id="find-your-module">Find your Module</h3>
+
+<h4 id="at-npm">At npm</h4>
+
+<p>If you publish it on the npm website, go find your module on the <a href="http://npmjs.org">http://npmjs.org</a> website and share it with your friends.</p>
+
+<h4 id="at-github">At GitHub</h4>
+
+<p>If you use GitHub Registry go to the github repo page:</p>
+
+<p><img src="view-package-on-github.png" alt="" /></p>
+
+<p>and click on the package icon. You’ll get s.t. like this:</p>
+
+<p><img src="view-package-lexer-generator.png" alt="" /></p>
+
+<h4 id="viewing-an-organizations-packages">Viewing an organization’s packages</h4>
+
+<p>You can see all the packages installed in an organization and search for a specific package installed in an organization’s repositories.</p>
+
+<ol>
+  <li>In the top right corner of GitHub, click your profile photo, then click Your profile.</li>
+  <li>On the left side of your profile page, under “Organizations”, click the icon for your organization.</li>
+  <li>
+    <p>Under your organization name, click the Packages icon.</p>
+
+    <p><img src="organization-packages.png" alt="" /></p>
+  </li>
+  <li>Click the name of the package that you want to view.</li>
+</ol>
+
+<h4 id="viewing-your-packages">Viewing your packages</h4>
+
+<p>You can see all the packages you’ve installed and search for a specific package you’ve installed across all organizations and repositories.</p>
+
+<ol>
+  <li>In the top right corner of GitHub, click your profile photo, then click Your profile.</li>
+  <li>On the top of the profile page, in the main navigation, click Packages.</li>
+  <li>Click the name of the package that you want to view.</li>
+</ol>
+
+<h2 id="publishing-again">Publishing Again!</h2>
+
+<p>The command <code class="language-plaintext highlighter-rouge">npm version</code> can be followed by one of the semantic versioning words 
+like <code class="language-plaintext highlighter-rouge">npm version minor -m "Upgrade to %s for reasons"</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ npm version patch
+v1.0.1
+</code></pre></div></div>
+
+<p>This will update the <code class="language-plaintext highlighter-rouge">version</code> field in <code class="language-plaintext highlighter-rouge">package.json</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ jq .version package.json
+"1.0.1"
+</code></pre></div></div>
+
+<p>(<a href="https://stedolan.github.io/jq/tutorial/">jq</a> is a DSL to query JSON data. It is like unix <a href="https://www.gnu.org/software/sed/manual/sed.html">sed</a> but for JSON)</p>
+
+<p>Then again, make a tag:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ git tag 1.0.1
+</code></pre></div></div>
+
+<p>commit, push and publish it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning/lexer-generator(master)]$ npm publish
+npm notice
+npm notice 📦  @ULL-ESIT-PL-1920/lexer-generator@1.0.1
+...
++ @ULL-ESIT-PL-1920/lexer-generator@1.0.1
+</code></pre></div></div>
+
+<h2 id="testing-in-production">Testing in Production</h2>
+
+<p>Once more we have to test the publication, now in Production mode 
+To automate the testing process, we create a separated project 
+in a sibling folder of the folder containing the module repo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -l
+drwxr-xr-x  13 casiano  wheel    416 26 sep  2017 scapegoat
+~/.../src/github-actions-learning]$ mkdir prueba-scapegoat
+</code></pre></div></div>
+
+<p>and move to it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd prueba-scapegoat/
+</code></pre></div></div>
+
+<p>The idea is to set things in a way the by simply running s.t. like
+<code class="language-plaintext highlighter-rouge">npm test</code> we can check that our npm module works in production.</p>
+
+<p>For that we can create a <code class="language-plaintext highlighter-rouge">package.json</code> similar to this one:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ cat package.json
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">prueba-scapegoat</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.3.4</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Testing a published module</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm update &amp;&amp; npm run versions &amp;&amp; mocha</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">module-version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">jq .version ../scapegoat/package.json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">versions</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm list --depth=0</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">ULL</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">npm</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">packages</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">git-submodules</span><span class="dl">"</span> <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">repository</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git+https://github.com/ULL-ESIT-DSI-1617/prueba-scapegoat.git</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Casiano Rodriguez-Leon &lt;casiano.rodriguez.leon@gmail.com&gt; (https://github.com/crguezl)</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">license</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ISC</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">dependencies</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">@ull-esit-dsi-1617/scapegoat</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">chai</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">mocha</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Install the dependencies (that is, our module and the test framework we are using):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ npm i
+</code></pre></div></div>
+
+<p>Now we have to write our tests. We recycle the tests of our module
+by copying them to our project root directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cp node_modules/\@ull-esit-dsi-1617/scapegoat/test/index.js test.js
+</code></pre></div></div>
+
+<p>Of course, this file <code class="language-plaintext highlighter-rouge">test.js</code> loads the module using  a <em>path that is relative</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ sed -ne '/require.*ind/p' test.js
+    scapegoat = require('../index'), 👈
+</code></pre></div></div>
+
+<p>We edit the file <code class="language-plaintext highlighter-rouge">test.js</code> and change  line 7 from the relative 
+path to a “production” <code class="language-plaintext highlighter-rouge">require</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ sed -ne '/require/p' test.js
+var should = require('chai').should(),
+    scapegoat = require("@ull-esit-dsi-1617/scapegoat"),
+</code></pre></div></div>
+
+<p>And now we run <code class="language-plaintext highlighter-rouge">npm test</code>. Let us explain the meaning of the scripts in our  <code class="language-plaintext highlighter-rouge">package.json</code>:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">"versions": "npm list --depth=0"</code>: shows the versions of the installed dependencies. We want to check we are using the latest version of our just published module</li>
+  <li><code class="language-plaintext highlighter-rouge">"update": "npm i --no-save @ull-esit-dsi-1617/scapegoat@latest"</code>: installs the latest version of our module. The <code class="language-plaintext highlighter-rouge">-no-save</code> option prevent savings to depedencies</li>
+  <li><code class="language-plaintext highlighter-rouge">"clean": "rm -fR node_modules package-lock.json"</code>: remove all the remainings of previous installations</li>
+  <li><code class="language-plaintext highlighter-rouge">"test": "npm run clean:update:install &amp;&amp; npm run version &amp;&amp; mocha"</code>: we clean it, update our module, install the remaining dependencies show the versions and run the tests</li>
+</ol>
+
+<p>Here is the ouput:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ npm test
+&gt; prueba-scapegoat@1.3.4 test /Users/casiano/local/src/javascript/evalua-module/create-a-npm-module/prueba-scapegoat
+&gt; npm update &amp;&amp; npm run versions &amp;&amp; mocha
+
+
+&gt; prueba-scapegoat@1.3.4 versions /Users/casiano/local/src/javascript/evalua-module/create-a-npm-module/prueba-scapegoat
+&gt; npm list --depth=0
+
+prueba-scapegoat@1.3.4 /Users/casiano/local/src/javascript/evalua-module/create-a-npm-module/prueba-scapegoat
+├── @ull-esit-dsi-1617/scapegoat@1.3.11
+├── chai@4.2.0
+└── mocha@7.1.1
+
+
+
+  #escape
+    ✓ converts &amp; into &amp;amp;
+    ✓ converts " into &amp;quot;
+    ✓ converts ' into &amp;#39;
+    ✓ converts &lt; into &amp;lt;
+    ✓ converts &gt; into &amp;gt;
+    ✓ returns empty string if called with falsey value
+
+  #unescape
+    ✓ converts &amp;amp; into &amp;
+    ✓ converts &amp;quot; into "
+    ✓ converts &amp;#39; into '
+    ✓ converts &amp;lt; into &lt;
+    ✓ converts &amp;gt; into &gt;
+    ✓ does not double unescape values
+    ✓ returns empty string if called with falsey value
+
+  13 passing (11ms)
+</code></pre></div></div>
+
+<p>From now on, each time we publish a new version of the module</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../scapegoat(master)]$ jq .version package.json
+"1.3.1"
+[~/.../scapegoat(master)]$ npm version patch
+v1.3.2
+[~/.../scapegoat(master)]$ git tag 1.3.2
+[~/.../scapegoat(master)]$ npm publish
+npm notice 📦  @ull-esit-dsi-1617/scapegoat@1.3.2
+...
++ @ull-esit-dsi-1617/scapegoat@1.3.2
+</code></pre></div></div>
+
+<p>we have to change to the <code class="language-plaintext highlighter-rouge">prueba-scapegoat</code> directory and run <code class="language-plaintext highlighter-rouge">npm test</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ npm test
+...
+&gt; npm list --depth=0
+
+prueba-scapegoat@1.0.0 /Users/casiano/local/src/javascript/evalua-module/create-a-npm-module/prueba-scapegoat
+├── @ull-esit-dsi-1617/scapegoat@1.3.2
+├── chai@4.2.0
+└── mocha@7.1.1
+...
+</code></pre></div></div>
+
+<h3 id="set-productiontest-script-on-the-module-folder">Set production:test Script on the Module Folder</h3>
+
+<p>Now that the directory hierarchy has been settled, each time we want to test our module in production we have to <code class="language-plaintext highlighter-rouge">cd ../prueba-scapegoat; npm test</code>.</p>
+
+<p>Inside the <code class="language-plaintext highlighter-rouge">scapegoat</code> directory we add a new task <code class="language-plaintext highlighter-rouge">production:test</code> to the  <code class="language-plaintext highlighter-rouge">package.json</code> for this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../create-a-npm-module/scapegoat(master)]$ jq .scripts package.json
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mocha --reporter spec</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">doc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">documentation build index.js -f html -o docs</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">serve:doc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http-server docs/ -o</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">commit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run doc; git add docs; git ci -am `jq .version package.json`</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">push</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run commit; git push</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">production:test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cd ../prueba-scapegoat &amp;&amp; npm test</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">patch</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run commit; npm version patch</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">patch:publish</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run patch; git push; npm publish</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">patch:publish:production:test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run patch:publish; npm run production:test</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We also added:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">"patch": "npm version patch"</code>: To change the <code class="language-plaintext highlighter-rouge">patch</code> number. (If run in a git repo, the <code class="language-plaintext highlighter-rouge">npm version patch</code>command  will also create a version commit and tag)</li>
+  <li><code class="language-plaintext highlighter-rouge">"patch:publish": "npm run patch; git push; npm publish"</code> to change the patch number, push the changes to GitHub and publish the repo</li>
+  <li><code class="language-plaintext highlighter-rouge">"patch:publish:production:test": "npm run patch:publish; npm run production:test"</code> to publish the module and run the tests in production mode</li>
+</ol>
+
+<h3 id="ci-the-production-testing-with-github-actions">CI the Production Testing with GitHub Actions</h3>
+
+<p>We can automate the previous workflow adding a GitHub action inside the <code class="language-plaintext highlighter-rouge">prueba-scapegoat</code> folder:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ tree .github/
+.github/
+└── workflows
+    └── nodejs.yml
+
+1 directory, 1 file
+</code></pre></div></div>
+
+<p>The action simply run the production tests each time a <code class="language-plaintext highlighter-rouge">push</code> happens</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ cat .github/workflows/nodejs.yml
+</code></pre></div></div>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node</span>
+<span class="c1"># For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions</span>
+
+<span class="na">name</span><span class="pi">:</span> <span class="s">Test scapegoat in production</span>
+
+<span class="na">on</span><span class="pi">:</span> <span class="c1"># when this action should be triggered?</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span> <span class="c1"># jobs are made of steps</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="c1"># Define the OS our workflow should run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">strategy</span><span class="pi">:</span>
+      <span class="c1"># To test across multiple language versions</span>
+      <span class="na">matrix</span><span class="pi">:</span>
+        <span class="na">os</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">macos-latest</span><span class="pi">,</span> <span class="nv">ubuntu-latest</span><span class="pi">,</span> <span class="nv">windows-latest</span> <span class="pi">]</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">12.x</span><span class="pi">,</span> <span class="nv">14.x</span><span class="pi">]</span>
+
+    <span class="na">steps</span><span class="pi">:</span> <span class="c1"># See https://github.com/actions/checkout</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+    <span class="c1"># Example of using an environment variable</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Use Node.js $</span> <span class="c1"># Will be: "Use Node.js 12.x"</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span> <span class="c1"># See https://github.com/actions/setup-node</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm test</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="na">CI</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>Let us change the version of the test repo and push it to github:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../prueba-scapegoat(master)]$ npm version 1.3.3
+v1.3.3
+[~/.../prueba-scapegoat(master)]$ git push origin master
+</code></pre></div></div>
+
+<p>Now the action runs:</p>
+
+<p><img src="/assets/images/github-actions-testing-in-production.png" alt="" /></p>
+
+<h4 id="related-references">Related References</h4>
+
+<ul>
+  <li><a href="https://github.com/actions/checkout">actions/checkout</a></li>
+  <li><a href="https://github.com/actions/setup-node">actions/setup-node</a></li>
+  <li><a href="https://github.community/t5/GitHub-Actions/Installing-private-npm-packages-from-GitHub-Package-Registry/td-p/38392">Installing private npm packages from GitHub Package Registry</a></li>
+  <li><a href="https://blog.marcnuri.com/triggering-github-actions-across-different-repositories/">Triggering GitHub Actions across different repositories</a></li>
+  <li><a href="https://github.community/t5/GitHub-Actions/Triggering-by-other-repository/td-p/30668">Triggering by other repository</a></li>
+</ul>
+
+<h3 id="making-a-project-with-the-two-repos-git-submodule">Making a Project with the two repos: git submodule</h3>
+
+<p>In some occasions, like in this one, it is convenient to have different repos together.</p>
+
+<p>Git allows you to include other Git repositories called submodules into a repository. You can commit, pull and push to these repositories independently. Submodules allow you to keep projects in separate repositories but still be able to reference them as folders in the working directory of other repositories.</p>
+
+<p>Let us make the new project:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../github-actions-learning]$ mkdir project-lexer-generator
+[~/.../github-actions-learning]$ cd project-lexer-generator/
+[~/.../project-lexer-generator]$ git init .
+Inicializado repositorio Git vacío en /Users/casiano/local/src/github-actions-learning/project-lexer-generator/.git/
+</code></pre></div></div>
+
+<p>To add the other repos to this one we use</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git sumodule add &lt;repo url&gt;
+</code></pre></div></div>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../project-lexer-generator]$ git submodule add git@github.com:ULL-ESIT-PL-1920/lexer-generator.git
+Clonando en '/Users/casiano/local/src/github-actions-learning/project-lexer-generator/lexer-generator'
+...
+
+[~/.../project-lexer-generator]$ git submodule add git@github.com:ULL-ESIT-PL-1920/test-lexer-generator.git
+Clonando en '/Users/casiano/local/src/github-actions-learning/
+...
+</code></pre></div></div>
+
+<p>This clones the repos and creates a file <code class="language-plaintext highlighter-rouge">.gitmodules</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../project-lexer-generator]$ ls -la
+total 8
+drwxr-xr-x   6 casiano  staff  192 27 mar 16:56 .
+drwxr-xr-x   9 casiano  staff  288 27 mar 16:53 ..
+drwxr-xr-x  11 casiano  staff  352 27 mar 16:56 .git
+-rw-r--r--   1 casiano  staff  241 27 mar 16:56 .gitmodules
+drwxr-xr-x  12 casiano  staff  384 27 mar 16:55 lexer-generator
+drwxr-xr-x   9 casiano  staff  288 27 mar 16:56 test-lexer-generator
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">.gitmodules</code> file it is an INI file containing the relation between the local path and the remote url for each sub-repo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../project-lexer-generator]$ cat .gitmodules
+[submodule "lexer-generator"]
+	path = lexer-generator
+	url = git@github.com:ULL-ESIT-PL-1920/lexer-generator.git
+[submodule "test-lexer-generator"]
+	path = test-lexer-generator
+	url = git@github.com:ULL-ESIT-PL-1920/test-lexer-generator.git
+</code></pre></div></div>
+
+<p>After a commit and a push this is the image of the repo in GitHub:</p>
+
+<p><img src="/assets/images/git-submodulos.png" alt="" /></p>
+
+<p>Clicking in the repo links will take us to the corresponding GitHub repo <strong>but be aware that you are in the specific commit specified in the super-repo, not in the master branch</strong></p>
+
+<p>See the <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">Chacon’s book on Git: Chapter 7.11 Git Tools - Submodules</a> for more information.</p>
+
+<p>Now, when someone clones the super-repo uses the <code class="language-plaintext highlighter-rouge">--recurse-submodules</code> option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone --recurse-submodules git@github.com:ULL-ESIT-PL-1920/project-lexer-generator.git
+</code></pre></div></div>
+
+<p>The  <code class="language-plaintext highlighter-rouge">--recurse-submodules</code> option initializes and clones submodules within based on the provided
+pathspec.</p>
+
+<p>This is equivalent to running</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule update --init --recursive &lt;pathspec&gt; 
+</code></pre></div></div>
+
+<p>immediately after the clone is finished.</p>
+
+<p>We can also make a flat clone:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[/tmp]$ git clone git@github.com:ULL-ESIT-PL-1920/project-lexer-generator.git
+Clonando en 'project-lexer-generator'...
+...
+</code></pre></div></div>
+
+<p>In such case, You can see the folders for the subrepos are empty:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[/tmp/project-lexer-generator(master)]$ tree
+.
+├── lexer-generator
+└── test-lexer-generator
+
+2 directories, 0 files
+[/tmp/project-lexer-generator(master)]$
+</code></pre></div></div>
+
+<p>Now we issue the <code class="language-plaintext highlighter-rouge">git submodule init</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[/tmp/project-lexer-generator(master)]$ git submodule init
+Submódulo 'lexer-generator' (git@github.com:ULL-ESIT-PL-1920/lexer-generator.git) registrado para ruta 'lexer-generator'
+Submódulo 'test-lexer-generator' (git@github.com:ULL-ESIT-PL-1920/test-lexer-generator.git) registrado para ruta 'test-lexer-generator'
+</code></pre></div></div>
+
+<p>The command <code class="language-plaintext highlighter-rouge">git submodule init</code> initialize the submodules recorded in the index by setting
+<code class="language-plaintext highlighter-rouge">submodule.$name.url</code> in <code class="language-plaintext highlighter-rouge">.git/config</code>. It uses the same setting from <code class="language-plaintext highlighter-rouge">.gitmodules</code> as a template:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../project-lexer-generator(master)]$ cat .git/config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[submodule "lexer-generator"]
+	url = git@github.com:ULL-ESIT-PL-1920/lexer-generator.git
+	active = true
+[submodule "test-lexer-generator"]
+	url = git@github.com:ULL-ESIT-PL-1920/test-lexer-generator.git
+	active = true
+[remote "origin"]
+	url = git@github.com:ULL-ESIT-PL-1920/project-lexer-generator.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+</code></pre></div></div>
+
+<p>The command <code class="language-plaintext highlighter-rouge">git submodule update</code>
+updates the registered submodules to match what the superproject expects by
+cloning missing submodules, fetching missing commits in submodules and updating
+the working tree of the submodules:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[/tmp/project-lexer-generator(master)]$ git submodule update
+Clonando en '/private/tmp/project-lexer-generator/lexer-generator'...
+Clonando en '/private/tmp/project-lexer-generator/test-lexer-generator'...
+Submodule path 'lexer-generator': checked out '54594a4b0febd5eb1de0cee8b8f6b45edafaf989'
+Submodule path 'test-lexer-generator': checked out 'b2f64a6dc2fe4145e268b6b63f8d03753b5eeff8'
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">cd</code> to the sub-repo folder will leave us in the commit specified in the super-repo, but we can of course checkout the <code class="language-plaintext highlighter-rouge">master</code> branch and make a <code class="language-plaintext highlighter-rouge">pull</code> if we think an update is needed.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[/tmp/project-lexer-generator(master)]$ cd lexer-generator/
+[.../project-lexer-generator/lexer-generator((HEAD desacoplada en 54594a4))]$ git co master
+Cambiado a rama 'master'
+Tu rama está actualizada con 'origin/master'.
+[.../project-lexer-generator/lexer-generator(master)]$ git pull origin master
+...
+</code></pre></div></div>
+
+<p>Here are the two repos for the scapegoat example:</p>
+
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-DSI-1617/create-a-npm-module">Example in ULL-ESIT-DSI-1617/create-a-npm-module</a>
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-DSI-1617/scapegoat">Submodule ULL-ESIT-DSI-1617/scapegoat</a></li>
+      <li><a href="https://github.com/ULL-ESIT-DSI-1617/prueba-scapegoat">Submodule ULL-ESIT-DSI-1617/prueba-scapegoat</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>And here is the <a href="https://github.com/ULL-ESIT-PL-1920/project-lexer-generator">ULL-ESIT-PL-1920/project-lexer-generator</a> example:</p>
+
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-PL-1920/project-lexer-generator">ULL-ESIT-PL-1920/project-lexer-generator</a></li>
+</ul>
+
+<h3 id="git-submodule-alternatives">Git Submodule Alternatives</h3>
+
+<p>After a while searching for alternatives to <code class="language-plaintext highlighter-rouge">git submodules</code> I found these two tools quite convincing:</p>
+
+<ul>
+  <li><a href="https://www.npmjs.com/package/loop">loop</a></li>
+  <li><a href="https://www.npmjs.com/package/meta">meta</a></li>
+</ul>
+
+<h2 id="references-1">References</h2>
+
+<h3 id="npm-packages">npm packages</h3>
+
+<ul>
+  <li><a href="https://npmjs.org/doc/developers.html">npm developer guide</a></li>
+  <li><a href="https://docs.npmjs.com/getting-started/using-a-package.json">Working with package.json</a></li>
+  <li><a href="https://docs.npmjs.com/getting-started/creating-node-modules">How to create Node.js Modules</a></li>
+  <li><a href="https://stackoverflow.com/questions/17509669/how-to-install-an-npm-package-from-github-directly">How to install an npm package from GitHub directly?</a> in StackOverflow</li>
+  <li><a href="https://docs.npmjs.com/files/package.json">Package.json documentation en npm site</a></li>
+  <li><a href="https://medium.com/@TeeFouad/a-simple-guide-to-publishing-an-npm-package-506dd7f3c47a">A Simple Guide to Publishing an npm Package</a> by Mostafa Fouad</li>
+</ul>
+
+<h3 id="github-packages">GitHub packages</h3>
+
+<ul>
+  <li><a href="https://help.github.com/en/packages/publishing-and-managing-packages/about-github-packages">About GitHub Packages</a></li>
+  <li><a href="https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages">Configuring npm for use with GitHub Packages</a></li>
+  <li><a href="https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token">Authenticating with the GITHUB_TOKEN</a></li>
+  <li><a href="https://sergiodxa.com/articles/github-actions-npm-publish/">Automatically Publish to npm using GitHub Actions</a></li>
+</ul>
+
+<h3 id="github-actions">GitHub Actions</h3>
+
+<ul>
+  <li><a href="https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions">Using Node.js with GitHub Actions</a></li>
+</ul>
+
+<h3 id="scoped-packages">Scoped Packages</h3>
+
+<ul>
+  <li><a href="https://docs.npmjs.com/getting-started/scoped-packages">Working with scoped packages</a></li>
+  <li><a href="https://docs.npmjs.com/misc/scope#publishing-public-scoped-packages-to-the-public-npm-registry">npm-scope manual: Scoped packages</a></li>
+  <li><a href="https://youtu.be/O6JoXGnHK_Y">Working with npm private modules. YouTube Video</a></li>
+</ul>
+
+<h3 id="semantic-versioning-and-npm">Semantic versioning and npm</h3>
+
+<ul>
+  <li><a href="https://docs.npmjs.com/getting-started/semantic-versioning">Semantic versioning and npm</a></li>
+  <li><a href="https://www.sitepoint.com/semantic-versioning-why-you-should-using/">Semantic Versioning: Why You Should Be Using it</a> SitePoint</li>
+  <li><a href="https://youtu.be/kK4Meix58R4">YouTube Video: Semantic versioning and npm</a></li>
+  <li><a href="https://docs.npmjs.com/cli/version">El comando npm version</a></li>
+</ul>
+
+<h3 id="text-processing">Text Processing</h3>
+
+<ul>
+  <li><a href="https://stedolan.github.io/jq/tutorial/">jq</a> is a DSL to query JSON data</li>
+  <li>Unix <a href="https://www.gnu.org/software/sed/manual/sed.html">sed</a></li>
+</ul>
+
+<h3 id="original-scapegoat">Original Scapegoat</h3>
+
+<ul>
+  <li><a href="https://github.com/brentertz/scapegoat">Scapegoat on Github</a></li>
+  <li><a href="https://npmjs.org/package/scapegoat">Scapegoat on npm</a></li>
+</ul>
+
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Creating+and+Publishing+a+Node.js+Module+in+GitHub+and+NPM+Registries%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-and-publishing-npm-module.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Creating+and+Publishing+a+Node.js+Module+in+GitHub+and+NPM+Registries%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-and-publishing-npm-module.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-and-publishing-npm-module.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-and-publishing-npm-module.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/creating-and-publishing-npm-module.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

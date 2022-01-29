@@ -1,0 +1,1384 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitHub Actions: An Introduction - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="GitHub Actions: An Introduction">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/github-actions.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/github-actions.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitHub Actions: An Introduction">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">GitHub Actions: An Introduction
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#workflow">Workflow</a></li><li><a href="#editing-github-actions">Editing Github Actions</a></li><li><a href="#job">Job</a></li><li><a href="#step">Step</a></li><li><a href="#actions">Actions</a><ul><li><a href="#types-of-actions">Types of Actions</a></li></ul></li><li><a href="#event">Event</a><ul><li><a href="#the-release-event">The release event</a></li></ul></li><li><a href="#runner">Runner</a></li><li><a href="#syntax-of-the-yml-file">Syntax of the .yml File</a><ul><li><a href="#name">Name:</a></li><li><a href="#on">On:</a></li><li><a href="#jobs">Jobs:</a></li><li><a href="#env">Env:</a></li><li><a href="#stepswith">steps.with</a></li></ul></li><li><a href="#expression-syntax">Expression Syntax</a><ul><li><a href="#literal-values">literal values,</a></li><li><a href="#operators">Operators</a></li><li><a href="#functions">functions</a></li><li><a href="#the-if-keyword-and-functions-to-check-job-status">The if Keyword and Functions to Check Job Status</a></li><li><a href="#object-filters">Object Filters</a></li></ul></li><li><a href="#contexts">Contexts</a><ul><li><a href="#matrix-context">Matrix Context</a></li><li><a href="#github-context">GitHub Context</a></li><li><a href="#env-context">Env Context</a></li><li><a href="#steps-context">Steps Context</a></li><li><a href="#the-runner-context">The Runner Context</a></li><li><a href="#the-strategy-context">The Strategy Context</a></li><li><a href="#the-secrets-context">The Secrets Context</a><ul><li><a href="#creating-a-secret">Creating a Secret</a></li><li><a href="#using-a-secret">Using a Secret</a></li><li><a href="#example-a-github-action-to-publish-a-npm-package">Example: A GitHub Action to Publish a npm Package</a></li></ul></li><li><a href="#exercise">Exercise</a></li><li><a href="#debugging-context-to-the-log-file">Debugging Context to the log file</a><ul><li><a href="#exercise-1">Exercise</a></li></ul></li></ul></li><li><a href="#github_token">GITHUB_TOKEN</a></li><li><a href="#creating-a-packaged-javascript-action">Creating a Packaged JavaScript Action</a></li><li><a href="#running-manually-github-workflows-with-gh">Running Manually GitHub Workflows with gh</a></li><li><a href="#references">References</a></li><li><a href="#videos-about-github-actions">Videos about GitHub Actions</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Github Actions enables you to create custom software development lifecycle workflows directly in your Github repository. These workflows are made out of different tasks so-called actions that can be run automatically on certain events.</p>
+
+<p>This enables you to include Continues Integration (CI) and continuous deployment (CD) capabilities and many other features directly in your repository.</p>
+
+<p>For instance, at any time during this course each student  has two active automatic kanban project boards:</p>
+<ol>
+  <li>one we call <em>global</em> where you insert an issue per lab assignment and</li>
+  <li>another for the <em>current lab</em> with moving issues corresponding to the items in the published requirements/signature.</li>
+  <li>Once the teacher has reviewed your work for the current lab you have to close not only the lab issue but all the issues in the current board.</li>
+</ol>
+
+<p>This is an example of workflow.</p>
+
+<p>We can conceive a GitHub Action to automate the last part of this workflow such that when you close the issue in your student board all the issues in the repo board are automatically closed.</p>
+
+<p>Here is a brief glossary of terms (for more see <a href="https://help.github.com/en/actions/getting-started-with-github-actions/core-concepts-for-github-actions">Core concepts for GitHub Actions</a>):</p>
+
+<h2 id="workflow">Workflow</h2>
+
+<p>A <strong>Workflow</strong> is an automated process that is made up of one or multiple <strong>jobs</strong> and can be triggered by an <strong>event</strong>.</p>
+
+<p>Workflows are defined using a YAML file in the <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory.
+Workflows can be created inside the <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory by adding a <code class="language-plaintext highlighter-rouge">.yml</code> workflow file. 
+Here in the terminal we do:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir -p .github/workflows
+$ touch .github/workflows/nodejs.yml
+</code></pre></div></div>
+
+<p>and use our favourite editor.</p>
+
+<p>Example:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Node.js Package</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">release</span><span class="pi">:</span>
+    <span class="na">types</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">created</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="s">...</span>
+  <span class="na">publish-npm</span><span class="pi">:</span>
+    <span class="s">...</span>
+  <span class="na">publish-gpr</span><span class="pi">:</span>
+    <span class="na">needs</span><span class="pi">:</span> <span class="s">build</span>
+    <span class="s">...</span>
+</code></pre></div></div>
+
+<h2 id="editing-github-actions">Editing Github Actions</h2>
+
+<p>To manage GitHub Actions from Visual Studio we can install the extension <a href="https://marketplace.visualstudio.com/items?itemName=cschleiden.vscode-github-actions">GitHub Actions</a></p>
+
+<p><img src="/assets/images/github-actions-vscode-extension.png" alt="" /></p>
+
+<p>To use it, you have to <a href="https://github.com/cschleiden/vscode-github-actions/issues/66">authorize the VsCode extension to access your GitHub acount</a></p>
+
+<p><img src="/assets/images/authorizing-vscode-extensions.jpg" alt="" /></p>
+
+<p>We can also use the online GitHub Interface.</p>
+
+<p>The Github Actions Editor is quite clever:  Auto-complete can be triggered with <strong>Ctrl+Space</strong> almost anywhere.</p>
+
+<p><img src="https://i2.wp.com/user-images.githubusercontent.com/50486/65709573-66239b00-e091-11e9-8d8b-339e30b85072.gif?resize=623%2C430&amp;ssl=1" alt="" /></p>
+
+<p>Auto-complete works even inside <a href="https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions">expressions</a></p>
+
+<p><img src="https://i1.wp.com/user-images.githubusercontent.com/50486/65709600-76d41100-e091-11e9-9396-d75e08d6744e.png?resize=1028%2C510&amp;ssl=1" alt="" /></p>
+
+<h2 id="job">Job</h2>
+
+<p>A <strong>job</strong> is made up of multiple <strong>steps</strong> and runs in an instance of the virtual environment. Jobs can</p>
+
+<ul>
+  <li>run independently of each other or</li>
+  <li>sequential if the current job depends on the previous job to be successful.</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Node.js Package</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">release</span><span class="pi">:</span>
+    <span class="na">types</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">created</span><span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">node-version</span><span class="pi">:</span> <span class="m">12</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm test</span>
+
+  <span class="na">publish-npm</span><span class="pi">:</span>
+    <span class="na">needs</span><span class="pi">:</span> <span class="s">build</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="s">...</span>
+  <span class="na">publish-gpr</span><span class="pi">:</span>
+    <span class="na">needs</span><span class="pi">:</span> <span class="s">build</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="s">...</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">needs</code> attribute inside the <code class="language-plaintext highlighter-rouge">publish-npm</code> job tell us that this job 
+can not start until the <code class="language-plaintext highlighter-rouge">build</code> step has finished</p>
+
+<h2 id="step">Step</h2>
+
+<p>A <strong>step</strong> is an individual task that can run commands in a job. A step can be either</p>
+<ul>
+  <li>an action or</li>
+  <li>a shell command.</li>
+</ul>
+
+<p>Each step in a job executes on the same runner, allowing the actions in that job to share data with each other.</p>
+
+<p>Example:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Node.js Package</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">release</span><span class="pi">:</span>
+    <span class="na">types</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">created</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>  <span class="c1"># An action</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">node-version</span><span class="pi">:</span> <span class="m">12</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>      <span class="c1"># A command</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm test</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">run</code> keyword tells the job to execute a command on the <a href="#runner">runner</a>. In this case, you are using <code class="language-plaintext highlighter-rouge">run: npm test</code> to run  the tests in your package</p>
+
+<h2 id="actions">Actions</h2>
+
+<p><strong>Actions</strong> are the smallest portable building block of a workflow and can be combined as <strong>steps</strong> to create a <strong>job</strong>.</p>
+
+<p>Here is another example:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">learn-github-actions</span>
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">check-bats-version</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm install -g bats</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">bats -v</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">uses: actions/checkout@v2</code>  tells the job to retrieve <code class="language-plaintext highlighter-rouge">v2</code> of the community action named <code class="language-plaintext highlighter-rouge">actions/checkout@v2</code>.
+    <ul>
+      <li>This is an action that checks out your repository and downloads it to the runner, allowing you to run actions against your code (such as testing tools).</li>
+      <li>You must use the <code class="language-plaintext highlighter-rouge">checkout</code> action any time your workflow will run against the repository’s code</li>
+    </ul>
+  </li>
+  <li>The <code class="language-plaintext highlighter-rouge">uses: actions/setup-node@v1</code>  installs the node software package on the runner, giving you access to the <code class="language-plaintext highlighter-rouge">npm</code> command.</li>
+  <li>You can create your own Actions</li>
+  <li>or use publicly <a href="https://github.com/marketplace?type=actions">shared Actions from the Marketplace</a></li>
+</ul>
+
+<h3 id="types-of-actions">Types of Actions</h3>
+
+<p>There are two types of actions:</p>
+
+<ol>
+  <li>Docker container and</li>
+  <li>JavaScript actions</li>
+</ol>
+
+<p>Docker <strong>container actions</strong> allow the environment to be packaged with the GitHub Actions code and can only execute in the GitHub-Hosted Linux environment.</p>
+
+<p><strong>JavaScript actions</strong> decouple the GitHub Actions code from the environment allowing faster execution but accepting greater dependency management responsibility.</p>
+
+<p>Actions require a metadata file to define the</p>
+
+<ol>
+  <li>inputs,</li>
+  <li>outputs and</li>
+  <li>main entrypoint</li>
+</ol>
+
+<p>for your action.</p>
+
+<p>The metadata filename must be either <code class="language-plaintext highlighter-rouge">action.yml</code> or <code class="language-plaintext highlighter-rouge">action.yaml</code>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Operating system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker container</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>Linux, MacOS, Windows</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+  <li>
+    <p>Here you can find instructions <a href="https://help.github.com/en/actions/building-actions/about-actions">if you want to develop an action for other people to use</a></p>
+  </li>
+  <li>
+    <p>Here is an example of an action: <a href="https://github.com/actions/create-release">actions/create-release</a></p>
+  </li>
+</ul>
+
+<h2 id="event">Event</h2>
+
+<p><strong>Events</strong> are specific activities that trigger a workflow run. For example, a workflow is triggered when somebody pushes to the repository or when a pull request is created. Events can also be configured to listen to external events using <a href="https://docs.github.com/en/developers/webhooks-and-events/about-webhooks">Webhooks</a>.</p>
+
+<p>Example of Webhook: When you install Travis in your repo a webhook is installed on push so that Travis will know when you push to your repo.</p>
+
+<p>See also <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a></p>
+
+<h3 id="the-release-event">The <code class="language-plaintext highlighter-rouge">release</code> event</h3>
+
+<ul>
+  <li>See <a href="/assets/temas/introduccion-a-javascript/releases.html">GitHub Releases</a></li>
+</ul>
+
+<h2 id="runner">Runner</h2>
+
+<p>A <strong>runner</strong> is a machine with the <a href="https://github.com/actions/runner">Github Actions <code class="language-plaintext highlighter-rouge">runner</code> application</a> installed.</p>
+
+<ol>
+  <li>A <code class="language-plaintext highlighter-rouge">runner</code> waits for available <strong>jobs</strong> it can then execute.</li>
+  <li>After picking up a job they run the job’s <strong>actions</strong> and report the progress and results back to Github.</li>
+  <li>Runners can <a href="https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners">be hosted on Github</a> or self-hosted on your own machines/servers.</li>
+</ol>
+
+<h2 id="syntax-of-the-yml-file">Syntax of the .yml File</h2>
+
+<p>Github Actions files are written using YAML syntax and have either a <code class="language-plaintext highlighter-rouge">.yml</code> or <code class="language-plaintext highlighter-rouge">.yaml</code> file extension. Here are the most important concepts for the workflow file.</p>
+
+<h3 id="name">Name:</h3>
+
+<p>The name of your workflow that is displayed on the Github actions page. If you omit this field, it is set to the file name.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name: CI for scapegoat module
+</code></pre></div></div>
+
+<h3 id="on">On:</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">on</code> keyword defines the Github events that trigger the workflow. You can provide a single event, array or events or a configuration map that schedules a workflow.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>on: push
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>on: [pull_request, issues]
+</code></pre></div></div>
+
+<p>You can set up the workflow to only run on certain branches, paths, or tags. 
+For syntax examples including or excluding branches, paths, or tags, see <a href="https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths">Workflow syntax for GitHub Actions</a></p>
+
+<p>For instance, the example below runs anytime the <code class="language-plaintext highlighter-rouge">push</code> event includes a file in the <code class="language-plaintext highlighter-rouge">sub-project</code> directory or its subdirectories, unless the file is in the <code class="language-plaintext highlighter-rouge">sub-project/docs</code> directory.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s1">'</span><span class="s">sub-project/**'</span>
+    <span class="pi">-</span> <span class="s1">'</span><span class="s">!sub-project/docs/**'</span>
+</code></pre></div></div>
+
+<p>For example, a <code class="language-plaintext highlighter-rouge">push</code> that changed <code class="language-plaintext highlighter-rouge">sub-project/index.js</code> or <code class="language-plaintext highlighter-rouge">sub-project/src/index.js</code> will trigger a workflow run, but a <code class="language-plaintext highlighter-rouge">push</code> changing only <code class="language-plaintext highlighter-rouge">sub-project/docs/readme.md</code> will not.</p>
+
+<h3 id="jobs">Jobs:</h3>
+
+<p>A workflow run is made up of one or more jobs. Jobs define the functionality that will be run in the workflow and run in parallel by default.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="na">jobs</span><span class="pi">:</span> 
+    <span class="na">ci-scapegoat</span><span class="pi">:</span>
+    <span class="c1"># Define the OS our workflow should run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="na">strategy</span><span class="pi">:</span>
+        <span class="c1"># To test across multiple language versions</span>
+        <span class="na">matrix</span><span class="pi">:</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">12.x</span><span class="pi">]</span>
+
+    <span class="na">steps</span><span class="pi">:</span> <span class="c1"># Clone the repo. See https://github.com/actions/checkout</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+    <span class="c1"># Example of using an environment variable</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Use Node.js ${{ matrix.node-version }}</span> <span class="c1"># Will be: "Use Node.js 12.x"</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span> <span class="c1"># Install node. See https://github.com/actions/setup-node</span>
+        <span class="na">with</span><span class="pi">:</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="s">${{ "{{ matrix.node-version" }} }}</span>
+    <span class="c1"># Install a project with a clean slate</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm test</span>
+        <span class="s"># Environment variables</span>
+        <span class="s">env</span><span class="pi">:</span>
+          <span class="na">CI</span><span class="pi">:</span> <span class="no">true</span>
+
+</code></pre></div></div>
+
+<h3 id="env">Env:</h3>
+
+<p><strong>Env</strong> defines a map of environment variables that are available to all jobs and steps in the workflow. You can also set environment variables that are only available to a job or step. Here is a simple example taken from the <a href="https://docs.github.com/es/actions/reference/environment-variables">GitHub docs on Environment Variables</a></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">weekday_job</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">env</span><span class="pi">:</span>
+      <span class="na">DAY_OF_WEEK</span><span class="pi">:</span> <span class="s">Mon</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Hello</span><span class="nv"> </span><span class="s">world</span><span class="nv"> </span><span class="s">when</span><span class="nv"> </span><span class="s">it's</span><span class="nv"> </span><span class="s">Monday"</span>
+        <span class="na">if</span><span class="pi">:</span> <span class="s">env.DAY_OF_WEEK == 'Mon'</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">FIRST_NAME</span><span class="pi">:</span> <span class="s">Mona</span>
+          <span class="na">middle_name</span><span class="pi">:</span> <span class="s">The</span>
+          <span class="na">Last_Name</span><span class="pi">:</span> <span class="s">Octocat</span>
+  <span class="na">CI</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>There are <a href="https://docs.github.com/es/actions/reference/environment-variables#default-environment-variables">lots of default environment variables set by GitHub</a></p>
+
+<h3 id="stepswith">steps.with</h3>
+
+<p>A map of the <code class="language-plaintext highlighter-rouge">input</code> parameters defined by the action. 
+Each <code class="language-plaintext highlighter-rouge">input</code> parameter is a <code class="language-plaintext highlighter-rouge">key/value</code> pair.</p>
+
+<p>Input parameters are set as environment variables.</p>
+
+<p>The variable is prefixed with <code class="language-plaintext highlighter-rouge">INPUT_</code> and converted to upper case.</p>
+
+<p><strong>Example</strong></p>
+
+<p>Defines the three input parameters (<code class="language-plaintext highlighter-rouge">first_name</code>, <code class="language-plaintext highlighter-rouge">middle_name</code>, and <code class="language-plaintext highlighter-rouge">last_name</code>) 
+defined by the <code class="language-plaintext highlighter-rouge">hello_world</code> action.</p>
+
+<p>These input variables will be accessible to the <code class="language-plaintext highlighter-rouge">hello-world</code> action as <code class="language-plaintext highlighter-rouge">INPUT_FIRST_NAME</code>, <code class="language-plaintext highlighter-rouge">INPUT_MIDDLE_NAME</code>, and <code class="language-plaintext highlighter-rouge">INPUT_LAST_NAME</code> environment variables.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">my_first_job</span><span class="pi">:</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">My first step</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/hello_world@master</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">first_name</span><span class="pi">:</span> <span class="s">Mona</span>
+          <span class="na">middle_name</span><span class="pi">:</span> <span class="s">The</span>
+          <span class="na">last_name</span><span class="pi">:</span> <span class="s">Octocat</span>    
+</code></pre></div></div>
+
+<h2 id="expression-syntax">Expression Syntax</h2>
+
+<p>You can use expressions to programmatically set variables in workflow files and access contexts.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${{ "{{ &lt;expression&gt;" }} }}
+</code></pre></div></div>
+
+<p>You can combine literals, context references, and functions using <strong>operators</strong>.</p>
+
+<p>An expression can be any combination of</p>
+
+<h3 id="literal-values">literal values,</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>env:
+    myNull: ${{ null }}
+    myBoolean: ${{ false }}
+    myIntegerNumber: ${{ 711 }}
+    myFloatNumber: ${{ -9.2 }}
+    myHexNumber: ${{ 0xff }}
+    myExponentialNumber: ${{ -2.99-e2 }}
+    myString: ${{ 'Mona the Octocat' }}
+    myEscapedString: ${{ 'It''s open source!' }}
+</code></pre></div></div>
+
+<h3 id="operators">Operators</h3>
+
+<table>
+    <thead>
+    <tr>
+    <th>Operator</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>( )</code></td>
+    <td>Logical grouping</td>
+    </tr>
+    <tr>
+    <td><code>[ ]</code></td>
+    <td>Index</td>
+    </tr>
+    <tr>
+    <td><code>.</code></td>
+    <td>Property dereference</td>
+    </tr>
+    <tr>
+    <td><code>!</code></td>
+    <td>Not</td>
+    </tr>
+    <tr>
+    <td><code>&lt;</code></td>
+    <td>Less than</td>
+    </tr>
+    <tr>
+    <td><code>&lt;=</code></td>
+    <td>Less than or equal</td>
+    </tr>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>Greater than</td>
+    </tr>
+    <tr>
+    <td><code>&gt;=</code></td>
+    <td>Greater than or equal</td>
+    </tr>
+    <tr>
+    <td><code>==</code></td>
+    <td>Equal</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>Not equal</td>
+    </tr>
+    <tr>
+    <td><code>&amp;&amp;</code></td>
+    <td>And</td>
+    </tr>
+    <tr>
+    <td><code>||</code></td>
+    <td>Or</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3 id="functions">functions</h3>
+
+<p><a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#functions">GitHub offers a set of built-in functions</a></p>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat')
+</code></pre></div></div>
+
+<p>Returns <code class="language-plaintext highlighter-rouge">'Hello Mona the Octocat'</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">contains('Hello world', 'llo')</code> returns <code class="language-plaintext highlighter-rouge">true</code></p>
+
+<h3 id="the-if-keyword-and-functions-to-check-job-status">The if Keyword and Functions to Check Job Status</h3>
+
+<p>Expressions are commonly used with the conditional <strong>if</strong> keyword 
+in a workflow file to determine whether a step should run.</p>
+
+<p>When you use expressions in an <code class="language-plaintext highlighter-rouge">if</code> conditional, 
+you do not need to use the expression syntax (<code class="language-plaintext highlighter-rouge">${{ }}</code>) 
+because GitHub automatically evaluates the <code class="language-plaintext highlighter-rouge">if</code> conditional as an expression.</p>
+
+<p>For more information about if conditionals, see “<a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions/#jobsjob_idif">Workflow syntax for GitHub Actions</a>.”</p>
+
+<p>Example expression in an <code class="language-plaintext highlighter-rouge">if</code> conditional</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">steps</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Git checkout</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">github.event.check_suite.app.name == 'Netlify' &amp;&amp; github.event.check_suite.conclusion == 'success'</span>
+    <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@master</span>
+
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install Node</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">success()</span>
+    <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span>
+    <span class="na">with</span><span class="pi">:</span>
+      <span class="na">node-version</span><span class="pi">:</span> <span class="s">10.x</span>
+
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install npm dependencies</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">success()</span>
+    <span class="na">run</span><span class="pi">:</span> <span class="s">npm install</span>
+
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run Audit</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">success()</span>
+    <span class="na">uses</span><span class="pi">:</span> <span class="s">./.github/actions/run-audit</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">success()</code> returns <code class="language-plaintext highlighter-rouge">true</code> when none of the previous steps have failed or been canceled.</p>
+
+<p>See <a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#job-status-check-functions">Job status check functions</a></p>
+
+<h3 id="object-filters">Object Filters</h3>
+
+<p>You can use the <code class="language-plaintext highlighter-rouge">*</code> syntax to apply a filter and select matching items in a collection:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">apple</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">quantity</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">orange</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">quantity</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pear</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">quantity</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>The filter <code class="language-plaintext highlighter-rouge">fruits.*.name</code> returns the array <code class="language-plaintext highlighter-rouge">[ "apple", "orange", "pear" ]</code></p>
+
+<p>Here is another example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>contains(github.event.issue.labels.*.name, 'bug')
+</code></pre></div></div>
+
+<p>will be <code class="language-plaintext highlighter-rouge">true</code> if the attribute <code class="language-plaintext highlighter-rouge">name</code> of one of the labels of the issue that 
+has triggered the event is <code class="language-plaintext highlighter-rouge">'bug'</code></p>
+
+<h2 id="contexts">Contexts</h2>
+
+<p><strong>Contexts</strong> are a way to access information about workflow runs, runner environments, jobs, and steps. Contexts use the <strong>expression syntax</strong>. See <a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#contexts">Context and expression syntax for GitHub Actions</a> at the GitHub Actions Reference.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${{ "{{ &lt;context&gt;" }} }}
+</code></pre></div></div>
+
+<h3 id="matrix-context">Matrix Context</h3>
+
+<p>The <strong>matrix context</strong> enables access to the matrix parameters you configured for the current job.</p>
+
+<p>For example, if you configure a matrix build with the os and node versions, the matrix context object includes the os and node versions of the current job.</p>
+
+<h3 id="github-context">GitHub Context</h3>
+
+<p>The <strong>github context</strong>  contains information about</p>
+
+<ul>
+  <li>the workflow run and</li>
+  <li>the event that triggered the run.</li>
+</ul>
+
+<p>You can read most of the github context data in environment variables.</p>
+
+<p>for example, <code class="language-plaintext highlighter-rouge">github.ref</code>contains the branch or tag ref that triggered the workflow run</p>
+
+<h3 id="env-context">Env Context</h3>
+
+<p>The <strong>env context</strong> contains environment variables that have been set in a workflow, job, or step.</p>
+
+<p>This context changes for each step in a job. 
+You can access this context from any step in a job.</p>
+
+<h3 id="steps-context">Steps Context</h3>
+
+<p>The <strong>steps context</strong> contains information about the steps in the current job that have already run.</p>
+
+<p>Here is a more complex <a href="https://github.com/rusnasonov/vscode-hugo/blob/master/.github/workflows/build.yml">example using step information and functions</a></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">...</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">save vsix</span>
+      <span class="s">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@master</span>
+      <span class="s">with</span><span class="pi">:</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">${{ format('vscode-hugo-{0}-{1}.vsix', steps.build_package.outputs.version, github.sha) }}</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s">${{ format('vscode-hugo-{0}.vsix', steps.build_package.outputs.version) }}</span>
+</code></pre></div></div>
+
+<h3 id="the-runner-context">The Runner Context</h3>
+
+<p>The <strong>runner context</strong> contains information about the runner that is executing the current job.</p>
+
+<p>Examples are <code class="language-plaintext highlighter-rouge">runner.os</code> for the Operating System or <code class="language-plaintext highlighter-rouge">runner.temp</code> for the path of the temporary directory for the runner. This directory is guaranteed to be empty at the start of each job, even on self-hosted runners.</p>
+
+<p>See an <a href="/assets/temas/introduccion-a-javascript/action-files/debug-action-log#runner_context">example of runner context</a></p>
+
+<h3 id="the-strategy-context">The Strategy Context</h3>
+
+<p>The <strong>strategy context</strong> enables access to the configured strategy parameters and information about the current job.</p>
+
+<p>Here is a more complex <a href="https://github.community/t5/GitHub-Actions/Create-matrix-with-multiple-OS-and-env-for-each-one/td-p/38339">example</a> of strategy:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">strategy</span><span class="pi">:</span>
+      <span class="na">matrix</span><span class="pi">:</span>
+        <span class="na">include</span><span class="pi">:</span>
+          <span class="na">os</span><span class="pi">:</span> <span class="s">macos-latest</span>
+            <span class="s">env</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">TARGET</span><span class="pi">:</span> <span class="s">x86_64-apple-darwin</span>
+              <span class="pi">-</span> <span class="na">COMPILER</span><span class="pi">:</span> <span class="s">clang</span>
+              <span class="pi">-</span> <span class="na">LINKER</span><span class="pi">:</span> <span class="s">clang</span>
+
+          <span class="na">os</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+            <span class="s">env</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">TARGET</span><span class="pi">:</span> <span class="s">armv7-unknown-linux-musleabihf</span>
+              <span class="pi">-</span> <span class="na">COMPILER</span><span class="pi">:</span> <span class="s">arm-linux-gnueabihf-gcc-5</span>
+              <span class="pi">-</span> <span class="na">LINKER</span><span class="pi">:</span> <span class="s">gcc-5-arm-linux-gnueabihf</span>
+
+          <span class="na">os</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+            <span class="s">env</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">TARGET</span><span class="pi">:</span> <span class="s">x86_64-unknown-linux-musl</span>
+              <span class="pi">-</span> <span class="na">COMPILER</span><span class="pi">:</span> <span class="s">gcc</span>
+              <span class="pi">-</span> <span class="na">LINKER</span><span class="pi">:</span> <span class="s">gcc</span>
+</code></pre></div></div>
+
+<p>Strategy parameters include fail-fast, job-index, job-total, and max-parallel. <a href="/assets/temas/introduccion-a-javascript/action-files/debug-action-log#strategy_context">Here is the output for the</a>
+<a href="#debugging-context-to-the-log-file">Debugging Context to the log</a> example</p>
+
+<h3 id="the-secrets-context">The Secrets Context</h3>
+
+<p>The <strong>secrets context</strong> access to secrets set in a repository. See <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Creating and storing encrypted secrets</a>.</p>
+
+<h4 id="creating-a-secret">Creating a Secret</h4>
+
+<p>To create a secret:</p>
+
+<ul>
+  <li>
+    <p>On GitHub, navigate to the main page of the repository.</p>
+  </li>
+  <li>
+    <p>Under your repository name, click <strong>Settings</strong>.</p>
+
+    <p><img src="https://help.github.com/assets/images/help/repository/repo-actions-settings.png" alt="Repository settings button" /></p>
+  </li>
+  <li>
+    <p>In the left sidebar, click <strong>Secrets</strong>.</p>
+  </li>
+  <li>
+    <p>Type a name for your secret in the “Name” input box.</p>
+  </li>
+  <li>
+    <p>Type the value for your secret.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add secret</strong>.</p>
+  </li>
+</ul>
+
+<h4 id="using-a-secret">Using a Secret</h4>
+
+<p>To use a secret:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">steps</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Hello world action</span>
+    <span class="na">with</span><span class="pi">:</span> <span class="c1"># Set the secret as an input</span>
+      <span class="na">super_secret</span><span class="pi">:</span> <span class="s">${{ secrets.SuperSecret }}</span>
+    <span class="na">env</span><span class="pi">:</span> <span class="c1"># Or as an environment variable</span>
+      <span class="na">super_secret</span><span class="pi">:</span> <span class="s">${{ secrets.SuperSecret }}</span>
+</code></pre></div></div>
+
+<h4 id="example-a-github-action-to-publish-a-npm-package">Example: A GitHub Action to Publish a npm Package</h4>
+
+<p>For example, to write a github action to publish a npm package in the npm registry
+I surely need to give GitHub a token so that it can work on my name and publish 
+the package. Thus, the procedure will be:</p>
+
+<ol>
+  <li>
+    <p>You create a token for npm with <a href="https://docs.npmjs.com/creating-and-viewing-authentication-tokens">npm token create</a> with read and publish permits:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [~/.../lexer-generator(master)]$ npm token create
+ npm password:
+ ┌────────────────┬──────────────────────────────────────┐
+ │ token          │ blah-blah-blah-blah-blahblahblah     │
+ ├────────────────┼──────────────────────────────────────┤
+ │ cidr_whitelist │                                      │
+ ├────────────────┼──────────────────────────────────────┤
+ │ readonly       │ false                                │
+ ├────────────────┼──────────────────────────────────────┤
+ │ created        │ 2020-03-30T15:39:01.799Z             │
+ │ created        │ 2020-03-30T15:39:01.799Z             │
+ └────────────────┴──────────────────────────────────────┘
+</code></pre></div>    </div>
+  </li>
+  <li>Set the secret token in the secrets section of your repo with name for example <code class="language-plaintext highlighter-rouge">NPM_TOKEN</code></li>
+  <li>Make the secret accesible to the GitHub Action via the <code class="language-plaintext highlighter-rouge">secrets</code> context</li>
+</ol>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Node.js Package</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">release</span><span class="pi">:</span>
+    <span class="na">types</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">created</span><span class="pi">]</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="s">...</span>
+  <span class="na">publish-npm</span><span class="pi">:</span>
+    <span class="na">needs</span><span class="pi">:</span> <span class="s">build</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">node-version</span><span class="pi">:</span> <span class="m">12</span>
+          <span class="na">registry-url</span><span class="pi">:</span> <span class="s">https://registry.npmjs.org/</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm ci</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm publish --access public</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">NODE_AUTH_TOKEN</span><span class="pi">:</span> <span class="s">${{secrets.NPM_TOKEN }}</span>
+</code></pre></div></div>
+
+<p>This example stores the <code class="language-plaintext highlighter-rouge">NPM_TOKEN</code> secret in the <code class="language-plaintext highlighter-rouge">NODE_AUTH_TOKEN</code> environment variable.</p>
+
+<p>When the <code class="language-plaintext highlighter-rouge">setup-node</code> action creates an <code class="language-plaintext highlighter-rouge">.npmrc</code> file, it references the token from the <code class="language-plaintext highlighter-rouge">NODE_AUTH_TOKEN</code> environment variable.  See <a href="https://github.com/actions/setup-node/blob/main/README.md#usage">actions/setup-node/README</a></p>
+
+<p>In the example above, 
+the <code class="language-plaintext highlighter-rouge">setup-node</code> 
+action creates an <code class="language-plaintext highlighter-rouge">.npmrc</code> file on the <em>runner</em> with the following contents:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//registry.npmjs.org/:</span><span class="py">_authToken</span><span class="p">=</span><span class="s">${NODE_AUTH_TOKEN}</span>
+<span class="py">registry</span><span class="p">=</span><span class="s">https://registry.npmjs.org/</span>
+<span class="py">always-auth</span><span class="p">=</span><span class="s">true</span>
+</code></pre></div></div>
+
+<p>For more details, see also <a href="https://docs.github.com/en/actions/guides/publishing-nodejs-packages#publishing-packages-to-the-npm-registry">Publishing packages to the npm registry</a></p>
+
+<h3 id="exercise">Exercise</h3>
+
+<p>Extend the lab <a href="https://ull-esit-gradoii-pl.github.io/practicas/npm-module">npm-module</a> with an action inside the repo <code class="language-plaintext highlighter-rouge">testing-addlogging-aluXXX</code> to publish the npm package in npmjs after the production tests 
+run correctly in several operating systems (for example, <code class="language-plaintext highlighter-rouge">windows-latest</code>, <code class="language-plaintext highlighter-rouge">mac-os-latest</code>, <code class="language-plaintext highlighter-rouge">ubuntu-latest</code>) and different node versions</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span> <span class="c1"># jobs are made of steps</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="c1"># Define the OS our workflow should run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">${{ matrix.os }}</span>
+    <span class="na">strategy</span><span class="pi">:</span>
+      <span class="c1"># To test across multiple language versions</span>
+      <span class="na">matrix</span><span class="pi">:</span>
+        <span class="na">os</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">macos-latest</span><span class="pi">,</span> <span class="nv">ubuntu-latest</span><span class="pi">,</span> <span class="nv">windows-latest</span> <span class="pi">]</span>
+        <span class="na">node-version</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">12.x</span><span class="pi">,</span> <span class="nv">14.x</span><span class="pi">]</span>
+    <span class="s">...</span>
+  <span class="s">...</span>
+</code></pre></div></div>
+
+<p>Here is another example</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">${{ matrix.os }}</span>
+    <span class="na">strategy</span><span class="pi">:</span>
+      <span class="na">matrix</span><span class="pi">:</span> <span class="c1"># A job matrix can generate a maximum of 256 jobs per workflow run</span>
+        <span class="na">os</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">ubuntu-latest</span>
+          <span class="pi">-</span> <span class="s">macos-latest</span>
+          <span class="pi">-</span> <span class="s">windows-latest</span>
+        <span class="na">node_version</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="m">10</span>
+          <span class="pi">-</span> <span class="m">12</span>
+          <span class="pi">-</span> <span class="m">14</span>
+        <span class="na">architecture</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">x64</span>
+        <span class="c1"># an extra windows-x86 run:</span>
+        <span class="na">include</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="na">os</span><span class="pi">:</span> <span class="s">windows-2016</span>
+            <span class="na">node_version</span><span class="pi">:</span> <span class="m">12</span>
+            <span class="na">architecture</span><span class="pi">:</span> <span class="s">x86</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}</span> <span class="c1"># The name of the job displayed on GitHub.</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup node</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">node-version</span><span class="pi">:</span> <span class="s">${{ matrix.node_version }}</span>
+          <span class="na">architecture</span><span class="pi">:</span> <span class="s">${{ matrix.architecture }}</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm install</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm test</span>
+  <span class="s">...</span>
+</code></pre></div></div>
+
+<p>See the docs for <a href="https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix">jobs.&lt;job_id&gt;.strategy.matrix</a></p>
+
+<h3 id="debugging-context-to-the-log-file">Debugging Context to the log file</h3>
+
+<p>To inspect the information that is accessible in each context, you can use this workflow file example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../scapegoat(master)]$ cat .github/workflows/debug.yml
+</code></pre></div></div>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Debugging contexts</span>
+<span class="na">on</span><span class="pi">:</span> <span class="s">push</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">one</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-16.04</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Dump GitHub context</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">GITHUB_CONTEXT</span><span class="pi">:</span> <span class="s">${{ toJson(github) }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "$GITHUB_CONTEXT"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Dump job context</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">JOB_CONTEXT</span><span class="pi">:</span> <span class="s">${{ toJson(job) }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "$JOB_CONTEXT"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Dump steps context</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">STEPS_CONTEXT</span><span class="pi">:</span> <span class="s">${{ toJson(steps) }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "$STEPS_CONTEXT"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Dump runner context</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">RUNNER_CONTEXT</span><span class="pi">:</span> <span class="s">${{ toJson(runner) }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "$RUNNER_CONTEXT"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Dump strategy context</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">STRATEGY_CONTEXT</span><span class="pi">:</span> <span class="s">${{ toJson(strategy) }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "$STRATEGY_CONTEXT"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Dump matrix context</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">MATRIX_CONTEXT</span><span class="pi">:</span> <span class="s">${{ toJson(matrix) }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "$MATRIX_CONTEXT"</span>
+</code></pre></div></div>
+
+<p>The  calls <code class="language-plaintext highlighter-rouge">toJSON(value)</code> return a pretty-print JSON representation of <code class="language-plaintext highlighter-rouge">value</code>. You can use this function to debug the information provided in contexts.</p>
+
+<p>Here is <a href="/assets/temas/introduccion-a-javascript/action-files/debug-action-log">an example of output</a> of the action above.</p>
+
+<h4 id="exercise-1">Exercise</h4>
+
+<p>Install and check the former workflow.
+Add another step to the former workflow to see the <code class="language-plaintext highlighter-rouge">SECRETS</code> context. What do you see?</p>
+
+<h2 id="github_token">GITHUB_TOKEN</h2>
+
+<p>GitHub automatically creates a <strong>GITHUB_TOKEN</strong> secret to use in your workflow. You can use the <code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code> to authenticate in a workflow run.</p>
+
+<p>When you enable GitHub Actions, GitHub installs a <a href="https://docs.github.com/es/github-ae@latest/developers/apps/getting-started-with-apps">GitHub App</a> on your repository.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code> secret is a GitHub App installation access token.</p>
+
+<p>You can use the installation access token to authenticate on behalf of the GitHub App installed on your repository.</p>
+
+<p><strong>The token’s permissions are limited to the repository that contains your workflow</strong>.</p>
+
+<p>Before each job begins:</p>
+
+<ol>
+  <li>GitHub fetches an installation access token for the job.</li>
+  <li>The token expires when the job is finished.</li>
+</ol>
+
+<p>For more see <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token">Authenticating with the GITHUB_TOKEN</a></p>
+
+<p>For example, when the repo contains and npm module and 
+we want to write a github action to publish the npm package in the GitHub Package Registry
+it is enough to use the <code class="language-plaintext highlighter-rouge">GITHUB_TOKEN</code>. There is no need <a href="#creating-a-secret">to create a new secret</a></p>
+
+<p>Thus, this is enough to do the job:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">steps</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+<span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v2</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">node-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">14.x'</span>
+    <span class="na">registry-url</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://registry.npmjs.org'</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm install</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm publish</span>
+  <span class="na">env</span><span class="pi">:</span>
+    <span class="na">NODE_AUTH_TOKEN</span><span class="pi">:</span> <span class="s">${{ secrets.NPN_TOKEN }}</span>
+<span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-node@v2</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">registry-url</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://npm.pkg.github.com'</span>
+<span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">npm publish</span>
+  <span class="na">env</span><span class="pi">:</span>
+    <span class="na">NODE_AUTH_TOKEN</span><span class="pi">:</span> <span class="s">${{ secrets.GITHUB_TOKEN }}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">setup-node</code> action creates an <code class="language-plaintext highlighter-rouge">.npmrc</code> file on the <em>runner</em>.</p>
+
+<p>When you use the <code class="language-plaintext highlighter-rouge">scope</code> input to the <code class="language-plaintext highlighter-rouge">setup-node</code> action, the <code class="language-plaintext highlighter-rouge">.npmrc</code> file includes the <code class="language-plaintext highlighter-rouge">scope</code> prefix.</p>
+
+<p>By default, the <code class="language-plaintext highlighter-rouge">setup-node</code> action sets the <code class="language-plaintext highlighter-rouge">scope</code> in the <code class="language-plaintext highlighter-rouge">.npmrc</code> file to the account that contains that workflow file.</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//npm.pkg.github.com/:</span><span class="py">_authToken</span><span class="p">=</span><span class="s">${NODE_AUTH_TOKEN}</span>
+<span class="err">@ULL-ESIT-PL-2021:</span><span class="py">registry</span><span class="p">=</span><span class="s">https://npm.pkg.github.com</span>
+<span class="py">always-auth</span><span class="p">=</span><span class="s">true</span>
+</code></pre></div></div>
+
+<p>See <a href="https://docs.github.com/en/actions/guides/publishing-nodejs-packages#publishing-packages-to-github-packages">Publishing packages to GitHub Packages</a></p>
+
+<h2 id="creating-a-packaged-javascript-action">Creating a Packaged JavaScript Action</h2>
+
+<ul>
+  <li><a href="creating-javascript-action">Writing a “Hello World!” JavaScript Action</a></li>
+</ul>
+
+<h2 id="running-manually-github-workflows-with-gh">Running Manually GitHub Workflows with gh</h2>
+
+<ul>
+  <li><a href="gh-workflows">Running Manually GitHub Workflows with gh</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="/assets/temas/introduccion-a-javascript/github-action-npm-publish">A quick demo showing how to use GitHub Actions to build, package, and publish Node.js modules to the NPM and GitHub package registries</a></li>
+  <li><a href="https://gabrieltanner.org/blog/an-introduction-to-github-actions">An Introduction to Github Actions</a></li>
+  <li><a href="/https://youtu.be/9O2sLm1Boxc">Using GitHub Actions</a> Youtube video explainig how to test and publish an npm module to both GH Registry and npm Registry</li>
+  <li><a href="https://github.blog/2019-10-01-new-workflow-editor-for-github-actions/">About the editor for GitHub Actions</a></li>
+  <li>Install <a href="https://github.com/Lona/vscode-github-actions">VSCode extension providing Github Actions YAML support</a></li>
+  <li>
+    <p><a href="https://devblogs.microsoft.com/visualstudio/getting-started-with-github-actions-in-visual-studio/">Getting Started with GitHub Actions in Visual Studio</a></p>
+  </li>
+  <li><a href="https://youtu.be/0ahRkhrOePo">Advanced GitHub Actions: workflows for production grade CI/CD - GitHub Universe 2019</a>
+    <ul>
+      <li>A short primer on advanced features,</li>
+      <li>How to deploy to GitHub Packages,</li>
+      <li>Auto-merge dependabot pull requests, and</li>
+      <li>Deploy a web service</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="videos-about-github-actions">Videos about GitHub Actions</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=9O2sLm1Boxc">A quick demo showing how to use GitHub Actions to build, package, and publish Node.js modules to the NPM and GitHub package registries</a> by Brian Cross</li>
+  <li><a href="https://youtu.be/scEDHsr3APg">DevOps CI/CD Explained in 100 Seconds</a> Using GitHub Actions for CI. Youtube Video. Fireship</li>
+  <li><a href="https://youtu.be/uLu5g76tDWw">BxJS - (Custom) Github Actions for Node.js projects</a></li>
+  <li><a href="https://youtu.be/Tl4mbL45PKU">GitHub Actions: Open Source Workflow Automation by Bas Peters</a> YoutTube video</li>
+  <li><a href="https://youtu.be/rgxbeIvQj0Q">Introduction to GitHub Actions : my website build &amp; deployment</a></li>
+</ul>
+
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=GitHub+Actions%3A+An+Introduction%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgithub-actions.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=GitHub+Actions%3A+An+Introduction%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgithub-actions.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgithub-actions.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgithub-actions.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/github-actions.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

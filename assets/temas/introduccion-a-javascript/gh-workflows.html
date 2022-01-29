@@ -1,0 +1,662 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>gh workflows - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="gh workflows">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/gh-workflows.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/gh-workflows.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="gh workflows">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">gh workflows
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#gh-workflow-commands">gh workflow commands</a></li><li><a href="#gh-workflow-list">gh workflow list</a></li><li><a href="#gh-workflow-view">gh workflow view</a></li><li><a href="#gh-workflow-run">gh workflow run</a></li><li><a href="#running-manually-a-workflow">Running Manually a Workflow</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>A partir de la versión 1.9 tenemos el comando <code class="language-plaintext highlighter-rouge">gh workflow</code> para poder acceder a nuestros github workflows desde la terminal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✗ gh --version
+gh version 1.9.1 (2021-04-15)
+https://github.com/cli/cli/releases/tag/v1.9.1
+</code></pre></div></div>
+
+<h2 id="gh-workflow-commands">gh workflow commands</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>✗ gh help workflow
+List, view, and run workflows in GitHub Actions.
+
+USAGE
+  gh workflow &lt;command&gt; [flags]
+
+CORE COMMANDS
+  disable:    Disable a workflow
+  enable:     Enable a workflow
+  list:       List workflows
+  run:        Run a workflow by creating a workflow_dispatch event
+  view:       View the summary of a workflow
+
+FLAGS
+  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format
+
+INHERITED FLAGS
+  --help   Show help for command
+
+LEARN MORE
+  Use 'gh &lt;command&gt; &lt;subcommand&gt; --help' for more information about a command.
+  Read the manual at https://cli.github.com/manual
+</code></pre></div></div>
+
+<h2 id="gh-workflow-list">gh workflow list</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  please-Daniel-del-Castillo git:(main) ✗ gh workflow list
+Test  active  8116703
+</code></pre></div></div>
+
+<h2 id="gh-workflow-view">gh workflow view</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  please-Daniel-del-Castillo git:(main) ✗ gh workflow view
+? Select a workflow Test (test.yaml)
+Test - test.yaml
+ID: 8116703
+
+Total runs 21
+Recent runs
+✓  1.1.1                                                                Test  v1.1.1  push  755714052
+✓  1.1.1                                                                Test  main    push  755713933
+✓  Merge branch 'main' of github.com:ULL-ESIT-PL-2021/please-Daniel...  Test  main    push  755346331
+✓  Update README.md                                                     Test  main    push  755342257
+✓  Add a REPL                                                           Test  main    push  755328010
+
+To see more runs for this workflow, try: gh run list --workflow test.yaml
+To see the YAML for this workflow, try: gh workflow view test.yaml --yaml
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  please-Daniel-del-Castillo git:(main) ✗ gh workflow view --help
+View the summary of a workflow
+
+USAGE
+  gh workflow view [&lt;workflow-id&gt; | &lt;workflow-name&gt; | &lt;filename&gt;] [flags]
+
+FLAGS
+  -r, --ref string   The branch or tag name which contains the version of the workflow file you'd like to view
+  -w, --web          Open workflow in the browser
+  -y, --yaml         View the workflow yaml file
+
+INHERITED FLAGS
+      --help                     Show help for command
+  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format
+
+EXAMPLES
+  # Interactively select a workflow to view
+  $ gh workflow view
+  
+  # View a specific workflow
+  $ gh workflow view 0451
+
+LEARN MORE
+  Use 'gh &lt;command&gt; &lt;subcommand&gt; --help' for more information about a command.
+  Read the manual at https://cli.github.com/manual
+</code></pre></div></div>
+
+<h2 id="gh-workflow-run">gh workflow run</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ✗ gh help workflow run
+Create a workflow_dispatch event for a given workflow.
+
+This command will trigger GitHub Actions to run a given workflow file.  
+The given workflow file must support a workflow_dispatch 'on' 
+trigger in order to be run in this way.
+
+If the workflow file supports inputs, they can be specified in a few ways:
+
+- Interactively
+- via -f or -F flags
+- As JSON, via STDIN
+ 
+
+USAGE
+  gh workflow run [&lt;workflow-id&gt; | &lt;workflow-name&gt;] [flags]
+
+FLAGS
+  -F, --field key=value       Add a string parameter in key=value format, respecting @ syntax
+      --json                  Read workflow inputs as JSON via STDIN
+  -f, --raw-field key=value   Add a string parameter in key=value format
+  -r, --ref string            The branch or tag name which contains the version of the workflow file you'd like to run
+
+INHERITED FLAGS
+      --help                     Show help for command
+  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format
+
+EXAMPLES
+  # Have gh prompt you for what workflow you'd like to run and interactively collect inputs
+  $ gh workflow run
+  
+  # Run the workflow file 'triage.yml' at the remote's default branch
+  $ gh workflow run triage.yml
+  
+  # Run the workflow file 'triage.yml' at a specified ref
+  $ gh workflow run triage.yml --ref my-branch
+  
+  # Run the workflow file 'triage.yml' with command line inputs
+  $ gh workflow run triage.yml -f name=scully -f greeting=hello
+  
+  # Run the workflow file 'triage.yml' with JSON via standard input
+  $ echo '{"name":"scully", "greeting":"hello"}' | gh workflow run triage.yml --json
+
+LEARN MORE
+  Use 'gh &lt;command&gt; &lt;subcommand&gt; --help' for more information about a command.
+  Read the manual at https://cli.github.com/manual
+</code></pre></div></div>
+
+<h2 id="running-manually-a-workflow">Running Manually a Workflow</h2>
+
+<p>Set this workflow file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  use-hello-world-javascript-action git:(master) cat .github/workflows/manual.yml
+</code></pre></div></div>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Manually triggered workflow</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
+    <span class="na">inputs</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Person</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">greet'</span>
+        <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Mona</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Octocat'</span>
+      <span class="na">home</span><span class="pi">:</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">location'</span>
+        <span class="na">required</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">The</span><span class="nv"> </span><span class="s">Octoverse'</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">say_hello</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">echo "Hello $!"</span>
+        <span class="s">echo "- in $!"</span>
+</code></pre></div></div>
+
+<p>This example defines the <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">home</code> inputs and prints them using the <code class="language-plaintext highlighter-rouge">github.event.inputs.name</code> and <code class="language-plaintext highlighter-rouge">github.event.inputs.home</code> contexts. If a home isn’t provided, the default value <code class="language-plaintext highlighter-rouge">'The Octoverse'</code> is printed.</p>
+
+<p>You can use the GitHub API to trigger a webhook event called <code class="language-plaintext highlighter-rouge">repository_dispatch</code> when you want to trigger a workflow for activity that happens outside of GitHub.</p>
+
+<p>For more information, see “<a href="https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event">Create a repository dispatch event</a>.”</p>
+
+<p>To trigger the custom <code class="language-plaintext highlighter-rouge">repository_dispatch</code> webhook event, you must send a <code class="language-plaintext highlighter-rouge">POST</code> request to a GitHub API endpoint and provide an <code class="language-plaintext highlighter-rouge">event_type</code> name to describe the activity type. To trigger a workflow run, you must also configure your workflow to use the <code class="language-plaintext highlighter-rouge">repository_dispatch</code> event.</p>
+
+<p>Now, using <code class="language-plaintext highlighter-rouge">gh</code> we can run it manually:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  use-hello-world-javascript-action git:(master) gh workflow run manual.yml -f name="PL at ULL" -f home="La Laguna"
+✓ Created workflow_dispatch event for manual.yml at master
+
+To see runs for this workflow, try: gh run list --workflow=manual.yml
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  use-hello-world-javascript-action git:(master) gh run list --workflow=manual.yml
+✓  .github  Manually triggered workflow  master  workflow_dispatch  758223539
+
+For details on a run, try: gh run view &lt;run-id&gt;
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  use-hello-world-javascript-action git:(master) gh run view 758223539
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+✓ master Manually triggered workflow · 758227829
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+✓ say_hello in 1s (ID 2368935232)
+  ✓ Set up job
+  ✓ Run echo "Hello PL at ULL!"
+  ✓ Complete job
+
+✓ Run Manually triggered workflow (758227829) completed with 'success'
+</code></pre></div></div>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=gh+workflows%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh-workflows.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=gh+workflows%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh-workflows.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh-workflows.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgh-workflows.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/gh-workflows.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

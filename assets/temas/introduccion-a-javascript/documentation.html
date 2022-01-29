@@ -1,0 +1,674 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Documenting  JavaScript Programs - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Documenting  JavaScript Programs">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/documentation.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/documentation.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Documenting  JavaScript Programs">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Documenting  JavaScript Programs
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#references">References</a><ul><li><a href="#documentaciónjs">Documentación.js</a><ul><li><a href="#example-ull-esit-dsi-1617scapegoat">Example: ULL-ESIT-DSI-1617/scapegoat</a></li></ul></li><li><a href="#jsdoc">JSDoc</a></li><li><a href="#docco">Docco</a></li></ul></li><li><a href="#how-to-make-man-pages">How to Make Man pages</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><a href="https://github.com/documentationjs/documentation/blob/HEAD/docs/GETTING_STARTED.md">documentation</a> is a <strong>documentation generator</strong>. It’s used to generate documentation from comments <em>within your code</em>. <code class="language-plaintext highlighter-rouge">documentation</code> processes JavaScript comments
+in the <a href="https://jsdoc.app/about-getting-started.html">JSDoc format</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  scapegoat git:(master) npx documentation --version
+13.1.1
+</code></pre></div></div>
+
+<p>For the most part, the things you document will be functions or classes
+of JavaScript libraries. Let’s start with a function and how to document
+its essential parts.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cm">/**
+   * Escape special characters in the given string of html
+   * @param {string} input any html
+   * @returns {string} escaped HTML entities
+   */</span>
+  <span class="kd">function</span> <span class="nx">escape</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">html</span><span class="p">)</span> <span class="k">return</span> <span class="dl">''</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">html</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="nx">specialRe</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">reverse</span><span class="p">[</span><span class="nx">match</span><span class="p">]);</span>
+  <span class="p">},</span>
+</code></pre></div></div>
+
+<p>The comment before the <code class="language-plaintext highlighter-rouge">escape</code> function is a JSDoc comment. Note that it
+begins with <code class="language-plaintext highlighter-rouge">/**</code> instead of <code class="language-plaintext highlighter-rouge">/*</code>. JSDoc requires this.</p>
+
+<p>Let’s break down the earlier JSDoc example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Escape special characters in the given string of html
+ * ...
+</span></code></pre></div></div>
+
+<p>The first line of the comment is typically the <em>description</em>. This section
+says <em>what the code is or does</em>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">*</span> <span class="p">@</span><span class="nd">param</span> <span class="p">{</span><span class="nx">string</span><span class="p">}</span> <span class="nx">input</span> <span class="nx">any</span> <span class="nx">string</span>
+</code></pre></div></div>
+
+<p>On the second line:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@param</code> is <strong>a tag</strong>: This tag indicates that we’ll be documenting a function’s parameter.</li>
+  <li><code class="language-plaintext highlighter-rouge">{string}</code> is <strong>a type</strong>. It says that the input to this function is
+a JavaScript “string.” It could also say <code class="language-plaintext highlighter-rouge">{number}</code>,
+<code class="language-plaintext highlighter-rouge">{Object}</code>, <code class="language-plaintext highlighter-rouge">{Date}</code>, or any other JavaScript built-in type. And if you
+defined a custom class, like <code class="language-plaintext highlighter-rouge">FooClass</code>, you can use it as a type, too! Just say <code class="language-plaintext highlighter-rouge">{FooClass}</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">input any html</code> is the description of the input.</li>
+</ul>
+
+<p>On the  line <code class="language-plaintext highlighter-rouge">@returns {string}</code> we just have a description of the value <code class="language-plaintext highlighter-rouge">escaped HTML entities</code>.</p>
+
+<p>JSDoc lets you specify  everything about your code:</p>
+<ul>
+  <li>use <code class="language-plaintext highlighter-rouge">@name</code> to say what something is called,</li>
+  <li><code class="language-plaintext highlighter-rouge">@kind</code> for whether it’s a function
+or a class,</li>
+  <li><code class="language-plaintext highlighter-rouge">@param</code> for its parameters</li>
+  <li><code class="language-plaintext highlighter-rouge">documentation</code> automatically populates <code class="language-plaintext highlighter-rouge">@name</code>, <code class="language-plaintext highlighter-rouge">@kind</code>, and <code class="language-plaintext highlighter-rouge">@memberof</code> tags based on its reading of the code</li>
+</ul>
+
+<p>Install the <code class="language-plaintext highlighter-rouge">documentation</code> binary with <a href="https://www.npmjs.com/">npm</a>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> documentation
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">documentation</code> then installs a command called <code class="language-plaintext highlighter-rouge">documentation</code>. Run it with
+<code class="language-plaintext highlighter-rouge">--help</code> or <code class="language-plaintext highlighter-rouge">--help &lt;command&gt;</code> to get help.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  scapegoat git:(master) npx documentation help
+Usage:
+
+  # generate markdown docs for index.js and files it references
+  documentation build index.js -f md
+
+  # generate html docs for all files in src
+  documentation build src/** -f html -o docs
+
+  # document index.js, ignoring any files it requires or imports
+  documentation build index.js -f md --shallow
+
+  # build, serve, and live-update html docs for app.js
+  documentation serve app.js
+
+  # validate JSDoc syntax in util.js
+  documentation lint util.js
+
+  # update the API section of README.md with docs from index.js
+  documentation readme index.js --section=API
+
+  # build docs for all values exported by index.js
+  documentation build --document-exported index.js
+
+
+Comandos:
+  documentation serve [input..]   generate, update, and display HTML
+                                  documentation
+  documentation build [input..]   build documentation
+  documentation lint [input..]    check for common style and uniformity mistakes
+  documentation readme [input..]  inject documentation into your README.md
+
+Opciones:
+  --version  Muestra número de versión                                [booleano]
+  --help     Muestra ayuda                                            [booleano]
+
+Ejemplos:
+  documentation build foo.js -f md &gt; API.md
+  documentation readme index.js -s "API Docs" --github
+</code></pre></div></div>
+
+<p>Here is the help for the <code class="language-plaintext highlighter-rouge">build</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ documentation --help build
+
+Options:
+  --version                  Show version number                       [boolean]
+  --help                     Show help                                 [boolean]
+  --theme, -t                specify a theme: this must be a valid theme module
+  --project-name             project name. by default, inferred from
+                             package.json
+  --project-version          project version. by default, inferred from
+                             package.json
+  --project-description      project description. by default, inferred from
+                             package.json
+  --project-homepage         project homepage. by default, inferred from
+                             package.json
+  --favicon                  favicon used in html
+  --watch, -w                watch input files and rebuild documentation when
+                             they change                               [boolean]
+  --markdown-toc             include a table of contents in markdown output
+                                                       [boolean] [default: true]
+  --markdown-toc-max-depth   specifies the max depth of the table of contents in markdown output
+                                                           [number] [default: 6]
+  --shallow                  shallow mode turns off dependency resolution, only
+                             processing the specified files (or the main script
+                             specified in package.json)
+                                                      [boolean] [default: false]
+  --config, -c               configuration file. an array defining explicit sort
+                             order                                      [string]
+  --no-package, --np         dont find and use package.json for project-
+                             configuration option defaults
+                                                      [boolean] [default: false]
+  --external                 a string / glob match pattern that defines which
+                             external modules will be whitelisted and included
+                             in the generated documentation.     [default: null]
+  --require-extension, --re  additional extensions to include in require() and
+                             import's search algorithm.For instance, adding .es5
+                             would allow require("adder") to find "adder.es5"
+  --parse-extension, --pe    additional extensions to parse as source code.
+  --private, -p              generate documentation tagged as private
+                                                      [boolean] [default: false]
+  --access, -a               Include only comments with a given access level,
+                             out of private, protected, public, undefined. By
+                             default, public, protected, and undefined access
+                             levels are included
+                [array] [choices: "public", "private", "protected", "undefined"]
+  --github, -g               infer links to github in documentation    [boolean]
+  --infer-private            Infer private access based on the name. This is a
+                             regular expression that is used to match the name
+                                                                        [string]
+  --document-exported        Generate documentation for all exported bindings
+                             and members even if there is no JSDoc for them
+                                                      [boolean] [default: false]
+  --sort-order               The order to sort the documentation
+                                [choices: "source", "alpha"] [default: "source"]
+  --output, -o               output location. omit for stdout, otherwise is a
+                             filename for single-file outputs and a directory
+                             name for multi-file outputs like html
+                                                             [default: "stdout"]
+  --format, -f       [choices: "json", "md", "remark", "html"] [default: "json"]
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<h3 id="documentaciónjs">Documentación.js</h3>
+
+<ul>
+  <li>Véase <a href="http://documentation.js.org/">documentation.js</a>,</li>
+  <li><a href="https://github.com/documentationjs/documentation#user-guide">documentation.js: User’s Guide</a></li>
+  <li><a href="https://github.com/documentationjs/documentation/blob/master/docs/GETTING_STARTED.md">documentation.js: Getting Started</a></li>
+</ul>
+
+<h4 id="example-ull-esit-dsi-1617scapegoat">Example: ULL-ESIT-DSI-1617/scapegoat</h4>
+
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-DSI-1617/scapegoat">https://github.com/ULL-ESIT-DSI-1617/scapegoat</a></li>
+  <li><a href="https://ull-esit-dsi-1617.github.io/scapegoat/">https://ull-esit-dsi-1617.github.io/scapegoat/</a></li>
+</ul>
+
+<h3 id="jsdoc">JSDoc</h3>
+
+<ul>
+  <li><a href="https://www.npmjs.com/package/jsdoc">jsdoc npm package</a>,</li>
+  <li><a href="https://en.wikipedia.org/wiki/JSDoc">JSDoc format: Wikipedia</a></li>
+  <li><a href="http://2ality.com/2011/08/jsdoc-intro.html">An introduction to JSDoc</a></li>
+  <li><a href="http://speakingjs.com/es5/ch29.html">Book <em>Speaking JavaScript: An In-Depth Guide for Programmers</em> by Dr. Axel Rauschmayer: Chapter 29. JSDoc: Generating API Documentation</a></li>
+  <li><a href="http://usejsdoc.org/about-getting-started.html">Getting Started with JSDoc 3</a></li>
+</ul>
+
+<h3 id="docco">Docco</h3>
+
+<ul>
+  <li><a href="http://jashkenas.github.io/docco/">docco</a></li>
+</ul>
+
+<h2 id="how-to-make-man-pages">How to Make Man pages</h2>
+
+<ul>
+  <li><a href="https://spin.atomicobject.com/2015/05/06/man-pages-in-markdown-ronn/">Creating Man Pages in Markdown with Ronn</a></li>
+  <li><a href="https://github.com/rtomayko/ronn">rtomayko/ronn</a></li>
+  <li><a href="https://docs.npmjs.com/files/package.json#man">How to add man pages to your npm package</a></li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Documenting++JavaScript+Programs%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdocumentation.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Documenting++JavaScript+Programs%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdocumentation.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdocumentation.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdocumentation.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/documentation.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

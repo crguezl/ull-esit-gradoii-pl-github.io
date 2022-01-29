@@ -1,0 +1,689 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="PL">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/expresiones-regulares-y-analisis-lexico/practicas/p9-t2-lexer/README.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/expresiones-regulares-y-analisis-lexico/practicas/p9-t2-lexer/README.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#práctica-analizador-léxico-para-un-subconjunto-de-javascript-p9-t2-lexer">Práctica: Analizador Léxico para Un Subconjunto de JavaScript (p9-t2-lexer)</a><ul><li><a href="#introducción">Introducción</a></li><li><a href="#reescriba-el-analizador-léxico-usando-expresiones-regulares">Reescriba el Analizador Léxico Usando Expresiones Regulares</a></li><li><a href="#use-sticky-flags">Use Sticky Flags</a></li><li><a href="#admita-identificadores-y-números-unicode">Admita Identificadores y Números Unicode</a><ul><li><a href="#letras-y-números-con-xregexp">Letras y Números con XRegexp</a></li><li><a href="#el-módulo-ull-esit-pluninums">El Módulo @ull-esit-pl/uninums</a></li><li><a href="#el-módulo-ull-esit-pluninums-en-el-cliente">El Módulo @ull-esit-pl/uninums en el Cliente</a></li></ul></li><li><a href="#despliegue-la-aplicación-en-github">Despliegue la Aplicación en Github</a></li></ul></li><li><a href="#recursos">Recursos</a><ul><li><a href="#xregexp">XRegexp</a></li><li><a href="#módulo-ull-esit-pluninums">Módulo @ull-esit-pl/uninums</a></li><li><a href="#recursos-para-el-profesor">Recursos para el Profesor</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="práctica-analizador-léxico-para-un-subconjunto-de-javascript-p9-t2-lexer">Práctica: Analizador Léxico para Un Subconjunto de JavaScript (p9-t2-lexer)</h2>
+
+<h3 id="introducción">Introducción</h3>
+
+<p>Vamos a trabajar a partir de este repo de Douglas Crockford que contiene un analizador sintáctico de una versión antigua de JavaScript:</p>
+
+<ul>
+  <li><a href="https://github.com/douglascrockford/TDOP">https://github.com/douglascrockford/TDOP</a></li>
+  <li>Autor: <a href="http://www.crockford.com/">Douglas Crockford</a>, <a href="https://en.wikipedia.org/wiki/Douglas_Crockford">douglas@crockford.com en la Wikipedia</a></li>
+  <li>Fecha que figura en el repo: 2010-11-12</li>
+  <li>Vea una versión modificada en funcionamiento en <a href="http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/">http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/</a>.</li>
+</ul>
+
+<p>The goal of this lab is to rewrite the lexical analyzer using regular expressions.</p>
+
+<p>The file <a href="http://crguezl.github.io/ull-etsii-grado-pl-minijavascript/tdop.html">tdop.html</a> contains a description of Vaughn Pratt’s Top Down Operator
+Precedence, and describes the parser.</p>
+
+<p>As soon as it loads, the file <a href="https://github.com/douglascrockford/TDOP/blob/master/index.html"><code class="language-plaintext highlighter-rouge">index.html</code></a> parses the javascript code inside <a href="https://github.com/douglascrockford/TDOP/blob/master/parse.js"><code class="language-plaintext highlighter-rouge">parse.js</code></a> and displays the corresponding AST.
+Then you can play with other examples introducing them inside the text area.</p>
+
+<p>The page depends on <a href="https://github.com/douglascrockford/TDOP/blob/master/parse.js"><code class="language-plaintext highlighter-rouge">parse.js</code></a> and <a href="https://github.com/douglascrockford/TDOP/blob/master/tokens.js"><code class="language-plaintext highlighter-rouge">tokens.js</code></a>.</p>
+<ul>
+  <li>The file <a href="https://github.com/douglascrockford/TDOP/blob/master/parse.js"><code class="language-plaintext highlighter-rouge">parse.js</code></a> contains the Simplified JavaScript parser.</li>
+  <li><a href="https://github.com/douglascrockford/TDOP/blob/master/tokens.js">tokens.js</a> produces an array of token objects from a string.</li>
+</ul>
+
+<h3 id="reescriba-el-analizador-léxico-usando-expresiones-regulares">Reescriba el Analizador Léxico Usando Expresiones Regulares</h3>
+
+<p>Douglas Crockford escribió este analizador léxico sin usar expresiones
+regulares. Reescriba el analizador léxico en <a href="https://github.com/douglascrockford/TDOP/blob/master/tokens.js">tokens.js</a> usando expresiones regulares.</p>
+
+<h3 id="use-sticky-flags">Use Sticky Flags</h3>
+
+<p>Evite que se hagan copias de la cadena siendo procesada. Muévase
+dentro de la misma cadena usando <code class="language-plaintext highlighter-rouge">lastIndex</code>. Quizá usar la opción sticky le ayude.
+Tiene una solución que puede consultar en:</p>
+
+<ul>
+  <li><a href="https://github.com/crguezl/ull-etsii-grado-pl-minijavascript/blob/gh-pages/tokens.js">/crguezl/ull-etsii-grado-pl-minijavascript/tokens.js</a></li>
+</ul>
+
+<h3 id="admita-identificadores-y-números-unicode">Admita Identificadores y Números Unicode</h3>
+
+<p>Usando <a href="http://xregexp.com/">XRegExp</a> y <a href="https://www.npmjs.com/package/@ull-esit-pl/uninums">Módulo @ull-esit-pl/uninums</a> añada a su analizador léxico la capacidad de procesar identificadores y números en unicode.
+Por ejemplo, la entrada:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var αβ /* griego */ = ६६७ /* 667 en Devanagari */ * ६७ /* 67 en Devanagari */;
+</code></pre></div></div>
+
+<p>debería producir una salida parecida a esta:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "value": "=",
+    "arity": "binary",
+    "first": {
+        "value": "αβ",
+        "arity": "name"
+    },
+    "second": {
+        "value": "*",
+        "arity": "binary",
+        "first": {
+            "value": 667,
+            "arity": "literal"
+        },
+        "second": {
+            "value": 67,
+            "arity": "literal"
+        }
+    }
+</code></pre></div></div>
+
+<h4 id="letras-y-números-con-xregexp">Letras y Números con XRegexp</h4>
+
+<p>Recuerde como procesar letras y números Unicode usando XRegexp:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;</span> <span class="p">[</span><span class="nx">analizador</span><span class="o">-</span><span class="nx">lexico</span><span class="p">(</span><span class="nx">master</span><span class="p">)]</span><span class="nx">$</span> <span class="nx">node</span>
+  <span class="o">&gt;</span> <span class="nx">XRegExp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">xregexp</span><span class="dl">"</span><span class="p">)</span>
+  <span class="o">&gt;</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">XRegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">[_</span><span class="se">\\</span><span class="s1">pL][_</span><span class="se">\\</span><span class="s1">pL</span><span class="se">\\</span><span class="s1">pN]+</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// L: Letter, N: number</span>
+  <span class="o">&gt;</span> <span class="nx">id</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="dl">"</span><span class="s2">Русский६</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">[</span> <span class="dl">'</span><span class="s1">Русский६</span><span class="dl">'</span><span class="p">,</span> <span class="nx">index</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">input</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Русский६</span><span class="dl">'</span> <span class="p">]</span>
+  <span class="o">&gt;</span> <span class="nx">number</span> <span class="o">=</span> <span class="nx">XRegExp</span><span class="p">(</span><span class="dl">'</span><span class="se">\\</span><span class="s1">pN+</span><span class="dl">'</span><span class="p">,</span> <span class="dl">"</span><span class="s2">g</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// N: number</span>
+  <span class="o">&gt;</span> <span class="dl">"</span><span class="s2">६६७+६७*2</span><span class="dl">"</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">number</span><span class="p">)</span>
+  <span class="p">[</span> <span class="dl">'</span><span class="s1">६६७</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">६७</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">2</span><span class="dl">'</span> <span class="p">]</span>
+  <span class="o">&gt;</span> 
+</code></pre></div></div>
+
+<p>Aunque hoy en día podemos hacer algo parecido con las expresiones
+convencionales:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">id</span> <span class="o">=</span> <span class="sr">/</span><span class="se">\p</span><span class="sr">{Alphabetic}</span><span class="se">[\p</span><span class="sr">{Alphabetic}</span><span class="se">\p</span><span class="sr">{Number}</span><span class="se">]</span><span class="sr">*/ug</span>
+<span class="o">/</span><span class="err">\</span><span class="nx">p</span><span class="p">{</span><span class="nx">Alphabetic</span><span class="p">}[</span><span class="err">\</span><span class="nx">p</span><span class="p">{</span><span class="nx">Alphabetic</span><span class="p">}</span><span class="err">\</span><span class="nx">p</span><span class="p">{</span><span class="nb">Number</span><span class="p">}]</span><span class="o">*</span><span class="sr">/g</span><span class="err">u
+</span><span class="o">&gt;</span> <span class="dl">'</span><span class="s1">Русский६ 45 ; ab2 ... αβ६६७ --</span><span class="dl">'</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="p">[</span> <span class="dl">'</span><span class="s1">Русский६</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ab2</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">αβ६६७</span><span class="dl">'</span> <span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="el-módulo-ull-esit-pluninums">El Módulo @ull-esit-pl/uninums</h4>
+
+<p>Para esta práctica escribí el módulo <a href="https://www.npmjs.com/package/@ull-esit-pl/uninums">@ull-esit-pl/uninums</a>, que les ayudará a obtener la representación interna de una cadena unicode que contenga un número:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">uninums</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@ull-esit-pl/uninums</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">{</span> <span class="nl">normalSpaces</span><span class="p">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">:</span> <span class="nx">normalSpaces</span><span class="p">],</span>
+  <span class="nx">normalDigits</span><span class="p">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">:</span> <span class="nx">normalDigits</span><span class="p">],</span>
+  <span class="nx">parseUniInt</span><span class="p">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">:</span> <span class="nx">parseUniInt</span><span class="p">],</span>
+  <span class="nx">parseUniFloat</span><span class="p">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">:</span> <span class="nx">parseUniFloat</span><span class="p">],</span>
+  <span class="nx">sortNumeric</span><span class="p">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">:</span> <span class="nx">sortNumeric</span><span class="p">]</span> <span class="p">}</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">parseUniInt</span><span class="p">(</span><span class="dl">'</span><span class="s1">६.६</span><span class="dl">'</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">parseUniFloat</span><span class="p">(</span><span class="dl">'</span><span class="s1">६.६</span><span class="dl">'</span><span class="p">)</span>
+<span class="mf">6.6</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">parseUniFloat</span><span class="p">(</span><span class="dl">'</span><span class="s1">६.६e६</span><span class="dl">'</span><span class="p">)</span>
+<span class="mi">6600000</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">sortNumeric</span><span class="p">([</span><span class="dl">'</span><span class="s1">٣ dogs</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">١٠ cats</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">٢ mice</span><span class="dl">'</span><span class="p">])</span> 
+<span class="p">[</span> <span class="dl">'</span><span class="s1">٢ mice</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">٣ dogs</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">١٠ cats</span><span class="dl">'</span> <span class="p">]</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">normalDigits</span><span class="p">(</span><span class="dl">'</span><span class="s1">٢ mice</span><span class="dl">'</span><span class="p">)</span>
+<span class="dl">'</span><span class="s1">2 mice</span><span class="dl">'</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">normalDigits</span><span class="p">(</span><span class="dl">'</span><span class="s1">٣ dog</span><span class="dl">'</span><span class="p">)</span>
+<span class="dl">'</span><span class="s1">3 dog</span><span class="dl">'</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">normalDigits</span><span class="p">(</span><span class="dl">'</span><span class="s1">١٠ cats</span><span class="dl">'</span><span class="p">)</span>
+<span class="dl">'</span><span class="s1">10 cats</span><span class="dl">'</span>
+<span class="o">&gt;</span> <span class="nx">uninums</span><span class="p">.</span><span class="nx">normalDigits</span><span class="p">(</span><span class="dl">'</span><span class="s1">٠۴६</span><span class="dl">'</span><span class="p">)</span>
+<span class="dl">'</span><span class="s1">046</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<h4 id="el-módulo-ull-esit-pluninums-en-el-cliente">El Módulo @ull-esit-pl/uninums en el Cliente</h4>
+
+<p>Dado que <a href="https://www.npmjs.com/package/@ull-esit-pl/uninums">Módulo @ull-esit-pl/uninums</a> se va a usar en el cliente necesitamos una versión para el mismo. Una vez instalado, use el fichero <code class="language-plaintext highlighter-rouge">node_modules/\@ull-esit-pl/uninums/uninums-web.js</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../analizador-lexico-para-js-carlos-dominguez(reto)]$ ls -l node_modules/\@ull-esit-pl/uninums/
+total 56
+-rw-r--r--  1 casiano  staff  4101  4 mar 09:50 README.md
+-rw-r--r--  1 casiano  staff  1648  4 mar 09:50 package.json
+-rw-r--r--  1 casiano  staff  1571  4 mar 09:50 test.html
+-rw-r--r--  1 casiano  staff  3696  4 mar 09:50 uninums-web.js
+-rw-r--r--  1 casiano  staff  3641  4 mar 09:50 uninums.js
+-rw-r--r--  1 casiano  staff  2903  4 mar 09:50 uninums.min.js
+</code></pre></div></div>
+
+<ul>
+  <li>Use este fichero en el cliente: <a href="uninums.js">uninums.js</a></li>
+</ul>
+
+<h3 id="despliegue-la-aplicación-en-github">Despliegue la Aplicación en Github</h3>
+
+<p>Despliegue la aplicación y el informe en GitHub. Use la rama <code class="language-plaintext highlighter-rouge">master</code>
+para simplificar el despliegue.</p>
+
+<h2 id="recursos">Recursos</h2>
+
+<h3 id="xregexp">XRegexp</h3>
+
+<ul>
+  <li><a href="http://xregexp.com/">XRegexp</a></li>
+  <li><a href="https://github.com/slevithan/xregexp">XRegexp en GitHub</a></li>
+  <li>Cuando se quiere usar XRegexp en el browser se debe cargar el fichero <a href="https://unpkg.com/xregexp/xregexp-all.js">xregexp-all.js</a></li>
+  <li>
+    <p>El fichero <a href="https://unpkg.com/xregexp/xregexp-all.js">xregexp-all.js</a> también viene con la distribución <code class="language-plaintext highlighter-rouge">npm</code>:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls -l node_modules/xregexp/
+total 568
+-rw-r--r--  1 casiano  staff    1106 26 oct  1985 LICENSE
+-rw-r--r--  1 casiano  staff    9861 26 oct  1985 README.md
+drwxr-xr-x  5 casiano  staff     160  4 mar 09:33 lib
+-rw-r--r--  1 casiano  staff    2759  4 mar 09:33 package.json
+drwxr-xr-x  5 casiano  staff     160  4 mar 09:33 src
+drwxr-xr-x  3 casiano  staff      96  4 mar 09:33 tools
+-rw-r--r--  1 casiano  staff  269593 26 oct  1985 xregexp-all.js ☜
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example">Repositorio con ejemplos de uso de XRegExp</a>
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/xregexp-example/blob/gh-pages/unicode.js">Ejemplos de extensiones de XRegExp para Unicode</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="módulo-ull-esit-pluninums">Módulo @ull-esit-pl/uninums</h3>
+
+<ul>
+  <li><a href="https://www.npmjs.com/package/@ull-esit-pl/uninums">Módulo @ull-esit-pl/uninums</a></li>
+</ul>
+
+<h3 id="recursos-para-el-profesor">Recursos para el Profesor</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>~/srcPLgrado/lexical_analysis_top_down_operator_precedence<span class="o">(</span>gh-pages<span class="o">)]</span><span class="nv">$ </span><span class="nb">pwd</span> <span class="nt">-P</span>
+/Users/casiano/local/src/javascript/PLgrado/lexical_analysis_top_down_operator_precedence
+<span class="o">[</span>~/campus-virtual/1819/pl1819/introduccion/tema2-expresiones-regulares-y-analisis-lexico/practicas/p4-t2-lexer/pl1718-solutions<span class="o">(</span>master<span class="o">)]</span><span class="nv">$ </span><span class="nb">pwd</span> <span class="nt">-P</span>
+/Users/casiano/local/academica/centros/ETSII/GRADO/PL/campus-virtual/tema2-regexp-y-lexico/practica-analisis-lexico-tdop/solutions
+
+</code></pre></div></div>
+<ul>
+  <li>sol-david dibad
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-PL-1819/p4-t2-lexer-Dibad">sol-davafons</a></li>
+    </ul>
+  </li>
+  <li>sol-cas
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-PL-1819/analizador-lexico-para-js">sol-cas</a></li>
+    </ul>
+  </li>
+  <li>sol-ai
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/authentication-angeligareta">sol-ai auth</a></li>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/analizador-lexico-para-js-angeligareta">sol-angeli</a></li>
+    </ul>
+  </li>
+  <li>sol-carlos
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/alu0100966589-AuthModule">sol-ca-auth</a></li>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/analizador-lexico-para-js-alu0100966589">sol-ca</a></li>
+    </ul>
+  </li>
+  <li>sol-daute
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/auth-alu0100973914">sol-da-auth</a></li>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/analizador-lexico-para-js-alu0100973914">sol-da</a></li>
+    </ul>
+  </li>
+  <li>sol-cristian
+    <ul>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/analizador-lexico-para-js-alu0100945850">sol-cri</a></li>
+      <li><a href="https://github.com/ULL-ESIT-PL-1718/auth-alu0100945850">sol-cri-auth</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fexpresiones-regulares-y-analisis-lexico%2Fpracticas%2Fp9-t2-lexer%2FREADME.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fexpresiones-regulares-y-analisis-lexico%2Fpracticas%2Fp9-t2-lexer%2FREADME.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fexpresiones-regulares-y-analisis-lexico%2Fpracticas%2Fp9-t2-lexer%2FREADME.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fexpresiones-regulares-y-analisis-lexico%2Fpracticas%2Fp9-t2-lexer%2FREADME.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/expresiones-regulares-y-analisis-lexico/practicas/p9-t2-lexer/README.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

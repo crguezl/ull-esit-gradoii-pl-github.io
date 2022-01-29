@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2022-01-29T14:43:47+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">PL</title><subtitle>Itinerario de Computación. 2º cuatrimestre</subtitle><author><name> Casiano Rodríguez León</name></author><entry><title type="html">IAAS</title><link href="http://0.0.0.0:4000/practicas/iaas" rel="alternate" type="text/html" title="IAAS" /><published>2022-02-14T04:00:00+00:00</published><updated>2022-02-14T04:00:00+00:00</updated><id>http://0.0.0.0:4000/practicas/iaas</id><content type="html" xml:base="http://0.0.0.0:4000/practicas/iaas">&lt;h1 id=&quot;descripción-de-la-práctica-iaas&quot;&gt;Descripción de la Práctica iaas&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Siguiendo las instrucciones en el  &lt;a href=&quot;https://github.com/SYTW/iaas-ull-es&quot;&gt;repositorio SYTW/iaas-ull-es&lt;/a&gt; despliegue un ejemplo como el que aparece en &lt;a href=&quot;https://github.com/crguezl/express-start&quot;&gt;crguezl/express-start&lt;/a&gt; en su máquina virtual del servicio &lt;a href=&quot;https://iaas.ull.es&quot;&gt;iaas.ull.es&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Puede encontrar un vídeo del profesor introduciendo el &lt;a href=&quot;https://youtu.be/qKHgbV0lYbA&quot;&gt;iaas.ull.es aquí&lt;/a&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://youtu.be/qKHgbV0lYbA&quot;&gt;&lt;img src=&quot;http://i3.ytimg.com/vi/qKHgbV0lYbA/hqdefault.jpg&quot; alt=&quot;iaas.ull.es&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;El vídeo es de 2018 y varias de las apps usadas han cambiado de versión pero la esencia de la metodología es la misma&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Añada en el &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;README.md&lt;/code&gt; un pequeño tutorial de como usar y desplegar una aplicación web en &lt;a href=&quot;https://iaas.ull.es&quot;&gt;iaas.ull.es&lt;/a&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;Haga capturas de pantalla que muestren que su máquina esta bien configurada y funcionando&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;La IP dinámica de su máquina virtual no debería cambiar si no la apaga. Publique la URL de despliegue en su máquina&lt;/li&gt;
+  &lt;li&gt;Prepare la máquina para poder trabajar:
+    &lt;ul&gt;
+      &lt;li&gt;Instale git si es necesario&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/es/v1/Empezando-Configurando-Git-por-primera-vez&quot;&gt;Configura git&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Procure que la rama actual aparezca en el prompt de la terminal.
+        &lt;ul&gt;
+          &lt;li&gt;Ejemplo para una bash. Pon en el fichero &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bash_profile&lt;/code&gt; o &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; estas líneas:&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; parse_git_branch() {
+   git branch 2&amp;gt; /dev/null | sed -e &apos;/^[^*]/d&apos; -e &apos;s/* \(.*\)/ (\1)/&apos;
+ }
+ export PS1=&quot;\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ &quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;También puede usar &lt;a href=&quot;https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh&quot;&gt;git prompt&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;Puede añadir algo como esto a su PS1: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PS1=&quot;\$(git branch 2&amp;gt;/dev/null | sed -n &apos;s/* \(.*\)/\1 /p&apos;)$ &quot;&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;Recuerde que si su prompt es muy largo siempre puede acortarlo con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROMPT_DIRTRIM=1&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases&quot;&gt;git aliases&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/cli/cli&quot;&gt;Instale GitHub CLI&lt;/a&gt; y aprenda a usarla
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://cli.github.com/manual/&quot;&gt;manual&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Opcionalmente puede instalar &lt;a href=&quot;http://linuxbrew.sh/&quot;&gt;linuxbrew&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Instale &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Instale nodeJS usando nvm&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://jshint.com/install/&quot;&gt;jshint&lt;/a&gt; y &lt;a href=&quot;https://coderwall.com/p/zfhquw/jshint-in-vim&quot;&gt;jshint on vim&lt;/a&gt; o JSLint o &lt;a href=&quot;https://www.slant.co/topics/2411/~best-javascript-linting-tools&quot;&gt;equivalente&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Instale &lt;a href=&quot;https://github.com/scrooloose/nerdtree&quot;&gt;NERDTree&lt;/a&gt; para vim&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Instale Express.js
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs&quot;&gt;Express Web Framework (Node.js/JavaScript)&lt;/a&gt; (Mozilla)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name> Casiano Rodríguez León</name></author><category term="practicas" /><summary type="html">Descripción de la Práctica iaas</summary></entry><entry><title type="html">GitPod and Visual Studio Code</title><link href="http://0.0.0.0:4000/practicas/visual-studio-code" rel="alternate" type="text/html" title="GitPod and Visual Studio Code" /><published>2022-02-14T03:00:00+00:00</published><updated>2022-02-14T03:00:00+00:00</updated><id>http://0.0.0.0:4000/practicas/visual-studio-code</id><content type="html" xml:base="http://0.0.0.0:4000/practicas/visual-studio-code">&lt;h1 id=&quot;descripción-de-la-práctica-vscode&quot;&gt;Descripción de la Práctica vscode&lt;/h1&gt;
+
+&lt;h2 id=&quot;objetivos&quot;&gt;Objetivos&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Estudie y configure GitPod para trabajar con GitHub&lt;/li&gt;
+  &lt;li&gt;Instale VSCode en su máquina&lt;/li&gt;
+  &lt;li&gt;Siga los tutoriales de VSCode&lt;/li&gt;
+  &lt;li&gt;Instale el plugin Remote SSH  y aprenda a usarlo&lt;/li&gt;
+  &lt;li&gt;Use Live Share para colaborar con un compañero&lt;/li&gt;
+  &lt;li&gt;Elabore un informe con la experiencia adquirida en el repositorio asignado&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;gitpod&quot;&gt;GitPod&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-javascript/gitpod&quot;&gt;Apuntes de GitPod&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;vscode&quot;&gt;VSCode&lt;/h2&gt;
+
+&lt;p&gt;Estudie la sección &lt;a href=&quot;/assets/temas/introduccion-a-javascript/vscode&quot;&gt;VSCode&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;collaboration-con-visual-studio-share&quot;&gt;Collaboration con Visual Studio Share&lt;/h3&gt;
+
+&lt;p&gt;Instale Visual Studio Live Share y pruébelo con un compañero&lt;/p&gt;
+
+&lt;h3 id=&quot;remote---ssh-editando-con-vscode-en-una-máquina-remota-via-ssh&quot;&gt;Remote - SSH: Editando con VSCode en una máquina remota via SSH&lt;/h3&gt;
+
+&lt;p&gt;Instale las extensiones Remote SSH y compruebe que funcionan con su máquina del iaas&lt;/p&gt;
+
+&lt;!--
+### Multi-Root Workspaces
+
+- [Multi-Root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces)
+
+### Using React in VSCode
+
+- [Using React in VSCode](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial)
+
+### Integrate with External Tools via Tasks
+
+- [Integrate with External Tools via Tasks](https://code.visualstudio.com/docs/editor/tasks)
+
+
+### Web Bookmarks
+
+- &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=alu0100997910.webbookmarks&quot; target=&quot;_blank&quot;&gt;MarketPlace: Web Bookmarks a VSCode Extension by Alejandro Gonzalez Alonso&lt;/a&gt; 
+- &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=alu0100997910.webbookmarks&quot; target=&quot;_blank&quot;&gt;GitHub Repo: Web Bookmarks a VSCode Extension by Alejandro Gonzalez Alonso&lt;/a&gt; 
+
+### Localización del Fichero de Configuración `settings.json`
+
+Depending on your platform, the user settings file is located here:
+
+- Windows %APPDATA%\Code\User\settings.json
+- macOS $HOME/Library/ApplicationSupport/Code/User/settings.json
+- Linux $HOME/.config/Code/User/settings.json
+- The workspace setting file is located under the .vscode folder in your root folder.
+--&gt;</content><author><name> Casiano Rodríguez León</name></author><category term="practicas" /><summary type="html">Descripción de la Práctica vscode</summary></entry><entry><title type="html">GitHub Project Board</title><link href="http://0.0.0.0:4000/practicas/github-project-board" rel="alternate" type="text/html" title="GitHub Project Board" /><published>2022-02-14T02:00:00+00:00</published><updated>2022-02-14T02:00:00+00:00</updated><id>http://0.0.0.0:4000/practicas/github-project-board</id><content type="html" xml:base="http://0.0.0.0:4000/practicas/github-project-board">&lt;h2 id=&quot;descripción-de-la-práctica-github-project-board&quot;&gt;Descripción de la Práctica github-project-board&lt;/h2&gt;
+
+&lt;p&gt;Para cada práctica/asignación se crea un tablero kanban (GitHub Project Automated Kanban) asociado al repo.&lt;/p&gt;
+
+&lt;p&gt;Cree además un project board automated kanban de organización para el seguimiento de sus prácticas durante el curso.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/github-project-board-example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Este project board &lt;strong&gt;se crea a nivel de organización&lt;/strong&gt; y no de repo.
+Añade una columna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revisados por el profesor&lt;/code&gt; a este board&lt;/p&gt;
+
+&lt;h2 id=&quot;metodología-de-trabajo-con-los-tableros&quot;&gt;Metodología de Trabajo con los Tableros&lt;/h2&gt;
+
+&lt;p&gt;En el board del estudiante  a nivel de organización sólo creamos &lt;strong&gt;una incidencia  por práctica&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dicha incidencia estará asociada al repo de la práctica.&lt;/p&gt;
+
+&lt;p&gt;La incidencia se moverá a la columna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;done&lt;/code&gt; cuando el alumno considere que está terminada. 
+En ese momento creamos una incidencia mencionando al profesor y comunicándole que hemos finalizado la tarea.&lt;/p&gt;
+
+&lt;p&gt;Además:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Para cada práctica se crea un tablero Kanban automático en el repo de la práctica&lt;/li&gt;
+  &lt;li&gt;En este tablero de repo se crean inicialmente en la columna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TODO&lt;/code&gt; tantas incidencias como requisitos tiene la práctica&lt;/li&gt;
+  &lt;li&gt;Cuando en la corrección el profesor comenta que el requisito  esta cumplido lo pasamos a la columna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revisados&lt;/code&gt;. Si el profesor indica que algo esta mal debe convertirse en una nueva incidencia que deberá ir a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TODO&lt;/code&gt;.  Cuando crea que la haya arreglado la mueve a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;done&lt;/code&gt; y creará una incidencia mencionando al profesor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/github/managing-your-work-on-github/about-project-boards&quot;&gt;GitHub Docs: About project boards&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name> Casiano Rodríguez León</name></author><category term="practicas" /><summary type="html">Descripción de la Práctica github-project-board</summary></entry><entry><title type="html">GitHub Campus Expert</title><link href="http://0.0.0.0:4000/practicas/github-campus-expert" rel="alternate" type="text/html" title="GitHub Campus Expert" /><published>2022-02-14T01:00:00+00:00</published><updated>2022-02-14T01:00:00+00:00</updated><id>http://0.0.0.0:4000/practicas/github-campus-expert</id><content type="html" xml:base="http://0.0.0.0:4000/practicas/github-campus-expert">&lt;h2 id=&quot;aceptación-de-la-práctica-github-campus-expert&quot;&gt;Aceptación de la Práctica github-campus-expert&lt;/h2&gt;
+
+&lt;p&gt;Esta práctica tiene por objetivo mejorar las competencias transversales y establecer nuestro workflow habitual.&lt;/p&gt;
+
+&lt;p&gt;La realización de lo que se pide respecto a los cursos es opcional pero &lt;strong&gt;la aceptación y el informe son obligatorios&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Al aceptar la asignación, si no se ha creado ya su equipo, se le pedirá que cree uno.&lt;br /&gt;
+Es un equipo individual.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deberá dar como nombre del equipo: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nombre-apellido1-apellido2-aluXXXX&lt;/code&gt;.
+    &lt;ul&gt;
+      &lt;li&gt;Sin acentos ni caracteres especiales. 
+Sustituya &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aluXXX&lt;/code&gt; por su usuario en la ULL.&lt;/li&gt;
+      &lt;li&gt;Use SnakeCase si su nombre es compuesto p.ej. “Ana María González de Pérez” es &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ana_maria-gonzalez-de_perez-alu010034789&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;Los equipos son de un sólo miembro.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tareas&quot;&gt;Tareas&lt;/h2&gt;
+
+&lt;p&gt;Estas son las tareas a realizar:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Rellene el cuestionario GitHub-Alu&lt;/li&gt;
+  &lt;li&gt;Hágase miembro de la comunidad Currents/G+ de PL (deberá estar autenticado con el gmail de la ULL)&lt;/li&gt;
+  &lt;li&gt;Cree un project board kanban automated asociado al repo de la asignación. Rellene la columna TODO con los requisitos de la práctica.
+    &lt;ul&gt;
+      &lt;li&gt;Véase tembién &lt;a href=&quot;https://docs.github.com/en/github/managing-your-work-on-github/about-project-boards&quot;&gt;GitHub Docs: About project boards&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Considere la posibilidad de &lt;a href=&quot;https://githubcampus.expert/training&quot;&gt;realizar el curso &lt;em&gt;Become a Campus Expert&lt;/em&gt;&lt;/a&gt; de GitHub. Si está cerrado puede subscríbirse a la lista y seguir el curso cuando se abra.&lt;/li&gt;
+  &lt;li&gt;Solicite su &lt;a href=&quot;https://education.github.com/pack&quot;&gt;Student Developer Pack&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Considere la posibilidad de &lt;a href=&quot;https://internships.github.com/&quot;&gt;solicitar una GitHub Internship&lt;/a&gt;. Si está cerrada puede subscríbirse para recibir las actualizaciones&lt;/li&gt;
+  &lt;li&gt;En todas las entregas de prácticas en el Campus de la asignatura deberá poner
+    &lt;ol&gt;
+      &lt;li&gt;El enlace al repo de entrega en GitHub&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;En todas las prácticas, siempre que ocupe menos de 500K, deberá adjuntar el repo en formato zip. En GH vaya a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;code&lt;/code&gt;y de ahí a:&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/images/saveaszip.png&quot; alt=&quot;saveaszip.png&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/github/managing-your-work-on-github/about-project-boards&quot;&gt;GitHub Docs: About project boards&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.twitch.tv/videos/833713562?collection=lrqXyFWFThau8w&quot;&gt;Students leading the way: Campus Experts - Juan Pablo Flores&lt;/a&gt; twitch video. De 08:00 a 13:25 se dan consejos sobre como rellenar la solicitud.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.twitch.tv/videos/833727589?collection=lrqXyFWFThau8w&quot;&gt;Teachers guiding teachers: Campus Advisors&lt;/a&gt; Arelia Jones&lt;/li&gt;
+&lt;/ul&gt;</content><author><name> Casiano Rodríguez León</name></author><category term="practicas" /><summary type="html">Aceptación de la Práctica github-campus-expert</summary></entry><entry><title type="html">Lunes 2022/02/14</title><link href="http://0.0.0.0:4000/clases/2022/02/14/leccion.html" rel="alternate" type="text/html" title="Lunes 2022/02/14" /><published>2022-02-14T00:00:00+00:00</published><updated>2022-02-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/clases/2022/02/14/leccion</id><content type="html" xml:base="http://0.0.0.0:4000/clases/2022/02/14/leccion.html">&lt;h2 id=&quot;introducción-a-la-asignatura-procesadores-de-lenguajes&quot;&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html&quot;&gt;Introducción a la Asignatura Procesadores de Lenguajes&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#horarios-calendario-académico-y-tutorías&quot;&gt;Horarios, Calendario académico y Tutorías&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#vías-de-comunicación&quot;&gt;Vías de Comunicación&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#chat-vs-hangouts&quot;&gt;Chat vs Hangouts&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#organización-github&quot;&gt;Organización GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#rellenar-cuestionario-para-identificar-la-relación-entre-el-usuario-github-y-el-usuario-ull&quot;&gt;Rellenar Cuestionario para identificar la Relación entre el usuario GitHub y el usuario ULL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#google-plus-comunidad-pl&quot;&gt;Google Plus: Comunidad PL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#práctica-opcional-github-campus-expert&quot;&gt;Práctica Opcional: GitHub Campus Expert&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#práctica-github-project-board&quot;&gt;Práctica: GitHub Project Board&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#práctica-visual-studio-code&quot;&gt;Práctica: Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#práctica-iaas&quot;&gt;Práctica: IAAS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#la-bibliografía&quot;&gt;La Bibliografía&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#evaluación&quot;&gt;Evaluación&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#normativa-de-evaluación&quot;&gt;Normativa de Evaluación&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#requisitos-para-participar-en-la-evaluación-continua&quot;&gt;Requisitos para participar en la Evaluación Continua&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#pruebas-objetivas&quot;&gt;Pruebas Objetivas&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#trabajos-y-proyectos-informes-y-valoración&quot;&gt;Trabajos y proyectos, Informes y Valoración&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#tfa&quot;&gt;TFA&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#cálculo-de-la-calificación&quot;&gt;Cálculo de la Calificación&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#alumnos-que-no-participan-en-la-evaluación-continua&quot;&gt;Alumnos que no participan en la Evaluación Continua&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente.html#referencias&quot;&gt;Referencias&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name> Casiano Rodríguez León</name></author><category term="clases" /><summary type="html">Introducción a la Asignatura Procesadores de Lenguajes</summary></entry><entry><title type="html">Introduccion a Procesadores de Lenguajes</title><link href="http://0.0.0.0:4000/temas/introduccion-a-pl" rel="alternate" type="text/html" title="Introduccion a Procesadores de Lenguajes" /><published>2022-02-14T00:00:00+00:00</published><updated>2022-02-14T00:00:00+00:00</updated><id>http://0.0.0.0:4000/temas/introduccion-a-pl</id><content type="html" xml:base="http://0.0.0.0:4000/temas/introduccion-a-pl">&lt;h2 id=&quot;organización-de-pl-y-primeros-pasos&quot;&gt;Organización de PL y Primeros Pasos&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/guia-docente&quot;&gt;Organización de PL y Primeros Pasos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-pl-about&quot;&gt;What is PL About?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/temas/introduccion-a-pl/what-is-pl-about&quot;&gt;What is PL About?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name> Casiano Rodríguez León</name></author><category term="temas" /><summary type="html">Guia Docente e Introducción a los Compiladores</summary></entry></feed>

@@ -1,0 +1,683 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>The Earley Algorithm Explained - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="The Earley Algorithm Explained">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/syntax-analysis/earley/algorithm.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/syntax-analysis/earley/algorithm.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="The Earley Algorithm Explained">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">The Earley Algorithm Explained
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#prediction">Prediction</a></li><li><a href="#scanning">Scanning</a></li><li><a href="#completion">Completion</a></li><li><a href="#acceptance">Acceptance</a></li><li><a href="#pseudocode">Pseudocode</a></li><li><a href="#example">Example</a></li><li><a href="#earley-parsing-explained">Earley Parsing Explained</a></li><li><a href="#toby-ho-on-the-earley-parsing-algorithm">Toby Ho on the Earley Parsing Algorithm</a></li><li><a href="#earley-parsing-by-natalie-parde">Earley Parsing by Natalie Parde</a></li><li><a href="#wikipedia">Wikipedia</a></li><li><a href="#optimizing-right-recursion">Optimizing Right Recursion</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Let be a grammar \(G = (\Sigma, V, P, Start)\) and \(x\)  an input string \(x = a_{1}a_{2} \ldots a_{n}\).</p>
+
+<p>A <strong>state</strong> is an element \((X \longrightarrow \alpha \bullet \beta, j)\) where 
+\(X \longrightarrow \alpha \beta \in P\) is a  production in the set of  grammar productions  \(P\), and 
+\(j \in \{0 \ldots n \}\) is a position in the input string \(x = a_{1}a_{2} \ldots a_{n}\).</p>
+
+<p>The set of <em>active states</em> when the  input prefix \(a_1 \ldots a_k\) is being analyzed is called \(S_k\).</p>
+
+<p>More precisely, \(S_k\) is the set of states \((X \longrightarrow \alpha \bullet \beta, j)\)  whose production rule \(X \longrightarrow \alpha \beta\) appears in a derivation from the \(Start\) symbol</p>
+
+\[Start \overset{*}{\Longrightarrow} a_{1}a_{2} \ldots a_{j-1}X\omega \underset{X \longrightarrow \alpha \beta}{\Longrightarrow } a_{1}a_{2} \ldots a_{j-1} \alpha \beta \omega 
+\overset{*}{\Longrightarrow} a_{1}a_{2} \ldots a_j \ldots a_{k} \beta \omega\]
+
+<p>Observe that it holds that \(\alpha \overset{*}{\Longrightarrow} a_{j} \ldots a_k\)</p>
+
+<p>and so the production \(X \longrightarrow \alpha \beta\) can  still be used for derivation at position \(k\).</p>
+
+<p>The parser is seeded with \(S_0\) consisting of only the top-level rule. The parser then repeatedly executes three operations:</p>
+
+<ol>
+  <li>prediction,</li>
+  <li>scanning, and</li>
+  <li>completion.</li>
+</ol>
+
+<p>These three operations are repeated until no new states can be added to the set \(S_k\)</p>
+
+<h2 id="prediction">Prediction</h2>
+
+<ol>
+  <li>\(\forall s = (X \longrightarrow \alpha \bullet Y \beta, j)  \in S_k\) (where <em>j</em> is the start of the substring), and \(Y \in V\) is in the set of non terminals</li>
+  <li>add states \((Y \longrightarrow \bullet \gamma, k)\) to \(S_k\) \(\forall Y \longrightarrow \gamma\) grammar productions having <em>Y</em> on the left hand side.</li>
+</ol>
+
+<p>Duplicate states are not added to the state set, only new ones.</p>
+
+<h2 id="scanning">Scanning</h2>
+
+<p>If \(a_{k} \in \Sigma\) is the next terminal in the input stream, then \(\forall s \in S_{k-1}\) of the form \(s = (X \longrightarrow \alpha \bullet a_{k} \beta, j)\) , add 
+\(s = (X \longrightarrow \alpha a_{k} \bullet \beta, j)\) to \(S_{k}\).</p>
+
+<h2 id="completion">Completion</h2>
+
+<p>\(\forall s \in S_{k}\)  of the form \(s = (Y \longrightarrow \gamma \bullet, j)\), 
+find all states in \(S_j\) of the form \((X \longrightarrow \alpha \bullet Y \beta, i)\) and add \((X \longrightarrow \alpha Y \bullet \beta, i)\) to \(S_k\).</p>
+
+<h2 id="acceptance">Acceptance</h2>
+
+<p>The algorithm accepts if an state with the form \((Start \longrightarrow \gamma \bullet, 0)\) ends up in \(S_n\), where \(Start\) is the start symbol of the grammar \(G\) and \(n\) is the input length.</p>
+
+<p>If there are several of these states it means the grammaris ambiguous.</p>
+
+<p>If there are none, the input is rejected.</p>
+
+<h2 id="pseudocode">Pseudocode</h2>
+
+<p>We augment the initial grammar with  the rule <code class="language-plaintext highlighter-rouge">γ → •S</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">EarleyParse</span><span class="p">(</span><span class="nx">words</span><span class="p">,</span> <span class="nx">grammar</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">words</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">S</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">for</span><span class="p">(</span><span class="nx">k</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">k</span> <span class="o">&lt;=</span> <span class="nx">words</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">S</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">S</span><span class="p">;</span>     
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">S</span> <span class="o">=</span> <span class="nx">init</span><span class="p">(</span><span class="nx">words</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nx">PREDICTOR</span><span class="p">((</span><span class="nx">A</span> <span class="err">→</span> <span class="nx">α</span><span class="err">•</span><span class="nx">Bβ</span><span class="p">,</span> <span class="nx">j</span><span class="p">),</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">grammar</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">grammar</span><span class="p">.</span><span class="nx">rules</span><span class="p">(</span><span class="nx">B</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">B</span> <span class="err">→</span> <span class="nx">γ</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">S</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="nx">add</span><span class="p">((</span><span class="nx">B</span> <span class="err">→</span> <span class="err">•</span><span class="nx">γ</span><span class="p">,</span> <span class="nx">k</span><span class="p">)))</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">SCANNER</span><span class="p">((</span><span class="nx">A</span> <span class="err">→</span> <span class="nx">α</span><span class="err">•</span><span class="nx">aβ</span><span class="p">,</span> <span class="nx">j</span><span class="p">),</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">words</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">words</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="nx">match</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">regexp</span><span class="p">))</span> <span class="nx">S</span><span class="p">[</span><span class="nx">k</span><span class="o">+</span><span class="mi">1</span><span class="p">].</span><span class="nx">add</span><span class="p">((</span><span class="nx">A</span> <span class="err">→</span> <span class="nx">αa</span><span class="err">•</span><span class="nx">β</span><span class="p">,</span> <span class="nx">j</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">COMPLETER</span><span class="p">((</span><span class="nx">B</span> <span class="err">→</span> <span class="nx">γ</span><span class="err">•</span><span class="p">,</span> <span class="nx">s</span><span class="p">),</span> <span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">S</span><span class="p">[</span><span class="nx">s</span><span class="p">].</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">A</span> <span class="err">→</span> <span class="nx">α</span><span class="err">•</span><span class="nx">Bβ</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">S</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="nx">add</span><span class="p">((</span><span class="nx">A</span> <span class="err">→</span> <span class="nx">αB</span><span class="err">•</span><span class="nx">β</span><span class="p">,</span> <span class="nx">j</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="nx">S</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">add</span><span class="p">((</span><span class="nx">γ</span> <span class="err">→</span> <span class="err">•</span><span class="nx">S</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="k">for</span><span class="p">(</span><span class="nx">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span> <span class="nx">k</span> <span class="o">&lt;=</span> <span class="nx">words</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">S</span><span class="p">[</span><span class="nx">k</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">state</span> <span class="o">=&gt;</span> <span class="p">{</span>  <span class="c1">// S[k] can expand during this loop</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">state</span><span class="p">.</span><span class="nx">isFinished</span><span class="p">())</span> 
+                <span class="k">if</span> <span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">NextElement</span><span class="p">()</span> <span class="k">in</span> <span class="nx">grammar</span><span class="p">.</span><span class="nx">NonTerminal</span><span class="p">)</span> 
+                    <span class="nx">PREDICTOR</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">grammar</span><span class="p">)</span>         <span class="c1">// non-terminal</span>
+                <span class="k">else</span>
+                    <span class="nx">SCANNER</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">words</span><span class="p">)</span>             <span class="c1">// terminal</span>
+            <span class="k">else</span> 
+                <span class="nx">COMPLETER</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">S</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="example">Example</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># https://en.wikipedia.org/wiki/Earley_parser#Example
+
+P -&gt; S
+
+S -&gt; S "+" M
+   | M
+
+M -&gt; M "*" T
+   | T
+
+T -&gt; "1"
+   | "2"
+   | "3"
+   | "4"
+</code></pre></div></div>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">➜  examples git:(main) ✗ nearleyc wikipedia.ne -o wikipedia.js 
+➜  examples git:(main) ✗ nearley-test wikipedia.js -i '2+3*4'
+Table length: 6
+Number of parses: 1
+Parse Charts
+Chart: 0
+0: {P →  ● S}, from: 0
+1: {S →  ● S "+" M}, from: 0
+2: {S →  ● M}, from: 0
+3: {M →  ● M "*" T}, from: 0
+4: {M →  ● T}, from: 0
+5: {T →  ● "1"}, from: 0
+6: {T →  ● "2"}, from: 0
+7: {T →  ● "3"}, from: 0
+8: {T →  ● "4"}, from: 0
+
+Chart: 1
+0: {T → "2" ● }, from: 0
+1: {M → T ● }, from: 0
+2: {M → M ● "*" T}, from: 0
+3: {S → M ● }, from: 0
+4: {S → S ● "+" M}, from: 0
+5: {P → S ● }, from: 0
+
+Chart: 2
+0: {S → S "+" ● M}, from: 0
+1: {M →  ● M "*" T}, from: 2
+2: {M →  ● T}, from: 2
+3: {T →  ● "1"}, from: 2
+4: {T →  ● "2"}, from: 2
+5: {T →  ● "3"}, from: 2
+6: {T →  ● "4"}, from: 2
+
+Chart: 3
+0: {T → "3" ● }, from: 2
+1: {M → T ● }, from: 2
+2: {M → M ● "*" T}, from: 2
+3: {S → S "+" M ● }, from: 0
+4: {S → S ● "+" M}, from: 0
+5: {P → S ● }, from: 0
+
+Chart: 4
+0: {M → M "*" ● T}, from: 2
+1: {T →  ● "1"}, from: 4
+2: {T →  ● "2"}, from: 4
+3: {T →  ● "3"}, from: 4
+4: {T →  ● "4"}, from: 4
+
+Chart: 5
+0: {T → "4" ● }, from: 4
+1: {M → M "*" T ● }, from: 2
+2: {M → M ● "*" T}, from: 2
+3: {S → S "+" M ● }, from: 0
+4: {S → S ● "+" M}, from: 0
+5: {P → S ● }, from: 0
+
+
+Parse results: 
+[
+  [
+    [ [ [ [ '2' ] ] ], '+', [ [ [ '3' ] ], '*', [ '4' ] ] ]
+  ]
+]
+</span></code></pre></div></div>
+
+<h2 id="earley-parsing-explained">Earley Parsing Explained</h2>
+
+<ul>
+  <li><a href="https://loup-vaillant.fr/tutorials/earley-parsing/">Earley Parsing Explained</a> by Loup</li>
+</ul>
+
+<h2 id="toby-ho-on-the-earley-parsing-algorithm">Toby Ho on the Earley Parsing Algorithm</h2>
+
+<!-- Courtesy of embedresponsively.com //-->
+
+<div class="responsive-video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/WNKw1tiskSM" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<h2 id="earley-parsing-by-natalie-parde">Earley Parsing by Natalie Parde</h2>
+
+<!-- Courtesy of embedresponsively.com //-->
+
+<div class="responsive-video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/1j6hB3O4hAM" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<h2 id="wikipedia">Wikipedia</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Earley_parser">Earley parser</a></li>
+</ul>
+
+<h2 id="optimizing-right-recursion">Optimizing Right Recursion</h2>
+
+<ul>
+  <li>
+    <p><a href="https://loup-vaillant.fr/tutorials/earley-parsing/right-recursion">Optimising Right Recursion</a> by Loup</p>
+  </li>
+  <li>
+    <p><a href="/assets/pdfs/joop-leo-parse-algorithm-optimization-for-right-recursion.pdf">Joop Leo’s optimizations for right-Recursion</a> original paper</p>
+  </li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=The+Earley+Algorithm+Explained%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fearley%2Falgorithm.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=The+Earley+Algorithm+Explained%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fearley%2Falgorithm.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fearley%2Falgorithm.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fearley%2Falgorithm.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/syntax-analysis/earley/algorithm.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,799 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Jekyll: Como preparar un informe de Prácticas usando GitHub Pages - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Jekyll: Como preparar un informe de Prácticas usando GitHub Pages">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/preparar-informe-de-practicas-con-ghpages.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/preparar-informe-de-practicas-con-ghpages.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Jekyll: Como preparar un informe de Prácticas usando GitHub Pages">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Jekyll: Como preparar un informe de Prácticas usando GitHub Pages
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#una-práctica-cualquiera">Una Práctica Cualquiera</a></li><li><a href="#generando-un-gemfile">Generando un Gemfile</a></li><li><a href="#bundle-config-path">bundle config path</a></li><li><a href="#gem-github-pages">Gem github-pages</a><ul><li><a href="#jekyll-is-already-installed">Jekyll is already installed</a></li><li><a href="#gemfile-with-github-pages">Gemfile with github-pages</a></li></ul></li><li><a href="#bundle-install">bundle install</a><ul><li><a href="#jekyll">Jekyll</a></li><li><a href="#themes">Themes</a></li></ul></li><li><a href="#adding-a-theme-to-our-website">Adding a Theme to our Website</a></li><li><a href="#build-the-site">Build the site</a></li><li><a href="#starting-a-file-server-on-the-_site-directory">Starting a file server on the _site directory</a></li><li><a href="#adding-variables-in-_configyml">Adding Variables in _config.yml</a><ul><li><a href="#using-the-variables">Using the Variables</a></li></ul></li><li><a href="#working-with-different-environments-url-and-baseurl-and-more">Working with different environments: url and baseurl and more</a></li><li><a href="#html-proofer">html-proofer</a><ul><li><a href="#references-for-htmlproofer">References for HTMLProofer</a></li></ul></li><li><a href="#references">References</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="una-práctica-cualquiera">Una Práctica Cualquiera</h2>
+
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-PL-1920/p1-t1-iaas-Jorge-Acevedo">Un repo cualquiera de una práctica</a></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../src/jekyll-learning]$ git clone git@github.com:ULL-ESIT-PL-1920/p1-t1-iaas-Jorge-Acevedo.git
+Cloning into 'p1-t1-iaas-Jorge-Acevedo'...
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (19/19), done.
+remote: Total 23 (delta 2), reused 9 (delta 2), pack-reused 0
+Receiving objects: 100% (23/23), 409.41 KiB | 1.46 MiB/s, done.
+Resolving deltas: 100% (2/2), done.
+[~/.../src/jekyll-learning]$ cd p1-t1-iaas-Jorge-Acevedo/
+[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ ls -la
+total 8
+drwxr-xr-x   5 casiano  staff   160 10 mar 08:24 .
+drwxr-xr-x   9 casiano  staff   288 10 mar 08:24 ..
+drwxr-xr-x  12 casiano  staff   384 10 mar 08:24 .git
+-rw-r--r--   1 casiano  staff  3555 10 mar 08:24 README.md
+drwxr-xr-x  11 casiano  staff   352 10 mar 08:24 img
+</code></pre></div></div>
+
+<h2 id="generando-un-gemfile">Generando un Gemfile</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ bundle init
+Writing new Gemfile to /Users/casiano/local/src/jekyll-learning/p1-t1-iaas-Jorge-Acevedo/Gemfile
+[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ ls -la
+total 16
+drwxr-xr-x   6 casiano  staff   192 10 mar 08:25 .
+drwxr-xr-x   9 casiano  staff   288 10 mar 08:24 ..
+drwxr-xr-x  12 casiano  staff   384 10 mar 08:24 .git
+-rw-r--r--   1 casiano  staff   146 10 mar 08:25 Gemfile
+-rw-r--r--   1 casiano  staff  3555 10 mar 08:24 README.md
+drwxr-xr-x  11 casiano  staff   352 10 mar 08:24 img
+[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ cat Gemfile
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$
+</code></pre></div></div>
+
+<h2 id="bundle-config-path">bundle config path</h2>
+
+<p>The location to install the specified gems to. This defaults to Rubygems’ setting. Bundler shares this location with Rubygems, <code class="language-plaintext highlighter-rouge">gem install ...</code> will have gem installed there, too. Therefore, gems installed without a <code class="language-plaintext highlighter-rouge">--path</code> … setting will show up by calling <code class="language-plaintext highlighter-rouge">gem list</code>. Accordingly, gems installed to other locations will not get listed.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ bundle config
+Settings are listed in order of priority. The top value will be used.
+local.sinatra
+Set for the current user (/Users/casiano/.bundle/config): "/Users/casiano/local/src/ruby/sinatra/sinatra-src"
+
+build.nokogiri
+Set for the current user (/Users/casiano/.bundle/config): "--use-system-libraries"
+
+path
+Set for the current user (/Users/casiano/.bundle/config): "vendor/bundle"
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle config path 'vendor/bundle'
+</code></pre></div></div>
+
+<h2 id="gem-github-pages">Gem github-pages</h2>
+
+<ul>
+  <li><a href="https://github.com/github/pages-gem">github-pages gem</a></li>
+</ul>
+
+<ol>
+  <li>Add the following to your project’s Gemfile:</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">gem</span> <span class="s1">'github-pages'</span><span class="p">,</span> <span class="ss">group: :jekyll_plugins</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Run <code class="language-plaintext highlighter-rouge">bundle install</code></li>
+</ol>
+
+<h3 id="jekyll-is-already-installed">Jekyll is already installed</h3>
+
+<p>You are not required to install Jekyll separately. Once the <code class="language-plaintext highlighter-rouge">github-pages</code> gem is installed, you can build your site using <code class="language-plaintext highlighter-rouge">jekyll build</code>, or preview your site using <code class="language-plaintext highlighter-rouge">jekyll serve</code>.</p>
+
+<ul>
+  <li>For more information about installing Jekyll locally, please see <a href="https://help.github.com/articles/using-jekyll-with-pages#installing-jekyll">the GitHub Help docs on the matter</a>.</li>
+</ul>
+
+<h3 id="gemfile-with-github-pages">Gemfile with github-pages</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ cat Gemfile
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
+gem 'github-pages', group: :jekyll_plugins
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://bundler.io/guides/groups.html">How to manage groups of gems</a></li>
+</ul>
+
+<h2 id="bundle-install">bundle install</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ bundle install
+Fetching gem metadata from https://rubygems.org/...........
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies....
+Fetching concurrent-ruby 1.1.6
+Installing concurrent-ruby 1.1.6
+...
+Installing github-pages 204
+Bundle complete! 1 Gemfile dependency, 85 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ ls -l
+total 16
+-rw-r--r--   1 casiano  staff   190 10 mar 08:36 Gemfile
+-rw-r--r--   1 casiano  staff  3555 10 mar 08:24 README.md
+drwxr-xr-x  11 casiano  staff   352 10 mar 08:24 img
+drwxr-xr-x   3 casiano  staff    96 10 mar 08:36 vendor
+[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ tree -L 2 vendor/
+vendor/
+└── bundle
+    ├── bin
+    ├── build_info
+    ├── bundler.lock
+    ├── cache
+    ├── doc
+    ├── extensions
+    ├── gems
+    └── specifications
+
+8 directories, 1 file
+[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$
+</code></pre></div></div>
+
+<h3 id="jekyll">Jekyll</h3>
+
+<p>Vemos que una versión de <code class="language-plaintext highlighter-rouge">jekyll</code> compatible con GitHub Pages (2020) ha sido instalada:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../jekyll-learning/p1-t1-iaas-Jorge-Acevedo(master)]$ ls -l vendor/bundle/bin/
+total 96
+-rwxr-xr-x  1 casiano  staff  562 10 mar 08:37 commonmarker
+-rwxr-xr-x  1 casiano  staff  526 10 mar 08:38 gemoji
+-rwxr-xr-x  1 casiano  staff  562 10 mar 08:39 github-pages
+-rwxr-xr-x  1 casiano  staff  526 10 mar 08:38 jekyll
+-rwxr-xr-x  1 casiano  staff  538 10 mar 08:38 kramdown
+-rwxr-xr-x  1 casiano  staff  526 10 mar 08:38 listen
+-rwxr-xr-x  1 casiano  staff  538 10 mar 08:39 nokogiri
+-rwxr-xr-x  1 casiano  staff  524 10 mar 08:38 rougify
+-rwxr-xr-x  1 casiano  staff  544 10 mar 08:38 safe_yaml
+-rwxr-xr-x  1 casiano  staff  514 10 mar 08:38 sass
+-rwxr-xr-x  1 casiano  staff  530 10 mar 08:38 sass-convert
+-rwxr-xr-x  1 casiano  staff  514 10 mar 08:38 scss
+</code></pre></div></div>
+
+<h3 id="themes">Themes</h3>
+
+<p>Se han instalado diversos temas/estilos</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ tree vendor/bundle/gems/ | grep jekyll-theme
+├── jekyll-theme-architect-0.1.1
+│   │   ├── jekyll-theme-architect.scss
+├── jekyll-theme-cayman-0.1.1
+│   │   ├── jekyll-theme-cayman.scss
+├── ...
+├── jekyll-theme-time-machine-0.1.1
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://pages.github.com/themes/">Github pages Supported themes</a>
+    <ul>
+      <li>Tema <a href="https://github.com/pages-themes/midnight">midnight</a></li>
+    </ul>
+  </li>
+  <li><a href="https://jekyllrb.com/docs/themes/">Jekyll Themes</a></li>
+</ul>
+
+<h2 id="adding-a-theme-to-our-website">Adding a Theme to our Website</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ cat _config.yml
+theme: jekyll-theme-midnight
+</code></pre></div></div>
+
+<h2 id="build-the-site">Build the site</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ bundle exec jekyll build
+Configuration file: /Users/casiano/local/src/jekyll-learning/p1-t1-iaas-Jorge-Acevedo/_config.yml
+Invalid theme folder: _includes
+Invalid theme folder: _includes
+            Source: /Users/casiano/local/src/jekyll-learning/p1-t1-iaas-Jorge-Acevedo
+       Destination: /Users/casiano/local/src/jekyll-learning/p1-t1-iaas-Jorge-Acevedo/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+   GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
+                    done in 0.908 seconds.
+ Auto-regeneration: disabled. Use --watch to enable.
+[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ tree _site
+_site
+├── README.md
+├── assets
+│   ├── css
+│   │   ├── ie.scss
+│   │   └── style.css
+│   ├── fonts
+│   │   ├── OpenSans-Bold-webfont.eot
+│   │   ├── ...
+│   │   └── OpenSans-SemiboldItalic-webfont.woff
+│   ├── images
+│   │   ├── bullet.png
+│   │   ├── hr.gif
+│   │   └── nav-bg.gif
+│   └── js
+│       └── respond.js
+├── img
+│   ├── figura1.png
+│   ├── ...
+│   └── figura9.png
+└── index.html
+
+6 directories, 49 files
+</code></pre></div></div>
+
+<h2 id="starting-a-file-server-on-the-_site-directory">Starting a file server on the <code class="language-plaintext highlighter-rouge">_site</code> directory</h2>
+
+<p>Observe que el server arrancado es un servidor de ficheros estático que nada tiene que ver con Jekyll:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ cd _site/
+[~/.../_site(master)]$ http-server
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8083
+  http://10.150.22.51:8083
+  http://10.213.3.51:8083
+Hit CTRL-C to stop the server
+</code></pre></div></div>
+
+<p><img src="/assets/images/jekyll-learning.png" alt="captura de pantalla con errores de imagenes" /></p>
+
+<h2 id="adding-variables-in-_configyml">Adding Variables in <code class="language-plaintext highlighter-rouge">_config.yml</code></h2>
+
+<ul>
+  <li><a href="https://jekyllrb.com/docs/variables/">Jekyll Variables</a></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ cat _config.yml
+title: Práctica de IAAS
+subtitle: 'Itinerario de Computación. Grado en Ingeniería Informática. ULL. Curso 2019/2020'
+description: '3º. 2º cuatrimestre. Itinerario de Computación. Grado en Ingeniería Informática. ULL'
+author: Jorge Acevedo
+theme: jekyll-theme-midnight
+</code></pre></div></div>
+
+<h3 id="using-the-variables">Using the Variables</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../p1-t1-iaas-Jorge-Acevedo(master)]$ head -n 3 README.md
+# {"name"=&gt;" Casiano Rodríguez León", "avatar"=&gt;"/assets/images/bio-photo.jpg", "home"=&gt;"https://crguezl.github.io", "bio"=&gt;nil, "location"=&gt;"San Cristóbal de La Laguna", "email"=&gt;nil, "links"=&gt;[{"label"=&gt;"Email", "icon"=&gt;"fas fa-fw fa-envelope-square"}, {"label"=&gt;"Website", "icon"=&gt;"fas fa-fw fa-link", "url"=&gt;"https://crguezl.github.io"}, {"label"=&gt;"Twitter", "icon"=&gt;"fab fa-fw fa-twitter-square"}, {"label"=&gt;"Facebook", "icon"=&gt;"fab fa-fw fa-facebook-square"}, {"label"=&gt;"GitHub", "icon"=&gt;"fab fa-fw fa-github"}, {"label"=&gt;"Instagram", "icon"=&gt;"fab fa-fw fa-instagram"}]}: p1-t1-iaas
+En este informe se desarrollará un resumen de los pasos seguidos para configurar la máquina del *iaas* que se me ha asignado para la asignatura de *Procesadores de lenguajes*.
+</code></pre></div></div>
+
+<p><img src="/assets/images/jekyll-learning-variables.png" alt="" /></p>
+
+<h2 id="working-with-different-environments-url-and-baseurl-and-more">Working with different environments: url and baseurl and more</h2>
+
+<p><a href="baseurl">Working with different environments: url and baseurl and more</a></p>
+
+<h2 id="html-proofer">html-proofer</h2>
+
+<p>HTMLProofer is a set of tests to validate your HTML output. These tests check if your image references are legitimate, if they have alt tags, if your internal links are working, and so on. It’s intended to be an all-in-one checker for your output.</p>
+
+<p>Add this line to your application’s Gemfile:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem 'html-proofer'
+</code></pre></div></div>
+
+<p>And then execute:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle install
+</code></pre></div></div>
+
+<p>Or install it yourself as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem install html-proofer
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/.../sytws1920/ull-mii-sytws-1920.github.io(master)]$ cat Rakefile 
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">desc</span> <span class="s2">"sytws: bundle exec jekyll serve --watch"</span>
+<span class="n">task</span> <span class="ss">:serve</span> <span class="k">do</span>
+  <span class="n">sh</span> <span class="s2">"bundle exec jekyll serve --future --watch --port 8080 --host 10.6.128.216"</span>
+<span class="k">end</span>
+
+<span class="o">...</span> <span class="c1"># more tasks</span>
+
+<span class="nb">require</span> <span class="s1">'html-proofer'</span>
+<span class="n">desc</span> <span class="s2">"test links in the build web site"</span>
+<span class="n">task</span> <span class="ss">:test</span> <span class="k">do</span>
+  <span class="n">sh</span> <span class="s2">"bundle exec jekyll build"</span>
+  <span class="n">options</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="ss">:assume_extension</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> 
+    <span class="ss">:disable_external</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> 
+    <span class="ss">:empty_alt_ignore</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+    <span class="ss">:file_ignore</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="sr">%r{categories}</span> <span class="p">]</span>
+  <span class="p">}</span>
+  <span class="no">HTMLProofer</span><span class="p">.</span><span class="nf">check_directory</span><span class="p">(</span><span class="s2">"./_site"</span><span class="p">,</span> <span class="n">options</span><span class="p">).</span><span class="nf">run</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="references-for-htmlproofer">References for HTMLProofer</h3>
+
+<ul>
+  <li><a href="https://github.com/gjtorikian/html-proofer">HTMLProofer</a></li>
+  <li><a href="https://github.com/gjtorikian/html-proofer/wiki/Using-HTMLProofer-From-Ruby-and-Travis">Using HTMLProofer From Ruby and Travis</a></li>
+  <li><a href="https://github.com/marketplace/actions/htmlproofer">GitHub Action HTMLProofer</a></li>
+  <li><a href="https://github.com/marketplace/actions/proof-html">GitHub Action Proof HTML</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="/assets/temas/introduccion-a-javascript/jekyll/">Jekyll</a></li>
+  <li><a href="https://jekyllrb.com/docs/">Jekyll docs</a></li>
+  <li><a href="https://jekyllrb.com/tutorials/using-jekyll-with-bundler/">Using Jekyll with Bundler</a></li>
+  <li><a href="https://pages.github.com/">GitHub Pages</a></li>
+  <li>El módulo npm <a href="https://www.npmjs.com/package/gh-pages">gh-pages</a> para simplificar el despliegue a GitHub: <code class="language-plaintext highlighter-rouge">gh-pages -d _site</code></li>
+  <li><a href="https://github.com/gjtorikian/html-proofer">HTMLProofer</a> para testear la salud de  tu website</li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Jekyll%3A+Como+preparar+un+informe+de+Pr%C3%A1cticas+usando+GitHub+Pages%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpreparar-informe-de-practicas-con-ghpages.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Jekyll%3A+Como+preparar+un+informe+de+Pr%C3%A1cticas+usando+GitHub+Pages%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpreparar-informe-de-practicas-con-ghpages.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpreparar-informe-de-practicas-con-ghpages.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fpreparar-informe-de-practicas-con-ghpages.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/preparar-informe-de-practicas-con-ghpages.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

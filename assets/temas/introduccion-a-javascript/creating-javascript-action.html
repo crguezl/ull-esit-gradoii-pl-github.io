@@ -1,0 +1,975 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Hello Actions World! - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Hello Actions World!">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/creating-javascript-action.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/creating-javascript-action.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Hello Actions World!">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Hello Actions World!
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#introduction">Introduction</a></li><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#create-an-action-metadata-file">Create an action metadata file</a></li><li><a href="#add-actions-toolkit-packages">Add actions toolkit packages</a></li><li><a href="#write-the-action-code">Write the action code</a></li><li><a href="#create-a-readme">Create a README</a></li><li><a href="#commit-tag-and-push-your-action-to-github">Commit, tag, and push your action to GitHub</a></li><li><a href="#testing-out-your-action-in-a-workflow">Testing out your action in a workflow</a></li><li><a href="#publishing-your-action-to-github-marketplace">Publishing your action to GitHub Marketplace</a></li><li><a href="#versioning">Versioning</a></li><li><a href="#running-manually-github-workflows-with-gh">Running Manually GitHub Workflows with gh</a></li><li><a href="#next-step">Next Steps on Learning GitHub Actions</a></li><li><a href="#learning-to-use-github-actions-at-github-learning-lab">Learning to use GitHub Actions at GitHub Learning Lab</a></li><li><a href="#references">References</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="introduction">Introduction</h2>
+
+<p>In this guide, you’ll learn about the basic components needed to create and use a 
+packaged JavaScript action.</p>
+
+<p>To focus this guide on the components needed to package the action,
+the functionality of the action’s code is minimal.</p>
+
+<p>The action prints</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello World
+</code></pre></div></div>
+
+<p>in the logs or</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello [who-to-greet]
+</code></pre></div></div>
+
+<p>if you provide a custom name.</p>
+
+<p>This guide uses the <a href="https://github.com/actions/toolkit">GitHub Actions Toolkit</a> Node.js module to speed up development.</p>
+
+<p>For more information, see the <a href="https://github.com/actions/toolkit">actions/toolkit</a> repository.</p>
+
+<p>To ensure your JavaScript actions are compatible with all GitHub-hosted runners (Ubuntu, Windows, and macOS), the packaged JavaScript code you write should be pure JavaScript and not rely on other binaries.</p>
+
+<p>JavaScript actions run directly on the runner and use binaries that already exist in the virtual environment.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Create a new empty repository on GitHub. You can choose any repository name or use <code class="language-plaintext highlighter-rouge">hello-world-javascript-action</code>. Then on your terminal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir hello-world-javascript-action
+$ cd hello-world-javascript-action/
+$ echo "# hello-world-javascript-action" &gt;&gt; README.md
+$ git init
+$ git add README.md
+$ git commit -m "first commit"
+$ git remote add origin git@github.com:ULL-ESIT-PL-1920/hello-world-javascript-action.git
+$ git push -u origin master
+</code></pre></div></div>
+
+<p>Create a <code class="language-plaintext highlighter-rouge">package.json</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../hello-world-javascript-action(master)]$ npm init -y
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello-world-javascript-action</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">repository</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">git+https://github.com/ULL-ESIT-PL-1920/hello-world-javascript-action.git</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Casiano Rodriguez-Leon &lt;casiano.rodriguez.leon@gmail.com&gt; (https://github.com/crguezl)</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">license</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ISC</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">bugs</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-PL-1920/hello-world-javascript-action/issues</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">homepage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://github.com/ULL-ESIT-PL-1920/hello-world-javascript-action#readme</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="create-an-action-metadata-file">Create an action metadata file</h2>
+
+<p>Create a new file <code class="language-plaintext highlighter-rouge">action.yml</code> in the <code class="language-plaintext highlighter-rouge">hello-world-javascript-action</code> directory with the following example code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../hello-world-javascript-action(master)]$ cat action.yml
+</code></pre></div></div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Hello</span><span class="nv"> </span><span class="s">World'</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Greet</span><span class="nv"> </span><span class="s">someone</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">record</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">time'</span>
+<span class="na">inputs</span><span class="pi">:</span>
+  <span class="na">who-to-greet</span><span class="pi">:</span>  <span class="c1"># id of input</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Who</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">greet'</span>
+    <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">World'</span>
+<span class="na">outputs</span><span class="pi">:</span>
+  <span class="na">time</span><span class="pi">:</span> <span class="c1"># id of output</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">The</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">we</span><span class="nv"> </span><span class="s">greeted</span><span class="nv"> </span><span class="s">you'</span>
+<span class="na">runs</span><span class="pi">:</span>
+  <span class="na">using</span><span class="pi">:</span> <span class="s1">'</span><span class="s">node12'</span>
+  <span class="na">main</span><span class="pi">:</span> <span class="s1">'</span><span class="s">index.js'</span>
+</code></pre></div></div>
+
+<p>This file defines</p>
+
+<ul>
+  <li>the <code class="language-plaintext highlighter-rouge">who-to-greet</code> input and</li>
+  <li><code class="language-plaintext highlighter-rouge">time</code> output.</li>
+</ul>
+
+<p>It also tells the action runner how to start: running <code class="language-plaintext highlighter-rouge">index.js</code>.</p>
+
+<h2 id="add-actions-toolkit-packages">Add actions toolkit packages</h2>
+
+<p>The actions toolkit is a collection of Node.js packages that allow you to quickly build JavaScript actions with more consistency.</p>
+
+<p>The toolkit <code class="language-plaintext highlighter-rouge">@actions/core</code> package provides an interface to</p>
+
+<ul>
+  <li>the workflow commands,</li>
+  <li>input and output variables,</li>
+  <li>exit statuses, and</li>
+  <li>debug messages.</li>
+</ul>
+
+<p>The toolkit also offers a <code class="language-plaintext highlighter-rouge">@actions/github</code> package that returns</p>
+<ul>
+  <li>an authenticated <strong>Octokit REST client</strong> and</li>
+  <li>access to GitHub Actions <strong>contexts</strong>.</li>
+</ul>
+
+<p>The toolkit offers more than the <strong>core</strong> and <strong>github</strong> packages.</p>
+
+<p>For more information, see the <a href="https://github.com/actions/toolkit" target="_blank">actions/toolkit</a> repository.</p>
+
+<p>At your terminal, install the actions toolkit core and github packages.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install @actions/core
+npm install @actions/github
+</code></pre></div></div>
+
+<p>Now you should see</p>
+
+<ol>
+  <li>a <code class="language-plaintext highlighter-rouge">node_modules</code> directory with the modules you just installed and</li>
+  <li>a <code class="language-plaintext highlighter-rouge">package-lock.json</code> file with the installed module dependencies and the versions of each installed module.</li>
+</ol>
+
+<h2 id="write-the-action-code">Write the action code</h2>
+
+<p>Add a new file called <code class="language-plaintext highlighter-rouge">index.js</code>, with the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../hello-world-javascript-action(master)]$ cat index.js
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@actions/core</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">github</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@actions/github</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="c1">// `who-to-greet` input defined in action metadata file</span>
+  <span class="kd">const</span> <span class="nx">nameToGreet</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">getInput</span><span class="p">(</span><span class="dl">'</span><span class="s1">who-to-greet</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello </span><span class="p">${</span><span class="nx">nameToGreet</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">time</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">toTimeString</span><span class="p">();</span>
+  <span class="nx">core</span><span class="p">.</span><span class="nx">setOutput</span><span class="p">(</span><span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">,</span> <span class="nx">time</span><span class="p">);</span>
+  <span class="c1">// Get the JSON webhook payload for the event that triggered the workflow</span>
+  <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">github</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`The event payload: </span><span class="p">${</span><span class="nx">payload</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">core</span><span class="p">.</span><span class="nx">setFailed</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This action uses the toolkit to get the <code class="language-plaintext highlighter-rouge">who-to-greet</code> input variable required in the action’s metadata file</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">nameToGreet</span> <span class="o">=</span> <span class="nx">core</span><span class="p">.</span><span class="nx">getInput</span><span class="p">(</span><span class="dl">'</span><span class="s1">who-to-greet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>and prints <code class="language-plaintext highlighter-rouge">Hello [who-to-greet]</code> in a debug message in the log.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello </span><span class="p">${</span><span class="nx">nameToGreet</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Next, the script gets the current time and <strong>sets it as an output variable</strong> that actions running later in a job can use.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">time</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">toTimeString</span><span class="p">();</span>
+<span class="nx">core</span><span class="p">.</span><span class="nx">setOutput</span><span class="p">(</span><span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">,</span> <span class="nx">time</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>GitHub Actions provide <strong>context</strong> information about the webhook event, Git refs, workflow, action, and the person who triggered the workflow:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> GITHUB_CONTEXT: {
+  ...
+  "event_name": "push",
+  "event": {
+       ...
+     "commits": [
+       ...
+    ],
+    ...
+    "organization": {
+      ...
+    },
+    "pusher": {
+      ...
+    },
+  ...
+}
+</code></pre></div></div>
+
+<p>To access the context information, you can use the <strong>github</strong> package. 
+The action you’ll write will print the webhook event payload the log.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">github</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`The event payload: </span><span class="p">${</span><span class="nx">payload</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>If an error is thrown in the above <code class="language-plaintext highlighter-rouge">index.js</code> example, <code class="language-plaintext highlighter-rouge">core.setFailed(error.message);</code> uses the actions toolkit <a href="https://github.com/actions/toolkit/tree/master/packages/core">@actions/core</a> package to log a message and set a failing exit code.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">core</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@actions/core</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">github</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@actions/github</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">core</span><span class="p">.</span><span class="nx">setFailed</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For more information, see “<a href="https://help.github.com/en/actions/building-actions/setting-exit-codes-for-actions">Setting exit codes for actions</a>.”</p>
+
+<h2 id="create-a-readme">Create a README</h2>
+
+<p>To let people know how to use your action, you can create a README file. A README is most helpful when you plan to share your action publicly, but is also a great way to remind you or your team how to use the action.</p>
+
+<p>In your <code class="language-plaintext highlighter-rouge">hello-world-javascript-action</code> directory, create a <code class="language-plaintext highlighter-rouge">README.md</code> file that specifies the following information:</p>
+
+<ol>
+  <li>A detailed description of what the action does.</li>
+  <li>Required input and output arguments.</li>
+  <li>Optional input and output arguments.</li>
+  <li>Secrets the action uses.</li>
+  <li>Environment variables the action uses.</li>
+  <li>An example of how to use your action in a workflow.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../hello-world-javascript-action(master)]$ cat README.md
+</code></pre></div></div>
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Hello world javascript action</span>
+
+This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+
+<span class="gu">## Inputs</span>
+
+<span class="gu">### `who-to-greet`</span>
+
+<span class="gs">**Required**</span> The name of the person to greet. Default <span class="sb">`"World"`</span>.
+
+<span class="gu">## Outputs</span>
+
+<span class="gu">### `time`</span>
+
+The time we greeted you.
+
+<span class="gu">## Example usage</span>
+
+uses: actions/hello-world-javascript-action@v1
+with:
+  who-to-greet: 'Mona the Octocat'
+</code></pre></div></div>
+
+<h2 id="commit-tag-and-push-your-action-to-github">Commit, tag, and push your action to GitHub</h2>
+
+<p>GitHub downloads each action run in a workflow during runtime and executes it as a complete package of code before you can use workflow commands like <code class="language-plaintext highlighter-rouge">run</code> to interact with the <em>runner</em> machine.</p>
+
+<p>This means <strong>you must include any package dependencies required to run the JavaScript code</strong>. You’ll need to check in the toolkit core and github packages to your action’s repository.</p>
+
+<p>From your terminal, commit</p>
+
+<ol>
+  <li>your <code class="language-plaintext highlighter-rouge">action.yml</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">index.js</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">node_modules</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">package.json</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">package-lock.json</code>, and</li>
+  <li><code class="language-plaintext highlighter-rouge">README.md</code> files.</li>
+</ol>
+
+<p>If you added a <code class="language-plaintext highlighter-rouge">.gitignore</code> file that lists <code class="language-plaintext highlighter-rouge">node_modules</code>, you’ll need to remove that line to commit the <code class="language-plaintext highlighter-rouge">node_modules</code> directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add action.yml index.js node_modules/* package.json package-lock.json README.md
+git commit -m "My first action is ready"
+</code></pre></div></div>
+
+<p>It’s best practice to also add a <code class="language-plaintext highlighter-rouge">version</code> tag for releases of your action.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag -a -m "My first action release" v1
+git push --follow-tags
+</code></pre></div></div>
+
+<p>For more information on versioning your action, see</p>
+
+<ul>
+  <li><a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-actions#versioning-your-action">About actions</a>.</li>
+  <li><a href="https://github.com/actions/toolkit/blob/master/docs/action-versioning.md">Versioning Actions</a></li>
+</ul>
+
+<p>As an alternative to checking in your <code class="language-plaintext highlighter-rouge">node_modules</code> directory you can use a tool called <a href="https://github.com/vercel/ncc">vercel/ncc</a> to compile your code and modules into one file used for distribution.</p>
+
+<ol>
+  <li>Install <a href="https://github.com/vercel/ncc">vercel/ncc</a> by running this command in your terminal: <code class="language-plaintext highlighter-rouge">npm i -g @zeit/ncc</code></li>
+  <li>Compile your <code class="language-plaintext highlighter-rouge">index.js</code> file. <code class="language-plaintext highlighter-rouge">ncc build index.js</code>
+You’ll see a new <code class="language-plaintext highlighter-rouge">dist/index.js</code> file with your code and the compiled modules.</li>
+  <li>Change the <code class="language-plaintext highlighter-rouge">main</code> keyword in your <code class="language-plaintext highlighter-rouge">action.yml</code> file to use the new <code class="language-plaintext highlighter-rouge">dist/index.js</code> file. main: <code class="language-plaintext highlighter-rouge">'dist/index.js'</code></li>
+  <li>If you already checked in your <code class="language-plaintext highlighter-rouge">node_modules</code> directory, remove it. <code class="language-plaintext highlighter-rouge">rm -rf node_modules/*</code></li>
+  <li>
+    <p>From your terminal, commit the updates to your <code class="language-plaintext highlighter-rouge">action.yml</code>, <code class="language-plaintext highlighter-rouge">dist/index.js</code>, and <code class="language-plaintext highlighter-rouge">node_modules</code> files.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git add action.yml dist/index.js node_modules/*
+ git commit -m "Use zeit/ncc"
+ git tag -a -m "My first action release" v1
+ git push --follow-tags
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="testing-out-your-action-in-a-workflow">Testing out your action in a workflow</h2>
+
+<p>Now you’re ready to test your action out in a workflow.</p>
+
+<p>When an action is in a private repository, the action can only be used in workflows in the same repository.</p>
+
+<p>Public actions can be used by workflows in any repository.</p>
+
+<p>Change the visibility of your action repo to public.</p>
+
+<p>Let us create  a new repo in GitHub and also set it in your machine:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote add origin git@github.com:ULL-ESIT-PL-1920/use-hello-world-javascript-action.git
+</code></pre></div></div>
+
+<p>The following workflow code uses the completed hello world action in the <code class="language-plaintext highlighter-rouge">ULL-ESIT-PL-1920/hello-world-javascript-action</code> repository.</p>
+
+<p>Copy the workflow code into a <code class="language-plaintext highlighter-rouge">.github/workflows/main.yml</code> file, but replace the <code class="language-plaintext highlighter-rouge">ULL-ESIT-PL-1920/hello-world-javascript-action</code> repository with the repository you created. You can also replace the <code class="language-plaintext highlighter-rouge">who-to-greet</code> input with your name.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat .github/workflows/main.yml
+</code></pre></div></div>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Using hello world</span>
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">hello_world_job</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">A job to say hello</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="c1"># To use this repository's private action, you must check out the repository</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Hello world action step</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ULL-ESIT-PL-1920/hello-world-javascript-action@v1</span>
+        <span class="na">id</span><span class="pi">:</span> <span class="s">hello</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">who-to-greet</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Procesadores</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Lenguajes</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">ULL'</span>
+      <span class="c1"># Use the output from the `hello` step</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Get the output time</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">echo "The time was ${{ steps.hello.outputs.time }}"</span>
+</code></pre></div></div>
+
+<p>Observe the <code class="language-plaintext highlighter-rouge">id</code> attribute in the <code class="language-plaintext highlighter-rouge">Hello world action step</code>.</p>
+
+<p>We use the <code class="language-plaintext highlighter-rouge">id</code> <code class="language-plaintext highlighter-rouge">hello</code> to refer to this step
+in the next step <code class="language-plaintext highlighter-rouge">Get the output time</code> and to refer to its <code class="language-plaintext highlighter-rouge">output</code> using 
+the expression <code class="language-plaintext highlighter-rouge">steps.hello.outputs</code>.</p>
+
+<p>Since in our <code class="language-plaintext highlighter-rouge">action.yml</code> file we set the name
+of the output to <code class="language-plaintext highlighter-rouge">time</code></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Hello</span><span class="nv"> </span><span class="s">World'</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Greet</span><span class="nv"> </span><span class="s">someone</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">record</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">time'</span>
+<span class="na">inputs</span><span class="pi">:</span>
+  <span class="na">who-to-greet</span><span class="pi">:</span>  <span class="c1"># id of input</span>
+    <span class="s">...</span>
+<span class="na">outputs</span><span class="pi">:</span>
+  <span class="na">time</span><span class="pi">:</span> <span class="c1"># id of output</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">The</span><span class="nv"> </span><span class="s">time</span><span class="nv"> </span><span class="s">we</span><span class="nv"> </span><span class="s">greeted</span><span class="nv"> </span><span class="s">you'</span>
+<span class="na">runs</span><span class="pi">:</span>
+  <span class="s">...</span>
+</code></pre></div></div>
+
+<p>we can refer to it with the expression <code class="language-plaintext highlighter-rouge">${{ steps.hello.outputs.time }}</code></p>
+
+<p>The setting of the output was achieved inside the <code class="language-plaintext highlighter-rouge">index.js</code> file by calling the 
+<code class="language-plaintext highlighter-rouge">setOutput</code> method of the <code class="language-plaintext highlighter-rouge">core</code> module:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">time</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()).</span><span class="nx">toTimeString</span><span class="p">();</span>
+  <span class="nx">core</span><span class="p">.</span><span class="nx">setOutput</span><span class="p">(</span><span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">,</span> <span class="nx">time</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>After adding and commiting the files, we push the changes to the remote</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../use-hello-world-javascript-action(master)]$ git push -u origin master
+</code></pre></div></div>
+
+<p>the action is triggered.</p>
+
+<p>From our repository, We click the Actions tab, and select the latest workflow run. We can see <code class="language-plaintext highlighter-rouge">Hello Procesadores de Lenguajes at ULL</code> or the name we use for the <code class="language-plaintext highlighter-rouge">who-to-greet</code> input</p>
+
+<p><img src="/assets/images/hello-world-js-action.png" alt="" /></p>
+
+<p>and the timestamp printed in the log:</p>
+
+<p><img src="/assets/images/hello-world-js-action-output-time.png" alt="" /></p>
+
+<h2 id="publishing-your-action-to-github-marketplace">Publishing your action to GitHub Marketplace</h2>
+
+<p>When a repository contains an action metadata file (<code class="language-plaintext highlighter-rouge">action.yml</code> or <code class="language-plaintext highlighter-rouge">action.yaml</code>), you’ll see a banner to publish the action to GitHub Marketplace. Click <strong>Draft a release</strong>.</p>
+
+<p><img src="https://help.github.com/assets/images/help/repository/publish-github-action-to-markeplace-button.png" alt="Publish this action to markeplace button" /></p>
+
+<p>The whole process requires a few steps, among them you have to <strong>tag</strong> your Action with a version. People will see the version in the action’s dedicated GitHub Marketplace page.</p>
+
+<p><img src="https://help.github.com/assets/images/help/repository/marketplace_actions_version.png" alt="" /></p>
+
+<p>See <a href="https://help.github.com/en/actions/building-actions/publishing-actions-in-github-marketplace">Publishing actions in GitHub Marketplace</a> for more information</p>
+
+<h2 id="versioning">Versioning</h2>
+
+<p>GitHub recommends using <a href="http://semver.org/">semantic versioning</a> when creating actions.</p>
+
+<ul>
+  <li>Create a GitHub <strong>release</strong> using semantic versioning (<code class="language-plaintext highlighter-rouge">v1.0.9</code>). For more information, see “<a href="https://help.github.com/en/articles/creating-releases">Creating releases</a>.”</li>
+  <li>Move the major version tag (<code class="language-plaintext highlighter-rouge">v1</code>, <code class="language-plaintext highlighter-rouge">v2</code>, etc.) to point to the Git ref of the current release. For more information, see “<a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">Git basics - tagging</a>.”</li>
+  <li>Introduce a new major version tag (<code class="language-plaintext highlighter-rouge">v2</code>) for breaking changes that will break existing workflows. For example, changing an action’s inputs would be a breaking change.</li>
+</ul>
+
+<p>Inside the action client, We specified the version to use with the line:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">uses</span><span class="pi">:</span> <span class="s">ULL-ESIT-PL-1920/hello-world-javascript-action@v1</span>
+</code></pre></div></div>
+
+<p>The workflow references an action using a <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-References">git ref</a>.</p>
+
+<p>Hare are some more examples:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/javascript-action@v1</span>        <span class="c1"># recommended. starter workflows use this</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/javascript-action@v1.0.0</span>    <span class="c1"># if an action offers specific releases </span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/javascript-action@41775a4da8ffae865553a738ab8ac1cd5a3c0044</span> <span class="c1"># sha</span>
+</code></pre></div></div>
+
+<p>The idea is that with releases, binding to a major version is the <strong>latest</strong> of that major version.</p>
+
+<p>That is, to say <code class="language-plaintext highlighter-rouge">v8</code> is the same as saying <code class="language-plaintext highlighter-rouge">"8.*"</code>.</p>
+
+<p>Therefore, as an action developer, you can add new capabilities to a release, 
+but <strong>you should not break existing input compatibility or break existing workflows</strong>.</p>
+
+<p>Here is an example of versioning workflow:</p>
+
+<p><img src="/assets/images/action-releases.png" style="background-color: white" /></p>
+
+<h2 id="running-manually-github-workflows-with-gh">Running Manually GitHub Workflows with gh</h2>
+
+<ul>
+  <li><a href="gh-workflows">Running Manually GitHub Workflows with gh</a></li>
+</ul>
+
+<h2 id="next-step">Next Steps on Learning GitHub Actions</h2>
+
+<p>Use the repo <a href="https://github.com/actions/javascript-action">actions/javascript-action</a>
+as a template and follow the instructions.</p>
+
+<h2 id="learning-to-use-github-actions-at-github-learning-lab">Learning to use GitHub Actions at GitHub Learning Lab</h2>
+
+<p><a href="https://lab.github.com/docs/about">GitHub Learning Lab</a> is a way to learn on GitHub. You can use Learning Lab to</p>
+
+<ol>
+  <li>level up your own skills (as a learner), and to</li>
+  <li>create courses for others (as an author).</li>
+</ol>
+
+<p>This is the general pattern learners and authors follow when using GitHub Learning Lab:</p>
+
+<ul>
+  <li>An author creates and publishes a Learning Lab course.</li>
+  <li>A learner visits GitHub Learning Lab. They can browse through the course catalog and read about GitHub Learning Lab without signing in.</li>
+  <li>A learner signs into GitHub Learning Lab for the first time, GitHub requests <a href="https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#user-level-permissions">user-level permissions</a>. The learner authorizes the app.</li>
+  <li>GitHub Learning Lab requests the learner install it on at least one repository, or on their account (all current and future repositories). These installation types are known as <code class="language-plaintext highlighter-rouge">selected</code> or <code class="language-plaintext highlighter-rouge">all</code>, respectively.</li>
+  <li>Learner installs the app as requested.</li>
+  <li>A learner registers for a course in GitHub Learning Lab.</li>
+  <li>GitHub Learning Lab creates a repository for the registered course based on a template specified by the course’s author.</li>
+  <li>GitHub Learning Lab sets up the newly created repository with any issues, pull requests, and settings specified by the course’s author.</li>
+  <li>GitHub Learning Lab shows the learner the course progress page with steps defined by the course’s author.</li>
+  <li>Learner clicks on the current step and navigates to the active issue, pull request, or page on GitHub.</li>
+  <li>Learner performs the course’s requested action.</li>
+  <li>GitHub Learning Lab receives an event describing the learner’s action.</li>
+  <li>If the learner’s action is expected, GitHub Learning Lab responds as defined by the course’s author. If the learner’s action is unexpected, GitHub Learning Lab does not react.</li>
+  <li>
+    <p>GitHub Learning Lab marks the course as complete when the learner completes all expected actions.</p>
+  </li>
+  <li><a href="https://lab.github.com/search?q=actions">Search at GitHub Learning Lab for GitHub Action courses</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Template repo for GitHub Actions <a href="https://github.com/actions/javascript-action">actions/javascript-action</a></li>
+  <li><a href="https://help.github.com/en/actions/building-actions/creating-a-javascript-action">Creating a JavaScript action</a></li>
+  <li>Repo <a href="https://github.com/ULL-ESIT-PL-1920/hello-world-javascript-action">ULL-ESIT-PL-1920/hello-world-javascript-action</a></li>
+  <li><a href="https://github.com/ULL-ESIT-PL-1920/use-hello-world-javascript-action">Repo ULL-ESIT-PL-1920/use-hello-world-javascript-action</a></li>
+  <li><a href="https://help.github.com/en/actions/building-actions/about-actions">About Actions</a>
+    <ul>
+      <li><a href="https://help.github.com/en/actions/building-actions#types-of-actions">Types of actions</a></li>
+      <li><a href="https://help.github.com/en/actions/building-actions#choosing-a-location-for-your-action">Choosing a location for your action</a></li>
+      <li><a href="https://help.github.com/en/actions/building-actions#versioning-your-action">Versioning your action</a></li>
+      <li><a href="https://help.github.com/en/actions/building-actions#creating-a-readme-file-for-your-action">Creating a README file for your action</a></li>
+      <li><a href="https://help.github.com/en/actions/building-actions#comparing-github-actions-to-github-apps">Comparing GitHub Actions to GitHub Apps</a></li>
+      <li><a href="https://help.github.com/en/actions/building-actions#further-reading">Further reading</a></li>
+    </ul>
+  </li>
+  <li><a href="https://help.github.com/en/actions/building-actions">Building actions</a></li>
+  <li><a href="https://help.github.com/en/actions/building-actions/metadata-syntax-for-github-actions">Metadata syntax for GitHub Actions</a> (The syntax of the action.yml file)</li>
+  <li><a href="https://help.github.com/en/actions/building-actions/setting-exit-codes-for-actions">Setting exit codes for actions</a></li>
+  <li>
+    <p><a href="https://help.github.com/en/actions/building-actions/publishing-actions-in-github-marketplace">Publishing actions in GitHub Marketplace</a></p>
+  </li>
+  <li><a href="https://github.com/actions/toolkit/blob/master/docs/action-versioning.md">Versioning Actions</a> (github toolkit)</li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Hello+Actions+World%21%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-javascript-action.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Hello+Actions+World%21%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-javascript-action.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-javascript-action.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fcreating-javascript-action.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/creating-javascript-action.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

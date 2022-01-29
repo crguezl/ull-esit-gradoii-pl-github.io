@@ -1,0 +1,1005 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Posibles Organizaciones del Proyecto - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Posibles Organizaciones del Proyecto">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/practicas/egg-method-evaluate/jerarquia-de-ficheros.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/practicas/egg-method-evaluate/jerarquia-de-ficheros.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Posibles Organizaciones del Proyecto">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Posibles Organizaciones del Proyecto
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#ejemplo-1">Ejemplo 1</a><ul><li><a href="#scripts">Scripts</a></li></ul></li><li><a href="#ejemplo-2">Ejemplo 2</a><ul><li><a href="#scripts-1">Scripts</a></li></ul></li><li><a href="#ejemplo-3">Ejemplo 3</a><ul><li><a href="#opciones-del-ejecutable">Opciones del ejecutable</a></li><li><a href="#ejemplos-de-ejecución">Ejemplos de Ejecución</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Las jerarquías de ficheros presentadas son orientativas.</p>
+
+<p>Resultar conveniente aislar en clases y en módulos 
+el analizador léxico, el sintáctico, el runner, etc.</p>
+
+<h2 id="ejemplo-1">Ejemplo 1</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  egg-4-alu0100966589 git:(master) ✗ tree -I 'node_modules|docs'
+.
+├── README.md
+├── bin
+│   └── egg.js
+├── examples
+│   ├── a.egg
+│   ├── array.egg
+│   ├── bad-function.egg
+│   ├── curlyBrackets.egg
+│   ├── differentParenthesis.egg
+│   ├── error.egg
+│   ├── greater-x-5.egg
+│   ├── if.egg
+│   ├── main.js
+│   ├── main2.js
+│   ├── map.egg
+│   ├── obj.egg
+│   ├── objects.egg
+│   ├── one-err-2.egg
+│   ├── one-err.egg
+│   ├── one.egg
+│   ├── require.egg
+│   ├── rest.egg
+│   ├── scope.egg
+│   ├── spread.egg
+│   ├── string.egg
+│   ├── stringRegexp.egg
+│   ├── sum.egg
+│   └── two.egg
+├── gulpfile.js
+├── lib
+│   ├── ast_nodes.js
+│   ├── egg_repl.js
+│   ├── eggvm.js
+│   ├── lexer
+│   │   └── token
+│   │       ├── Token.js
+│   │       ├── token_info.js
+│   │       └── token_types.js
+│   ├── parse.js
+│   ├── public.js
+│   ├── repl_plugins.js
+│   ├── specialForms.js
+│   ├── topEnv.js
+│   └── utils
+│       └── getSetElement.js
+├── package-lock.json
+├── package.json
+├── plugins
+│   ├── loops.js
+│   ├── object.js
+│   └── require.js
+└── test
+    ├── eggvm.test.js
+    ├── lexer.test.js
+    ├── program.test.js
+    └── test.js
+
+8 directories, 48 files
+</code></pre></div></div>
+
+<h3 id="scripts">Scripts</h3>
+
+<p>Scripts:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  egg-4-alu0100966589 git:(master) ✗ npm run
+Lifecycle scripts included in @alu0100966589/egg:
+  test
+    mocha
+
+available via `npm run-script`:
+  watch
+    mocha --watch
+  compile
+    ./bin/egg.js -c
+  interpret
+    ./bin/egg.js -i
+  run
+    ./bin/egg.js -r
+  repl
+    ./bin/egg.js
+  compile-example
+    ./bin/egg.js -c examples/a.egg
+  interpret-example
+    ./bin/egg.js -i examples/a.egg.evm
+  run-example
+    ./bin/egg.js -r examples/a.egg
+</code></pre></div></div>
+
+<p>Ejemplo de uso. Dados los ficheros:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  egg-4-alu0100966589 git:(master) ✗ cat examples/require.egg 
+do(
+    def(str, require("examples/a.egg")),
+    print(str)
+)
+
+➜  egg-4-alu0100966589 git:(master) ✗ cat examples/a.egg      
+print("\thello\nworld\u2764")
+</code></pre></div></div>
+
+<p>Podemos ejecutarlo de esta forma:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  egg-4-alu0100966589 git:(master) ✗ bin/egg.js -p ../plugins/require.js -r examples/require.egg 
+        hello
+world❤
+        hello
+world❤
+</code></pre></div></div>
+
+<h2 id="ejemplo-2">Ejemplo 2</h2>
+
+<p>Este es un ejemplo de como organizar su jerarquía de ficheros de una forma escalable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../TFA-04-16-2020-03-22-00/davafons(master)]$ tree -I 'node_modules|docs'
+.
+├── LICENSE
+├── README.md   // Documentación del paquete y del proyecto
+├── bin
+│   └── egg.js  // usando opciones en línea de comandos: -c compilar, -i interpretar, etc
+├── esdoc.json  // documentación: vea https://esdoc.org/
+├── docs
+│   └── ...     // Documentación generada. Configurar GitHub Pages 
+├── examples    // Ejemplos: son reutilizados en las pruebas
+│   ├── array-index.egg
+|   ├── ... 
+│   ├── trycatch.egg.evm
+│   ├── two.egg
+│   └── two.egg.evm
+├── index.js // Entry point: exporta todo lo que necesita el ejecutable
+├── lib
+│   ├── interp
+│   │   ├── arithm.js      // Extensiones aritméticas: ++, --, +=, ...
+│   │   ├── ast.js         // Las clases del AST: Value, Word, Apply, Regex, ...
+│   │   ├── eggvm.js       // Clase con los runners: runFromFile, runFromEVM, run, ...
+│   │   ├── environment.js // main del environment. Exporta  SpecialForms y TopEnv. Usa registry
+│   │   ├── exceptions.js  // Extiende Egg con try, throw, ...
+│   │   ├── index.js       // main: exporta todas las clases del intérprete: Eggvm, Value, Word, Apply, Regex, TopEnv, SpecialForms, ...
+│   │   ├── monkey-patching.js // Manipulacion de las clases de JS (Object, Array, etc.)
+│   │   ├── registry.js   // Exporta los mapas para exensión SpecialForms,  TopEnv, ...  
+│   │   └── require.js    // Soporte para módulos en Egg
+│   ├── parser
+│   │   ├── index.js      // main de Parser: exporta todas las clases públicas: Eggvm,Value, Word, Apply, Regex, TopEnv, SpecialForms ...
+│   │   ├── json2AST.js   //  Desde el JSON construimos el AST con clases
+│   │   ├── lexer.js      // Exporta Clase Analizador Léxico. Usa tokenRe
+│   │   ├── optimizer.js  // Optimizaciones (constant folding)
+│   │   ├── parse.js      // Análisis Sintáctico
+│   │   ├── semantic.js   // Análisis Semántico
+│   │   └── tokenRegex.js //Exporta la clase para los objetos Token 
+│   ├── repl              // soporte para Repeat Evaluate Print Loop
+│   │   ├── colors.js     // Colorines usando ansi-colors 
+│   │   ├── extensions.js // Extensiones: help() info() clear() ...
+│   │   └── repl.js       // El bucle
+│   └── utils.js // Helpers comunes
+├── package-lock.json  // bajo control de versiones
+├── package.json // configurado para publicar como módulo en GitHub registry
+└── test
+    ├── examples-test.js // Ejecución de ejemplos contra salida esperada
+    ├── ...   
+    └── tokenRegex-test.js 
+</code></pre></div></div>
+
+<h3 id="scripts-1">Scripts</h3>
+
+<p>Es conveniente tener algunos scripts preparados en el <code class="language-plaintext highlighter-rouge">package.json</code> 
+como:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../TFA-04-16-2020-03-22-00/davafons(master)]$ npm run
+Lifecycle scripts included in eggtended-js:
+  test
+    nyc mocha
+
+available via `npm run-script`:
+  coverage
+    nyc report --reporter=text-lcov | coveralls
+  docs
+    esdoc -c esdoc.json
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">coverage</code>: tests y cubrimiento usando <a href="https://github.com/istanbuljs/nyc">Istanbul command line interface</a></li>
+  <li><code class="language-plaintext highlighter-rouge">docs</code>: <a href="https://esdoc.org/manual/usage.html">esdoc usage</a></li>
+</ul>
+
+<h2 id="ejemplo-3">Ejemplo 3</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  cristo-daniel-luciana-tfa-1920-egg git:(master) ✗ tree -I 'docs|node_modules'
+.
+├── README.md
+├── bin
+│   ├── egg.js
+│   ├── eggRun.js
+│   ├── eggc.js
+│   └── evm.js
+├── examples
+│   ├── arithm.egg
+│   ├── array-properties.egg
+│   ├── calling-function-err.egg
+│   ├── compile-to-js # Traducción a JavaScript. Comprobaciones
+│   │   ├── casiano-spread.egg
+│   │   ├── casiano-spread.egg.js
+│   │   ├── empty-funcion.egg
+│   │   ├── empty-funcion.egg.js
+│   │   ├── for-each.egg
+│   │   ├── for-each.egg.js
+│   │   ├── for.egg
+│   │   ├── for.egg.js
+│   │   ├── fun-default-value.egg
+│   │   ├── fun-default-value.egg.js
+│   │   ├── fun.egg
+│   │   ├── fun.egg.js
+│   │   ├── if.egg
+│   │   ├── if.egg.js
+│   │   ├── map.egg
+│   │   ├── map.egg.js
+│   │   ├── object.egg
+│   │   ├── object.egg.js
+│   │   ├── prueba.egg
+│   │   ├── prueba.egg.js
+│   │   ├── regex-2.egg
+│   │   ├── regex-2.egg.js
+│   │   ├── while.egg
+│   │   ├── while.egg.evm
+│   │   └── while.egg.js
+│   ├── constant-folding # Plegado de Constantes. Transformación  Árbol
+│   │   ├── advanced-folding.egg
+│   │   ├── advanced-folding.egg.evm
+│   │   ├── basic-folding.egg
+│   │   └── basic-folding.egg.evm
+│   ├── constant-propagation
+│   │   ├── basic-propagation.egg
+│   │   └── basic-propagation.egg.evm
+│   ├── define-err.egg
+│   ├── define.egg
+│   ├── if-example-err.egg
+│   ├── if-example.egg
+│   ├── looping-invariance
+│   │   ├── function-invariance.egg
+│   │   ├── function-invariance.egg.evm
+│   │   ├── while-invariance.egg
+│   │   └── while-invariance.egg.evm
+│   ├── map-js-chain.egg
+│   ├── method-concatenation.egg
+│   ├── method.egg
+│   ├── method.egg.js
+│   ├── method2.egg
+│   ├── method3.egg
+│   ├── multi-sub-array.egg
+│   ├── number-as-fun-err.egg
+│   ├── one.egg
+│   ├── one.egg.evm
+│   ├── probando.egg
+│   ├── require
+│   │   ├── client.egg
+│   │   ├── client.egg.expected
+│   │   └── module.egg
+│   ├── reto.egg
+│   ├── reto.egg.js
+│   ├── scope-err.egg
+│   ├── scope.egg
+│   ├── set-multiarray.egg
+│   ├── setting-undefined-err.egg
+│   ├── string-apply.egg
+│   ├── string-apply.egg.evm
+│   ├── two.egg
+│   ├── two.egg.evm
+│   ├── while-err.egg
+│   ├── while.egg
+│   └── while.egg.evm
+├── lib
+│   ├── addon
+│   │   ├── constant-folding.js
+│   │   ├── looping-invariance.js
+│   │   ├── require.js
+│   │   └── scope-analysis.js
+│   ├── compile-to-javascript
+│   │   └── eggtojscompiler.js
+│   ├── interp
+│   │   ├── arithm.js
+│   │   ├── ast.js
+│   │   ├── eggvm.js
+│   │   ├── monkey-patching.js
+│   │   └── registry.js
+│   ├── parser
+│   │   ├── json2AST.js
+│   │   └── parse.js
+│   ├── repl
+│   │   ├── colors.js
+│   │   ├── egg-repl.js
+│   │   └── extensions.js
+│   └── utils.js
+├── package-lock.json
+├── package.json
+└── test
+    ├── examples
+    │   ├── array-index.egg
+    │   ├── array-index.egg.expected
+    │   ├── array-neg.egg
+    │   ├── array-neg.egg.expected
+    │   ├── array-properties.egg
+    │   ├── array-properties.egg.expected
+    │   ├── array-set-index.egg
+    │   ├── array-set-index.egg.expected
+    │   ├── calling-function-err.egg
+    │   ├── class
+    │   │   ├── class-1-err.egg
+    │   │   ├── class-1.egg
+    │   │   ├── class-1.egg.evm
+    │   │   ├── class-1.egg.expected
+    │   │   ├── class-cons-err.egg
+    │   │   ├── class-multiple-method.egg
+    │   │   ├── class-multiple-method.egg.expected
+    │   │   ├── method-invariance.egg
+    │   │   ├── method-invariance.egg.evm
+    │   │   ├── method-invariance.egg.expected
+    │   │   ├── multiple-class-object.egg
+    │   │   ├── multiple-class-object.egg.expected
+    │   │   ├── multiple-objects.egg
+    │   │   └── multiple-objects.egg.expected
+    │   ├── compile-to-js
+    │   │   ├── casiano-spread.egg
+    │   │   ├── casiano-spread.egg.js
+    │   │   ├── empty-funcion.egg
+    │   │   ├── empty-funcion.egg.js
+    │   │   ├── for-each.egg
+    │   │   ├── for-each.egg.js
+    │   │   ├── for.egg
+    │   │   ├── for.egg.js
+    │   │   ├── fun-default-value.egg
+    │   │   ├── fun-default-value.egg.js
+    │   │   ├── fun.egg
+    │   │   ├── fun.egg.js
+    │   │   ├── if.egg
+    │   │   ├── if.egg.js
+    │   │   ├── map.egg
+    │   │   ├── map.egg.js
+    │   │   ├── method-concatenation.egg
+    │   │   ├── method-concatenation.egg.js
+    │   │   ├── object.egg
+    │   │   ├── object.egg.js
+    │   │   ├── prueba.egg
+    │   │   ├── prueba.egg.js
+    │   │   ├── regex-2.egg
+    │   │   ├── regex-2.egg.js
+    │   │   ├── while.egg
+    │   │   └── while.egg.js
+    │   ├── const-definition-err.egg
+    │   ├── constant-folding
+    │   │   ├── advanced-folding.egg
+    │   │   ├── advanced-folding.egg.evm
+    │   │   ├── basic-folding.egg
+    │   │   └── basic-folding.egg.evm
+    │   ├── constant-propagation
+    │   │   ├── advanced-propagation.egg
+    │   │   ├── advanced-propagation.egg.evm
+    │   │   ├── advanced-scope-error.egg
+    │   │   ├── arithmetic-constant-folding.egg
+    │   │   ├── arithmetic-constant-folding.egg.evm
+    │   │   ├── basic-propagation.egg
+    │   │   ├── basic-propagation.egg.evm
+    │   │   ├── function-scope-error.egg
+    │   │   └── scope-error.egg
+    │   ├── child # Herencia a la JS
+    │   │   ├── child-casiano.egg
+    │   │   ├── child-casiano.egg.evm
+    │   │   ├── child-casiano.egg.expected
+    │   │   ├── child-modify.egg
+    │   │   ├── child-modify.egg.expected
+    │   │   ├── child-no-object.egg
+    │   │   ├── multiple-child.egg
+    │   │   └── multiple-child.egg.expected
+    │   ├── default-values # Valores por defecto en los parámetros de una función
+    │   │   ├── fun-default-error.egg
+    │   │   ├── fun-default-value.egg
+    │   │   ├── fun-default-value.egg.expected
+    │   │   └── more-arguments.egg
+    │   ├── define.egg
+    │   ├── define.egg.expected
+    │   ├── dot-num.egg
+    │   ├── dot-num.egg.expected
+    │   ├── dot-obj-2.egg
+    │   ├── dot-obj-2.egg.expected
+    │   ├── dot.egg
+    │   ├── dot.egg.evm
+    │   ├── dot.egg.expected
+    │   ├── for.egg
+    │   ├── for.egg.evm
+    │   ├── for.egg.expected
+    │   ├── foreach.egg
+    │   ├── foreach.egg.expected
+    │   ├── if-example-err.egg
+    │   ├── if-example.egg
+    │   ├── if-example.egg.expected
+    │   ├── looping-invariance
+    │   │   ├── 2-for-invariance.egg
+    │   │   ├── 2-for-invariance.egg.evm
+    │   │   ├── 2-whiles-invariance.egg
+    │   │   ├── 2-whiles-invariance.egg.evm
+    │   │   ├── 2-whiles-invariance.egg.expected
+    │   │   ├── alone-function.egg
+    │   │   ├── alone-function.egg.evm
+    │   │   ├── for-invariance.egg
+    │   │   ├── for-invariance.egg.evm
+    │   │   ├── function-invariance.egg
+    │   │   ├── function-invariance.egg.evm
+    │   │   ├── if-invariance.egg
+    │   │   ├── if-invariance.egg.evm
+    │   │   ├── if-invariance.egg.expected
+    │   │   ├── test.egg
+    │   │   ├── test.egg.evm
+    │   │   ├── while-invariance-2.egg
+    │   │   ├── while-invariance-2.egg.evm
+    │   │   ├── while-invariance.egg
+    │   │   └── while-invariance.egg.evm
+    │   ├── map-colon.egg
+    │   ├── map-colon.egg.expected
+    │   ├── map-js-chain.egg
+    │   ├── map-js-chain.egg.expected
+    │   ├── map-sub.egg
+    │   ├── map-sub.egg.expected
+    │   ├── map.egg
+    │   ├── map.egg.evm
+    │   ├── map.egg.expected
+    │   ├── method-concatenation.egg
+    │   ├── method-concatenation.egg.expected
+    │   ├── method.egg
+    │   ├── method.egg.expected
+    │   ├── method2.egg
+    │   ├── method2.egg.expected
+    │   ├── method3.egg
+    │   ├── method3.egg.expected
+    │   ├── multi-sub-array.egg
+    │   ├── multi-sub-array.egg.expected
+    │   ├── objects.egg
+    │   ├── objects.egg.evm
+    │   ├── objects.egg.expected
+    │   ├── one.egg
+    │   ├── one.egg.expected
+    │   ├── regex-2.egg
+    │   ├── regex-2.egg.evm
+    │   ├── regex-2.egg.expected
+    │   ├── regex-simple.egg
+    │   ├── regex-simple.egg.expected
+    │   ├── require
+    │   │   ├── client.egg
+    │   │   ├── client.egg.expected
+    │   │   └── module.egg
+    │   ├── reto.egg
+    │   ├── reto.egg.expected
+    │   ├── scope-err.egg
+    │   ├── scope-err.egg.expected
+    │   ├── scope.egg
+    │   ├── scope.egg.expected
+    │   ├── set-error.egg
+    │   ├── set-multiarray.egg
+    │   ├── set-multiarray.egg.expected
+    │   ├── setting-undefined-err.egg
+    │   ├── spread-operator # Operator ... en Egg
+    │   │   ├── casiano-spread.egg
+    │   │   ├── casiano-spread.egg.evm
+    │   │   ├── casiano-spread.egg.expected
+    │   │   ├── default-spread.egg
+    │   │   ├── default-spread.egg.expected
+    │   │   ├── function-spread.egg
+    │   │   ├── function-spread.egg.expected
+    │   │   ├── spread-operator.egg
+    │   │   └── spread-operator.egg.expected
+    │   ├── string-apply.egg
+    │   ├── string-apply.egg.evm
+    │   ├── string-apply.egg.expected
+    │   ├── while.egg
+    │   └── while.egg.expected
+    ├── extra-test.js
+    ├── scopes.js
+    └── test.js
+
+24 directories, 263 files
+</code></pre></div></div>
+
+<h3 id="opciones-del-ejecutable">Opciones del ejecutable</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  cristo-daniel-luciana-tfa-1920-egg git:(master) ✗ node bin/eggRun.js --help
+Options:
+  --version           Muestra número de versión                       [booleano]
+  --compile, -c       Input egg File to compile           [cadena de caracteres]
+  --run, -f           Run egg file from file              [cadena de caracteres]
+  --repl, -r          executes egg repl                               [booleano]
+  --evm, -e           Runs an egg program from its evm file
+                                                          [cadena de caracteres]
+  --addons, -a        Lets you use different addons, like require        [tabla]
+  --optimization, -o  Optimizes the ast with constants folding        [booleano]
+  --javascript, -j    Compiles to a new javascript file   [cadena de caracteres]
+  --help, -h          Muestra ayuda                                   [booleano]
+</code></pre></div></div>
+
+<h3 id="ejemplos-de-ejecución">Ejemplos de Ejecución</h3>
+
+<p>Dado el programa egg:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="err">➜</span>  <span class="nx">cristo</span><span class="o">-</span><span class="nx">daniel</span><span class="o">-</span><span class="nx">luciana</span><span class="o">-</span><span class="nx">tfa</span><span class="o">-</span><span class="mi">1920</span><span class="o">-</span><span class="nx">egg</span> <span class="nx">git</span><span class="p">:(</span><span class="nx">master</span><span class="p">)</span> <span class="err">✗</span> <span class="nx">cat</span> <span class="nx">examples</span><span class="o">/</span><span class="nx">constant</span><span class="o">-</span><span class="nx">folding</span><span class="o">/</span><span class="nx">advanced</span><span class="o">-</span><span class="nx">folding</span><span class="p">.</span><span class="nx">egg</span> 
+<span class="k">do</span><span class="p">(</span>
+  <span class="nx">print</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">+</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="o">-</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">8, 4</span><span class="se">)</span><span class="sr">, 1</span><span class="se">))</span><span class="err">)
+</span><span class="p">)</span><span class="o">%</span>  
+</code></pre></div></div>
+<p>al compilarlo <code class="language-plaintext highlighter-rouge">-c</code>con la opción de optimización activada <code class="language-plaintext highlighter-rouge">-o</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ➜  cristo-daniel-luciana-tfa-1920-egg git:(master) ✗ node bin/eggRun.js -o -c examples/constant-folding/advanced-folding.egg
+</code></pre></div></div>
+
+<p>Nos produce como salida este AST en el que observamos el pliegue:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">➜</span><span class="w">  </span><span class="err">cristo-daniel-luciana-tfa</span><span class="mi">-1920</span><span class="err">-egg</span><span class="w"> </span><span class="err">git:(master)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="err">cat</span><span class="w"> </span><span class="err">examples/constant-folding/advanced-folding.egg.evm</span><span class="w"> 
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apply"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"word"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"do"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"_args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apply"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"_operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"word"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"print"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"_args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="err">%</span><span class="w">             
+</span></code></pre></div></div>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Posibles+Organizaciones+del+Proyecto%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fegg-method-evaluate%2Fjerarquia-de-ficheros.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Posibles+Organizaciones+del+Proyecto%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fegg-method-evaluate%2Fjerarquia-de-ficheros.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fegg-method-evaluate%2Fjerarquia-de-ficheros.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fegg-method-evaluate%2Fjerarquia-de-ficheros.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/practicas/egg-method-evaluate/jerarquia-de-ficheros.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,725 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>The Open Closed Principle and the Strategy Pattern - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="The Open Closed Principle and the Strategy Pattern">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/design.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/design.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="The Open Closed Principle and the Strategy Pattern">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">The Open Closed Principle and the Strategy Pattern
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#code-smells">Code Smells</a><ul><li><a href="#definición-de-code-smell-de-la-wikipedia">Definición de Code Smell de la Wikipedia:</a></li><li><a href="#application-level-smells">Application-level smells:</a></li><li><a href="#class-level-smells">Class-level smells:</a></li><li><a href="#method-level-smells">Method-level smells:</a></li><li><a href="#switch-smell">Switch Smell</a></li></ul></li><li><a href="#el-principio-openclosed">El principio Open/Closed</a><ul><li><a href="#ejemplo-de-violación-del-principio-openclosed">Ejemplo de Violación del Principio Open/Closed</a></li></ul></li><li><a href="#design-patterns">Design patterns</a></li><li><a href="#strategy-pattern">Strategy Pattern</a></li><li><a href="#eliminate-javascript-code-smells">Eliminate JavaScript Code Smells</a><ul><li><a href="#example-of-the-strategy-pattern-http-file-server-fron-eloquent-js">Example of the strategy Pattern: HTTP file server fron Eloquent JS</a></li><li><a href="#ejemplo-oop-temperature-converter-removing-switch-smell">Ejemplo: OOP Temperature Converter Removing Switch Smell</a></li></ul></li><li><a href="#referencias">Referencias</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="code-smells">Code Smells</h2>
+
+<h3 id="definición-de-code-smell-de-la-wikipedia">Definición de <em>Code Smell</em> de la Wikipedia:</h3>
+
+<p>According to Martin Fowler, <em>“a <strong>code smell</strong> is a surface indication that usually corresponds to a deeper problem in the system”</em>.</p>
+
+<p>Smells are certain structures in the code that indicate violation of fundamental design principles and negatively impact design quality.</p>
+
+<p>Code smells <strong>are usually not bugs</strong>. They are not technically incorrect and do not currently prevent the program from functioning. Instead, <strong>they indicate weaknesses in design</strong> that may be slowing down development or increasing the risk of bugs or failures in the future.</p>
+
+<h3 id="application-level-smells">Application-level smells:</h3>
+<ul>
+  <li><strong>Duplicated code:</strong> identical or very similar code exists in more than one location.</li>
+  <li><strong>Contrived complexity:</strong> forced usage of overcomplicated design patterns where simpler design would suffice.</li>
+</ul>
+
+<h3 id="class-level-smells">Class-level smells:</h3>
+<ul>
+  <li><strong>Large class:</strong> a class that has grown too large. See God object.</li>
+  <li><strong>Feature envy:</strong> a class that uses methods of another class excessively.</li>
+  <li><strong>Inappropriate intimacy:</strong> a class that has dependencies on implementation details of another class.</li>
+  <li><strong>Refused bequest:</strong> a class that overrides a method of a base class in such a way that the contract of the base class is not honored by the derived class. See Liskov substitution principle.</li>
+  <li><strong>Lazy class / Freeloader:</strong> a class that does too little.</li>
+  <li><strong>Excessive use of literals:</strong> these should be coded as named constants, to improve readability and to avoid programming errors. Additionally, literals can and should be externalized into resource files/scripts where possible, to facilitate localization of software if it is intended to be deployed in different regions.</li>
+  <li><strong>Cyclomatic complexity:</strong> too many branches or loops; this may indicate a function needs to be broken up into smaller functions, or that it has potential for simplification.</li>
+  <li><strong>Downcasting:</strong> a type cast which breaks the abstraction model; the abstraction may have to be refactored or eliminated.</li>
+  <li><strong>Orphan Variable or Constant class:</strong> a class that typically has a collection of constants which belong elsewhere (typically a problem when using a Constants class ) where those constants should be owned by one of the other member classes.</li>
+</ul>
+
+<h3 id="method-level-smells">Method-level smells:</h3>
+
+<ul>
+  <li><strong>Too many parameters:</strong> a long list of parameters is hard to read, and makes calling and testing the function complicated. It may indicate that the purpose of the function is ill-conceived and that the code should be refactored so responsibility is assigned in a more clean-cut way.</li>
+  <li><strong>Long method:</strong> a method, function, or procedure that has grown too large.</li>
+  <li><strong>Excessively long identifiers:</strong> in particular, the use of naming conventions to provide disambiguation that should be implicit in the software architecture.</li>
+  <li><strong>Excessively short identifiers:</strong> the name of a variable should reflect its function unless the function is obvious.</li>
+  <li><strong>Excessive return of data:</strong> a function or method that returns more than what each of its callers needs.</li>
+</ul>
+
+<h3 id="switch-smell">Switch Smell</h3>
+
+<ul>
+  <li>El uso de un <code class="language-plaintext highlighter-rouge">switch</code> es a veces un punto débil: si introducimos nuevas casos deberemos modificar el código de la clase original en la que está el switch introduciendo un nuevo <code class="language-plaintext highlighter-rouge">case</code>.</li>
+</ul>
+
+<p>Viola el principio <em>Open/Closed</em>.</p>
+
+<h2 id="el-principio-openclosed">El principio <em>Open/Closed</em></h2>
+
+<ul>
+  <li><em>“software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification”</em>;
+that is, such an entity can allow its behaviour to be extended without modifying its source code.</li>
+</ul>
+
+<h3 id="ejemplo-de-violación-del-principio-openclosed">Ejemplo de Violación del Principio Open/Closed</h3>
+
+<p>El diseño inicial del lenguaje Egg viola el Principio Open/Close:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../PLgrado/eloquentjsegg(master)]$ sed -ne '/fun.*evaluate/,/^}/p'  lib/eggvm.js
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">evaluate</span><span class="p">(</span><span class="nx">expr</span><span class="p">,</span> <span class="nx">env</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="nx">expr</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">value</span><span class="dl">'</span><span class="p">:</span> <span class="k">return</span> <span class="nx">expr</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">word</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">expr</span><span class="p">.</span><span class="nx">name</span> <span class="k">in</span> <span class="nx">env</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">env</span><span class="p">[</span><span class="nx">expr</span><span class="p">.</span><span class="nx">name</span><span class="p">];</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">ReferenceError</span><span class="p">(</span><span class="s2">`Undefined variable: </span><span class="p">${</span><span class="nx">expr</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">apply</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">expr</span><span class="p">.</span><span class="nx">operator</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">word</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">expr</span><span class="p">.</span><span class="nx">operator</span><span class="p">.</span><span class="nx">name</span> <span class="k">in</span> <span class="nx">specialForms</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">specialForms</span><span class="p">[</span><span class="nx">expr</span><span class="p">.</span><span class="nx">operator</span><span class="p">.</span><span class="nx">name</span><span class="p">](</span><span class="nx">expr</span><span class="p">.</span><span class="nx">args</span><span class="p">,</span> <span class="nx">env</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="kd">let</span> <span class="nx">op</span> <span class="o">=</span> <span class="nx">evaluate</span><span class="p">(</span><span class="nx">expr</span><span class="p">.</span><span class="nx">operator</span><span class="p">,</span> <span class="nx">env</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">op</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">TypeError</span><span class="p">(</span><span class="dl">'</span><span class="s1">Applying a non-function</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">op</span><span class="p">(...</span><span class="nx">expr</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">arg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">evaluate</span><span class="p">(</span><span class="nx">arg</span><span class="p">,</span> <span class="nx">env</span><span class="p">)));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="design-patterns">Design patterns</h2>
+
+<p>A design pattern is a general, reusable solution to a commonly occurring problem.</p>
+
+<p>It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations. Design patterns are formalized best practices that the programmer can use to solve common problems when designing an application or system.</p>
+
+<p>Design patterns may be viewed as a structured approach to computer programming intermediate between the levels of</p>
+<ul>
+  <li>a programming paradigm and</li>
+  <li>a concrete algorithm.</li>
+</ul>
+
+<h2 id="strategy-pattern">Strategy Pattern</h2>
+
+<p>La solución para eliminar el <em>Switch Smell</em> es usar el <code class="language-plaintext highlighter-rouge">strategy design pattern</code>.</p>
+
+<p>The basic idea  of the <code class="language-plaintext highlighter-rouge">strategy design pattern</code> is to <strong>delegate tasks to encapsulated algorithms which are interchangable at runtime</strong>.</p>
+
+<p>In the Strategy pattern we have an object (the <em>context</em>) that is trying to get something done. But to get that thing done, we need to supply the context with a second object, called the <em>strategy</em>, that helps￼ to get the thing done.</p>
+
+<ol>
+  <li>Define a family of objects which all do the same thing</li>
+  <li>Ensure the family of objects share the same interface so that they are interchangable.</li>
+</ol>
+
+<p>Otro ejemplo, también de Elijah Manor se encuentra en el artículo <a href="http://elijahmanor.com/switching-to-the-strategy-pattern-in-javascript/">Switching to the Strategy Pattern in JavaScript</a>.</p>
+
+<h2 id="eliminate-javascript-code-smells">Eliminate JavaScript Code Smells</h2>
+
+<p>Vea el Vídeo  de Elijah Manor.</p>
+
+<p>Presta especial atención al <em>code smell</em> <strong>Switch Statement Smell</strong> desde el minuto 11:37 al 29:15.</p>
+
+<!-- Courtesy of embedresponsively.com //-->
+
+<div class="responsive-video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/JVlfj7mQZPo" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<p>Pueden encontrar las <a href="http://elijahmanor.com/talks/js-smells/#/">trasparencias</a> de la presentación en <a href="http://elijahmanor.com/talks/js-smells/#/">http://elijahmanor.com/talks/js-smells/#/</a>.</p>
+
+<h3 id="example-of-the-strategy-pattern-http-file-server-fron-eloquent-js">Example of the strategy Pattern: HTTP file server fron Eloquent JS</h3>
+
+<ul>
+  <li>Repo ULL-MII-SYTWS-1920/eloquent-javascript-exercises <a href="https://github.com/ULL-MII-SYTWS-1920/eloquent-javascript-exercises/blob/master/20_3_public_space/server.js">solution 20_3_public_space/server.js</a></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../chapter20-nodejs/juanIrache-20_3_public_space(master)]$ pwd -P
+/Users/casiano/local/src/javascript/eloquent-javascript-3/juanIrache-solutions/20_3_public_space
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">createServer</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">methods</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">methods</span><span class="p">[</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="p">]</span> <span class="o">||</span> <span class="nx">notAllowed</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`method= </span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="p">}</span><span class="s2"> url=</span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="nx">handler</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="nx">error</span><span class="p">;</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="na">body</span><span class="p">:</span> <span class="nb">String</span><span class="p">(</span><span class="nx">error</span><span class="p">),</span> <span class="na">status</span><span class="p">:</span> <span class="mi">500</span> <span class="p">};</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(({</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">status</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="nx">type</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Access-Control-Allow-Origin</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">*</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Access-Control-Allow-Methods</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">PUT, GET, OPTIONS, DELETE, MKCOL</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="nx">type</span> <span class="p">});</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">body</span> <span class="o">&amp;&amp;</span> <span class="nx">body</span><span class="p">.</span><span class="nx">pipe</span><span class="p">)</span> <span class="nx">body</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+      <span class="k">else</span> <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">);</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">notAllowed</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">status</span><span class="p">:</span> <span class="mi">405</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="s2">`Method </span><span class="p">${</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="p">}</span><span class="s2"> not allowed.`</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">parse</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">resolve</span><span class="p">,</span> <span class="nx">sep</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">baseDirectory</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">cwd</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nx">urlPath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="p">{</span> <span class="nx">pathname</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">parse</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">resolve</span><span class="p">(</span><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">pathname</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">path</span> <span class="o">!=</span> <span class="nx">baseDirectory</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">path</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">baseDirectory</span> <span class="o">+</span> <span class="nx">sep</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="mi">403</span><span class="p">,</span> <span class="na">body</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Forbidden</span><span class="dl">'</span> <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">path</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">createReadStream</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">stat</span><span class="p">,</span> <span class="nx">readdir</span><span class="p">,</span> <span class="nx">mkdir</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">).</span><span class="nx">promises</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">mime</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mime</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">methods</span><span class="p">.</span><span class="nx">GET</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">urlPath</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">stats</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">stats</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">stat</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span> <span class="o">!=</span> <span class="dl">'</span><span class="s1">ENOENT</span><span class="dl">'</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span> <span class="na">body</span><span class="p">:</span> <span class="dl">'</span><span class="s1">File not found</span><span class="dl">'</span> <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">stats</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">body</span><span class="p">:</span> <span class="p">(</span><span class="k">await</span> <span class="nx">readdir</span><span class="p">(</span><span class="nx">path</span><span class="p">)).</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">)</span> <span class="p">};</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">body</span><span class="p">:</span> <span class="nx">createReadStream</span><span class="p">(</span><span class="nx">path</span><span class="p">),</span> <span class="na">type</span><span class="p">:</span> <span class="nx">mime</span><span class="p">.</span><span class="nx">getType</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">rmdir</span><span class="p">,</span> <span class="nx">unlink</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">).</span><span class="nx">promises</span><span class="p">;</span>
+
+<span class="nx">methods</span><span class="p">.</span><span class="nx">DELETE</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">urlPath</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">stats</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">stats</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">stat</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span> <span class="o">!=</span> <span class="dl">'</span><span class="s1">ENOENT</span><span class="dl">'</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="mi">204</span> <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">stats</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">())</span> <span class="k">await</span> <span class="nx">rmdir</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+  <span class="k">else</span> <span class="k">await</span> <span class="nx">unlink</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="mi">204</span> <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">createWriteStream</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">pipeStream</span><span class="p">(</span><span class="k">from</span><span class="p">,</span> <span class="nx">to</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">from</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">reject</span><span class="p">);</span>
+    <span class="nx">to</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">reject</span><span class="p">);</span>
+    <span class="nx">to</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">finish</span><span class="dl">'</span><span class="p">,</span> <span class="nx">resolve</span><span class="p">);</span>
+    <span class="k">from</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">to</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">methods</span><span class="p">.</span><span class="nx">PUT</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">urlPath</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">pipeStream</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">createWriteStream</span><span class="p">(</span><span class="nx">path</span><span class="p">));</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="na">body</span><span class="p">:</span> <span class="nx">path</span> <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">methods</span><span class="p">.</span><span class="nx">MKCOL</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">urlPath</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">stats</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">stats</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">stat</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">ENOENT</span><span class="dl">"</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+    <span class="k">await</span> <span class="nx">mkdir</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span><span class="na">status</span><span class="p">:</span> <span class="mi">204</span><span class="p">};</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">stats</span><span class="p">.</span><span class="nx">isDirectory</span><span class="p">())</span> <span class="k">return</span> <span class="p">{</span><span class="na">status</span><span class="p">:</span> <span class="mi">204</span><span class="p">};</span>
+  <span class="k">else</span> <span class="k">return</span> <span class="p">{</span><span class="na">status</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Not a directory</span><span class="dl">"</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">methods</span><span class="p">.</span><span class="nx">OPTIONS</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">status</span><span class="p">:</span> <span class="mi">204</span> <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="ejemplo-oop-temperature-converter-removing-switch-smell">Ejemplo: OOP Temperature Converter Removing Switch Smell</h3>
+
+<p><a href="https://github.com/ULL-ESIT-GRADOII-DSI/temperature-oop-noswitch/tree/sepfiles">ULL-ESIT-GRADOII-DSI/temperature-oop-noswitch</a></p>
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li><a href="https://casianorodriguezleon.gitbooks.io/pl1516/content/apuntes/codesmell.html">Apuntes del curso 15/16: Code Smells/Código Hediondo</a></li>
+  <li><a href="https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/apuntes/patterns/">Apuntes del curso 16/17: Patrones de Diseño</a></li>
+  <li><a href="https://casianorodriguezleon.gitbooks.io/pl1516/content/practicas/noswitchsmell.html">Apuntes del curso 15/16: Eliminando Switch Smell</a></li>
+  <li><a href="https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/apuntes/patterns/strategypattern.html">Apuntes del curso 16/17: Strategy Pattern</a></li>
+  <li><a href="https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicaevaluastrategypattern.html">Apuntes del curso 16/17: Práctica: Evaluar Strategy Pattern</a></li>
+  <li><a href="https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicamodulestrategypattern.html">Apuntes del curso 16/17: Práctica: Creación de Paquetes NPM y Strategy Pattern</a></li>
+  <li><a href="http://jshint.com/">JSHint</a></li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=The+Open+Closed+Principle+and+the+Strategy+Pattern%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdesign.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=The+Open+Closed+Principle+and+the+Strategy+Pattern%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdesign.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdesign.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fdesign.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/design.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

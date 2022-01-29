@@ -1,0 +1,592 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>404 explained: A Brief Intro to the DOM, Promises and Asyn Await - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="404 explained: A Brief Intro to the DOM, Promises and Asyn Await">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/practicas/jekyll-netlify/404-explained.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/practicas/jekyll-netlify/404-explained.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="404 explained: A Brief Intro to the DOM, Promises and Asyn Await">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">404 explained: A Brief Intro to the DOM, Promises and Asyn Await
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#the-code">The Code</a></li><li><a href="#que-es-el-dom">Que es el DOM</a></li><li><a href="#asíncronia">Asíncronia</a></li><li><a href="#api-keys">API keys</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h3 id="the-code">The Code</h3>
+
+<p>See the code at <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/edit/main/pages/404.md">https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/edit/main/pages/404.md</a></p>
+
+<p>que se verá así 
+<a href="/noexiste">/noexiste</a>.</p>
+
+<p>La página además de mostrar el mensaje de error hace un par de requests:</p>
+
+<ol>
+  <li>Un request a <a href="https://thecatapi.com/">The Cat API</a> para mostrar una imagen de gatitos obtenida al azar.</li>
+  <li>Un request a <a href="https://api.quotable.io/random">https://api.quotable.io/random</a> para mostrar una cita al azar</li>
+</ol>
+
+<h3 id="que-es-el-dom">Que es el DOM</h3>
+
+<p>Intenta  entender un poco el código anterior. El ejemplo combina unos cuantos conceptos importantes en 
+el manejo de las tecnologías web.</p>
+
+<p>Uno de los conceptos es el DOM (Document Object Model). Cuando nuestro browser descarga una página HTML lo primero que hace es un análisis sintáctico de la misma y construye un AST según un formato estándard que es conocido como DOM. 
+Los nodos de ese AST disponen de numerosos métodos que permiten</p>
+<ul>
+  <li>
+    <p>la búsqueda de nodos</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">divTitle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">comment-cat</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>el recorrido,</li>
+  <li>la creación  de nodos
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">img</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>la modificación de nodos
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">cat</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">url</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>la transformación del AST</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">divTitle</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Si estos conceptos son nuevos, estos capítulos pueden ayudarte a conocer el estandard del DOM:</p>
+
+<ul>
+  <li><a href="https://javascript.info/dom-nodes">DOM tree</a></li>
+  <li><a href="https://javascript.info/dom-navigation">DOM navigation</a></li>
+  <li><a href="https://javascript.info/modifying-document">DOM modification</a></li>
+</ul>
+
+<h3 id="asíncronia">Asíncronia</h3>
+
+<p>El código anterior hace también mucho uso de <a href="https://javascript.info/fetch">fetch</a> para hacer solicitudes (<em>requests</em> ) a un par de servidores. La llamada</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="nx">URL</span><span class="p">,</span> <span class="p">{</span>
+       <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+       <span class="dl">'</span><span class="s1">x-api-key</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">blah</span><span class="dl">"</span>
+       <span class="p">}</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>retorna un objeto de la clase <a href="https://javascript.info/promise-basics">Promise</a>. 
+Los objetos <code class="language-plaintext highlighter-rouge">Promise</code> tienen tres estados:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">pending</code>: No se ha iniciado el proceso de carga</li>
+  <li><code class="language-plaintext highlighter-rouge">fulfilled</code>: La carga del recurso comienza con éxito y  la promesa se resuelve a un objeto de la clase <a href="https://fetch.spec.whatwg.org/#response-class">Response</a> que permite manejar el flujo de datos. La carga realmente no tiene porque haber terminado</li>
+  <li><code class="language-plaintext highlighter-rouge">rejected</code>: The promise <strong>rejects</strong> if the fetch was unable to make HTTP-request, e.g. network problems, or there’s no such site. Abnormal HTTP-statuses, such as 404 or 500 do not cause an error.</li>
+</ol>
+
+<p>La palabra <a href="https://javascript.info/async-await">await</a> después del <code class="language-plaintext highlighter-rouge">fetch</code> hace que JS espere al <em>fulfillment</em> de la promesa devuelta por <code class="language-plaintext highlighter-rouge">fetch</code> de modo que en <code class="language-plaintext highlighter-rouge">response</code> queda el objeto resultado de la promesa.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">URL</span><span class="p">,</span> <span class="p">{</span>
+       <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">x-api-key</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">blah</span><span class="dl">"</span> <span class="p">}</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Si la promesa es rechazada se ejecutará el <code class="language-plaintext highlighter-rouge">catch</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">URL</span><span class="p">,</span> <span class="p">{</span>
+       <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">x-api-key</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">blah</span><span class="dl">"</span> <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>El objeto <code class="language-plaintext highlighter-rouge">response</code> tiene un método <code class="language-plaintext highlighter-rouge">json</code> que cuando es llamado <code class="language-plaintext highlighter-rouge">response.json()</code> devuelve una promesa. 
+Esa promesa se cumple (<em>is fulfilled</em>) cuando finalmente obtenemos
+el cuerpo (<em>body</em>) de la respuesta desde el servidor. El resultado de la promesa es el JSON retornado en el <em>body</em>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Véase el capítulo <a href="/assets/temas/introduccion-a-javascript/promises#promises">Promises</a> para mas información</p>
+
+<h3 id="api-keys">API keys</h3>
+
+<p>See:</p>
+
+<ul>
+  <li>Stackoverflow: <a href="https://stackoverflow.com/questions/21939713/hide-api-key-for-a-github-page">Hide api key for a Github page</a></li>
+</ul>
+
+<p>The question is:</p>
+
+<p><em>I have a github page for my organization where I would like to call data from a 3rd party api where I need an auth token. Can I publish this github page without having the auth token displayed on the public repo?</em></p>
+
+<p>And here is the most voted answer:</p>
+
+<blockquote>
+  <p>In short, no. If your GitHub repo is public, all its assets are public. You can make the repo private and it will still publish on GitHub Pages if named with the <code class="language-plaintext highlighter-rouge">username.github.io</code> convention or if it has a <code class="language-plaintext highlighter-rouge">gh-pages</code> branch. While that’s an option, that’s not necessarily the right thing to do.</p>
+</blockquote>
+
+<blockquote>
+  <p>If your key is in your GitHub Pages repo, it sounds like it’s used for client-side API calls in JavaScript. If so, your auth token is publicly visible whether it’s in your public repo or sent in your client-side files to the browser. <strong>This is usually fine. The third-party API might have generated the auth token based on your website’s domain, and restrict calls using that token to pages originating on your domain. Otherwise, they might require the auth token only for logging requests and monitoring usage.</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>If the auth token is truly meant to be private, <strong>then you may need to write private server-side code to call the third-party API</strong>. Your GitHub Pages site could then hit your service for the data it needs. I’ve had to do that before where the web API had security concerns, but I still needed to retrieve non-sensitive data from the client-side.</p>
+</blockquote>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=404+explained%3A+A+Brief+Intro+to+the+DOM%2C+Promises+and+Asyn+Await%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fjekyll-netlify%2F404-explained.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=404+explained%3A+A+Brief+Intro+to+the+DOM%2C+Promises+and+Asyn+Await%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fjekyll-netlify%2F404-explained.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fjekyll-netlify%2F404-explained.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Fpracticas%2Fjekyll-netlify%2F404-explained.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/practicas/jekyll-netlify/404-explained.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

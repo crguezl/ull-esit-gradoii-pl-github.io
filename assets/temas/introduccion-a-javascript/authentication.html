@@ -1,0 +1,591 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Authentication - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Authentication">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/authentication.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/authentication.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Authentication">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Authentication
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#sessions-y-authentication">Sessions y Authentication</a></li><li><a href="#json-web-tokens">JSON Web Tokens</a></li><li><a href="#oauth">OAuth</a></li><li><a href="#passport">Passport</a><ul><li><a href="#passport-introducción">Passport: Introducción</a></li><li><a href="#passport-tutoriales">Passport: Tutoriales</a></li><li><a href="#passport-notas-sobre-como-configurar-una-webapp-en-facebook">Passport: Notas sobre como Configurar una WebApp en Facebook</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="sessions-y-authentication">Sessions y Authentication</h2>
+
+<p>Véase la sección <a href="https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/apuntes/cookies/">Cookies y Autenticación</a>
+en los apuntes del profesor</p>
+
+<h2 id="json-web-tokens">JSON Web Tokens</h2>
+
+<ul>
+  <li><a href="https://jwt.io/">jwt.io</a></li>
+  <li><a href="/jwt-handbook-v0_14_1.pdf">JWT Handbook</a> (pdf) Sebastian E. Peyrrot</li>
+  <li><a href="https://www.oscarblancarteblog.com/2018/01/16/implementar-json-web-tokens-nodejs/">Implementar JSON Web Tokens con NodeJS</a> Oscar Blancarte Blog
+    <ul>
+      <li><a href="https://www.oscarblancarteblog.com/2018/01/15/construir-api-rest-nodejs-tercera-parte/">Construir un API REST con NodeJS (Tercera parte)</a></li>
+      <li><a href="https://www.oscarblancarteblog.com/2018/01/12/construir-api-rest-nodejs-segunda-parte/">Segunda parte</a></li>
+      <li><a href="https://www.oscarblancarteblog.com/2018/01/11/construir-api-rest-nodejs-primera-parte/">Primera Parte</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="oauth">OAuth</h2>
+
+<ul>
+  <li><a href="http://nereida.deioc.ull.es/~lpp/perlexamples/node773.html">Introducción a OAuth</a> (Apuntes del profesor)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>[What is OAuth2? How does OAuth2 work?</td>
+          <td>Tech Primers](https://youtu.be/CPbvxxslDTU) Yotube video</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="passport">Passport</h2>
+
+<h3 id="passport-introducción">Passport: Introducción</h3>
+
+<ul>
+  <li><a href="http://passportjs.org/">Passport</a> is authentication middleware for Node.js.</li>
+  <li>Extremely flexible and modular, Passport can be unobtrusively dropped in to any Express-based web application.</li>
+  <li>A comprehensive set of strategies support authentication using
+    <ul>
+      <li>a <a href="http://passportjs.org/docs/username-password">username and password</a>,</li>
+      <li><a href="http://passportjs.org/docs/facebook">Facebook</a>,</li>
+      <li><a href="http://passportjs.org/docs/twitter">Twitter</a>,</li>
+      <li><a href="http://www.passportjs.org/packages/passport-github2/">Strategy Passport-GitHub2</a>. The author of Passport-Github has not maintained the original …
+        <ul>
+          <li><a href="https://github.com/cfsghost/passport-github/tree/master/examples/login">Passport-GitHub2 Example</a></li>
+        </ul>
+      </li>
+      <li><a href="http://www.passportjs.org/packages/passport-github/">GitHub strategy documentation</a> and repo <a href="https://github.com/jaredhanson/passport-github">GitHub</a>,</li>
+      <li>and <a href="http://www.passportjs.org/packages/">more</a>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="passport-tutoriales">Passport: Tutoriales</h3>
+
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-SYTW-1617/express-4.x-github-example">Example of how to use Express 4.x and Passport to authenticate users using GitHub</a></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../useoctonode/express-4.x-github-example(master)]$ pwd -P
+/Users/casiano/local/src/javascript/learning/useoctonode/express-4.x-github-example
+</code></pre></div></div>
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-DSI-1617/express-4.x-facebook-example">GitHub repo demonstrating how to use Express 4.x and Passport to authenticate users using Facebook</a></li>
+  <li><a href="https://github.com/ULL-ESIT-SYTW-1617/express-4.x-local-example">Example of how to use Express 4.x and Passport for authentication with username and password</a></li>
+  <li><a href="https://scotch.io/tutorials/easy-node-authentication-setup-and-local">Easy Node Authentication: Setup and Local</a></li>
+  <li><a href="http://code.tutsplus.com/tutorials/authenticating-nodejs-applications-with-passport--cms-21619">Authenticating Node.js Applications With Passport</a>
+    <ul>
+      <li><a href="https://github.com/tutsplus/passport-mongo">Repositorio con el código del tutorial</a></li>
+    </ul>
+  </li>
+  <li><a href="https://youtu.be/Z1ktxiqyiLA">Node.js Login System With Passport</a> YouTube video
+    <ul>
+      <li><a href="https://youtu.be/Z1ktxiqyiLA">Part 1</a>
+        <ul>
+          <li><a href="http://download.oracle.com/oll/tutorials/SQLInjection/html/lesson1/les01_tm_ovw3.htm">What Is Input Validation and Sanitization?</a></li>
+          <li><a href="https://gist.github.com/brianmacarthur/a4e3e0093d368aa8e423">Flash Messages</a>: A flash message is used in order to keep a message in session through one or several requests of the same user. By default, it is removed from session after it has been displayed to the user. Flash messages are usually used in combination with HTTP redirections, because in this case there is no view, so messages can only be displayed in the request that follows redirection.</li>
+        </ul>
+      </li>
+      <li><a href="https://youtu.be/OnuC3VtEQks">Part 2</a></li>
+      <li><a href="https://youtu.be/iX8UhDOmkPE">Part 3</a>
+        <ul>
+          <li><a href="https://github.com/jaredhanson/passport-local">Passport-local</a> (GitHub module repo)</li>
+          <li><a href="http://www.passportjs.org/docs/username-password/">Passport Docs: Username &amp; Password</a></li>
+          <li><a href="http://www.passportjs.org/docs/downloads/html/#flash-messages">Passport Docs: Flash Messages</a></li>
+          <li><a href="https://github.com/dcodeIO/bcrypt.js">Bcryptjs</a> at GitHub</li>
+          <li><a href="http://www.passportjs.org/docs/configure/#sessions">Passport: sessions</a> (serialize/deserialize)</li>
+        </ul>
+      </li>
+      <li><a href="https://github.com/bradtraversy/loginapp">GitHub repo</a></li>
+      <li><a href="https://github.com/ULL-ESIT-MII-CA-1718/loginapp">Fork at ULL-ESIT-CA-1718</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="passport-notas-sobre-como-configurar-una-webapp-en-facebook">Passport: Notas sobre como Configurar una WebApp en Facebook</h3>
+
+<ul>
+  <li><a href="https://developers.facebook.com/docs/apps/">Facebook App Development Guide</a>
+    <ul>
+      <li><a href="https://developers.facebook.com/docs/apps/register">Facebook: Register and Configure an App</a></li>
+    </ul>
+  </li>
+  <li>StackOverflow: <a href="http://stackoverflow.com/questions/2459728/how-to-test-facebook-connect-locally">How to Test Facebook Connect Locally</a>
+    <ul>
+      <li>
+        <p>Facebook → Settings → Basic:</p>
+
+        <p>write “localhost” in the “App Domains” field then click on “+Add Platform” choose “Web Site”.</p>
+
+        <p>After that, in the “Site Url” field write your localhost url 
+(e.g.: <code class="language-plaintext highlighter-rouge">http://localhost:3000/login/facebook/return</code>).
+This will allow you to test your facebook plugins locally.</p>
+      </li>
+    </ul>
+  </li>
+  <li>StackOverflow: <a href="http://stackoverflow.com/questions/8107911/facebook-site-url">Facebook Site URL?</a></li>
+</ul>
+
+<!--
+## Prácticas
+
+* [Práctica: Cookies, Sesiones, Autenticación y Módulos npm (p8-t3-sessions-and-modules)](practicas/p8-t3-sessions-and-modules)
+-->
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Authentication%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fauthentication.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Authentication%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fauthentication.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fauthentication.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fauthentication.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/authentication.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

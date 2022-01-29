@@ -1,0 +1,618 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Metodología de Trabajo - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Metodología de Trabajo">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-pl/guia-docente.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-pl/guia-docente.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Metodología de Trabajo">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Metodología de Trabajo
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#horarios-calendario-académico-y-tutorías">Horarios, Calendario académico y Tutorías</a></li><li><a href="#vías-de-comunicación">Vías de Comunicación</a><ul><li><a href="#chat-vs-hangouts">Chat vs Hangouts</a></li></ul></li><li><a href="#organización-github">Organización GitHub</a></li><li><a href="#rellenar-cuestionario-para-identificar-la-relación-entre-el-usuario-github-y-el-usuario-ull">Rellenar Cuestionario para identificar la Relación entre el usuario GitHub y el usuario ULL</a></li><li><a href="#google-plus-comunidad-pl">Google Plus: Comunidad PL</a></li><li><a href="#práctica-opcional-github-campus-expert">Práctica Opcional: GitHub Campus Expert</a></li><li><a href="#práctica-github-project-board">Práctica: GitHub Project Board</a></li><li><a href="#práctica-visual-studio-code">Práctica: Visual Studio Code</a></li><li><a href="#práctica-iaas">Práctica: IAAS</a></li><li><a href="#la-bibliografía">La Bibliografía</a></li><li><a href="#evaluación">Evaluación</a><ul><li><a href="#normativa-de-evaluación">Normativa de Evaluación</a></li><li><a href="#requisitos-para-participar-en-la-evaluación-continua">Requisitos para participar en la Evaluación Continua</a></li><li><a href="#pruebas-objetivas">Pruebas Objetivas</a></li><li><a href="#trabajos-y-proyectos-informes-y-valoración">Trabajos y proyectos, Informes y Valoración</a><ul><li><a href="#tfa">TFA</a></li></ul></li><li><a href="#cálculo-de-la-calificación">Cálculo de la Calificación</a></li><li><a href="#alumnos-que-no-participan-en-la-evaluación-continua">Alumnos que no participan en la Evaluación Continua</a></li></ul></li><li><a href="#referencias">Referencias</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="horarios-calendario-académico-y-tutorías">Horarios, Calendario académico y Tutorías</h2>
+
+<ul>
+  <li><a href="/timetables">Horarios, Calendario académico y Tutorías</a></li>
+</ul>
+
+<h2 id="vías-de-comunicación">Vías de Comunicación</h2>
+
+<ul>
+  <li>Issues en GitHub en el repo de la correspondiente práctica.</li>
+  <li>Asociarlos con el GtHub Project Board del alumno y actualizarlos según su progreso
+<!--* [Google group de PL ](https://groups.google.com/u/1/a/ull.edu.es/g/asignatura_139263121)-->
+<!--* [GitHub Discussions in the repo ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io](https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/discussions)--></li>
+  <li>Comentarios en los apuntes de la asignatura</li>
+</ul>
+
+<h3 id="chat-vs-hangouts">Chat vs Hangouts</h3>
+<ul>
+  <li><a href="https://chat.google.com/u/1/room/AAAANx1edCg">Google chat and VideoConferences</a>: Usen Google chat (institucional) y <strong>no Google Hangouts</strong> para contactar con el profesor</li>
+</ul>
+
+<h2 id="organización-github">Organización GitHub</h2>
+
+<p>En la metodología que seguiremos este curso trabajará usando esta organización GitHub:</p>
+
+<ul>
+  <li><a href="https://github.com/ULL-ESIT-PL-2122">Organización ULL-ESIT-PL-2122</a></li>
+</ul>
+
+<p>Vamos a trabajar de modo que todos - alumnos y profesores de esta asignatura - usaremos repos en esta organización para las prácticas.</p>
+
+<p>Para la puesta en marcha necesitamos hacer algunas tareas</p>
+
+<h2 id="rellenar-cuestionario-para-identificar-la-relación-entre-el-usuario-github-y-el-usuario-ull">Rellenar Cuestionario para identificar la Relación entre el usuario GitHub y el usuario ULL</h2>
+
+<p>Rellena el Cuestionario: Relación GitHub-AluXXXX dentro de <a href="">la tarea cuestionarios iniciales</a>.</p>
+
+<ul>
+  <li>Puedes poner un correo distinto del de la ULL si lo prefieres</li>
+  <li>Pon los usuarios GitHub (si tienes mas de uno) con los que vayas a hacer los commits en las prácticas de la asignatura</li>
+</ul>
+
+<h2 id="google-plus-comunidad-pl">Google Plus: Comunidad PL</h2>
+
+<p>Date de alta en la comunidad <a href="https://currents.google.com/u/1/communities/101901734024125937720">Google + de PL</a>.</p>
+
+<ul>
+  <li>Cuando lo hagas asegúrate de estar usando tu cuenta de gmail ull (<em>aluXXX@ull.edu.es</em>)</li>
+</ul>
+
+<h2 id="práctica-opcional-github-campus-expert">Práctica Opcional: GitHub Campus Expert</h2>
+
+<ul>
+  <li><a href="/practicas/github-campus-expert">Práctica Opcional: GitHub Campus Expert (github-campus-expert)</a></li>
+</ul>
+
+<h2 id="práctica-github-project-board">Práctica: GitHub Project Board</h2>
+
+<ul>
+  <li><a href="/practicas/github-project-board">GitHub Project Board: github-project-board</a></li>
+</ul>
+
+<h2 id="práctica-visual-studio-code">Práctica: Visual Studio Code</h2>
+
+<ul>
+  <li><a href="/practicas/visual-studio-code">Visual Studio Code</a></li>
+</ul>
+
+<h2 id="práctica-iaas">Práctica: IAAS</h2>
+
+<ul>
+  <li><a href="/practicas/iaas">IAAS</a></li>
+</ul>
+
+<h2 id="la-bibliografía">La Bibliografía</h2>
+
+<p>La mayor parte de los <a href="/references">libros</a> están accesible via el <a href="/resources#bull">PuntoQ de la BULL</a>.</p>
+
+<p>Usaremos bastante estos libros:</p>
+
+<ul>
+  <li><a href="https://eloquentjavascript.net/">Eloquent JS 3rd Edition</a></li>
+  <li><a href="https://javascript.info/">The Modern JavaScript Tutorial. https://javascript.info/</a></li>
+</ul>
+
+<p>En el repo GH:</p>
+
+<ul>
+  <li><a href="">Recursos de Bibliografía</a></li>
+</ul>
+
+<p>encontrarás recursos adicionales.</p>
+
+<h2 id="evaluación">Evaluación</h2>
+
+<h3 id="normativa-de-evaluación">Normativa de Evaluación</h3>
+
+<p>La Evaluación de la asignatura se rige por el Reglamento de Evaluación y Calificación de la Universidad de La Laguna (BOC de 19 de enero de 2016), o el que la Universidad tenga vigente, además de por lo establecido en la Memoria de Verificación inicial o posteriores modificaciones.</p>
+
+<ul>
+  <li><a href="https://riull.ull.es/xmlui/bitstream/handle/915/4096/reglamento_evaluacion_calificacion.pdf">Resolución de 8 de enero de 2016, por la que se dispone la publicación del
+Reglamento de Evaluación y Calificación de la Universidad de La Laguna (BOC de 19
+de enero de 2016)</a></li>
+  <li><a href="https://riull.ull.es/xmlui/bitstream/handle/915/8580/acuerdo12.pdf?sequence=1&amp;isAllowed=y">Acuerdo 12/CG 27-06-2017 por el que se aprueba el Reglamento de la
+Evaluación Curricular por Compensación de la Universidad de La Laguna</a></li>
+</ul>
+
+<h3 id="requisitos-para-participar-en-la-evaluación-continua">Requisitos para participar en la Evaluación Continua</h3>
+
+<ul>
+  <li>
+    <p>Para participar en la evaluación continua, es obligatorio hacer uso de los recursos proveídos (apuntes, vídeos, repositorios, foros, wikis, etc.) y realizar los ejercicios y actividades señaladas como obligatorios. Se realizará control de asistencia.</p>
+  </li>
+  <li>
+    <p>El alumno deberá demostrar que ha adquirido las habilidades y competencias de la asignatura en entrevistas con los profesores que se realizan en las horas lectivas, de laboratorio, de tutorías y en los micro-exámenes.</p>
+  </li>
+</ul>
+
+<h3 id="pruebas-objetivas">Pruebas Objetivas</h3>
+
+<p>Haremos un primer examen a mitad del desarrollo del cuatrimestre y otro al final aprovechando las fechas de convocatoria.</p>
+
+<p>El primero es el 20% de la nota  y el segundo el 80% de la nota. Es necesario aprobar esta parte para superar la asignatura.</p>
+
+<h3 id="trabajos-y-proyectos-informes-y-valoración">Trabajos y proyectos, Informes y Valoración</h3>
+
+<ul>
+  <li>Se llevarán a cabo micro-proyectos/prácticas/laboratorios. Los estudiantes deberán superar los micro-proyectos para aprobar la asignatura. Son apróximadamente 15 prácticas.</li>
+</ul>
+
+<h4 id="tfa">TFA</h4>
+
+<ul>
+  <li>Se desarrolla un Trabajo Fin de Asignatura (TFA) consistente en el diseño e implementación de un lenguaje (en algunos casos, un lenguaje de dominio específico, Domain Specific Language o DSL) que se presenta al final del curso. El proyecto se comienza tan pronto como el estudiante tiene los conocimientos mínimos para diseñarlo e implantarlo. Es necesario superar el proyecto para aprobar la asignatura.</li>
+</ul>
+
+<h3 id="cálculo-de-la-calificación">Cálculo de la Calificación</h3>
+
+<ul>
+  <li>Superadas las partes: prácticas, tfa y teoría  la nota es la media ponderada de las partes:
+\(0,4 \times practicas + 0,5 \times teoria + 0,1 \times tfa\)</li>
+</ul>
+
+<p><img src="/assets/images/evaluacion.png" alt="" /></p>
+
+<h3 id="alumnos-que-no-participan-en-la-evaluación-continua">Alumnos que no participan en la Evaluación Continua</h3>
+
+<ul>
+  <li>Los estudiantes que no participen en la evaluación continua se evalúan a través de los exámenes oficiales y convocatorias fijados por la Universidad de La Laguna.</li>
+</ul>
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li><a href="/assets/temas/tema0-introduccion-a-pl/github-classroom">GitHub Classroom Intro</a></li>
+</ul>
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Metodolog%C3%ADa+de+Trabajo%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fguia-docente.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Metodolog%C3%ADa+de+Trabajo%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fguia-docente.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fguia-docente.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-pl%2Fguia-docente.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-pl/guia-docente.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

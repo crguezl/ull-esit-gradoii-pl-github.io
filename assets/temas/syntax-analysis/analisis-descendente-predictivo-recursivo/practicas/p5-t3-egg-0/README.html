@@ -1,0 +1,910 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Egg. A Programming Language - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="Egg. A Programming Language">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/syntax-analysis/analisis-descendente-predictivo-recursivo/practicas/p5-t3-egg-0/README.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/syntax-analysis/analisis-descendente-predictivo-recursivo/practicas/p5-t3-egg-0/README.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Egg. A Programming Language">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Egg. A Programming Language
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc"><li><a href="#introducción">Introducción</a><ul><li><a href="#nota">NOTA</a></li></ul></li><li><a href="#gramatica">Escriba la Gramática</a></li><li><a href="#análisis-sintáctico-predictivo-recursivo">Análisis Sintáctico Predictivo Recursivo</a></li><li><a href="#árboles-de-análisis-abstracto">Árboles de Análisis Abstracto</a></li><li><a href="#fixing-scope">Fixing Scope</a></li><li><a href="#lexsep">Analizador Léxico Separado</a></li><li><a href="#separe">Separe en Módulos el Programa</a><ul><li><a href="#egg">egg</a></li><li><a href="#eggc">eggc</a></li><li><a href="#evm">evm</a></li></ul></li><li><a href="#examples-folder">Examples folder</a></li><li><a href="#test-folder">Test Folder</a></li><li><a href="#continuous-integration">Continuous Integration</a></li><li><a href="#github-registry">GitHub Registry</a></li><li><a href="#solución-parcial">Solución Parcial</a></li><li><a href="#mejoras-en-el-analizador-léxico">Mejoras en el Analizador Léxico</a></li><li><a href="#repl">Bucle REPLpara egg (Repeat Evaluate Print Loop)</a></li><li><a href="#recursos">Recursos</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="introducción">Introducción</h2>
+
+<p>Esta es la primera práctica de una serie de prácticas sobre las fases de análisis sintáctico, el análisis de ámbito y la interpretación del codigo. 
+Se presenta un lenguaje llamado <strong>Egg</strong> (de tipo “Lisp”) y se describe como procesarlo
+e interpretarlo.
+Las siguientes prácticas irán ampliando el lenguaje con nuevas capacidades: expresiones regulares, hashes, arrays multidimensionales, módulos, objetos, clases, … y se construyen sobre esta.</p>
+
+<p>Primero: Deberá leer el capítulo 12 <em>A Programming Language</em> de EJS:</p>
+
+<ul>
+  <li><a href="http://eloquentjavascript.net/12_language.html">Eloquent JS. Chapter 12. Project: A Programming Language</a></li>
+</ul>
+
+<p>Lea cuidadosamente el capítulo intentando comprender como funcionan las dos fases: la primera con el análisis sintáctico que produce el AST y la segunda 
+en la que se ejecuta el AST.</p>
+
+<p>Es fundamental que llegue a dominar las bases que se asientan en esta capítulo. 
+Son un montón de conceptos. 
+No desespere si al principio todo es un poco confuso. 
+Si tal cosa ocurre puede que le ayude dejar por un momento la lectura y pasar a leer primero las secciones</p>
+
+<ol>
+  <li><a href="#gramatica">Escriba la gramática</a> y</li>
+  <li>Introducción al <a href="/tema3-analisis-descendente-predictivo-recursivo/pdr-teoria">Análisis Sintáctico Predictivo Recursivo</a></li>
+</ol>
+
+<p>Después de estas dos lecturas vuelva otra vez a la lectura del capítulo <a href="http://eloquentjavascript.net/12_language.html">Chapter 12. Project: A Programming Language</a>.
+No haga todavía los ejercicios del libro.</p>
+
+<h3 id="nota">NOTA</h3>
+
+<p>En algunos de los ejemplos, vídeos, etc. que acompañan esta práctica puede notar algunas 
+inconsistencias en el lenguaje Egg debidas a que casi en cada curso hemos ido haciendo alias de algunos de los nombres de los constructos. Por ejemplo, a veces  en un vídeo en vez de <code class="language-plaintext highlighter-rouge">fun</code> usamos <code class="language-plaintext highlighter-rouge">-&gt;</code> y en algún ejemplo en los apuntes en vez de <code class="language-plaintext highlighter-rouge">element</code> se usa <code class="language-plaintext highlighter-rouge">&lt;-</code>, etc. También en algún ejemplo aparecen llavitas <code class="language-plaintext highlighter-rouge">{</code> y <code class="language-plaintext highlighter-rouge">}</code> en vez de paréntesis (de nuevo una llave aquí es un alias del correspondiente paréntesis). Son cambios triviales que no deberían afectar a la comprensión del texto.</p>
+
+<h2 id="gramatica">Escriba la Gramática</h2>
+
+<p>Haga este ejercicio para determinar la gramática del lenguaje Egg:</p>
+
+<ul>
+  <li><a href="/tema3-analisis-descendente-predictivo-recursivo/ejercicio-gramar-egg-inicial">Ejercicio</a></li>
+</ul>
+
+<p>Escriba en su <code class="language-plaintext highlighter-rouge">README.md</code> las reglas de producción de la gramática que reconoce el traductor</p>
+
+<p>Tiene una posible solución <a href="/tema3-analisis-descendente-predictivo-recursivo/solucion-ejercicio-gramar-egg-inicial">aquí</a></p>
+
+<p>¿Es correcto este diseño de la gramática?</p>
+
+<ul>
+  <li><a href="/tema3-analisis-descendente-predictivo-recursivo/egg-grammar">Gramática modificada</a></li>
+</ul>
+
+<h2 id="análisis-sintáctico-predictivo-recursivo">Análisis Sintáctico Predictivo Recursivo</h2>
+
+<p>Lea esta breve introducción a como se escribe un analizador  Sintáctico Predictivo Recursivo como el que se construye en el capítulo 12 <em>A Programming Language</em> de EJS:</p>
+
+<p><a href="/tema3-analisis-descendente-predictivo-recursivo/pdr-teoria">Análisis Sintáctico Predictivo Recursivo</a></p>
+
+<h2 id="árboles-de-análisis-abstracto">Árboles de Análisis Abstracto</h2>
+
+<p><a href="/tema3-analisis-descendente-predictivo-recursivo/ast-description">Árboles de Análisis Abstracto</a></p>
+
+<h2 id="fixing-scope">Fixing Scope</h2>
+
+<p>Resuelva ahora los dos ejercicios propuestos en el capítulo:</p>
+
+<ol>
+  <li><a href="https://eloquentjavascript.net/12_language.html#i_/OBuIOX390">Comments</a> y</li>
+  <li><a href="https://eloquentjavascript.net/12_language.html#i_Y9ZDMshYCQ">Fixing Scope</a></li>
+</ol>
+
+<p>Si no se le ocurre como resolver el segundo apartado, <em>Fixing Scope</em>, no desespere. Es un ejercicio muy difícil. Inténtelo mas de una vez.</p>
+
+<p>Puede encontrar una solución al problema en la rama <a href="https://github.com/ULL-ESIT-PL-1617/egg/tree/inicial">Inicial de este repo ULL-ESIT-PL-1617/egg/</a>. 
+Si no se le ocurre una solución acuda a este enlace. 
+Y si se le ocurrió  también. Contraste las soluciones y quédese con la que le parezca mejor.</p>
+
+<h2 id="lexsep">Analizador Léxico Separado</h2>
+
+<p>Intente ahora separar la fase de análisis sintáctico de la fase de análisis léxico
+en una función separada <code class="language-plaintext highlighter-rouge">lex</code> que cada vez que es llamada por las funciones  <code class="language-plaintext highlighter-rouge">parseExpression</code> y <code class="language-plaintext highlighter-rouge">parseApply</code> retorna
+el siguiente token.</p>
+
+<p>Esto es, a diferencia de en los ejemplos vistos en las clases anteriores, el analizador léxico no analiza todos los tokens en una pasada guardándolos en un array, sino que tan pronto como detecta el siguiente token lo devuelve a la rutina de  análisis sintáctico que le ha llamado.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">lookahead</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">lineno</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Save token line numbers</span>
+<span class="kd">let</span> <span class="nx">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Save token offset</span>
+<span class="p">...</span>
+<span class="kd">function</span> <span class="nx">lex</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">match</span><span class="p">;</span>
+  <span class="p">...</span> <span class="c1">// Find the next token and save it in lookahead </span>
+  <span class="k">return</span> <span class="nx">lookahead</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Se usará una variable compartida que se debe llamar <code class="language-plaintext highlighter-rouge">lookahead</code> para guardar el token actual. Esta variable <code class="language-plaintext highlighter-rouge">lookahead</code> sirve para la comunicación entre las funciones de análisis sintactico y el analizador léxico. El código de <code class="language-plaintext highlighter-rouge">parseExpression</code>debería quedar  parecido a esto:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">parseExpression</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">expr</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">lookahead</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">STRING</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">expr</span> <span class="o">=</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="nx">lookahead</span><span class="p">.</span><span class="nx">value</span><span class="p">};</span>
+    <span class="nx">lex</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">expr</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">lookahead</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">NUMBER</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">expr</span> <span class="o">=</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">value</span><span class="dl">"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="nx">lookahead</span><span class="p">.</span><span class="nx">value</span><span class="p">};</span>
+    <span class="nx">lex</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">expr</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">lookahead</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">WORD</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">expr</span> <span class="o">=</span> <span class="p">{</span><span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">word</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="nx">lookahead</span><span class="p">.</span><span class="nx">value</span><span class="p">};</span>
+    <span class="nx">lex</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">parseApply</span><span class="p">(</span><span class="nx">expr</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">SyntaxError</span><span class="p">(</span><span class="s2">`Unexpected syntax line </span><span class="p">${</span><span class="nx">lineno</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">program</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="separe">Separe en Módulos el Programa</h2>
+
+<p>Separe el código en dos módulos Node.js:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lib
+├── eggvm.js
+└── parse.js
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">parse.js</code> debe contener las funciones del análisis léxico y sintáctico y exportarlas</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ tail -n 9 lib/parse.js
+</code></pre></div>    </div>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">parse</span><span class="p">,</span>
+  <span class="nx">parseApply</span><span class="p">,</span>
+  <span class="nx">parseExpression</span><span class="p">,</span>
+  <span class="nx">parseFromFile</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">eggvm.js</code>debe contener todo el código relativo al entorno de ejecución. Este módulo debería exportar funciones para la ejecución del árbol generado en la primera fase como <code class="language-plaintext highlighter-rouge">run</code>, <code class="language-plaintext highlighter-rouge">runFromFile</code>, <code class="language-plaintext highlighter-rouge">runFromEVM</code>:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ tail -n 1 lib/eggvm.js
+</code></pre></div>    </div>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">run</span><span class="p">,</span> 
+  <span class="nx">runFromFile</span><span class="p">,</span> 
+  <span class="nx">runFromEVM</span><span class="p">,</span> 
+  <span class="nx">topEnv</span><span class="p">,</span> 
+  <span class="nx">specialForms</span><span class="p">,</span> 
+  <span class="nx">parser</span><span class="p">,</span> 
+  <span class="nx">evaluate</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Añada también tres ejecutables que usan los módulos anteriores:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ tree bin
+bin
+├── egg.js
+├── eggc.js
+└── evm.js
+</code></pre></div></div>
+
+<h3 id="egg">egg</h3>
+
+<p>El programa <code class="language-plaintext highlighter-rouge">egg</code>  deberá ejecutar el programa <code class="language-plaintext highlighter-rouge">.egg</code> que se le pasa por línea de comandos:</p>
+
+<div class="language-lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$</span> <span class="nv">cat</span> <span class="nv">one.egg</span>
+<span class="nb">do</span><span class="p">(</span>
+  <span class="nv">define</span><span class="p">(</span><span class="nv">x,</span> <span class="mi">4</span><span class="p">)</span><span class="o">,</span>
+  <span class="nv">define</span><span class="p">(</span><span class="nv">setx,</span> <span class="nv">fun</span><span class="p">(</span><span class="nv">val,</span> 
+      <span class="nb">set</span><span class="p">(</span><span class="nv">x,</span> <span class="nv">val</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">)</span><span class="o">,</span>
+  <span class="nv">setx</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">,</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nv">$</span> <span class="nv">egg</span> <span class="nv">one.egg</span>
+<span class="mi">50</span>
+</code></pre></div></div>
+
+<h3 id="eggc">eggc</h3>
+
+<p>Compiles the input program to produce a JSON containing the tree: <code class="language-plaintext highlighter-rouge">eggc examples/two.egg</code> produces the JSON file <code class="language-plaintext highlighter-rouge">examples/two.egg.evm</code></p>
+
+<p>Por ejemplo, si le damos como entrada este programa:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ cat examples/two.egg
+</code></pre></div></div>
+<div class="language-lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">do</span><span class="p">(</span>
+  <span class="nv">define</span><span class="p">(</span><span class="nv">sum,</span>  <span class="err">#</span> <span class="k">function</span>
+    <span class="nv">fun</span><span class="p">(</span><span class="nv">nums,</span> <span class="nv">other,</span>
+      <span class="nb">do</span><span class="p">(</span>
+         <span class="nb">print</span><span class="p">(</span><span class="nv">other</span><span class="p">)</span><span class="o">,</span>
+         <span class="nv">define</span><span class="p">(</span><span class="nv">i,</span> <span class="mi">0</span><span class="p">)</span><span class="o">,</span>
+         <span class="nv">define</span><span class="p">(</span><span class="nv">sum,</span> <span class="mi">0</span><span class="p">)</span><span class="o">,</span>
+         <span class="nv">while</span><span class="p">(</span><span class="nb">&lt;</span><span class="p">(</span><span class="nv">i,</span> <span class="nb">length</span><span class="p">(</span><span class="nv">nums</span><span class="p">))</span><span class="o">,</span>
+           <span class="nb">do</span><span class="p">(</span><span class="nv">define</span><span class="p">(</span><span class="nv">sum,</span> <span class="nb">+</span><span class="p">(</span><span class="nv">sum,</span> <span class="nv">element</span><span class="p">(</span><span class="nv">nums,</span> <span class="nv">i</span><span class="p">)))</span><span class="o">,</span>
+              <span class="nv">define</span><span class="p">(</span><span class="nv">i,</span> <span class="nb">+</span><span class="p">(</span><span class="nv">i,</span> <span class="mi">1</span><span class="p">))</span>
+           <span class="p">)</span>
+         <span class="p">)</span><span class="o">,</span>
+         <span class="nv">sum</span>
+      <span class="p">)</span>
+   <span class="p">)</span>
+ <span class="p">)</span><span class="o">,</span>
+ <span class="nb">print</span><span class="p">(</span><span class="nv">sum</span><span class="p">(</span><span class="nc">array</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Si ejecutamos <code class="language-plaintext highlighter-rouge">bin/eggc.js  examples/two.egg</code> produce como salida un fichero con el mismo nombre y extensión <code class="language-plaintext highlighter-rouge">.evm</code> (por Egg Virtual Machine) que no es otra cosa que el AST generado por el parser guardado como un objeto JSON.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ bin/eggc.js examples/two.egg
+[~/.../crguezl-egg(master)]$ ls -ltr examples/two.egg.evm
+-rw-r--r--  1 casiano  staff  7466  2 abr 11:03 examples/two.egg.evm
+</code></pre></div></div>
+
+<p>Puede ver los contenidos del JSON generado en la ejecución de ejemplo en este enlace:</p>
+
+<ul>
+  <li><a href="two.egg.evm">examples/two.egg.evm</a></li>
+</ul>
+
+<h3 id="evm">evm</h3>
+
+<p>El intérprete <code class="language-plaintext highlighter-rouge">evm</code> ejecuta los ficheros en formato <em>Egg Virtual Machine</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ bin/evm.js examples/two.egg.evm
+4
+6
+</code></pre></div></div>
+
+<h2 id="examples-folder">Examples folder</h2>
+
+<p>Añada una carpeta <code class="language-plaintext highlighter-rouge">examples</code> en la que guardará los ejemplos con los que va comprobando la funcionalidad de su compilador:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ tree examples/ -I '*evm'
+examples/
+├── array.egg
+├── greater-x-5.egg
+├── if.egg
+├── ...
+└── two.egg
+</code></pre></div></div>
+
+<p>Cada vez que introduzca una nueva funcionalidad cree uno o varios ejemplos que sirvan para ilustrarla y comprobar el buen funcionamiento.</p>
+
+<p>Por ejemplo, cuando trabajemos en la tarea  <code class="language-plaintext highlighter-rouge">Fixing Scope</code> podemos añadir a nuestro 
+directorio <code class="language-plaintext highlighter-rouge">examples</code> un par de ejemplos que ilustran como debería funcionar.</p>
+
+<p>Uno que produzca una excepción:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(private2019)]$ cat examples/scope-err.egg
+do(
+  set(x,9),
+  print(x) # ReferenceError: Tried setting an undefined variable: x
+)
+</code></pre></div></div>
+
+<p>y al menos otro que muestre como unas variables ocultan a otras:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(private2019)]$ cat examples/scope.egg
+do(
+  def(x,9),
+  /* def crea una nueva variable local */
+  def(f, fun{
+    do{
+      def(x, 4),
+      print(x) # 4
+    }
+  }),
+  /* set no crea una nueva variable local */
+  def(g, fun{set(x, 8)}),
+  f(),
+  print(x), # 9
+  g(),
+  print(x) # 8
+)
+</code></pre></div></div>
+
+<p>Conforme programamos, vamos ejecutando nuestra solución contra estos programas. 
+Cuando tengamos la solución correcta la salida debería ser algo así:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(private2019)]$ bin/egg.js examples/scope-err.egg
+ReferenceError: Tried setting an undefined variable: x
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(private2019)]$ bin/egg.js examples/scope.egg
+4
+9
+8
+</code></pre></div></div>
+
+<p>Uno de nuestros objetivos es reciclar esos ejemplos en las pruebas y en la documentación.</p>
+
+<h2 id="test-folder">Test Folder</h2>
+
+<p>Añadimos una carpeta <code class="language-plaintext highlighter-rouge">test</code> y en ella los 
+programas de prueba <code class="language-plaintext highlighter-rouge">test/test.js</code> (Mocha o Jest, use lo que prefiera. Los ejemplos que siguen están en Mocha).</p>
+
+<p>Creamos tabién un subdirectorio <code class="language-plaintext highlighter-rouge">test/examples</code> en el que copiamos nuestro ejemplo de prueba:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp examples/scope.egg test/examples/
+</code></pre></div></div>
+
+<p>y junto a el escribimos un fichero con la salida esperada <code class="language-plaintext highlighter-rouge">test/examples/scope.egg.expected</code>.</p>
+
+<p>Una estructura como esta:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test/
+├── examples
+│   ├── scope.egg
+│   └── scope.egg.expected
+└── test.js
+</code></pre></div></div>
+
+<p>Cada vez que logramos implementar una nueva funcionalidad o un nuevo objetivo añadimos en el directorio <code class="language-plaintext highlighter-rouge">examples</code> uno o varios  programas <code class="language-plaintext highlighter-rouge">examples/objetivo.egg</code> cuya ejecución muestra el buen funcionamiento de nuestro código. También lo añadimos a <code class="language-plaintext highlighter-rouge">test/examples/objetivo.egg</code> así como la salida esperada <code class="language-plaintext highlighter-rouge">test/examples/objetivo.egg.expected</code>.</p>
+
+<p>De esta forma la prueba se reduce a comprobar que la salida de la ejecución del programa <code class="language-plaintext highlighter-rouge">test/examples/objetivo.egg</code> es igual a los contenidos de <code class="language-plaintext highlighter-rouge">test/examples/objetivo.egg.expected</code>.</p>
+
+<p>Puede usar el módulo <a href="https://www.npmjs.com/package/@ull-esit-pl/example2test">@ull-esit-pl/example2test</a> para simplificar esta metodología</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../test(private2019)]$ cat scopes.js
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">should</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">should</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">e2t</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@ull-esit-pl/example2test</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">eggvm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../lib/eggvm.js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Testing scopes</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">runTest</span> <span class="o">=</span> <span class="p">(</span><span class="nx">programName</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">e2t</span><span class="p">({</span>
+      <span class="na">exampleInput</span><span class="p">:</span> <span class="nx">programName</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">.egg</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">executable</span><span class="p">:</span> <span class="dl">'</span><span class="s1">node bin/egg.js</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">assertion</span><span class="p">:</span> <span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">expected</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/g</span><span class="p">,</span><span class="dl">''</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="nx">expected</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/g</span><span class="p">,</span><span class="dl">''</span><span class="p">)),</span>
+      <span class="na">done</span><span class="p">:</span> <span class="nx">done</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">};</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">should  not allow the use of non declared variables</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">program</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">examples/scope-err.egg</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">eggvm</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">program</span><span class="p">);</span> <span class="p">}).</span><span class="nx">should</span><span class="p">.</span><span class="k">throw</span><span class="p">(</span><span class="sr">/setting.+undefined.+variable/i</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">testing scope.egg</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runTest</span><span class="p">(</span><span class="dl">'</span><span class="s1">scope</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Como se puede apreciar, el objeto <code class="language-plaintext highlighter-rouge">eggvm</code> exportado por el módulo <code class="language-plaintext highlighter-rouge">lib/eggvm.js</code>
+dispone de un método <code class="language-plaintext highlighter-rouge">run</code> que ejecuta la cadena que se le pasa como entrada.</p>
+
+<p>No olvides ejecutar <strong>todas</strong> las pruebas <code class="language-plaintext highlighter-rouge">npm test</code> cada vez que resuelves un nuevo objetivo</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(private2019)]$ npx mocha test/scopes.js
+  Testing scopes
+    ✓ should  not allow the use of non declared variables
+    ✓ testing scope.egg (138ms)
+  2 passing (151ms)
+</code></pre></div></div>
+
+<h2 id="continuous-integration">Continuous Integration</h2>
+
+<p>Use GitHub Actions para añadir CI al proyecto</p>
+
+<h2 id="github-registry">GitHub Registry</h2>
+
+<p>Publique el compilador como módulo en GH Registry en el ámbito <code class="language-plaintext highlighter-rouge">@ULL-ESIT-PL-1920</code>.</p>
+
+<p>Puesto que este paquete contiene ejecutables es conveniente que lea la sección
+<a href="https://docs.npmjs.com/files/package.json#bin">bin</a> de la documentación de npm.js sobre package.json:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(master)]$ jq .bin package.json
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">egg</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./bin/egg.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">eggc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./bin/eggc.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">evm</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./bin/evm.js</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="solución-parcial">Solución Parcial</h2>
+
+<p>Si logra resolver estos objetivos ¡Enhorabuena!.</p>
+
+<p>Puede encontrar una solución a algunos de los problemas planteados en este repo <a href="https://github.com/ULL-ESIT-PL-1617/egg">ULL-ESIT-PL-1617/egg</a>.</p>
+
+<p>Asegúrese que entiende como funciona.</p>
+
+<p>También puede encontrarlo como módulo en npm <a href="https://www.npmjs.com/package/@crguezl/eloquentjsegg">@crguezl/eloquentjsegg</a></p>
+
+<h2 id="mejoras-en-el-analizador-léxico">Mejoras en el Analizador Léxico</h2>
+
+<p>A continuación mejore el analizador léxico que encuentra en este repo 
+como sigue:</p>
+
+<ol>
+  <li>Guarde en el objeto token el <code class="language-plaintext highlighter-rouge">offset</code> de comienzo, la línea de comienzo, etc</li>
+  <li>Mejore los mensajes de error usando esta información</li>
+  <li>El analizador léxico actual destruye la cadena conteniendo el programa conforme la analiza.  Es posible  escribir una analizador léxico que recorra la cadena conteniendo el programa sin destruirla usando la opción <code class="language-plaintext highlighter-rouge">sticky</code>. Estudie esta mejora</li>
+  <li>Mejore las pruebas, especialmente con programas que contienen errores</li>
+</ol>
+
+<h2 id="repl">Bucle REPLpara egg (Repeat Evaluate Print Loop)</h2>
+
+<p>Haga que el ejecutable <code class="language-plaintext highlighter-rouge">egg</code> funcione como un bucle REPL cuando no se le proporciona un fichero de entrada.</p>
+
+<div class="language-lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">[~/ull-pl1718-campus-virtual/tema3-analisis-sintactico/src/egg/crguezl-egg</span><span class="p">(</span><span class="nv">private</span><span class="p">)</span><span class="nv">]$</span> <span class="nv">bin/egg.js</span>
+<span class="nb">&gt;</span> <span class="nv">def</span><span class="p">(</span><span class="nv">x,</span> <span class="nc">array</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="nc">array</span><span class="p">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">4</span><span class="p">)))</span> <span class="err">#</span> <span class="nv">x</span> <span class="nb">=</span> <span class="nv">[1,2,[3,4]]</span>
+<span class="nv">[</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nv">[</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span> <span class="nv">]</span> <span class="nv">]</span>
+<span class="nb">&gt;</span> <span class="nv">&lt;-</span><span class="p">(</span><span class="nv">x,2</span><span class="p">)</span> <span class="err">#</span> <span class="nv">3d</span> <span class="nv">element</span>
+<span class="nv">[</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span> <span class="nv">]</span>
+<span class="nb">&gt;</span> <span class="nv">&lt;-</span><span class="p">(</span><span class="nv">x,0</span><span class="p">)</span> <span class="err">#</span> <span class="nv">1st</span> <span class="nv">element</span>
+<span class="mi">1</span>
+<span class="nb">&gt;</span> <span class="err">#</span> <span class="nv">Pulsamos</span> <span class="nv">CTRL-D</span>
+<span class="nb">&gt;</span> <span class="nv">goodbye!</span>
+</code></pre></div></div>
+
+<p>En este <a href="https://youtu.be/5gIlt6r29lw">Vídeo <em>Programando un bucle REPL para el lenguaje Egg</em></a> explicamos como hacerlo</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5gIlt6r29lw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="recursos">Recursos</h2>
+
+<ul>
+  <li><a href="http://eloquentjavascript.net/11_language.html">Eloquent JS: Chapter 11. Project: A Programming Language</a></li>
+  <li><a href="https://github.com/ULL-ESIT-PL-1617/egg">El lenguaje egg: repo en GitHub</a>. Contiene una solución a los  <a href="#lexsep">problemas de separar el analizador léxico del sintáctico</a> así como al de <a href="#separe">separar los códigos y los tres ejecutables</a>. También tiene ejemplos de pruebas en Mocha y Chai</li>
+  <li><a href="https://gist.github.com/crguezl/430642e29a2b9293317320d0d1759387">NodeJS Readline gist</a>: un sencillo gist que te enseña a usar <code class="language-plaintext highlighter-rouge">readline</code> para hacer un bucle interactivo. Quizá conviene que lo leas cuando llegues a la sección del <a href="#repl">problema del REPL</a></li>
+  <li>En el repo <a href="https://github.com/ULL-ESIT-PL-1617/interpreter-egg">ULL-ESIT-PL-1617/interpreter-egg</a> se muestra como hacer un bucle REPL</li>
+  <li><a href="https://youtu.be/5gIlt6r29lw">Vídeo <em>Programando un bucle REPL para el lenguaje Egg</em></a></li>
+  <li><a href="http://xregexp.com/">XRegExp</a></li>
+  <li>El módulo <a href="https://www.npmjs.com/package/@ull-esit-pl/example2test">@ull-esit-pl/example2test</a></li>
+  <li>Tests. Mocking and Stubbing
+    <ul>
+      <li><a href="http://sinonjs.org/releases/v1.17.7/">Sinon API</a></li>
+      <li><a href="https://gyandeeps.com/console-stubbing/">Side effects of stubbing console in tests</a></li>
+      <li><a href="http://elijahmanor.com/unit-test-like-a-secret-agent-with-sinon-js/">Unit Test like a Secret Agent with Sinon.js</a> by Elijah Manor</li>
+    </ul>
+  </li>
+</ul>
+
+
+
+        
+
+
+        
+
+        <br/>
+        <br/>
+        <br/>
+
+        <script src="https://utteranc.es/client.js"
+          repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=Egg.+A+Programming+Language%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fanalisis-descendente-predictivo-recursivo%2Fpracticas%2Fp5-t3-egg-0%2FREADME.html" 
+  class="btn btn--twitter" 
+  style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " 
+  onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a 
+   href="https://twitter.com/intent/tweet?text=Egg.+A+Programming+Language%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fanalisis-descendente-predictivo-recursivo%2Fpracticas%2Fp5-t3-egg-0%2FREADME.html" 
+   class="btn btn--twitter" 
+   onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+   title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fanalisis-descendente-predictivo-recursivo%2Fpracticas%2Fp5-t3-egg-0%2FREADME.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a 
+    href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fsyntax-analysis%2Fanalisis-descendente-predictivo-recursivo%2Fpracticas%2Fp5-t3-egg-0%2FREADME.html" 
+    class="btn btn--linkedin" 
+    onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" 
+    title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/syntax-analysis/analisis-descendente-predictivo-recursivo/practicas/p5-t3-egg-0/README.md" 
+        target="_blank" 
+        style="background-color: #6f42c1; color: #ffff" 
+        class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

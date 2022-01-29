@@ -1,0 +1,691 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitPod: VS Code in Browsers - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="GitPod: VS Code in Browsers">
+<meta property="og:url" content="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/gitpod.html">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/assets/temas/introduccion-a-javascript/gitpod.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li>
+</ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  <h3 class="nav__title" style="padding-left: 0;"></h3>
+  <input id="ac-toc" name="accordion-toc" type="checkbox">
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">GITHUB</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://github.com/ULL-ESIT-PL-2122" target="_blank">Organization</a></li>
+          
+            <li><a href="https://classroom.github.com/classrooms/90842648-ull-esit-pl-2122" target="_blank">Classroom</a></li>
+          
+            <li><a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" target="_blank">Apuntes repo</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">CAMPUS VIRTUAL</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/course/view.php?id=2122090039" target="_blank">PL en el Campus Virtual</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/forum/index.php?id=2122090039" target="_blank">Foros</a></li>
+          
+            <li><a href="https://campusingenieriaytecnologia2122.ull.es/mod/assign/index.php?id=2122090039" target="_blank">Tareas</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121" target="_blank">Guia Docente</a></li>
+          
+            <li><a href="https://www.ull.es/apps/guias/guias/view_guide_course/2122/139263121/3/" target="_blank">Horario de Tutorías</a></li>
+          
+            <li><a href="https://www.ull.es/grados/ingenieria-informatica/informacion-academica/horarios-y-calendario-examenes/#tercero" target="_blank">Horarios Tercero</a></li>
+          
+            <li><a href="https://www.ull.es/servicios/biblioteca/servicios/puntoq/" target="_blank">BULL PuntoQ</a></li>
+          
+            <li><a href="https://www.ull.es/estudios-docencia/calendario-academico/" target="_blank">Calendario Académico</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">GOOGLE</span>
+        
+
+        
+        <ul>
+          
+            <li><a href="https://meet.google.com/eha-yfij-zmo" target="_blank">Meet</a></li>
+          
+            <li><a href="https://youtube.com/playlist?list=PLuPGCp-dfrUTzN_o2beArY1QoFUTGH-yd" target="_blank">Videos</a></li>
+          
+            <li><a href="https://chat.google.com/u/1/" target="_blank">Chat</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitPod: VS Code in Browsers">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">GitPod: VS Code in Browsers
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-list"></i> Tabla de Contenidos</h4></header>
+              <ul class="toc__menu" id="pltoc">
+<li>
+<a href="#github-editor">GitHub Editor</a><ul>
+<li><a href="#period-in-a-repo">Period in a repo</a></li>
+<li><a href="#substitute-github-by-githubdev-in-a-github-url">Substitute github by github.dev in a GitHub URL</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#referencias">Referencias</a></li>
+</ul>
+</li>
+<li>
+<a href="#gitpod">GitPod</a><ul>
+<li><a href="#aprendiendo-gitpod">Aprendiendo GitPod</a></li>
+<li><a href="#configure-gitpod">Configure Gitpod</a></li>
+<li><a href="#bot%C3%B3n-gitpod">Botón GitPod</a></li>
+<li><a href="#open-in-vscode">Open in VSCode</a></li>
+<li><a href="#snapshots">Snapshots</a></li>
+<li><a href="#sustainable-nodejs-development-with-only-a-browser">Sustainable Node.js development with only a browser</a></li>
+<li><a href="#oferta-para-estudiantes">Oferta para Estudiantes</a></li>
+<li><a href="#oferta-plan-personal-2021-profesores">Oferta Plan Personal (2021) Profesores</a></li>
+<li><a href="#drawbacks-according-to-pattacini">Drawbacks according to Pattacini</a></li>
+<li><a href="#docker-images">Docker Images</a></li>
+<li><a href="#self-hosted">Self Hosted</a></li>
+<li><a href="#referencias-1">Referencias</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <h2 id="github-editor">GitHub Editor</h2>
+
+<h3 id="period-in-a-repo">Period in a repo</h3>
+
+<p>From any GitHub repo or pull request, developers can simply press the period (<code class="language-plaintext highlighter-rouge">.</code>) key to bring up the browser-based VS Code environment with the source code file ready for editing.</p>
+
+<h3 id="substitute-github-by-githubdev-in-a-github-url">Substitute github by github.dev in a GitHub URL</h3>
+
+<p>That dot press to bring up the web-based editor takes you to <a href="https://github.dev/">https://github.dev/</a>, so the same one-press <code class="language-plaintext highlighter-rouge">.</code> functionality can be duplicated just by changing a URL from “github.com” to “github.dev”.</p>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>Esta documentación es sólo para usuarios GitHub Enterprise</p>
+
+<ul>
+  <li><a href="https://docs.github.com/es/codespaces/developing-in-codespaces/web-based-editor">Web-based editor</a></li>
+</ul>
+
+<h3 id="referencias">Referencias</h3>
+
+<ul>
+  <li><a href="https://visualstudiomagazine.com/articles/2021/08/31/github-vs-code.aspx">One-Click VS Code in Browser from GitHub Repo </a></li>
+</ul>
+
+<h2 id="gitpod">GitPod</h2>
+
+<p>Gitpod is an open source platform for automated and ready-to-code development environments that blends into your existing workflow. It enables developers to describe their dev environment as code and start instant and fresh development environments for each new task directly from your browser.</p>
+
+<h3 id="aprendiendo-gitpod">Aprendiendo GitPod</h3>
+
+<ul>
+  <li><a href="https://www.gitpod.io/docs/getting-started">Getting Started</a></li>
+</ul>
+
+<h3 id="configure-gitpod">Configure Gitpod</h3>
+
+<h3 id="botón-gitpod">Botón GitPod</h3>
+
+<p>Para tener el botón GitPod instala la correspondiente extensión en Chrome o Firefox</p>
+
+<ul>
+  <li><a href="https://www.gitpod.io/docs/browser-extension/">GitPod Browser Extension</a></li>
+  <li>
+<a href="https://chrome.google.com/webstore/detail/gitpod-always-ready-to-co/dodmmooeoklaejobgleioelladacbeki?hl=es">Chrome extension</a> in the webstore</li>
+  <li><a href="https://addons.mozilla.org/es/firefox/addon/gitpod/">fireFox addon</a></li>
+  <li>
+<a href="https://www.youtube.com/playlist?list=PL3TSF5whlprXVp-7Br2oKwQgU4bji1S7H">GitPod Screencasts</a> 7 videos</li>
+</ul>
+
+<h3 id="open-in-vscode">Open in VSCode</h3>
+
+<p>En el menú de arriba a la izquierda elige la opción “Open in VS Code”:</p>
+
+<p><img src="/assets/images/gitpod/gitpod-open-in-vscode.png" alt=""></p>
+
+<p>Tienes que instalar la extensión <a href="">GitPod</a> the VSCode y darle los permisos.
+A partir de ese momento puedes editar con tu VSCode local en el contenedor de GitPod.</p>
+
+<p>See it running in my local machine, after the VSCode has been opened:</p>
+
+<p><img src="/assets/images/gitpod/gitpod-opened-in-vscode.png" alt=""></p>
+
+<p>Observe the output in the terminal. We are running on the GitPod docker container</p>
+
+<p>¡Ojo! tu VSCode local está compartiendo el GitPod Workspace. Cualquier modificación que hagas en el VSCode local se refleja en el GitPod Workspace en la nube y viceversa.</p>
+
+<h3 id="snapshots">Snapshots</h3>
+
+<p>Whenever you want to share a reproducible example on StackOverflow or an issue report, providing real code that can be quickly tried, executed and explored is the best you can do. Online code playgrounds, such as CodePen or JSFiddle, are an excellent way to do that, as they are very accessible for both the creator and the readers. Unfortunately, they are not available for every programming platform, language and often don’t work for larger projects or examples.</p>
+
+<p>Gitpod lets you create reproducible examples for any programming environment and any size of project.</p>
+
+<p>No matter what state your Gitpod workspace is in, taking a Snapshot captures everything and provides you a link to share anywhere: on issues, forums (StackOverflow), emails and blogs. Anybody who clicks on a snapshot link instantly gets an exact copy of that workspace, including any uncommitted file changes and the UI layout.</p>
+
+<p>See</p>
+
+<ul>
+  <li><a href="https://www.gitpod.io/blog/workspace-snapshots">Creating reproducibles for any programming language
+</a></li>
+</ul>
+
+<h3 id="sustainable-nodejs-development-with-only-a-browser">Sustainable Node.js development with only a browser</h3>
+
+<p>See the article</p>
+
+<p><a href="https://www.gitpod.io/blog/node-js-development">Sustainable Node.js development with only a browser</a></p>
+
+<h3 id="oferta-para-estudiantes">Oferta para Estudiantes</h3>
+
+<ul>
+  <li><a href="https://www.gitpod.io/github-student-developer-pack">GitHub Student Developer Pack</a></li>
+</ul>
+
+<h3 id="oferta-plan-personal-2021-profesores">Oferta Plan Personal (2021) Profesores</h3>
+
+<p>En esta URL <a href="https://gitpod.io/plans">https://gitpod.io/plans</a>
+se puede solicitar un upgrade al plan “personal”  que permite acceder a repositorios privados si eres un miembro de una comunidad educativa. No he tenido que introducir tarjetas.</p>
+
+<p><strong>Importante</strong>: Cuando rellenes la solicitud ¡El campo VAT déjalo vacío!</p>
+
+<p>Lo que pasa (Abril 2021) es que GitPod está siendo ofertado como parte del <a href="https://education.github.com/toolbox">GitHub teachers’ toolbox</a>. Por tanto, si  tienes actualizado tu GitHub Toolbox, creo que tanto los profesores como los alumnos tienen acceso a repos privados y a la nube proveída por GitPod.</p>
+
+<p><img src="/assets/images/gitpod/8-horas-100-euros.png" alt=""></p>
+
+<p><img src="/assets/images/gitpod/teacher-coupon.png" alt="teacher-coupon"></p>
+
+<p><strong>Está limitada a 100 horas de uso por mes</strong>:</p>
+
+<ul>
+  <li><a href="https://www.gitpod.io/pricing">100 horas</a></li>
+  <li>Repositorios privados</li>
+</ul>
+
+<p>En el ejemplo se ve los apuntes de PL (un repo público usando Jekyll) siendo editado con VSCode:</p>
+
+<p><img src="/assets/images/gitpod/apuntes-pl-gitpod.png" alt="apuntes-pl-gitpod"></p>
+
+<p>todo funciona bien.</p>
+
+<p>Con este plan es posible acceder a repos privados. 
+En el repo en GitHub aparece un nuevo botón verde con etiqueta “GitPod”. Obsérvese que el repo es privado:</p>
+
+<p><img src="/assets/images/gitpod/boton-gitpod-en-repo-privado.png" alt="boton-gitpod-en-repo-privado"></p>
+
+<p>Cuando le damos  al botón “GitPod” por primera vez es posible que nos salga un mensaje de error:</p>
+
+<p><img src="/assets/images/gitpod/autorizar-gitpod-a-organizacion.png" alt="autorizar-gitpod-a-organizacion.png 8-horas-100-euros"></p>
+
+<p>Le damos los permisos adecuados:</p>
+
+<p><img src="/assets/images/gitpod/gitpos-request-permissions.png" alt="gitpos-request-permissions"></p>
+
+<p><img src="/assets/images/gitpod/grant-access.png" alt="grant-access"></p>
+
+<p>y ya podemos editar nuestros repos privados.</p>
+
+<h3 id="drawbacks-according-to-pattacini">Drawbacks according to Pattacini</h3>
+
+<blockquote>
+  <p>Gitpod is fantastic but comes with some constraints that may affect yours and your students’ work:</p>
+</blockquote>
+
+<blockquote>
+  <p>Obviously, you’d need to learn how to deal with Docker files and do some preliminary tests on your side. Getting accustomed to Docker might take some time <img class="emoji" title=":hourglass_flowing_sand:" alt=":hourglass_flowing_sand:" src="https://github.githubassets.com/images/icons/emoji/unicode/23f3.png" height="20" width="20"></p>
+</blockquote>
+
+<blockquote>
+  <p>In a Gitpod workspace, the user has no sudo credentials. This is understandable and represents good practice, but sometimes it’d be convenient to install packages straight away from the console without the burden of adjusting the Dockerfile once more.</p>
+</blockquote>
+
+<p>Pero en otro post posterior (Feb 25 2021) comenta:</p>
+
+<blockquote>
+  <p>Just wanted to tell you that Gipod has been growing up tremendously as well as awesomely and, among the latest advancements it provides, we have now root access</p>
+</blockquote>
+
+<blockquote>
+  <p>Gitpod is free only for public GitHub repositories. This is ok for public assignments but could be a hitch for private ones. An easy workaround could be to ask students to clone their private repositories only after the workspace is ready.</p>
+</blockquote>
+
+<p>Esto se resuelve como he comentado</p>
+
+<blockquote>
+  <p>There’s <strong>the threshold of 100 hours/month per user</strong>. Quite reasonable, but much depends on your classroom payload.
+When you share a running workspace, you’ll share also your access to GitHub, which might not be desirable! This is a serious inconvenient during remote technical interviews, for example.</p>
+</blockquote>
+
+<blockquote>
+  <p>Finally, don’t expect to have quantum computers available from free Cloud IDE’s services. After all, there’s a trade-off and resources are limited (e.g. no GPU), even though Gitpod seems quite generous in this sense.</p>
+</blockquote>
+
+<h3 id="docker-images">Docker Images</h3>
+
+<p>Si la <a href="https://github.com/gitpod-io/workspace-images">imagen</a> por defecto no se adapta a lo que quieres
+puedes <a href="https://www.gitpod.io/docs/config-docker">configurarla</a></p>
+
+<p>Véase <a href="https://www.gitpod.io/blog/docker-in-gitpod">Docker in Gitpod</a></p>
+
+<h3 id="self-hosted">Self Hosted</h3>
+
+<p>Gitpod, just as you know it from <a href="https://gitpod.io">gitpod.io</a>, can be deployed and operated on your own infrastructure. 
+It supports different</p>
+
+<ul>
+  <li>cloud providers,</li>
+  <li>self-managed Kubernetes clusters,</li>
+  <li>corporate firewalls, and even</li>
+  <li>
+    <p>off-grid / air-gapped networks.</p>
+  </li>
+  <li><a href="https://www.gitpod.io/docs/self-hosted/latest/self-hosted">Gitpod Self-Hosted</a></li>
+</ul>
+
+<p>You can find all configuration templates and installation scripts in the Gitpod repository:</p>
+
+<p><a href="https://github.com/gitpod-io/gitpod">https://github.com/gitpod-io/gitpod</a></p>
+
+<p>If you already have a Kubernetes cluster, or don’t want/cannot use AWS or GCP, please follow the generic guide:</p>
+
+<ul>
+  <li><a href="https://www.gitpod.io/docs/self-hosted/0.4.0/install/install-on-kubernetes/">Install Gitpod on Kubernetes</a></li>
+</ul>
+
+<h3 id="referencias-1">Referencias</h3>
+
+<ul>
+  <li>
+<a href="https://education.github.community/t/the-benefits-of-integrating-docker-and-cloud-ides-in-the-github-classroom-workflow/40724">The benefits of integrating Docker and Cloud IDE’s in the GitHub Classroom workflow</a> by Ugo Pattacini</li>
+  <li><a href="https://www.gitpod.io/docs">Introduction to Gitpod</a></li>
+  <li><a href="https://www.gitpod.io/education">GitPod For Schools, Universities, and Coding Bootcamps</a></li>
+  <li><a href="https://jfrog.com/knowledge-base/a-beginners-guide-to-understanding-and-building-docker-images/">A Beginner’s Guide to Understanding and Building Docker Images</a></li>
+  <li><a href="https://www.gitpod.io/docs/config-docker">Config Docker for GitPod</a></li>
+  <li><a href="https://www.gitpod.io/blog/docker-in-gitpod">Docker in gitpod</a></li>
+</ul>
+
+
+        
+
+
+        
+
+        <br>
+        <br>
+        <br>
+
+        <script src="https://utteranc.es/client.js" repo="ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+       </script>
+
+        
+ 
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+     
+      
+        <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="whatsapp://send?text=GitPod%3A+VS+Code+in+Browsers%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgitpod.html" class="btn btn--twitter" style="position: relative; 
+  color: #fff; 
+  background-color: #5bb66f;
+  " onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"> 
+  <i class="fab fa-fw fa-whatsapp" aria-hidden="true">
+ </i><span> Whatsapp</span></a>
+
+  <a href="https://twitter.com/intent/tweet?text=GitPod%3A+VS+Code+in+Browsers%20http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgitpod.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter">
+   <i class="fab fa-fw fa-twitter" aria-hidden="true"></i>
+   <span> Twitter</span>
+  </a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgitpod.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+
+   <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2F0.0.0.0%3A4000%2Fassets%2Ftemas%2Fintroduccion-a-javascript%2Fgitpod.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn">
+    <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span>
+  </a>
+  
+</section>
+
+      
+         
+      
+
+      <section class="page__share">   
+     <a href="https://github.com/ULL-ESIT-GRADOII-PL/ull-esit-gradoii-pl.github.io/tree/master//assets/temas/introduccion-a-javascript/gitpod.md" target="_blank" style="background-color: #6f42c1; color: #ffff" class="btn btn--twitter">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+        <span>✏️</span>
+      </a>
+    
+</section>
+  
+
+    </div>
+
+  </article>
+
+  
+  
+</div>
+
+<!-- Mathjax Support  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

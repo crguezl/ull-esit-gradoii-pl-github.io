@@ -1,0 +1,721 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>p7-t3-egg-2 - PL</title>
+<meta name="description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+  <meta name="author" content=" Casiano Rodríguez León">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="PL">
+<meta property="og:title" content="p7-t3-egg-2">
+<meta property="og:url" content="http://0.0.0.0:4000/tema3-analisis-descendente-predictivo-recursivo/practicas/p7-t3-egg-2/">
+
+
+  <meta property="og:description" content="Itinerario de Computación. 2º cuatrimestre">
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/tema3-analisis-descendente-predictivo-recursivo/practicas/p7-t3-egg-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Procesadores de Lenguajes",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="PL Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use :/https/realfavicongenerator.net/ -->
+
+<meta http-equiv="Content-Security-Policy" content="img-src * 'self' data: https:">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--default">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+      
+
+  
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/escuela-politecnica-ingenieria-original.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          PL
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/clases">Clases</a>
+            </li><li class="masthead__menu-item">
+              <a href="/temas">Temas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/practicas">Labs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resources">Recursos</a>
+            </li><li class="masthead__menu-item">
+              <a href="/timetables">Horarios</a>
+            </li><li class="masthead__menu-item">
+              <a href="/references">Referencias</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search">Search</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      <h1 id="práctica-extending-egg--p7-t3-egg-2">Práctica: Extending Egg.  p7-t3-egg-2</h1>
+
+<h2 id="metodologia">Metodologia</h2>
+
+<ol>
+  <li>Trabaje partiendo de la práctica anterior. Puede usar la misma <em>working copy</em>.</li>
+  <li>Añada como remoto el repo de GitHub dado por la asignación de esta tarea. Quizá el nombre del remoto podría ser el nombre de la práctica.</li>
+  <li>Haga también una branch con el nombre de cada práctica y manténgala actualizada hasta el último push de entrega de esa práctica.</li>
+  <li>Mantenga los nombres de los ejemplos que aparecen en las descripciones de las prácticas.</li>
+</ol>
+
+<h2 id="índices-negativos">Índices Negativos</h2>
+
+<p>Añada índices negativos (a la Ruby) para los arrays</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/array-neg.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">{</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span>        <span class="c1"># [ 2, 3 ]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/array-neg.egg
+[ 2, 3 ]
+</code></pre></div></div>
+
+<h2 id="extendiendo-element-posibilidad-de-indexar-con-mas-de-un-índice">Extendiendo <code class="language-plaintext highlighter-rouge">element</code>: Posibilidad de Indexar con mas de un Índice</h2>
+
+<ul>
+  <li>Añada la posibilidad de indexar con mas de un índice a <code class="language-plaintext highlighter-rouge">element</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/array-index.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>          <span class="c1"># 1</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>          <span class="c1"># [ 2, 3 ]</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>        <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span>      <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>        <span class="c1"># 2</span>
+ <span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ejecución:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/array-index.egg
+1
+[ 2, 3 ]
+3
+3
+2
+</code></pre></div></div>
+
+<h2 id="set-modificar-elementos-de-un-array">Set: Modificar Elementos de un Array</h2>
+
+<p>Extienda <code class="language-plaintext highlighter-rouge">set</code> para que se puedan modificar elementos de los arrays</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/array-set-index.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">]]),</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>             <span class="c1"># [ 1, 2, 9, [ 9, 8, 7 ] ]</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>              <span class="c1"># [ 1, 2, 9, [ 9, 1000, 7 ] ]</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ejecución:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/array-set-index.egg
+[ 1, 2, 9, [ 9, 8, 7 ] ]
+[ 1, 2, 9, [ 9, 1000, 7 ] ]
+</code></pre></div></div>
+
+<p>No se debería poder hacer un <code class="language-plaintext highlighter-rouge">set</code> con índices de una variable no estructurada</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/set-error.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="p">[</span><span class="o">...</span><span class="sr">/p7-t3-egg-2-04-16-2020-03-13-25/</span><span class="n">davafons</span><span class="p">(</span><span class="n">casiano</span><span class="p">)]</span><span class="err">$</span> <span class="n">bin</span><span class="o">/</span><span class="n">egg</span><span class="p">.</span><span class="nf">js</span> <span class="n">examples</span><span class="o">/</span><span class="n">set</span><span class="o">-</span><span class="n">error</span><span class="p">.</span><span class="nf">egg</span>
+<span class="no">TypeError</span><span class="p">:</span> <span class="no">The</span> <span class="n">object</span> <span class="s1">'4'</span> <span class="n">is</span> <span class="n">not</span> <span class="n">indexable!</span>  
+</code></pre></div></div>
+
+<h2 id="mapas-hashes-o-diccionarios">Mapas, Hashes o Diccionarios</h2>
+
+<ul>
+  <li>Añada mapas/hashes al lenguaje Egg</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/map.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">map</span><span class="p">[</span><span class="s2">"x"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="n">map</span><span class="p">[</span><span class="s2">"z"</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]),</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)),</span>                 <span class="c1"># 4</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">)),</span>            <span class="c1"># 3</span>
+
+  <span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">))</span>             <span class="c1"># 50</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ejecución:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/map.egg
+4
+3
+50
+</code></pre></div></div>
+
+<h2 id="dos-puntos-como-operador-léxico">Dos puntos como operador léxico</h2>
+
+<p>Nos gustaría poder escribir los hashes/mapas usando <code class="language-plaintext highlighter-rouge">:</code> para separar el nombre de la clave del valor, como en este ejemplo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/map-colon.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">map</span><span class="p">[</span><span class="ss">x: </span><span class="mi">4</span><span class="p">,</span> <span class="ss">y: </span><span class="n">map</span><span class="p">[</span><span class="ss">z: </span><span class="mi">3</span><span class="p">]]),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"y"</span><span class="p">][</span><span class="s2">"z"</span><span class="p">]),</span>                     <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)),</span>                 <span class="c1"># 4</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">)),</span>            <span class="c1"># 3</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">,</span> <span class="s2">"z"</span><span class="p">))</span>             <span class="c1"># 50</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/map-colon.egg
+3
+4
+3
+50
+</code></pre></div></div>
+
+<p>Una forma de hacer esto es empezar haciendo que el análisis léxico acepte el carácter <code class="language-plaintext highlighter-rouge">:</code> para el token <code class="language-plaintext highlighter-rouge">COMMA</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">COMMA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XRegExp</span><span class="p">(</span><span class="s2">`
+    (
+      ,|:(?!=) # : is an alias for comma ',' when not followed by '='
+    )
+  `</span><span class="p">,</span> <span class="dl">'</span><span class="s1">xy</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>y <em>trucando</em> nuestro analizador léxico para que siempre que una <code class="language-plaintext highlighter-rouge">WORD</code> vaya seguida de <code class="language-plaintext highlighter-rouge">:</code> se retorne una <code class="language-plaintext highlighter-rouge">STRING</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">nextToken</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">lookahead</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="nx">count</span><span class="o">++</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">lookahead</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">lookahead</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">WORD</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="nx">count</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nx">result</span><span class="p">[</span><span class="nx">count</span><span class="p">].</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">:</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">lookahead</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">STRING</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">lookahead</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="el-método-sub-deberá-funcionar-con-los-diccionariosmapas">El Método <code class="language-plaintext highlighter-rouge">sub</code> deberá funcionar con los diccionarios/mapas</h2>
+
+<p>Haga que los mapas tengan un método <code class="language-plaintext highlighter-rouge">sub</code>  que permita indexar los mapas:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/map-sub.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">map</span><span class="p">{</span><span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">4</span><span class="p">,</span> <span class="ss">c: </span><span class="n">map</span><span class="p">{</span><span class="ss">d: </span><span class="mi">5</span><span class="p">,</span> <span class="ss">e: </span><span class="mi">3</span><span class="p">}}),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"sub"</span><span class="p">][</span><span class="s2">"a"</span><span class="p">]),</span>      <span class="c1"># 1</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"sub"</span><span class="p">][</span><span class="s2">"c"</span><span class="p">][</span><span class="s2">"d"</span><span class="p">]),</span> <span class="c1"># 5</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"sub"</span><span class="p">][</span><span class="s2">"c"</span><span class="p">][</span><span class="s2">"e"</span><span class="p">]),</span> <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"sub"</span><span class="p">][</span><span class="s2">"b"</span><span class="p">])</span>       <span class="c1"># 4</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ejecución:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/map-sub.egg
+1
+5
+3
+4
+</code></pre></div></div>
+
+<h2 id="oop-en-egg">OOP en Egg</h2>
+
+<p>Añada objetos al lenguaje Egg de manera que podamos escribir programas como este:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/objects.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">object</span> <span class="p">(</span>
+    <span class="s2">"c"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"gc"</span><span class="p">,</span> <span class="o">-&gt;</span><span class="p">{</span><span class="n">element</span><span class="p">[</span><span class="n">this</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">]},</span>
+    <span class="s2">"sc"</span><span class="p">,</span> <span class="o">-&gt;</span><span class="p">{</span><span class="n">value</span><span class="p">,</span> <span class="o">=</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="n">value</span><span class="p">)},</span>
+    <span class="s2">"inc"</span><span class="p">,</span> <span class="o">-&gt;</span><span class="p">{</span><span class="o">=</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="o">+</span><span class="p">(</span><span class="n">element</span><span class="p">[</span><span class="n">this</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">],</span><span class="mi">1</span><span class="p">))}</span>
+  <span class="p">)),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="s2">"gc"</span><span class="p">)()),</span> <span class="c1"># 0</span>
+  <span class="n">x</span><span class="p">(</span><span class="s2">"sc"</span><span class="p">)(</span><span class="mi">4</span><span class="p">),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="s2">"gc"</span><span class="p">)()),</span> <span class="c1"># 4</span>
+  <span class="n">x</span><span class="p">(</span><span class="s2">"inc"</span><span class="p">)(),</span>   
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="s2">"gc"</span><span class="p">)()),</span>  <span class="c1"># 5</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ejecución:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/objects.egg
+0
+4
+5  
+</code></pre></div></div>
+
+<h2 id="dot">DOT</h2>
+
+<p><strong>Syntactic Sugar</strong>: Introduzca el operador punto (dot) para poder acceder a los métodos y atributos de un  objeto.</p>
+
+<p>La idea es que una expresión como:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">a</span><span class="p">.</span><span class="nx">b</span><span class="p">.</span><span class="nx">c</span><span class="p">(</span><span class="nx">arg1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>es equivalente a esta otra expresión:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">a</span><span class="p">(</span><span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">)(</span><span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">)(</span><span class="nx">arg1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Esto es,el dot es como una llamada/apply del objeto en el que el primer argumento es el atributo/método</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/dot.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]),</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)),</span>                 <span class="c1"># The same as x("join")("-")</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">),</span>                            <span class="c1"># 1-4-5</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">].</span><span class="nf">join</span><span class="p">(</span><span class="s2">"-"</span><span class="p">).</span><span class="nf">length</span><span class="p">)</span> <span class="c1"># 5</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/dot.egg
+1-4-5
+5
+</code></pre></div></div>
+
+<p>Otro ejemplo, esta vez con objetos Egg.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[~/.../crguezl-egg(private2019)]$ cat examples/dot-obj-2.egg
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> .../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/dot-obj-2.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">(</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">object</span> <span class="p">(</span>
+    <span class="ss">c:   </span><span class="mi">3</span><span class="p">,</span>
+    <span class="ss">gc:  </span><span class="o">-&gt;</span><span class="p">{</span><span class="n">this</span><span class="p">.</span><span class="nf">c</span><span class="p">},</span>
+    <span class="ss">sc:  </span><span class="o">-&gt;</span><span class="p">{</span><span class="n">value</span><span class="p">,</span> <span class="o">=</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="n">value</span><span class="p">)},</span>
+    <span class="ss">inc: </span><span class="o">-&gt;</span><span class="p">{</span><span class="o">=</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">,</span> <span class="o">+</span><span class="p">(</span><span class="n">this</span><span class="p">.</span><span class="nf">c</span><span class="p">,</span> <span class="mi">1</span><span class="p">))}</span>
+  <span class="p">)),</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"c"</span><span class="p">]),</span> <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">c</span><span class="p">),</span>    <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">gc</span><span class="p">()),</span> <span class="c1"># 3</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">sc</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span><span class="c1"># 5</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="nf">gc</span><span class="p">())</span>  <span class="c1"># 5</span>
+<span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/dot-obj-2.egg
+3
+3
+3
+5
+5
+</code></pre></div></div>
+
+<p>Otro ejemplo con números:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  [.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ cat examples/dot-num.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">{</span>
+  <span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="nf">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="s2">"toFixed"</span><span class="p">)(</span><span class="mi">2</span><span class="p">)),</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">.</span><span class="nf">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">),</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p7-t3-egg-2-04-16-2020-03-13-25/davafons(casiano)]$ bin/egg.js examples/dot-num.egg
+4.00
+4.00
+4.00
+</code></pre></div></div>
+
+<h2 id="require">Require</h2>
+
+<ul>
+  <li>Expanda el lenguaje con un <code class="language-plaintext highlighter-rouge">require</code> para que permita el uso de librerías</li>
+  <li>Repase el vídeo <a href="https://www.youtube.com/watch?v=qffmnSCRR3c&amp;feature=youtu.be">Como implementar la funcionalidad de “require”</a>.</li>
+  <li>Aquí tiene un enlace al <a href="https://github.com/ULL-ESIT-MII-CA-1718/ejs-chapter10-modules/tree/master/require">Repo correspondiente al vídeo</a>.</li>
+  <li>Memoize las librerías para que no se carguen dos veces</li>
+  <li>Procure añadir esta funcionalidad sin tocar el código principal usando el strategy pattern + registry pattern</li>
+</ul>
+
+<p>Código del Módulo: <strong>[~/…/crguezl-egg(private2019)]$ cat examples/require/module.egg</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="err">#</span> <span class="nx">module</span><span class="p">.</span> <span class="nx">Exports</span> <span class="nx">z</span>
+  <span class="k">do</span> <span class="p">{</span>
+    <span class="nx">print</span><span class="p">(</span><span class="dl">"</span><span class="s2">inside module</span><span class="dl">"</span><span class="p">),</span>
+    <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">z</span><span class="p">,</span> <span class="nx">map</span><span class="p">{</span><span class="na">inc</span><span class="p">:</span> <span class="o">-&gt;</span><span class="p">{</span><span class="nx">x</span><span class="p">,</span> 
+                       <span class="o">+</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+                     <span class="p">}</span> <span class="err">#</span> <span class="nx">end</span> <span class="nx">fun</span>
+             <span class="p">}</span> <span class="err">#</span> <span class="nx">end</span> <span class="nx">map</span>
+    <span class="p">),</span> <span class="err">#</span> <span class="nx">end</span> <span class="na">of</span> <span class="p">:</span><span class="o">=</span>
+    <span class="nx">z</span>  <span class="err">#</span> <span class="nx">el</span> <span class="nx">último</span> <span class="nx">valor</span> <span class="nx">será</span> <span class="nx">exportado</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Programa Cliente: <strong>[~/…/crguezl-egg(private2019)]$ cat examples/require/client.egg</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">do</span> <span class="p">{</span>
+    <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">z</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">examples/require/module.egg</span><span class="dl">"</span><span class="p">)),</span>
+    <span class="nx">print</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="nx">inc</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span>
+    <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">examples/require/module.egg</span><span class="dl">"</span><span class="p">)),</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ejecución:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  [~/.../crguezl-egg(private2019)]$ bin/egg.js examples/require/client.egg 
+  inside module
+  5
+</code></pre></div></div>
+
+<p>Observe como <code class="language-plaintext highlighter-rouge">inside module</code> aparece una sola vez pese a que el módulo es <em>required</em> dos veces</p>
+
+<h2 id="regexps">RegExps</h2>
+
+<ul>
+  <li>Añada expresiones regulares al lenguaje Egg.</li>
+  <li>Las delimitaremos mediante <code class="language-plaintext highlighter-rouge">r/regexpExpression/</code> comenzando por <code class="language-plaintext highlighter-rouge">r/</code>y terminando con una <code class="language-plaintext highlighter-rouge">/</code>.</li>
+  <li>Se admiten cualesquiera caracteres entre los delimitadores, incluyendo retornos de carro.</li>
+  <li>Use XRegExp para darle mayor potencia a las expresiones regulares.</li>
+  <li>Recuerde que XRegExp admite 0 o mas repeticiones de estas opciones en las expresiones regulares: <code class="language-plaintext highlighter-rouge">[nsxAgimuy]*</code></li>
+  <li>Las expresiones regulares son un nuevo tipo de token y conllevan una ligera modificación de la sintáxis.</li>
+  <li>Así mismo los AST ahora tendrán un nuevo tipo <code class="language-plaintext highlighter-rouge">regex</code></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p6-t3-egg-1-04-16-2020-03-13-25/davafons(master)]$ cat examples/regex-simple.egg
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">do</span> <span class="p">{</span>
+    <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">r</span><span class="o">/</span><span class="p">(</span><span class="err">\</span><span class="nx">w</span><span class="o">+</span><span class="p">)</span>
+           <span class="err">\</span><span class="nx">s</span><span class="o">+</span>
+           <span class="p">(</span><span class="err">\</span><span class="nx">d</span><span class="o">+</span><span class="p">)</span>  <span class="err">#</span> <span class="nx">numero</span> 
+          <span class="o">/</span><span class="nx">x</span><span class="p">),</span>
+    <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">a 4</span><span class="dl">"</span><span class="p">)),</span>
+    <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="dl">"</span><span class="s2">;;; a 42</span><span class="dl">"</span><span class="p">)),</span>
+    <span class="nx">print</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span>
+    <span class="nx">print</span><span class="p">(</span><span class="nx">m</span><span class="p">),</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p6-t3-egg-1-04-16-2020-03-13-25/davafons(master)]$ bin/egg.js examples/regex-simple.egg 
+true
+[ 'a 42', 'a', '42', index: 4, input: ';;; a 42', groups: undefined ]
+</code></pre></div></div>
+
+<p>Otro ejemplo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p6-t3-egg-1-04-16-2020-03-13-25/davafons(master)]$ cat examples/regex-2.egg 
+</code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+  <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">r</span><span class="o">/</span>
+         <span class="p">(?</span><span class="o">&lt;</span><span class="nx">year</span><span class="o">&gt;</span>  <span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">4</span><span class="p">}</span> <span class="p">)</span> <span class="o">-</span><span class="p">?</span>  <span class="err">#</span> <span class="nx">year</span>
+         <span class="p">(?</span><span class="o">&lt;</span><span class="nx">month</span><span class="o">&gt;</span> <span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span> <span class="p">)</span> <span class="o">-</span><span class="p">?</span>  <span class="err">#</span> <span class="nx">month</span>
+         <span class="p">(?</span><span class="o">&lt;</span><span class="nx">day</span><span class="o">&gt;</span>   <span class="err">\</span><span class="nx">d</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span> <span class="p">)</span>     <span class="err">#</span> <span class="nx">day</span>
+        <span class="o">/</span><span class="nx">x</span><span class="p">),</span>
+  <span class="nx">print</span><span class="p">(</span><span class="nx">d</span><span class="p">(</span><span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">)(</span><span class="dl">"</span><span class="s2">1987-07-14</span><span class="dl">"</span><span class="p">)),</span>  <span class="err">#</span> <span class="kc">true</span>
+  <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">(</span><span class="dl">"</span><span class="s2">exec</span><span class="dl">"</span><span class="p">)(</span><span class="dl">"</span><span class="s2">1987-07-14</span><span class="dl">"</span><span class="p">)),</span>
+  <span class="nx">print</span><span class="p">(</span><span class="nx">m</span><span class="p">),</span> <span class="err">#</span>  <span class="p">[</span> <span class="dl">'</span><span class="s1">1987-07-14</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">1987</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">07</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">14</span><span class="dl">'</span><span class="p">,</span> <span class="nx">index</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">input</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1987-07-14</span><span class="dl">'</span> <span class="p">]</span> 
+  <span class="nx">print</span><span class="p">(</span><span class="nx">m</span><span class="p">(</span><span class="dl">"</span><span class="s2">index</span><span class="dl">"</span><span class="p">)),</span> <span class="err">#</span> <span class="mi">0</span>
+
+  <span class="p">:</span><span class="o">=</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nb">RegExp</span><span class="p">(</span><span class="dl">"</span><span class="s2">exec</span><span class="dl">"</span><span class="p">)(</span><span class="dl">"</span><span class="s2">2015-02-22</span><span class="dl">"</span><span class="p">,</span> <span class="nx">d</span><span class="p">)),</span>
+                  <span class="cm">/*
+                  [ '2015-02-22',
+                    '2015',
+                    '02',
+                    '22',
+                    index: 0,
+                    input: '2015-02-22',
+                    year: '2015',
+                    month: '02',
+                    day: '22' ]
+                  */</span>
+  <span class="nx">print</span><span class="p">(</span><span class="nx">x</span><span class="p">),</span> 
+  <span class="nx">print</span><span class="p">(</span><span class="nx">x</span><span class="p">(</span><span class="dl">"</span><span class="s2">year</span><span class="dl">"</span><span class="p">)),</span> <span class="err">#</span> <span class="mi">2015</span>
+  <span class="nx">print</span><span class="p">(</span><span class="nx">x</span><span class="p">(</span><span class="dl">"</span><span class="s2">month</span><span class="dl">"</span><span class="p">))</span> <span class="err">#</span> <span class="mi">02</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../p6-t3-egg-1-04-16-2020-03-13-25/davafons(master)]$ bin/egg.js examples/regex-2.egg 
+true
+[
+  '1987-07-14',
+  '1987',
+  '07',
+  '14',
+  index: 0,
+  input: '1987-07-14',
+  groups: undefined
+]
+0
+[
+  '2015-02-22',
+  '2015',
+  '02',
+  '22',
+  index: 0,
+  input: '2015-02-22',
+  groups: undefined,
+  year: '2015',
+  month: '02',
+  day: '22'
+]
+2015
+02
+</code></pre></div></div>
+
+<h2 id="bucles-for">Bucles for</h2>
+
+<p>Extienda el lenguaje con uno o varios tipos de  bucle <code class="language-plaintext highlighter-rouge">for</code></p>
+
+<h3 id="bucle-for-convencional">Bucle for convencional</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../TFA-04-16-2020-03-22-00/davafons(casiano)]$ cat examples/for.egg
+</code></pre></div></div>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span><span class="p">(</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">define</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="o">++</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../TFA-04-16-2020-03-22-00/davafons(casiano)]$ bin/egg.js examples/for.egg
+0
+1
+2
+3
+4
+</code></pre></div></div>
+
+<h3 id="bucle-foreach">Bucle foreach</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../TFA-04-16-2020-03-22-00/davafons(casiano)]$ cat examples/foreach.egg
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+  <span class="k">def</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">arr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+  <span class="n">foreach</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="c1"># Different x from inner and outer scope</span>
+
+  <span class="k">def</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">map</span><span class="p">(</span><span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span><span class="p">,</span> <span class="ss">c: </span><span class="mi">3</span><span class="p">)),</span>
+  <span class="n">foreach</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">y</span><span class="p">.</span><span class="nf">keys</span><span class="p">(),</span> <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">()))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[.../TFA-04-16-2020-03-22-00/davafons(casiano)]$ bin/egg.js examples/foreach.egg
+1
+2
+3
+A
+B
+C
+</code></pre></div></div>
+
+<h2 id="recursos">Recursos</h2>
+
+<ul>
+  <li><a href="http://eloquentjavascript.net/11_language.html">Eloquent JS: Chapter 11. Project: A Programming Language</a></li>
+  <li><a href="https://github.com/ULL-ESIT-PL-1617/egg">El lenguaje egg: repo en GitHub</a></li>
+  <li><a href="https://github.com/ULL-ESIT-PL-1617/interpreter-egg">Repo interpreter-egg</a></li>
+  <li><a href="https://gist.github.com/crguezl/430642e29a2b9293317320d0d1759387">NodeJS Readline gist</a></li>
+  <li>En el repo <a href="https://github.com/ULL-ESIT-PL-1617/interpreter-egg">ULL-ESIT-PL-1617/interpreter-egg</a> se muestra como hacer un bucle REPL</li>
+  <li><a href="http://xregexp.com/">XRegExp</a></li>
+  <li>El módulo <a href="https://www.npmjs.com/package/@ull-esit-pl/example2test">@ull-esit-pl/example2test</a></li>
+</ul>
+
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022  Casiano Rodríguez León. 
+
+
+  <!--
+
+  Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+  <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+    
+  -->
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
